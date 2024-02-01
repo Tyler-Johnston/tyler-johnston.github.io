@@ -9,17 +9,22 @@
   align-items: center;
   padding: var(--mantine-spacing-md) var(--mantine-spacing-md);
 
-  @media (max-width: $mantine-breakpoint-sm) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 }
 
-.links {
-  @media (max-width: $mantine-breakpoint-sm) {
-    margin-top: var(--mantine-spacing-lg);
-    margin-bottom: var(--mantine-spacing-sm);
-  }
+
+.link {
+  color: var(--mantine-color-gray-6); /* Set the color to the desired dimmed color */
+  text-decoration: none; /* Remove underline if needed */
+  outline: none; /* Remove focus outline */
 }
+
+.link:hover {
+  text-decoration: underline; /* Add underline on hover if desired */
+}
+
 
 .smallImage {
   width: 100px;
