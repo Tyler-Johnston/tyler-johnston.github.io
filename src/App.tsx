@@ -1,12 +1,14 @@
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
-import { theme } from "./theme";
 import { HeaderMenu } from "../components/HeaderMenu/HeaderMenu";
+import { FooterCentered } from "../components/FooterCentered/FooterCentered"
 
 export default function App() {
-  return <MantineProvider theme={theme}>
+  return (
+    <MantineProvider defaultColorScheme={'dark'}>
+      <HeaderMenu/>
 
-    <HeaderMenu/>
-
-    </MantineProvider>;
+      <FooterCentered/>
+    </MantineProvider>
+  )
 }

@@ -1,10 +1,9 @@
 import { Menu, Group, Center, Burger, Container } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
-import { IconAlignBoxLeftMiddle } from '@tabler/icons-react';
+import { IconDeviceLaptop } from '@tabler/icons-react';
 import classes from './HeaderMenu.module.css';
 
-// Define the interface for link items
 interface LinkItem {
   link: string;
   label: string;
@@ -12,13 +11,10 @@ interface LinkItem {
 }
 
 const links: LinkItem[] = [
-  { link: '/about', label: 'Home' },
-  {
-    link: '#1',
-    label: 'Portfolio',
-  },
+  { link: '/', label: 'Home' },
   { link: '/about', label: 'About' },
-  { link: '/pricing', label: 'Testimonials' },
+  { link: '/portfolio', label: 'Portfolio' },
+  { link: '/skills', label: 'Technical Skills' },
 ];
 
 export function HeaderMenu() {
@@ -63,15 +59,17 @@ export function HeaderMenu() {
 
   return (
     <header className={classes.header}>
-      <Container size="md">
-        <div className={classes.inner}>
-          <IconAlignBoxLeftMiddle size={28}/>
+      <Container size="xxl">
+      <div className={classes.inner}>
+        <Group gap={5}>
+          <IconDeviceLaptop size={28}/>
           Tyler Johnston
-          <Group gap={5} visibleFrom="sm">
-            {items}
-          </Group>
-          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
-        </div>
+        </Group>
+        <Group gap={5} visibleFrom="sm">
+          {items}
+        </Group>
+        <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+      </div>
       </Container>
     </header>
   );

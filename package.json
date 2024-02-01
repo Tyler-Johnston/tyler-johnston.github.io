@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mantine/core": "7.4.2",
-    "@mantine/hooks": "7.4.2",
+    "@mantine/core": "^7.5.1",
+    "@mantine/hooks": "^7.4.2",
     "@mantinex/mantine-logo": "^1.0.1",
     "@tabler/icons-react": "^2.46.0",
     "react": "^18.2.0",
