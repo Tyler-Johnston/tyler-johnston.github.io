@@ -1,0 +1,26 @@
+.smallImage {
+    width: 100px;
+    height: auto;
+  }
+
+.mediumImage {
+    width: 325px;
+    height: auto;
+    margin: auto;
+}
+
+.textHeading {
+    font-size: 42px;
+    
+}
+
+.textSubHeading {
+    font-size: 26px;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

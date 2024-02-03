@@ -8,7 +8,7 @@ const links = [
   { link: '/', label: 'Home' },
   { link: '/about', label: 'About' },
   { link: '/portfolio', label: 'Portfolio' },
-  { link: '/experience', label: 'Workforce Experience' },
+  { link: '/experience', label: 'Experience' },
   { link: 'mailto:johnstontyler@protonmail.com', label: 'Contact'}
 ];
 
@@ -43,12 +43,16 @@ export function FooterCentered() {
         <Image radius="md" src={headshot} className={classes.smallImage} />
         <Group className={classes.links}>{items}</Group>
         <Group gap="xs" justify="flex-end" wrap="nowrap">
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandGithub style={{ width: '18px', height: '18px' }} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg" variant="default" radius="xl">
-            <IconBrandLinkedin style={{ width: '18px', height: '18px' }} stroke={1.5} />
-          </ActionIcon>
+          <Link to="https://github.com/Tyler-Johnston" target="_blank">
+            <ActionIcon size="lg" variant="default" radius="xl">
+              <IconBrandGithub style={{ width: '18px', height: '18px' }} stroke={1.5} />
+            </ActionIcon>
+          </Link>
+          <Link to="https://linkedin.com/in/tylerjohnstonn" target="_blank">
+            <ActionIcon size="lg" variant="default" radius="xl">
+              <IconBrandLinkedin style={{ width: '18px', height: '18px' }} stroke={1.5} />
+            </ActionIcon>
+          </Link>
         </Group>
       </div>
     </div>

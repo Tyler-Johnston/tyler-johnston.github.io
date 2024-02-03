@@ -14,7 +14,7 @@ const links: LinkItem[] = [
   { link: '/', label: 'Home' },
   { link: '/about', label: 'About' },
   { link: '/portfolio', label: 'Portfolio' },
-  { link: '/experience', label: 'Workforce Experience' },
+  { link: '/experience', label: 'Experience' },
 ];
 
 export function HeaderMenu() {
