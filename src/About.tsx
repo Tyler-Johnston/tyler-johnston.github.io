@@ -1,64 +1,172 @@
-import { Text, Paper, Container, Title, Image, Accordion, Group } from '@mantine/core';
+import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid} from '@mantine/core';
+import { IconType } from 'react-icons';
+import { FaPython, FaJava, FaHtml5, FaCss3, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping, FaNode} from 'react-icons/fa';
+import { SiTypescript, SiCplusplus, SiCsharp, SiPrisma, SiDjango, SiPytorch, SiOpencv, SiCmake, SiPandas} from 'react-icons/si';
 import { Link } from 'react-router-dom';
-import portrait from "../images/portrait.jpeg";
 import "../styles.css"
 
-const courses = [
-  {
-    id: 'cs4610',
-    label: 'Modern Web Development',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-  {
-    id: 'cs3460',
-    label: 'Modern C++',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-  {
-    id: 'cs5260',
-    label: 'Developing Cloud Applications (AWS)',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-  {
-    id: 'cs5600',
-    label: 'Intelligent Systems',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-  {
-    id: 'cs5680',
-    label: 'Computer Vision',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-  {
-    id: 'cs5630',
-    label: 'Data Science In Practice (in progress)',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-  {
-    id: 'cs5410',
-    label: 'Game Development (in progress)',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
-  {
-    id: 'cs5050',
-    label: 'Advanced Algorithms (in progress)',
-    description: 'Fascinated with cooking, though has no sense of taste',
-    content: "Bender Bending Rodríguez, (born September 4, 2996), designated Bending Unit 22, and commonly known as Bender, is a bending unit created by a division of MomCorp in Tijuana, Mexico, and his serial number is 2716057. His mugshot id number is 01473. He is Fry's best friend.",
-  },
+const csCourses = [
+    {
+      id: 'cs5050',
+      label: 'Advanced Algorithms',
+      description: 'Algorithm design and analysis',
+      content: "Explored advanced topics in algorithm design, analysis, and implementation, including graph, sorting, and dynamic programming algorithms. Gained insights into the theoretical underpinnings of algorithms and their practical applications.",
+    },
+    {
+      id: 'cs5680',
+      label: 'Computer Vision',
+      description: 'Learned techniques for digital image analysis',
+      content: "Delved into machine intelligence theories and techniques for image processing and computer vision. Applied concepts to facial recognition, autonomous driving, and image restoration projects.",
+    },
+    {
+      id: 'cs5630',
+      label: 'Data Science In Practice',
+      description: 'Engaged in real-world data analysis projects',
+      content: "Applied data science techniques to analyze real-world data in collaborative, multidisciplinary teams. Utilized state-of-the-art tools for data collection, cleaning, analysis, and visualization.",
+    },
+    {
+      id: 'cs5260',
+      label: 'Developing Cloud Applications (AWS)',
+      description: 'Developed scalable AWS applications',
+      content: "Learned to create scalable, fault-tolerant applications on Amazon Web Services, covering core services, cloud architecture best practices, and AWS tools. Implemented projects using EC2, S3, RDS, Lambda, and more.",
+    },
+    {
+      id: 'cs5410',
+      label: 'Game Development',
+      description: 'Discovered game development principles',
+      content: "Explored game design theory, graphics, sound, and interaction. Developed video games using popular engines, focusing on game industry practices and the development life cycle.",
+    },
+    {
+      id: 'cs5600',
+      label: 'Intelligent Systems',
+      description: 'Studied AI and machine learning system design',
+      content: "Investigated the creation of systems for tasks requiring human intelligence, such as machine learning and natural language processing. Designed AI models for practical applications.",
+    },
+    {
+      id: 'cs3460',
+      label: 'Modern C++',
+      description: 'Advanced C++ programming techniques',
+      content: "Focused on modern C++ programming, including templates, STL, and concurrency. Developed efficient code using modern C++ standards and best practices.",
+    },
+    {
+      id: 'cs4610',
+      label: 'Modern Web Development',
+      description: 'Comprehensive study of web technologies',
+      content: "Introduced to contemporary web development technologies and practices, including React and Node.js. Built full-stack web applications, emphasizing web architecture and security.",
+    },
+  ];
+  
+  const mathCourses = [
+    {
+      id: 'math1210',
+      label: 'Calculus I',
+      description: 'Explored differential and integral calculus basics',
+      content: "Covered calculus fundamentals, applying concepts to solve real-world problems in various disciplines. Focused on limits, derivatives, and integrals of single-variable functions.",
+    },
+    {
+      id: 'math1220',
+      label: 'Calculus II',
+      description: 'Advanced calculus techniques and applications',
+      content: "Extended Calculus I knowledge to advanced integration techniques, polar coordinates, and series. Applied Taylor series to differential equations.",
+    },
+    {
+      id: 'math2210',
+      label: 'Multivariable Calculus',
+      description: 'Extended calculus to functions of multiple variables',
+      content: "Covered partial derivatives, multiple integrals, and vector calculus. Applied concepts to fields like fluid dynamics and electromagnetic fields.",
+    },
+    {
+      id: 'math2280',
+      label: 'Ordinary Differential Equations',
+      description: 'Solving differential equations methodologies',
+      content: "Introduced to ODEs and their applications. Covered various types of differential equations and modeling with differential equations in several fields.",
+    },
+    {
+      id: 'math3310',
+      label: 'Discrete Mathematics',
+      description: 'Foundation of mathematical structures in CS',
+      content: "Studied logic, set theory, combinatorics, and graph theory, applying these concepts to algorithm analysis and software design.",
+    },
+    {
+      id: 'math5710',
+      label: 'Introduction to Probability',
+      description: 'Basic principles and applications of probability',
+      content: "Learned probability theory principles, including random variables and distributions. Prepared for further study in statistical inference and stochastic processes.",
+    },
+  ];  
+
+const languages = [
+    { name: 'Python', Icon: FaPython },
+    { name: 'JavaScript/TypeScript', Icon: SiTypescript },
+    { name: 'C#', Icon: SiCsharp },
+    { name: 'Java', Icon: FaJava },
+    { name: 'C++', Icon: SiCplusplus },
+    { name: 'HTML', Icon: FaHtml5 },
+    { name: 'CSS', Icon: FaCss3 },
 ];
 
-interface AccordionLabelProps {
-  label: string;
-  description: string;
+const software = [
+    { name: 'React.js', Icon: FaReact },
+    { name: 'Node.js', Icon: FaNode},
+    { name: 'Django', Icon: SiDjango },
+    { name: 'Prisma', Icon: SiPrisma },
+    { name: 'Pandas', Icon: SiPandas},
+    { name: 'PyTorch', Icon: SiPytorch },
+    { name: 'OpenCV', Icon: SiOpencv },
+    { name: 'CMake', Icon: SiCmake },
+    { name: 'Docker', Icon: FaDocker },
+    { name: 'Git', Icon: FaGitAlt },
+    { name: 'Linux', Icon: FaLinux }
+
+];
+
+const softSkills =[
+    { name: 'Agile Methodology', Icon: FaUsers },
+    { name: 'Waterfall Methodology', Icon: FaStream },
+    { name: 'Teamwork', Icon: FaHandsHelping },
+    { name: 'Problem‐Solving', Icon: FaLightbulb },
+    { name: 'Communication', Icon: FaComments },
+    { name: 'Time‐Management', Icon: FaRegClock },
+];
+
+interface Skills {
+    name: string;
+    Icon: IconType;
 }
 
+interface SkillsProps {
+    skills: Skills[]
+}
+
+interface AccordionLabelProps {
+    label: string;
+    description: string;
+}
+
+interface Course {
+    id: string;
+    label: string;
+    description: string;
+    content: string;
+}
+
+interface CourseAccordionProps {
+    courses: Course[];
+}
+
+function RenderSkillsSection({ skills }: SkillsProps) {
+    return (
+      <Paper p="xl">
+        {skills.map(({ name, Icon }) => (
+          <Group key={name}>
+            {Icon ? <Icon size={24}/> : <></>}
+            <Text>{name}</Text>
+          </Group>
+        ))}
+      </Paper>
+    );
+}
+  
 function AccordionLabel({ label, description }: AccordionLabelProps) {
     return (
       <Group wrap="nowrap">
@@ -70,62 +178,84 @@ function AccordionLabel({ label, description }: AccordionLabelProps) {
         </div>
       </Group>
     );
-  }
+}
+
+function CourseAccordion({ courses }: CourseAccordionProps) {
+    return (
+      <Accordion chevronPosition="right" variant="contained">
+        {courses.map((course) => (
+          <Accordion.Item value={course.id} key={course.id}>
+            <Accordion.Control>
+              <AccordionLabel label={course.label} description={course.description} />
+            </Accordion.Control>
+            <Accordion.Panel>
+              <Text size="sm">{course.content}</Text>
+            </Accordion.Panel>
+          </Accordion.Item>
+        ))}
+      </Accordion>
+    );
+}
 
 const About = () => {
-
-    const items = courses.map((course) => (
-        <Accordion.Item value={course.id} key={course.id}>
-          <Accordion.Control>
-            <AccordionLabel label={course.label} description={course.description} />
-          </Accordion.Control>
-          <Accordion.Panel>
-            <Text size="sm">{course.content}</Text>
-          </Accordion.Panel>
-        </Accordion.Item>
-      ));
 
     return (
         <>
         <Container>
-            <Paper p="xl">
-                <Text className="textHeading" ta="center" fw={700}> Hi, my name is Tyler Johnston!</Text>
-                <Image radius="md" src={portrait} className="mediumImage"/>
-                <Text className="textSubHeading" fs="italic">I'm an senior undergraduate student at Utah State University studying Computer Science and Mathematics. I'm seeking full-time employment in Software Development.</Text>
-            </Paper>
+          <Title>Hi, i'm Tyler Johnston!</Title>
+          <Paper p="xl">
+          <Text>I'm a senior undergraduate student at Utah State University studying Computer Science and Mathematics. I'm seeking full-time employment in Software Development.</Text>
+          </Paper>
         </Container>
-
+  
         <Container>
-            <Title>Personal Background</Title>
-            <Paper p="xl">
-                <Text>I'm originally from Nashville, Tennessee! After applying to Utah State, I was granted their full-ride Presidential Scholarship. Moving across the country to an new state straight out of high school was a scary decision, but I have never regretted my decision to attend USU!</Text>
-                <br></br>
-                <Text>I've always had a passion for technology and software ever since I was a kid. Being able to create an application seemingly out of thin air using only problem-solving and creativity has always drawn me to software development. Even when there are frustrating bugs to figure out, finally creating a working solution is a high that I can't live without.</Text>
-                <br></br>
-                <Text>In my personal time I love to hang out with friends and family, play video games, collect vinyl records, and learn the guitar! Check out my <Link to="https://www.discogs.com/user/sodafutz/collection">Discogs account</Link> if you want to view my vinyl collection!</Text>
-            </Paper>
-        </Container>
-
-        <Container>
-            <Title>Educational Background</Title>
-            <Paper p="xl">
-                <Text>As of Spring 2024, I have retaiend a 3.91 GPA. </Text>
-            <Accordion chevronPosition="right" variant="contained">
-                {items}
-            </Accordion>
-                
-            </Paper>
+          <Title>Personal Background</Title>
+          <Paper p="xl">
+            <Text>I'm originally from Nashville, Tennessee! After applying to Utah State University, I was offered their full-ride presidential scholarship. I decided to take the plunge and move to Logan, and I have never regretted that decision!</Text>
+            <br />
+            <Text>I've always had a passion for technology and software ever since I was a kid. Being able to create something seemingly out of thin air using only problem-solving and creativity has always drawn me to software development. Even when there are frustrating bugs to figure out, finally creating a working solution is a high that I can't live without.</Text>
+            <br />
+            <Text>In my personal time, I love to hang out with friends and family, play video games on my Steam Deck, collect vinyl records, and learn the guitar. Check out my <Link target="_blank" to="https://www.discogs.com/user/sodafutz/collection">Discogs account</Link> if you want to view my vinyl collection!</Text>
+          </Paper>
         </Container>
 
         <Container>
             <Title>Skills</Title>
-            <Paper>
-                <Text></Text>
-            </Paper>
+            <Grid>
+                <Grid.Col span={4}>
+                    <RenderSkillsSection skills={languages} />
+                </Grid.Col>
+                <Grid.Col span={4}>
+                    <RenderSkillsSection skills={software} />
+                </Grid.Col>
+                <Grid.Col span={4}>
+                    <RenderSkillsSection skills={softSkills} />
+                </Grid.Col>
+            </Grid>
         </Container>
-
-
-        </>
+  
+        <Container>
+          <Title>Educational Background</Title>
+          <Paper p="xl">
+            <Text>I am majoring in Computer Science with a minor in Mathematics. Throughout my Undergrad, I have retained a 3.91 GPA. I'm currently a computer vision research assistant for the landscape architecture department where I use AI to detect urban infrastructure to generate latitude and longitude data of landmarks for the purpose of ADA compliance.</Text>
+            <br></br>
+            <Tabs defaultValue="cs">
+              <Tabs.List>
+                <Tabs.Tab value="cs">Computer Science</Tabs.Tab>
+                <Tabs.Tab value="math">Mathematics</Tabs.Tab>
+              </Tabs.List>
+  
+              <Tabs.Panel value="cs" pt="xs">
+                <CourseAccordion courses={csCourses} />
+              </Tabs.Panel>
+  
+              <Tabs.Panel value="math" pt="xs">
+                <CourseAccordion courses={mathCourses} />
+              </Tabs.Panel>
+            </Tabs>
+          </Paper>
+        </Container>
+      </>
     );
   };
   
