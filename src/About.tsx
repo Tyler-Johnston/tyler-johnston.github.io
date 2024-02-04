@@ -26,7 +26,7 @@ const csCourses = [
     },
     {
       id: 'cs5260',
-      label: 'Developing Cloud Applications (AWS)',
+      label: 'Developing Cloud Applications',
       description: 'Developed scalable AWS applications',
       content: "Learned to create scalable, fault-tolerant applications on Amazon Web Services, covering core services, cloud architecture best practices, and AWS tools. Implemented projects using EC2, S3, RDS, Lambda, and more.",
     },
@@ -202,20 +202,13 @@ const About = () => {
     return (
         <>
         <Container>
-          <Title>Hi, i'm Tyler Johnston!</Title>
-          <Paper p="xl">
-          <Text>I'm a senior undergraduate student at Utah State University studying Computer Science and Mathematics. I'm seeking full-time employment in Software Development.</Text>
-          </Paper>
-        </Container>
-  
-        <Container>
-          <Title>Personal Background</Title>
+          <Title>Personal</Title>
           <Paper p="xl">
             <Text>I'm originally from Nashville, Tennessee! After applying to Utah State University, I was offered their full-ride presidential scholarship. I decided to take the plunge and move to Logan, and I have never regretted that decision!</Text>
             <br />
             <Text>I've always had a passion for technology and software ever since I was a kid. Being able to create something seemingly out of thin air using only problem-solving and creativity has always drawn me to software development. Even when there are frustrating bugs to figure out, finally creating a working solution is a high that I can't live without.</Text>
             <br />
-            <Text>In my personal time, I love to hang out with friends and family, play video games on my Steam Deck, collect vinyl records, and learn the guitar. Check out my <Link target="_blank" to="https://www.discogs.com/user/sodafutz/collection">Discogs account</Link> if you want to view my vinyl collection!</Text>
+            <Text>In my personal time, I love to hang out with friends and family, play video games on my Steam Deck, collect vinyl records and CDs, and learn the guitar. Check out my <Link target="_blank" to="https://www.discogs.com/user/sodafutz/collection">Discogs account</Link> if you want to view my music collection!</Text>
           </Paper>
         </Container>
 
@@ -235,9 +228,13 @@ const About = () => {
         </Container>
   
         <Container>
-          <Title>Educational Background</Title>
+          <Title>Education</Title>
           <Paper p="xl">
-            <Text>I am majoring in Computer Science with a minor in Mathematics. Throughout my Undergrad, I have retained a 3.91 GPA. I'm currently a computer vision research assistant for the landscape architecture department where I use AI to detect urban infrastructure to generate latitude and longitude data of landmarks for the purpose of ADA compliance.</Text>
+            <Text>I am majoring in Computer Science with a minor in Mathematics. Throughout my undergrad, I have retained a 3.91 GPA. I'm currently a computer vision research assistant for the landscape architecture department where I use AI to detect urban infrastructure to generate latitude and longitude data of landmarks for the purpose of ADA compliance.</Text>
+            <br></br>
+            <Text>One aspect that drew me to Computer Science was how it is ever-changing and constantly growing. I have a strong love of learning, and because of this, I wanted to get my hands on almost everything Utah State had to offer. Because of this, I took every opportunity which would teach me new things, challenge me, and encourage me to do better.</Text>
+            <br></br>
+            <Text>Listed below are the courses I've taken. I had a strong desire to learn web development, machine learning, and object-oriented skills. While this was the route I ended up taking, I do have an open mind and would love the opportunity to learn new skills outside this scope!</Text>
             <br></br>
             <Tabs defaultValue="cs">
               <Tabs.List>

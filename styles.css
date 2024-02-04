@@ -4,9 +4,11 @@
   }
 
 .mediumImage {
-    width: 325px;
+    width: 600px;
     height: auto;
     margin: auto;
+    margin-top: 20px; /* Example margin on top */
+    margin-bottom: 20px; /* Example margin on bottom */
 }
 
 .textHeading {
