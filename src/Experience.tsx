@@ -1,5 +1,8 @@
-import { Container, Title, Paper, Text, List, ListItem, Image } from '@mantine/core';
+import { Container, Title, Paper, Text, Image } from '@mantine/core';
 import blockbuilder from "../images/blockbuilder.jpeg"
+import bucketvector from "../images/bucketvector.png"
+import boundingbox from "../images/boundingbox.png"
+import { Link } from 'react-router-dom';
 import "../styles.css"
 
 const Experience = () => {
@@ -9,20 +12,22 @@ const Experience = () => {
         <Paper p="md" my="lg" radius="md">
           <Title order={3}>Computer Vision Research Assistant, Utah State University | Logan, UT</Title>
           <Text size="sm" style={{ marginBottom: 10 }}>January 2024 - Present</Text>
-          <List withPadding>
-            <ListItem>Contributed to the development of AI detection algorithms for identifying urban infrastructure, enhancing maps and datasets for accessibility projects.</ListItem>
-            <ListItem>Utilized Roboflow and YOLO computer vision software to improve object detection accuracy in urban environments.</ListItem>
-          </List>
+          <Text>I am currently working as a computer vision research assistant for Dr. Brent Chamberlain with assistance from CS department head Dr. Xiaojun Qi. I am utilizing artificial intelligence to detect urban infrastructure such as curb ramps, pedestrian signs, traffic light posts, among others for the purpose of verifying a city's ADA (The Americans with Disabilities Act) compliance.</Text>
+          <br></br>
+          <Text>I utilize YOLOv8 and Roboflow - two advanced computer vision software packages - to detect such urban infrastructure. I also develop Python scripts to download Google Street View images and to generate latitude/longitude data. This is used to generate maps and datasets of a city's urban infrastructure.</Text>
+          <Image className="mediumImage" src={boundingbox}/>
         </Paper>
 
         <Paper p="md" my="lg" radius="md">
           <Title order={3}>Modern C++ Teaching Assistant, Utah State University | Logan, UT</Title>
           <Text size="sm" style={{ marginBottom: 10 }}>August 2023 - December 2023</Text>
-          <List withPadding>
-            <ListItem>Engineered an innovative approach to std::vector, implementing buckets of data to optimize memory usage for an upcoming homework assignment.</ListItem>
-            <ListItem>Explored and integrated new C++ features, such as Modules, enhancing the curriculum's relevance and applicability.</ListItem>
-            <ListItem>Authored comprehensive documentation to streamline the learning process for students, covering compiler and virtual machine setup.</ListItem>
-          </List>
+          <Text>I had the opportunity to work with Dr. Dean Mathias to improve the quality of his Modern C++ course as a Teaching Assistant. I was tasked with drafting documentation for students, researching new C++ features to be introduced to the course, and modifying previous homework assignments to incorporate new ideas which may be expanded upon in future semesters.</Text>
+          <br></br>
+          <Text>For instance, in my exploration of C++ Modules with the GCC compiler, I discovered their current limitations within this compiler's context. Although promising, C++ Modules are yet to reach a level of reliability and effectiveness necessary for integration into the curriculum of the Modern C++ course as a standard practice.</Text>
+          <br></br>
+          <Text>I also created a custom std::vector implementation which differs from the typical std::vector by using a bucket system, which allocates memory in chunks (buckets) rather than a contiguous block. This can improve memory management efficiency, especially for large datasets, by reducing the need for frequent reallocations and memory copies during insertions and deletions. The bucket-version also demonstrates advanced C++ concepts like templates, iterators, and memory management. The source code can be viewed <Link to="https://github.com/Tyler-Johnston/Bucket-Vector" target="_blank">here</Link>.</Text>
+          <Image className="mediumImage" src={bucketvector}/>
+
         </Paper>
 
         <Paper p="md" my="lg" radius="md">
@@ -34,11 +39,6 @@ const Experience = () => {
           <Text> Originally, for the development of their proprietary software, SDL required developers to hand-write and edit XML documents. As these were often nested and had several layers of parameters, this was incredibly tedious and error-prone. BlockBuilder allows developers to drag-and-drop blocks, connect them with each other, and edit their parameters in a clean user-interface. Afterwards, these processes can be exported in either JSON or XML format to be utilized in their proprietary applications</Text>
           <br></br>
           <Text>I had the opportunity to present my work at SDL. Meeting with developers who would be impacted by our work was incredibly rewarding. They told us this would be extremely helpful in reducing bugs and increasing productivity.</Text>
-          {/* <List withPadding>
-            <ListItem>Developed a React.js/.NET based drag-and-drop interface, solving complex XML sheet generation challenges with an error-resistant solution.</ListItem>
-            <ListItem>Leveraged Docker to streamline data extraction and processing workflows, improving efficiency in block information management.</ListItem>
-            <ListItem>Enhanced user interface aesthetics and usability by adopting the Astro Space UX Design System, ensuring a cohesive and engaging user experience.</ListItem>
-          </List> */}
           <Image className="mediumImage" src={blockbuilder}/>
         </Paper>
       </Container>

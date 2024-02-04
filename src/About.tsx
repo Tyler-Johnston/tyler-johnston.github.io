@@ -1,4 +1,4 @@
-import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid, List, ListItem} from '@mantine/core';
+import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid, List, ListItem, Badge} from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaHtml5, FaCss3, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping, FaNode} from 'react-icons/fa';
 import { SiTypescript, SiCplusplus, SiCsharp, SiPrisma, SiDjango, SiPytorch, SiOpencv, SiCmake, SiPandas} from 'react-icons/si';
@@ -291,8 +291,17 @@ function CourseAccordion({ courses }: CourseAccordionProps) {
 
 const About = () => {
 
+  // TODO: instead of drop-down accordian layout you should implement a grid layout
     return (
         <>
+
+        <Container>
+          <Title>Hi, i'm Tyler Johnston!</Title>
+          <Paper p="xl">
+          <Text>I'm a senior undergraduate student at Utah State University studying Computer Science and Mathematics. I'm seeking full-time employment in Software Development.</Text>
+          </Paper>
+        </Container>
+
         <Container>
           <Title>Personal</Title>
           <Paper p="xl">
@@ -321,6 +330,7 @@ const About = () => {
   
         <Container>
           <Title>Education</Title>
+          <Badge color="pink">3.91 GPA</Badge>
           <Paper p="xl">
             <Text>I am majoring in Computer Science with a minor in Mathematics. Throughout my undergrad, I have retained a 3.91 GPA. I'm currently a computer vision research assistant for the landscape architecture department where I use AI to detect urban infrastructure to generate latitude and longitude data of landmarks for the purpose of ADA compliance.</Text>
             <br></br>
