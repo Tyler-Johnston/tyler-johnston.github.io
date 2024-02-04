@@ -1,4 +1,4 @@
-import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid} from '@mantine/core';
+import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid, List, ListItem} from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaHtml5, FaCss3, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping, FaNode} from 'react-icons/fa';
 import { SiTypescript, SiCplusplus, SiCsharp, SiPrisma, SiDjango, SiPytorch, SiOpencv, SiCmake, SiPandas} from 'react-icons/si';
@@ -16,8 +16,30 @@ const csCourses = [
       id: 'cs5680',
       label: 'Computer Vision',
       description: 'Learned techniques for digital image analysis',
-      content: "Delved into machine intelligence theories and techniques for image processing and computer vision. Applied concepts to facial recognition, autonomous driving, and image restoration projects.",
-    },
+      content: "Explored computer vision techniques such as image enhancement, edge detection, noise removal, denoising, image restoration, and pattern recognition within machine learning",
+      projects: [
+        {
+          name: "Filtering Techniques in the Spatial Domain",
+          description: "Applied filtering techniques for image enhancement, edge detection, and noise removal. Techniques included low-pass and high-pass filters, average and median filters, and Laplacian masks",
+          link: "https://github.com/Tyler-Johnston/cs5680-filter-techniques-spatial-domain"
+        },
+        {
+          name: "Filtering Techniques in the Frequency Domain",
+          description: "Applied filtering techniques in the frequency domain to solve problems related to image processing, such as denoising, image restoration, and feature manipulation using Fourier and wavelet transforms",
+          link: "https://github.com/Tyler-Johnston/cs5680-filter-techniques-frequency-domain"
+        },
+        {
+          name: "Morphological Operations",
+          description: "Applied morphological operations to solve various image processing tasks, including enhancement, object isolation, and structural analysis across different images",
+          link: "https://github.com/Tyler-Johnston/cs5680-morphological-operations"
+        },
+        {
+          name: "Facial Expression Recognition",
+          description: "Developed and trained models for facial expression recognition and predicting emotions in images using LBP, ORB, and their combined feature sets using an SVM",
+          link: "https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition"
+        }
+      ]
+    },    
     {
       id: 'cs5630',
       label: 'Data Science In Practice',
@@ -29,6 +51,13 @@ const csCourses = [
       label: 'Developing Cloud Applications',
       description: 'Developed scalable AWS applications',
       content: "Learned to create scalable, fault-tolerant applications on Amazon Web Services, covering core services, cloud architecture best practices, and AWS tools. Implemented projects using EC2, S3, RDS, Lambda, and more.",
+      projects: [
+        {
+          name: "AWS Widgets and Requests",
+          description: "Designed and implemented both Producer and Consumer applications with AWS, responsible for generating user widgets, queuing them via SQS, processing the data, and persisting results in either S3 buckets or DynamoDB tables",
+          link: "https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests"
+        },
+      ]
     },
     {
       id: 'cs5410',
@@ -41,22 +70,64 @@ const csCourses = [
       label: 'Intelligent Systems',
       description: 'Studied AI and machine learning system design',
       content: "Investigated the creation of systems for tasks requiring human intelligence, such as machine learning and natural language processing. Designed AI models for practical applications.",
+      projects: [
+        {
+          name: "Cart Pole Reinforcement Learning",
+          description: "Developed a reinforcement learning model for OpenAI's cart pole",
+          link: "https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning"
+        },
+        {
+          name: "Beehive Weight Prediction",
+          description: "Developed Artificial Neural Network, Convolutional Neural Network, and Long Short‐Term Memory models for the purpose of forecasting beehive weight based on its internal temperature using Keras. Also, developed ResNet50 and YOLO ConvNet models for bee/non‐bee image classification using PyTorch",
+          link: "https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction"
+        },
+      ]
     },
     {
       id: 'cs3460',
       label: 'Modern C++',
       description: 'Advanced C++ programming techniques',
       content: "Focused on modern C++ programming, including templates, STL, and concurrency. Developed efficient code using modern C++ standards and best practices.",
+      projects: [
+        {
+          name: "Conways Game of Life",
+          description: "Developed the zero-player game Conway's Game of Life",
+          link: "https://github.com/Tyler-Johnston/Conways-Life"
+        },
+        {
+          name: "Autocomplete",
+          description: "Developed an autocomplete application for typed words",
+          link: "https://github.com/Tyler-Johnston/Autocomplete"
+        },
+        {
+          name: "Smart Pointer",
+          description: "Implemented std::shared_ptr from scratch",
+          link: "https://github.com/Tyler-Johnston/Smart-Pointer"
+        },
+        {
+          name: "Vector",
+          description: "Implemented std::vector from scratch",
+          link: "https://github.com/Tyler-Johnston/Vector"
+        },
+
+      ]
     },
     {
       id: 'cs4610',
       label: 'Modern Web Development',
       description: 'Comprehensive study of web technologies',
       content: "Introduced to contemporary web development technologies and practices, including React and Node.js. Built full-stack web applications, emphasizing web architecture and security.",
+      projects: [
+        {
+          name: "Reptile Tracker",
+          description: "Developed the front-end and back-end",
+          link: "https://github.com/Tyler-Johnston/Reptile-Tracker"
+        },
+      ]
     },
-  ];
+];
   
-  const mathCourses = [
+const mathCourses = [
     {
       id: 'math1210',
       label: 'Calculus I',
@@ -93,7 +164,7 @@ const csCourses = [
       description: 'Basic principles and applications of probability',
       content: "Learned probability theory principles, including random variables and distributions. Prepared for further study in statistical inference and stochastic processes.",
     },
-  ];  
+];  
 
 const languages = [
     { name: 'Python', Icon: FaPython },
@@ -143,11 +214,18 @@ interface AccordionLabelProps {
     description: string;
 }
 
+interface Project {
+  name: string;
+  description: string;
+  link: string;
+}
+
 interface Course {
-    id: string;
-    label: string;
-    description: string;
-    content: string;
+  id: string;
+  label: string;
+  description: string;
+  content: string;
+  projects?: Project[];
 }
 
 interface CourseAccordionProps {
@@ -181,20 +259,34 @@ function AccordionLabel({ label, description }: AccordionLabelProps) {
 }
 
 function CourseAccordion({ courses }: CourseAccordionProps) {
-    return (
-      <Accordion chevronPosition="right" variant="contained">
-        {courses.map((course) => (
-          <Accordion.Item value={course.id} key={course.id}>
-            <Accordion.Control>
-              <AccordionLabel label={course.label} description={course.description} />
-            </Accordion.Control>
-            <Accordion.Panel>
-              <Text size="sm">{course.content}</Text>
-            </Accordion.Panel>
-          </Accordion.Item>
-        ))}
-      </Accordion>
-    );
+  return (
+    <Accordion chevronPosition="right" variant="contained">
+      {courses.map((course) => (
+        <Accordion.Item value={course.id} key={course.id}>
+          <Accordion.Control>
+            <AccordionLabel label={course.label} description={course.description} />
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Text size="sm">{course.content}</Text>
+            {course.projects && (
+              <>
+                <Text size="sm" style={{ marginTop: '10px' }}>Projects:</Text>
+                <List withPadding>
+                  {course.projects.map((project, index) => (
+                    <ListItem key={index}>
+                      <Text size="sm">
+                      <Link to={project.link} target="_blank">{project.name}</Link>: {project.description}
+                      </Text>
+                    </ListItem>
+                  ))}
+                </List>
+              </>
+            )}
+          </Accordion.Panel>
+        </Accordion.Item>
+      ))}
+    </Accordion>
+  );
 }
 
 const About = () => {
