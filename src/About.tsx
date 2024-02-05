@@ -10,7 +10,7 @@ const csCourses = [
       id: 'cs5050',
       label: 'Advanced Algorithms',
       description: 'Algorithm design and analysis',
-      content: "Explored advanced topics in algorithm design, analysis, and implementation, including graph, sorting, and dynamic programming algorithms. Gained insights into the theoretical underpinnings of algorithms and their practical applications.",
+      content: "**in-progress** Explored advanced topics in algorithm design, analysis, and implementation, including graph, sorting, and dynamic programming algorithms. Gained insights into the theoretical underpinnings of algorithms and their practical applications.",
     },
     {
       id: 'cs5680',
@@ -44,7 +44,7 @@ const csCourses = [
       id: 'cs5630',
       label: 'Data Science In Practice',
       description: 'Engaged in real-world data analysis projects',
-      content: "Applied data science techniques to analyze real-world data in collaborative, multidisciplinary teams. Utilized state-of-the-art tools for data collection, cleaning, analysis, and visualization.",
+      content: " **in-progress** Applied data science techniques to analyze real-world data in collaborative, multidisciplinary teams. Utilized python, pandas, and matplotlib for data collection, cleaning, analysis, and visualization.",
     },
     {
       id: 'cs5260',
@@ -63,7 +63,7 @@ const csCourses = [
       id: 'cs5410',
       label: 'Game Development',
       description: 'Discovered game development principles',
-      content: "Explored game design theory, graphics, sound, and interaction. Developed video games using popular engines, focusing on game industry practices and the development life cycle.",
+      content: " **in-progress** Explored ideas of game development such as the game loop, graphic rendering, and the development cycle. Utilized C# and Monogame for my tech stack.",
     },
     {
       id: 'cs5600',
@@ -101,12 +101,12 @@ const csCourses = [
         },
         {
           name: "Smart Pointer",
-          description: "Implemented std::shared_ptr from scratch",
+          description: "Implemented a mock std::shared_ptr from scratch to learn templating, constructors, and memory management",
           link: "https://github.com/Tyler-Johnston/Smart-Pointer"
         },
         {
           name: "Vector",
-          description: "Implemented std::vector from scratch",
+          description: "Implemented std::vector from scratch to learn iterators, templating, constructors, and memory management ",
           link: "https://github.com/Tyler-Johnston/Vector"
         },
 
@@ -120,7 +120,7 @@ const csCourses = [
       projects: [
         {
           name: "Reptile Tracker",
-          description: "Developed the front-end and back-end",
+          description: "Developed a website to manage one's pet reptile's schedules, husbandry, and feedings. I developed the back-end using Express.js and the front-end using React.js.",
           link: "https://github.com/Tyler-Johnston/Reptile-Tracker"
         },
       ]
@@ -291,7 +291,6 @@ function CourseAccordion({ courses }: CourseAccordionProps) {
 
 const About = () => {
 
-  // TODO: instead of drop-down accordian layout you should implement a grid layout
     return (
         <>
 
