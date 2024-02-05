@@ -1,9 +1,10 @@
-import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid, List, ListItem, Badge} from '@mantine/core';
+import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid, List, ListItem, Badge, Image} from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaHtml5, FaCss3, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping, FaNode} from 'react-icons/fa';
 import { SiTypescript, SiCplusplus, SiCsharp, SiPrisma, SiDjango, SiPytorch, SiOpencv, SiCmake, SiPandas} from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import "../styles.css"
+import headshot from "../images/headshot.jpeg";
 
 const csCourses = [
     {
@@ -297,14 +298,10 @@ const About = () => {
         <Container>
           <Title>Hi, i'm Tyler Johnston!</Title>
           <Paper p="xl">
+          <Image radius="md" src={headshot} className='smallImage'/>
           <Text>I'm a senior undergraduate student at Utah State University studying Computer Science and Mathematics. I'm seeking full-time employment in Software Development.</Text>
-          </Paper>
-        </Container>
-
-        <Container>
-          <Title>Personal</Title>
-          <Paper p="xl">
-            <Text>I'm originally from Nashville, Tennessee! After applying to Utah State University, I was offered their full-ride presidential scholarship. I decided to take the plunge and move to Logan, and I have never regretted that decision!</Text>
+          <br></br>
+          <Text>I'm originally from Nashville, Tennessee! After applying to Utah State University, I was offered their full-ride presidential scholarship. I decided to take the plunge and move to Logan, and I have never regretted that decision!</Text>
             <br />
             <Text>I've always had a passion for technology and software ever since I was a kid. Being able to create something seemingly out of thin air using only problem-solving and creativity has always drawn me to software development. Even when there are frustrating bugs to figure out, finally creating a working solution is a high that I can't live without.</Text>
             <br />

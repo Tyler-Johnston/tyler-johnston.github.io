@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Group, ActionIcon, Image } from '@mantine/core';
-import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
+import { Group, ActionIcon } from '@mantine/core';
+import { IconBrandGithub, IconBrandLinkedin, IconDeviceLaptop } from '@tabler/icons-react';
 import classes from './FooterCentered.module.css';
-import headshot from "../../images/headshot.jpeg";
+// import headshot from "../../images/headshot.jpeg";
 
 const links = [
   { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
   { link: '/portfolio', label: 'Portfolio' },
   { link: '/experience', label: 'Experience' },
   { link: 'mailto:johnstontyler@protonmail.com', label: 'Contact'}
@@ -40,7 +39,12 @@ export function FooterCentered() {
   return (
     <div className={classes.footer}>
       <div className={classes.inner}>
-        <Image radius="md" src={headshot} className={classes.smallImage} />
+        {/* <Image radius="md" src={headshot} className={classes.smallImage} /> */}
+        <Group gap={5}>
+            <IconDeviceLaptop size={28}/>
+            Tyler Johnston
+          </Group>
+        
         <Group className={classes.links}>{items}</Group>
         <Group gap="xs" justify="flex-end" wrap="nowrap">
           <Link to="https://github.com/Tyler-Johnston" target="_blank">

@@ -12,7 +12,6 @@ interface LinkItem {
 
 const links: LinkItem[] = [
   { link: '/', label: 'Home' },
-  { link: '/about', label: 'About' },
   { link: '/portfolio', label: 'Portfolio' },
   { link: '/experience', label: 'Experience' },
 ];

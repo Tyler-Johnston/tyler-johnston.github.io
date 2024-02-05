@@ -13,8 +13,8 @@ export default function App() {
       <Router>
       <HeaderMenu/>
       <Routes>
+        <Route path="/" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/about" element={<About />} />
         <Route path="/experience" element={<Experience />} />
       </Routes>
       <FooterCentered/>
