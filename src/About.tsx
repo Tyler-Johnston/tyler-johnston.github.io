@@ -1,17 +1,42 @@
 import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid, List, ListItem, Badge, Image} from '@mantine/core';
 import { IconType } from 'react-icons';
-import { FaPython, FaJava, FaHtml5, FaCss3, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping, FaNode} from 'react-icons/fa';
-import { SiTypescript, SiCplusplus, SiCsharp, SiPrisma, SiDjango, SiPytorch, SiOpencv, SiCmake, SiPandas} from 'react-icons/si';
+import { FaPython, FaJava, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping} from 'react-icons/fa';
+import { SiCplusplus, SiCsharp, SiDjango, SiDotnet, Si4D, SiJquery, SiJavascript} from 'react-icons/si';
+import { TbSql, TbDiamondFilled } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import "../styles.css"
 import headshot from "../images/headshot.jpeg";
+import grad from "../images/grad.jpeg";
 
 const csCourses = [
     {
       id: 'cs5050',
       label: 'Advanced Algorithms',
       description: 'Algorithm design and analysis',
-      content: "**in-progress** Explored advanced topics in algorithm design, analysis, and implementation, including graph, sorting, and dynamic programming algorithms. Gained insights into the theoretical underpinnings of algorithms and their practical applications.",
+      content: "Explored advanced topics in algorithm design, analysis, and implementation, including graph, sorting, and dynamic programming algorithms. Gained insights into the theoretical underpinnings of algorithms and their practical applications.",
+    },
+    {
+      id: 'cs5410',
+      label: 'Game Development',
+      description: 'Discovered game development principles',
+      content: "Explored ideas of game development such as the game loop, graphic rendering, and the development cycle. Utilized C# and Monogame for my tech stack.",
+      projects: [
+        {
+          name: "Multiplayer Snake Game",
+          description: "A modern, competitive take on the classic Snake experience, designed for real-time, multiplayer gameplay. Players aim to grow the longest snake while navigating an arena filled other players",
+          link: "https://github.com/Tyler-Johnston/Multiplayer-Snake-Game"
+        },
+        {
+          name: "Lunar Lander",
+          description: "A physics-based game where the player controls a lunar module's descent, adjusting thrust and angle to land safely on the moon's surface. The player must carefully balance speed and fuel to avoid crashing. ",
+          link: "https://github.com/Tyler-Johnston/Lunar-Lander"
+        },
+        {
+          name: "Maze Game",
+          description: "A maze game with guaranteed, procedurally generated paths from one corner of the map to the other",
+          link: "https://github.com/Tyler-Johnston/Maze-Game"
+        }
+      ]
     },
     {
       id: 'cs5680',
@@ -45,7 +70,7 @@ const csCourses = [
       id: 'cs5630',
       label: 'Data Science In Practice',
       description: 'Engaged in real-world data analysis projects',
-      content: " **in-progress** Applied data science techniques to analyze real-world data in collaborative, multidisciplinary teams. Utilized python, pandas, and matplotlib for data collection, cleaning, analysis, and visualization.",
+      content: "Applied data science techniques to analyze real-world data in collaborative, multidisciplinary teams. Utilized python, pandas, and matplotlib for data collection, cleaning, analysis, and visualization.",
     },
     {
       id: 'cs5260',
@@ -59,12 +84,6 @@ const csCourses = [
           link: "https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests"
         },
       ]
-    },
-    {
-      id: 'cs5410',
-      label: 'Game Development',
-      description: 'Discovered game development principles',
-      content: " **in-progress** Explored ideas of game development such as the game loop, graphic rendering, and the development cycle. Utilized C# and Monogame for my tech stack.",
     },
     {
       id: 'cs5600',
@@ -168,31 +187,28 @@ const mathCourses = [
 ];  
 
 const languages = [
-    { name: 'Python', Icon: FaPython },
-    { name: 'JavaScript/TypeScript', Icon: SiTypescript },
     { name: 'C#', Icon: SiCsharp },
-    { name: 'Java', Icon: FaJava },
+    { name: 'JavaScript', Icon: SiJavascript },
+    { name: 'Oracle SQL', Icon: TbSql },
+    { name: 'Python', Icon: FaPython },
     { name: 'C++', Icon: SiCplusplus },
-    { name: 'HTML', Icon: FaHtml5 },
-    { name: 'CSS', Icon: FaCss3 },
+    { name: 'Java', Icon: FaJava },
+    { name: '4D', Icon: Si4D },
 ];
 
 const software = [
-    { name: 'React.js', Icon: FaReact },
-    { name: 'Node.js', Icon: FaNode},
-    { name: 'Django', Icon: SiDjango },
-    { name: 'Prisma', Icon: SiPrisma },
-    { name: 'Pandas', Icon: SiPandas},
-    { name: 'PyTorch', Icon: SiPytorch },
-    { name: 'OpenCV', Icon: SiOpencv },
-    { name: 'CMake', Icon: SiCmake },
-    { name: 'Docker', Icon: FaDocker },
+    { name: '.NET', Icon: SiDotnet },
+    { name: 'jQuery', Icon: SiJquery },
     { name: 'Git', Icon: FaGitAlt },
-    { name: 'Linux', Icon: FaLinux }
+    { name: 'Django', Icon: SiDjango },
+    { name: 'React.js', Icon: FaReact },
+    { name: 'Docker', Icon: FaDocker },
+    { name: 'Linux', Icon: FaLinux },
 
 ];
 
 const softSkills =[
+    { name: 'Quality Assurance', Icon: TbDiamondFilled },
     { name: 'Agile Methodology', Icon: FaUsers },
     { name: 'Waterfall Methodology', Icon: FaStream },
     { name: 'Teamwork', Icon: FaHandsHelping },
@@ -294,18 +310,18 @@ const About = () => {
 
     return (
         <>
-
         <Container>
           <Title>Hi, i'm Tyler Johnston!</Title>
           <Paper p="xl">
           <Image radius="md" src={headshot} className='smallImage'/>
-          <Text>I'm a senior undergraduate student at Utah State University studying Computer Science and Mathematics. I'm seeking full-time employment in Software Development.</Text>
-          <br></br>
-          <Text>I'm originally from Nashville, Tennessee! After applying to Utah State University, I was offered their full-ride presidential scholarship. I decided to take the plunge and move to Logan, and I have never regretted that decision!</Text>
-            <br />
-            <Text>I've always had a passion for technology and software ever since I was a kid. Being able to create something seemingly out of thin air using only problem-solving and creativity has always drawn me to software development. Even when there are frustrating bugs to figure out, finally creating a working solution is a high that I can't live without.</Text>
-            <br />
-            <Text>In my personal time, I love to hang out with friends and family, play video games on my Steam Deck, collect vinyl records and CDs, and learn the guitar. Check out my <Link target="_blank" to="https://www.discogs.com/user/sodafutz/collection">Discogs account</Link> if you want to view my music collection!</Text>
+          <Text>I'm a Full-Stack Developer at Footprints, Inc., working out of the Logan, Utah office. I specialize in creating custom solutions using C#/.NET, JavaScript (Ext JS / jQuery), Oracle SQL, and the 4D Programming Language. I also perform regular Quality Assurance (QA) work to ensure code quality is up to the proper standards for our clients.</Text>
+          <br/>
+          <Text>I'm a graduate from Utah State University, majoring in Computer Science and minoring in Mathematics. Although I'm originally from Nashville Tennessee, I made the decision to move to Utah after being awarded a full-ride scholarship at USU. It was a tough choice, but I have never regretted the experiences I was able to form here!</Text>
+          <br/>
+          <Text>I maintained a 3.91 GPA during my undergraduate program while pursuing career-enriching experiences as a Web Developer, a Modern C++ Teaching Assistant, and a Computer Vision Research Assistant. These roles taught me invaluable skills, such as quickly learning new languages and technologies, drafting clear and effective documentation, and conducting thorough unit testing.</Text>
+          <br/>
+          <Text>I thrive in collaborative environments where problem-solving and innovation are at the forefront. Working closely with our development team has taught me the importance of effective communication in driving successful projects. My goal is to work in an environment that both challenges and enriches me professionally, where I can contribute meaningfully while continuously learning and growing as a developer.</Text>
+          <br />
           </Paper>
         </Container>
 
@@ -327,13 +343,15 @@ const About = () => {
         <Container>
           <Title>Education</Title>
           <Badge color="pink">3.91 GPA</Badge>
+          <Image radius="md" src={grad} className='mediumImage'/>
           <Paper p="xl">
-            <Text>I am majoring in Computer Science with a minor in Mathematics. Throughout my undergrad, I have retained a 3.91 GPA. I'm currently a computer vision research assistant for the landscape architecture department where I use AI to detect urban infrastructure to generate latitude and longitude data of landmarks for the purpose of ADA compliance.</Text>
-            <br></br>
-            <Text>One aspect that drew me to Computer Science was how it is ever-changing and constantly growing. I have a strong love of learning, and because of this, I wanted to get my hands on almost everything Utah State had to offer. Because of this, I took every opportunity which would teach me new things, challenge me, and encourage me to do better.</Text>
-            <br></br>
-            <Text>Listed below are the courses I've taken. I had a strong desire to learn web development, machine learning, and object-oriented skills. While this was the route I ended up taking, I do have an open mind and would love the opportunity to learn new skills outside this scope!</Text>
-            <br></br>
+            <Text size="lg" fw={700} style={{ textAlign: 'center' }}>BS in Computer Science with Minor in Mathematics</Text>
+            <Text style={{ textAlign: 'center' }}>Graduated May 2024 in Logan, UT.</Text>
+            <br/>
+            <Text>I began my college journey during the COVID-19 pandemic, adapting to remote learning and immersing myself in all I could about software development. Despite the challenges this brought, along with moving to a new state all together, I excelled in my classes and was able to form strong friendships during this time. I am very proud to have graduated with a 3.91 GPA, a full-ride scholarship, along with the many programming work experiences I have to show for myself.</Text>
+            <br/>
+            <Text>Here is a selection of the classes I took during my undergraduate program. I had a strong desire to become proficient in both the front-end and back-end, along learning important skills such as Computer Vision, Artificial Intelligence, and Data Science. Additionally, I am proud to have graduated with a minor in Mathematics. The problem solving skills I developed during my time studying mathematics has been invaluable, and these are skills I utilize in my day-to-day life</Text>
+            <br/>
             <Tabs defaultValue="cs">
               <Tabs.List>
                 <Tabs.Tab value="cs">Computer Science</Tabs.Tab>
