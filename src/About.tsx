@@ -1,9 +1,8 @@
-import { Text, Paper, Container, Title, Accordion, Group, Grid, List, ListItem, Badge, Image} from '@mantine/core';
+import { Text, Paper, Container, Title, Group, Grid, Badge, Image} from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping} from 'react-icons/fa';
 import { SiCplusplus, SiCsharp, SiAngular, SiDotnet, Si4D, SiJquery, SiJavascript} from 'react-icons/si';
 import { TbSql, TbDiamondFilled } from "react-icons/tb";
-import { Link } from 'react-router-dom';
 import "../styles.css"
 import headshot from "../images/headshot.jpeg";
 import grad from "../images/grad.jpeg";
@@ -49,29 +48,6 @@ interface SkillsProps {
     skills: Skills[]
 }
 
-interface AccordionLabelProps {
-    label: string;
-    description: string;
-}
-
-interface Project {
-  name: string;
-  description: string;
-  link: string;
-}
-
-interface Course {
-  id: string;
-  label: string;
-  description: string;
-  content: string;
-  projects?: Project[];
-}
-
-interface CourseAccordionProps {
-    courses: Course[];
-}
-
 function RenderSkillsSection({ skills }: SkillsProps) {
     return (
       <Paper p="xl">
@@ -82,19 +58,6 @@ function RenderSkillsSection({ skills }: SkillsProps) {
           </Group>
         ))}
       </Paper>
-    );
-}
-  
-function AccordionLabel({ label, description }: AccordionLabelProps) {
-    return (
-      <Group wrap="nowrap">
-        <div>
-          <Text>{label}</Text>
-          <Text size="sm" c="dimmed" fw={400}>
-            {description}
-          </Text>
-        </div>
-      </Group>
     );
 }
 
