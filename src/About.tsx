@@ -1,4 +1,4 @@
-import { Text, Paper, Container, Title, Accordion, Group, Tabs, Grid, List, ListItem, Badge, Image} from '@mantine/core';
+import { Text, Paper, Container, Title, Accordion, Group, Grid, List, ListItem, Badge, Image} from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping} from 'react-icons/fa';
 import { SiCplusplus, SiCsharp, SiAngular, SiDotnet, Si4D, SiJquery, SiJavascript} from 'react-icons/si';
@@ -96,37 +96,6 @@ function AccordionLabel({ label, description }: AccordionLabelProps) {
         </div>
       </Group>
     );
-}
-
-function CourseAccordion({ courses }: CourseAccordionProps) {
-  return (
-    <Accordion chevronPosition="right" variant="contained">
-      {courses.map((course) => (
-        <Accordion.Item value={course.id} key={course.id}>
-          <Accordion.Control>
-            <AccordionLabel label={course.label} description={course.description} />
-          </Accordion.Control>
-          <Accordion.Panel>
-            <Text size="sm">{course.content}</Text>
-            {course.projects && (
-              <>
-                <Text size="sm" style={{ marginTop: '10px' }}>Projects:</Text>
-                <List withPadding>
-                  {course.projects.map((project, index) => (
-                    <ListItem key={index}>
-                      <Text size="sm">
-                      <Link to={project.link} target="_blank">{project.name}</Link>: {project.description}
-                      </Text>
-                    </ListItem>
-                  ))}
-                </List>
-              </>
-            )}
-          </Accordion.Panel>
-        </Accordion.Item>
-      ))}
-    </Accordion>
-  );
 }
 
 const About = () => {
