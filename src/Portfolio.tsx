@@ -7,9 +7,73 @@ import lunarlander from "../images/lunarlander.png";
 import aws from "../images/aws.png";
 import facialexpression from "../images/facialexpression.png";
 import maze from "../images/maze.png";
-import yolo from "../images/yolo.png";
+import market from "../images/job_market.jpg"
+import customer_behavior from "../images/customer-behavior.jpg"
+import bees from "../images/bees.jpg"
 
 const projects = {
+  dataAnalytics: [
+    {
+      id: 9,
+      title: 'Utah Programmer Job Market Analysis',
+      description: 'Analyzed wage and cost-of-living data across Utah counties to determine the most affordable locations for programmers. Created an affordability index, visualized trends, and used regression and T-tests to compare compensation by job category.',
+      imageUrl: market,
+      projectUrl: 'https://github.com/Tyler-Johnston/Utah-Programmer-Job-Market-Analysis'
+    },
+    {
+      id: 10,
+      title: 'Customer Behavior Analysis',
+      description: 'Built classification models to predict online shopper purchase intent and bank customer churn. Compared logistic regression and SVMs with different kernels, addressed class imbalance, and visualized decision boundaries.',
+      imageUrl: customer_behavior,
+      projectUrl: 'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis'
+    }
+  ],
+  machineLearning: [
+    {
+      id: 6,
+      title: 'Cartpole Reinforcement Learning',
+      description: 'Developed a reinforcement learning (ANN) model for OpenAI\'s cart pole using DeepQLearning.',
+      imageUrl: cartpole1,
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning'
+    },
+    {
+      id: 7,
+      title: 'Beehive Weight Prediction',
+      description: 'Developed Artificial Neural Network (ANN), Convolutional Neural Network (ConvNet), and Long Short‐Term Memory (LSTM) models for the purpose of forecasting beehive weight based on its internal temperature using Keras. Developed ResNet50 and YOLO ConvNet models for bee/non‐bee image classification using PyTorch.',
+      imageUrl: bees,
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction'
+    },
+    {
+      id: 8,
+      title: 'Facial Expression Recognition',
+      description: 'Developed a SVM model to recognize facial expressions based on Local Binary Patterns and Oriented FAST and rotated BRIEF features.',
+      imageUrl: facialexpression,
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition'
+    }
+  ],
+  webDev: [
+    {
+      id: 4,
+      title: 'Reptile Tracker',
+      description: 'A full-stack application for managing pet reptile care schedules, including feeding, cleaning, and husbandry tracking. Built with a React.js front-end and an Express.js back-end, the app supports user authentication and data persistence.',
+      imageUrl: reptiletracker,
+      projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker'
+    },    
+    {
+      id: 3,
+      title: 'Vintage Finds',
+      description: 'This is a website I started developing for my grandfather. He owns an antique booth and wanted a way to let his customers know what items he had in stock. I developed this using Next.js and Google\'s relational database.',
+      imageUrl: vintagefinds,
+      projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds'
+    },
+    {
+      id: 5,
+      title: 'AWS Widget Requests',
+      description: 'Designed and implemented both Producer and Consumer applications with AWS, responsible for generating user widgets, queuing them via SQS, processing the data, and persisting results in either S3 buckets or DynamoDB tables.',
+      imageUrl: aws,
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests'
+    }
+  ],
   gameDev: [
     {
       id: 0,
@@ -32,53 +96,9 @@ const projects = {
       imageUrl: maze,
       projectUrl: 'https://github.com/Tyler-Johnston/Maze-Game'
     }
-  ],
-  webDev: [
-    {
-      id: 3,
-      title: 'Vintage Finds',
-      description: 'This is a website I started developing for my grandfather. He owns an antique booth and wanted a way to let his customers know what items he had in stock. I developed this using Next.js and Google\'s relational database.',
-      imageUrl: vintagefinds,
-      projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds'
-    },
-    {
-      id: 4,
-      title: 'Reptile Tracker',
-      description: 'This is a website to manage one\'s pet reptile\'s schedules, husbandry, and feedings. I developed the back-end using Express.js and the front-end using React.js.',
-      imageUrl: reptiletracker,
-      projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker'
-    },
-    {
-      id: 5,
-      title: 'AWS Widget Requests',
-      description: 'Designed and implemented both Producer and Consumer applications with AWS, responsible for generating user widgets, queuing them via SQS, processing the data, and persisting results in either S3 buckets or DynamoDB tables.',
-      imageUrl: aws,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests'
-    }
-  ],
-  machineLearning: [
-    {
-      id: 6,
-      title: 'Cartpole Reinforcement Learning',
-      description: 'Developed a reinforcement learning (ANN) model for OpenAI\'s cart pole using DeepQLearning.',
-      imageUrl: cartpole1,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning'
-    },
-    {
-      id: 7,
-      title: 'Beehive Weight Prediction using Machine Learning',
-      description: 'Developed Artificial Neural Network (ANN), Convolutional Neural Network (ConvNet), and Long Short‐Term Memory (LSTM) models for the purpose of forecasting beehive weight based on its internal temperature using Keras. Developed ResNet50 and YOLO ConvNet models for bee/non‐bee image classification using PyTorch.',
-      imageUrl: yolo,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction'
-    },
-    {
-      id: 8,
-      title: 'Facial Expression Recognition',
-      description: 'Developed a SVM model to recognize facial expressions based on Local Binary Patterns and Oriented FAST and rotated BRIEF features.',
-      imageUrl: facialexpression,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition'
-    }
   ]
+  
+  
 };
 
 const Portfolio = () => {
@@ -89,13 +109,14 @@ const Portfolio = () => {
         Welcome to my portfolio. Here you'll find a selection of my work and projects.
       </Text>
 
-      <Accordion multiple defaultValue={['gameDev', 'webDev', 'machineLearning']}>
+      <Accordion multiple defaultValue={['dataAnalytics']}>
         {Object.entries(projects).map(([category, categoryProjects]) => (
           <Accordion.Item value={category} key={category}>
             <Accordion.Control>
-              {category === 'gameDev' && 'Game Development'}
-              {category === 'webDev' && 'Web Development'}
+              {category === 'dataAnalytics' && 'Data Analytics'}
               {category === 'machineLearning' && 'Machine Learning'}
+              {category === 'webDev' && 'Web Development'}
+              {category === 'gameDev' && 'Game Development'}
             </Accordion.Control>
             <Accordion.Panel>
               <Grid>
