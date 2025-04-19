@@ -97,7 +97,7 @@ const About = () => {
   
         <Container>
           <Title>Education</Title>
-          <Badge color="pink">3.91/4.00 GPA</Badge>
+          <Badge color="pink">3.92/4.00 GPA</Badge>
           <Image radius="md" src={grad} className='mediumImage'/>
           <Paper p="xl">
             <Text size="lg" fw={700} style={{ textAlign: 'center' }}>BS in Computer Science with Minor in Mathematics - Magna Cum Laude</Text>
