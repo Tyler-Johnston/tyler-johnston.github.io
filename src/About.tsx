@@ -103,7 +103,7 @@ const About = () => {
             <Text size="lg" fw={700} style={{ textAlign: 'center' }}>BS in Computer Science with Minor in Mathematics - Magna Cum Laude</Text>
             <Text style={{ textAlign: 'center' }}>Utah State University, Logan, UT – Class of 2024</Text>
             <br/>
-            <Text>I began my college journey during the COVID-19 pandemic, adapting to remote learning and immersing myself in all I could about software development. Despite the challenges this brought, along with moving to a new state all together, I excelled in my classes and was able to form strong friendships during this time. I am very proud to have graduated with a 3.91 GPA, a full-ride scholarship, along with the many programming work experiences I have to show for myself.</Text>
+            <Text>I began my college journey during the COVID-19 pandemic, adapting to remote learning and immersing myself in all I could about software development. Despite the challenges this brought, along with moving to a new state all together, I excelled in my classes and was able to form strong friendships during this time. I am very proud to have graduated with a 3.92 GPA, a full-ride scholarship, along with the many programming work experiences I have to show for myself.</Text>
             <br/>
             <Text fw={700}>Relevant Coursework:</Text>
             <Text>
