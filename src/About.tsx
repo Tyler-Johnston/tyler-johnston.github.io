@@ -66,7 +66,7 @@ const About = () => {
     return (
         <>
         <Container>
-          <Title>Hi, i'm Tyler Johnston!</Title>
+          <Title>Hi, I'm Tyler Johnston!</Title>
           <Paper p="xl">
           <Image radius="md" src={headshot} className='smallImage'/>
           <Text>I'm a Full-Stack Developer at Footprints, Inc., working out of the Logan, Utah office. I specialize in creating custom solutions using C#/.NET, JavaScript (Ext JS / jQuery), Oracle SQL, and the 4D Programming Language. I also perform regular Quality Assurance (QA) work to ensure code quality is up to the proper standards for our clients.</Text>
