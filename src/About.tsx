@@ -73,7 +73,7 @@ const About = () => {
           <br/>
           <Text>I'm a graduate from Utah State University, majoring in Computer Science and minoring in Mathematics. Although I'm originally from Nashville Tennessee, I made the decision to move to Utah after being awarded a full-ride scholarship at USU. It was a tough choice, but I have never regretted the experiences I was able to form here!</Text>
           <br/>
-          <Text>I maintained a 3.91 GPA during my undergraduate program while pursuing career-enriching experiences as a Web Developer, a Modern C++ Teaching Assistant, and a Computer Vision Research Assistant. These roles taught me invaluable skills, such as quickly learning new languages and technologies, drafting clear and effective documentation, and conducting thorough unit testing.</Text>
+          <Text>I maintained a 3.92 GPA during my undergraduate program while pursuing career-enriching experiences as a Web Developer, a Modern C++ Teaching Assistant, and a Computer Vision Research Assistant. These roles taught me invaluable skills, such as quickly learning new languages and technologies, drafting clear and effective documentation, and conducting thorough unit testing.</Text>
           <br/>
           <Text>I thrive in collaborative environments where problem-solving and innovation are at the forefront. Working closely with our development team has taught me the importance of effective communication in driving successful projects. My goal is to work in an environment that both challenges and enriches me professionally, where I can contribute meaningfully while continuously learning and growing as a developer.</Text>
           <br />
