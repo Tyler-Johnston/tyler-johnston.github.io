@@ -10,6 +10,7 @@ import maze from "../images/maze.png";
 import market from "../images/job_market.jpg"
 import customer_behavior from "../images/customer-behavior.jpg"
 import bees from "../images/bees.jpg"
+import rps from "../images/rps.png"
 
 const projects = {
   dataAnalytics: [
@@ -62,16 +63,23 @@ const projects = {
     {
       id: 3,
       title: 'Vintage Finds',
-      description: 'This is a website I started developing for my grandfather. He owns an antique booth and wanted a way to let his customers know what items he had in stock. I developed this using Next.js and Google\'s relational database.',
+      description: 'A web application built with Next.js and Firebase to showcase inventory for a local antique business. Features include real-time database integration, user authentication, and an admin interface for managing stock. Developed to help customers easily browse available items and stay updated on new finds.',
       imageUrl: vintagefinds,
       projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds'
-    },
+    },    
     {
       id: 5,
       title: 'AWS Widget Requests',
       description: 'Designed and implemented both Producer and Consumer applications with AWS, responsible for generating user widgets, queuing them via SQS, processing the data, and persisting results in either S3 buckets or DynamoDB tables.',
       imageUrl: aws,
       projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests'
+    },
+    {
+      id: 9,
+      title: 'Rock Paper Scissors Idle Game',
+      description: 'A full-stack Angular Single Page Application (SPA) where players engage in an evolving idle game loop. Features cloud saving, Supabase authentication, reactive service-driven architecture, automated gameplay upgrades, and achievement tracking.',
+      imageUrl: rps,
+      projectUrl: 'https://github.com/Tyler-Johnston/RPS'
     }
   ],
   gameDev: [
