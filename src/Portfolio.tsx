@@ -1,4 +1,5 @@
-import { Container, Card, Text, Title, Button, Image, Accordion, Grid } from '@mantine/core';
+import { Container, Card, Text, Title, Button, Image, Accordion, Grid, Group } from '@mantine/core';
+import { Link } from 'react-router-dom';
 import vintagefinds from "../images/vintagefinds.png";
 import reptiletracker from "../images/reptiletracker.png";
 import cartpole1 from "../images/cartpole1.png";
@@ -155,6 +156,15 @@ const Portfolio = () => {
           </Accordion.Item>
         ))}
       </Accordion>
+
+      <Group justify="center" mt="md">
+        <Button component={Link} to="/" size="md">
+          View About Me
+        </Button>
+        <Button component={Link} to="/experience" size="md" variant="outline">
+          View Experience
+        </Button>
+      </Group>
     </Container>
   );
 };

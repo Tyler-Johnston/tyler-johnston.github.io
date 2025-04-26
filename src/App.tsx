@@ -6,11 +6,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Portfolio from "./Portfolio"
 import About from "./About"
 import Experience from "./Experience";
+import Scroll from './Scroll';
 
 export default function App() {
   return (
     <MantineProvider defaultColorScheme={'dark'}>
       <Router>
+      <Scroll/>
       <HeaderMenu/>
       <Routes>
         <Route path="/" element={<About />} />

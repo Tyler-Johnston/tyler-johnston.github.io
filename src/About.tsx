@@ -1,8 +1,9 @@
-import { Text, Paper, Container, Title, Group, Grid, Badge, Image} from '@mantine/core';
+import { Text, Paper, Container, Title, Group, Grid, Badge, Image, Button } from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping} from 'react-icons/fa';
 import { SiCplusplus, SiCsharp, SiAngular, SiDotnet, Si4D, SiJquery, SiJavascript} from 'react-icons/si';
 import { TbSql, TbDiamondFilled } from "react-icons/tb";
+import { Link } from 'react-router-dom';
 import "../styles.css"
 import headshot from "../images/headshot.jpeg";
 import grad from "../images/grad.jpeg";
@@ -93,6 +94,14 @@ const About = () => {
                     <RenderSkillsSection skills={softSkills} />
                 </Grid.Col>
             </Grid>
+            <Group justify="center" mt="md">
+            <Button component={Link} to="/portfolio" size="md">
+              View Portfolio
+            </Button>
+            <Button component={Link} to="/experience" size="md" variant="outline">
+              View Experience
+            </Button>
+          </Group>
         </Container>
   
         <Container>

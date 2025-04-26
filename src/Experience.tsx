@@ -1,4 +1,4 @@
-import { Container, Title, Paper, Text, Image } from '@mantine/core';
+import { Container, Title, Paper, Text, Image, Button, Group} from '@mantine/core';
 import blockbuilder from "../images/blockbuilder.jpeg"
 import bucketvector from "../images/bucketvector.png"
 import boundingbox from "../images/boundingbox.png"
@@ -57,6 +57,15 @@ const Experience = () => {
           <Text>I had the opportunity to present my work at SDL. Meeting with developers who would be impacted by our work was incredibly rewarding. They told us this would be extremely helpful in reducing bugs and increasing productivity.</Text>
           <Image className="mediumImage" src={blockbuilder}/>
         </Paper>
+
+        <Group justify="center" mt="md">
+        <Button component={Link} to="/" size="md">
+          View About Me
+        </Button>
+        <Button component={Link} to="/portfolio" size="md" variant="outline">
+          View Portfolio
+        </Button>
+      </Group>
       </Container>
     </>
   );
