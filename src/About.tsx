@@ -94,14 +94,6 @@ const About = () => {
                     <RenderSkillsSection skills={softSkills} />
                 </Grid.Col>
             </Grid>
-            <Group justify="center" mt="md">
-            <Button component={Link} to="/portfolio" size="md">
-              View Portfolio
-            </Button>
-            <Button component={Link} to="/experience" size="md" variant="outline">
-              View Experience
-            </Button>
-          </Group>
         </Container>
   
         <Container>
@@ -119,6 +111,14 @@ const About = () => {
             Data Science in Practice, Intelligent Systems, Computer Vision, Advanced Algorithms, Developing Cloud Applications, Modern Web Development, Game Development, Linear Algebra, Multivariable Calculus, Probability
             </Text>
           </Paper>
+          <Group justify="center" mt="md">
+              <Button component={Link} to="/portfolio" size="md">
+                View Portfolio
+              </Button>
+              <Button component={Link} to="/experience" size="md" variant="outline">
+                View Experience
+              </Button>
+           </Group>
         </Container>
       </>
     );
