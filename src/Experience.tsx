@@ -52,11 +52,11 @@ const Experience = () => {
           <Text size="sm" style={{ marginBottom: 10 }}>January 2024 - May 2024</Text>
 
           <Text>
-            Served as a computer vision research assistant under Dr. Brent Chamberlain, with guidance from CS department head Dr. Xiaojun Qi, to apply artificial intelligence for urban infrastructure analysis. Developed automated pipelines to detect and map features such as curb ramps, pedestrian signs, and traffic light posts to assess city-level compliance with the <b>Americans with Disabilities Act (ADA)</b>.
+            I served as a computer vision research assistant under Dr. Brent Chamberlain, with guidance from CS department head Dr. Xiaojun Qi, to apply artificial intelligence for urban infrastructure analysis. Here, I developed automated pipelines to detect and map features such as curb ramps, pedestrian signs, and traffic light posts to assess city-level compliance with the <b>Americans with Disabilities Act (ADA)</b>.
           </Text>
           <br/>
           <Text>
-            Leveraged <b>YOLOv8</b> and <b>Roboflow</b> for object detection, training models on annotated datasets to accurately identify key infrastructure elements across multiple urban environments. Implemented Python scripts to batch-download Google Street View imagery, extract geospatial metadata, and generate structured latitude/longitude datasets for further analysis. Produced city-scale visualizations and datasets that support actionable insights for ADA compliance evaluation.
+            To do so, I leveraged <b>YOLOv8</b> and <b>Roboflow</b> for object detection, and I trained models on annotated datasets to accurately identify key infrastructure elements across multiple urban environments. Additionally, I implemented Python scripts to batch-download Google Street View imagery, to extract geospatial metadata, and to generate structured latitude/longitude datasets for further analysis. As a result, I produced city-scale visualizations and datasets that support actionable insights for ADA compliance evaluation.
           </Text>
           <br/>
           <Image className="mediumImage" src={boundingbox} alt="Bounding box detection example"/>
@@ -80,15 +80,15 @@ const Experience = () => {
           <Text size="sm" style={{ marginBottom: 10 }}>August 2023 - December 2023</Text>
 
           <Text>
-            Served as a Teaching Assistant for Dr. Dean Mathias to enhance the Modern C++ course curriculum. Responsibilities included developing student-facing documentation, researching emerging C++ features, and updating homework assignments to incorporate modern practices and prepare the course for future semesters.
+            I served as a Modern C++ Teaching Assistant for Dr. Dean Mathias to enhance the Modern C++ course curriculum. My responsibilities included developing student-facing documentation, researching emerging C++ features, and updating homework assignments to incorporate modern practices and prepare the course for future semesters.
           </Text>
           <br/>
           <Text>
-            Conducted an in-depth evaluation of <b>C++ Modules</b> using the GCC compiler, identifying limitations in current compiler support. Provided actionable insights on the integration feasibility of modules into the course, balancing experimental features with teaching reliability.
+            During this role, I conducted an in-depth evaluation of <b>C++ Modules</b> using the GCC compiler, identifying limitations in current compiler support. Afterwards, I provided actionable insights on the integration feasibility of modules into the course, balancing experimental features with teaching reliability.
           </Text>
           <br/>
           <Text>
-            Designed and implemented a custom <b>std::vector</b> variant utilizing a bucket-based memory allocation system, which allocates memory in chunks rather than contiguous blocks. This approach demonstrates advanced C++ concepts including templates, iterators, and memory management while improving insertion/deletion efficiency for large datasets. The source code is available <Link to="https://github.com/Tyler-Johnston/Bucket-Vector" target="_blank">here</Link>.
+            Finally, I designed and implemented a custom <b>std::vector</b> variant utilizing a bucket-based memory allocation system, which allocates memory in chunks rather than contiguous blocks. My goal was to create a rough-draft "proof-of-concept" future homework assignment, to assess vital C++ skills such as templates, iterators, and memory management. The source code is available <Link to="https://github.com/Tyler-Johnston/Bucket-Vector" target="_blank">here</Link>.
           </Text>
           <br/>
           <Image className="mediumImage" src={bucketvector} alt="Bucket vector implementation example"/>
@@ -114,15 +114,11 @@ const Experience = () => {
           <Text size="sm" style={{ marginBottom: 10 }}>March 2023 - June 2023</Text>
 
           <Text>
-            Collaborated with Utah State University's Analytics Solutions Center to develop a full-stack web application for Space Dynamics Laboratory (SDL), aimed at modernizing workflows for proprietary software. Designed and implemented the front-end using <b>React.js</b> and <b>React-Flow</b> for interactive drag-and-drop process visualization, and developed the back-end in <b>C#/.NET</b> to connect with a <b>Docker</b> container for automated data extraction.
+            I collaborated with Utah State University's Analytics Solutions Center to develop a full-stack web application for Space Dynamics Laboratory (SDL), aimed at modernizing workflows for proprietary software. I designed and implemented the front-end using <b>React.js</b> and <b>React-Flow</b> for interactive drag-and-drop process visualization, and developed the back-end in <b>C#/.NET</b> to connect with a <b>Docker</b> container for automated data extraction.
           </Text>
           <br/>
           <Text>
-            Previously, SDL developers manually created and edited deeply nested XML documents, a process that was error-prone and inefficient. Developed <b>BlockBuilder</b>, enabling users to create, edit, and connect flow processes visually. Users can start from scratch or upload existing processes, modify or add parameters, and export the results in <b>JSON or XML</b> formats for seamless integration with SDL's proprietary applications.
-          </Text>
-          <br/>
-          <Text>
-            Presented the application to SDL developers, receiving feedback on its usability and effectiveness in reducing errors, streamlining workflows, and improving overall productivity.
+            Previously, SDL developers manually created and edited deeply nested XML documents, a process that was error-prone and inefficient. To resolve this, I developed <b>BlockBuilder</b>, enabling users to create, edit, and connect flow processes visually. With it, users are able to start a new process from scratch or upload/modify/tweak existing processes. Following which, they can export the results in <b>JSON or XML</b> formats for seamless integration with SDL's proprietary applications.
           </Text>
           <br/>
           <Image className="mediumImage" src={blockbuilder} alt="BlockBuilder interface"/>
