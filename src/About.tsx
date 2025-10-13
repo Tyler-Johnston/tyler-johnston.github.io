@@ -1,4 +1,4 @@
-import { Text, Paper, Container, Title, Group, Grid, Badge, Image, Button } from '@mantine/core';
+import { Text, Paper, Container, Title, Group, Grid, Badge, Image, Button, Divider } from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping} from 'react-icons/fa';
 import { SiCplusplus, SiCsharp, SiAngular, SiDotnet, Si4D, SiJquery, SiJavascript} from 'react-icons/si';
@@ -70,15 +70,16 @@ const About = () => {
           <Title>Hi, I'm Tyler Johnston!</Title>
           <Paper p="xl">
           <Image radius="md" src={headshot} className='smallImage'/>
-          <Text>I'm a Full-Stack Developer at Footprints, Inc., working out of the Logan, Utah office. I specialize in creating custom solutions using C#/.NET, JavaScript (Ext JS / jQuery), Oracle SQL, and the 4D Programming Language. I also perform regular Quality Assurance (QA) work to ensure code quality is up to the proper standards for our clients.</Text>
+          <Text>I am currently pursuing a <b>Master's degree in Information Management (specializing in Business Intelligence)</b> from NOVA IMS University in Lisbon, Portugal. I originally grew up in Nashville, Tennessee, and upon receiving a full-ride presidential scholarship at Utah State University, I relocated to Logan Utah to pursue a bachelors in Computer Science.</Text>
           <br/>
-          <Text>I'm a graduate from Utah State University, majoring in Computer Science and minoring in Mathematics. Although I'm originally from Nashville Tennessee, I made the decision to move to Utah after being awarded a full-ride scholarship at USU. It was a tough choice, but I have never regretted the experiences I was able to form here!</Text>
+          <Text>While attending Utah State University, I focused on gaining both a strong education and hands-on experience. I graduated <b>Magna Cum Laude</b>, an honor awarded to the top-performing students, with a <b>3.92/4.00 GPA</b>, earning a Major in Computer Science and a Minor in Mathematics. During my studies here, I gained hands-on experience as a <b>Web Developer, a Modern C++ Teaching Assistant, and a Computer Vision Research Assistant</b>.</Text>
           <br/>
-          <Text>I maintained a 3.92 GPA during my undergraduate program while pursuing career-enriching experiences as a Web Developer, a Modern C++ Teaching Assistant, and a Computer Vision Research Assistant. These roles taught me invaluable skills, such as quickly learning new languages and technologies, drafting clear and effective documentation, and conducting thorough unit testing.</Text>
+          <Text>Prior to graduating from Utah State University, I received a job offer as a <b>Full-Stack Developer</b> for Footprints, Inc., where I worked in their Logan, UT office. In this role, I developed end-to-end enterprise applications using <b>C#/.NET</b>, <b>JavaScript</b> (Ext JS / jQuery), <b>Oracle SQL</b>, and the 4D programming language. I completed over 240 full-stack tasks across front-end, back-end, and database systems, optimized SQL queries to improve performance, and conducted rigorous Quality Assurance to ensure reliable, high-quality deliverables for business-critical workflows.</Text>
           <br/>
           <Text>I thrive in collaborative environments where problem-solving and innovation are at the forefront. Working closely with our development team has taught me the importance of effective communication in driving successful projects. My goal is to work in an environment that both challenges and enriches me professionally, where I can contribute meaningfully while continuously learning and growing as a developer.</Text>
           <br />
           </Paper>
+        <Divider my="lg" />
         </Container>
 
         <Container>
@@ -94,6 +95,7 @@ const About = () => {
                     <RenderSkillsSection skills={softSkills} />
                 </Grid.Col>
             </Grid>
+        <Divider my="lg" />
         </Container>
   
         <Container>
@@ -103,9 +105,6 @@ const About = () => {
           <Paper p="xl">
             <Text size="lg" fw={700} style={{ textAlign: 'center' }}>BS in Computer Science with Minor in Mathematics - Magna Cum Laude</Text>
             <Text style={{ textAlign: 'center' }}>Utah State University, Logan, UT – Class of 2024</Text>
-            <br/>
-            <Text>I began my college journey during the COVID-19 pandemic, adapting to remote learning and immersing myself in all I could about software development. Despite the challenges this brought, along with moving to a new state all together, I excelled in my classes and was able to form strong friendships during this time. I am very proud to have graduated with a 3.92 GPA, a full-ride scholarship, along with the many programming work experiences I have to show for myself.</Text>
-            <br/>
             <Text fw={700}>Relevant Coursework:</Text>
             <Text>
             Data Science in Practice, Intelligent Systems, Computer Vision, Advanced Algorithms, Developing Cloud Applications, Modern Web Development, Game Development, Linear Algebra, Multivariable Calculus, Probability
