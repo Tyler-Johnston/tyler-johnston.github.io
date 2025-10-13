@@ -1,4 +1,4 @@
-import { Text, Paper, Container, Title, Group, Grid, Badge, Image, Button, Divider } from '@mantine/core';
+import { Text, Paper, Container, Title, Group, Grid, Image, Button, Divider } from '@mantine/core';
 import { IconType } from 'react-icons';
 import { FaPython, FaJava, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping} from 'react-icons/fa';
 import { SiCplusplus, SiCsharp, SiAngular, SiDotnet, Si4D, SiJquery, SiJavascript} from 'react-icons/si';
