@@ -142,7 +142,7 @@ const Experience = () => {
           View About Me
         </Button>
         <Button component={Link} to="/portfolio" size="md" variant="outline">
-          View Portfolio
+          View Projects
         </Button>
       </Group>
       </Container>

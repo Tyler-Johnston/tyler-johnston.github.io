@@ -5,7 +5,7 @@ import { SiCplusplus, SiCsharp, SiAngular, SiDotnet, Si4D, SiJquery, SiJavascrip
 import { TbSql, TbDiamondFilled } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import "../styles.css"
-import headshot from "../images/headshot.jpeg";
+import headshot from "../images/headshot_portugal.jpg";
 import grad from "../images/grad.jpeg";
 
 
@@ -74,7 +74,7 @@ const About = () => {
           <br/>
           <Text>While attending Utah State University, I focused on gaining both a strong education and hands-on experience. I graduated <b>Magna Cum Laude</b>, an honor awarded to the top-performing students, with a <b>3.92/4.00 GPA</b>, earning a Major in Computer Science and a Minor in Mathematics. During my studies here, I gained hands-on experience as a <b>Web Developer, a Modern C++ Teaching Assistant, and a Computer Vision Research Assistant</b>.</Text>
           <br/>
-          <Text>Prior to graduating from Utah State University, I received a job offer as a <b>Full-Stack Developer</b> for Footprints, Inc., where I worked in their Logan, UT office. In this role, I developed end-to-end enterprise applications using <b>C#/.NET</b>, <b>JavaScript</b> (Ext JS / jQuery), <b>Oracle SQL</b>, and the 4D programming language. I completed over 240 full-stack tasks across front-end, back-end, and database systems, optimized SQL queries to improve performance, and conducted rigorous Quality Assurance to ensure reliable, high-quality deliverables for business-critical workflows.</Text>
+          <Text>Prior to graduating from Utah State University, I received a job offer as a <b>Full-Stack Developer</b> for Footprints, Inc., where I worked in their Logan, UT office. In this role, I developed end-to-end enterprise applications using <b>C#/.NET</b>, <b>JavaScript</b> (Ext JS / jQuery), <b>Oracle SQL</b>, and the 4D programming language. I completed over 240 full-stack tasks across front-end, back-end, and database systems, optimized SQL queries to improve performance, and conducted rigorous <b>Quality Assurance</b> to ensure reliable, high-quality deliverables for business-critical workflows.</Text>
           <br/>
           <Text>I thrive in collaborative environments where problem-solving and innovation are at the forefront. Working closely with our development team has taught me the importance of effective communication in driving successful projects. My goal is to work in an environment that both challenges and enriches me professionally, where I can contribute meaningfully while continuously learning and growing as a developer.</Text>
           <br />
@@ -100,19 +100,33 @@ const About = () => {
   
         <Container>
           <Title>Education</Title>
-          <Badge color="pink">3.92/4.00 GPA</Badge>
           <Image radius="md" src={grad} className='mediumImage'/>
           <Paper p="xl">
-            <Text size="lg" fw={700} style={{ textAlign: 'center' }}>BS in Computer Science with Minor in Mathematics - Magna Cum Laude</Text>
-            <Text style={{ textAlign: 'center' }}>Utah State University, Logan, UT – Class of 2024</Text>
-            <Text fw={700}>Relevant Coursework:</Text>
+            <Text size="19px" fw={700} style={{ textAlign: 'center' }}>
+              BS in Computer Science with Minor in Mathematics – Magna Cum Laude
+            </Text>
+            <Text style={{ textAlign: 'center' }}>
+              <i>Utah State University, Logan, UT</i>
+            </Text>
+            <br/>
             <Text>
-            Data Science in Practice, Intelligent Systems, Computer Vision, Advanced Algorithms, Developing Cloud Applications, Modern Web Development, Game Development, Linear Algebra, Multivariable Calculus, Probability
+              I entered Utah State University on a full-ride Presidential Scholarship and graduated <b>Magna Cum Laude</b> with a 3.92/4.00 GPA May of 2024. During my studies, I built strong technical foundations in software development, algorithms, and data analysis, complemented by hands-on experience as a Web Developer, Modern C++ Teaching Assistant, and Computer Vision Research Assistant.
+            </Text>
+            <br/>
+            <Text size="19px" fw={700} style={{ textAlign: 'center' }}>
+              Master’s in Information Management – Specialization in Business Intelligence
+            </Text>
+            <Text style={{ textAlign: 'center' }}>
+              <i>Nova IMS, Lisbon, Portugal</i>
+            </Text>
+            <br/>
+            <Text>
+              I am currently pursuing a Master’s in Information Management at Nova IMS in Lisbon, specializing in Business Intelligence. My focus is on transforming complex data into actionable insights, developing dashboards and analytics solutions, and applying data-driven strategies to real-world business challenges.
             </Text>
           </Paper>
           <Group justify="center" mt="md">
               <Button component={Link} to="/portfolio" size="md">
-                View Portfolio
+                View Projects
               </Button>
               <Button component={Link} to="/experience" size="md" variant="outline">
                 View Experience

@@ -114,8 +114,10 @@ const Portfolio = () => {
   return (
     <Container size="lg" my={40}>
       <Title>Portfolio</Title>
+      <br/>
       <Text size="lg" mb="xl">
-        Welcome to my portfolio. Here you'll find a selection of my work and projects.
+        Welcome to my portfolio! Here, you'll find a curated selection of my work and projects, organized into four main categories: <b>Data Analytics</b>, <b>Machine Learning</b>, <b>Web Development</b>, and <b>Game Development</b>. 
+        Feel free to explore each project and view their source code. If you have any questions or would like to discuss my work, please don't hesitate to <Link to="mailto:johnstontyler@protonmail.com">contact me</Link>.
       </Text>
 
       <Accordion multiple defaultValue={['dataAnalytics']}>
