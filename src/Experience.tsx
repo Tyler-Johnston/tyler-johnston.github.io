@@ -11,7 +11,7 @@ const Experience = () => {
     <>
       <Container size="md" my={40}>
         <Paper p="md" my="lg" radius="md">
-          <Title order={3}>Full-Stack Developer | Logan, UT</Title>
+          <Title order={3}>Full-Stack Developer | Footprints, Inc., Logan, UT</Title>
           <Text size="sm" style={{ marginBottom: 10 }}>March 2024 - August 2025</Text>
 
           <Text>
