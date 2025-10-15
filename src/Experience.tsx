@@ -19,7 +19,7 @@ const Experience = () => {
           </Text>
           <br/>
           <Text>
-            On the back end, I leveraged <b>C#/.NET</b>, <b>AJAX</b>, and <b>Oracle SQL</b>, using SQL Developer for database management. On the front end, I built responsive, interactive interfaces with JavaScript frameworks such as <b>Ext JS</b> and <b>jQuery</b>, ensuring seamless integration with backend systems. Additionally, I worked in <b>4D programming language</b> in-depth, contributing to end-to-end enterprise applications that utilize this technology.
+            On the back end, I leveraged <b>C#/.NET</b>, <b>AJAX</b>, and <b>Oracle SQL</b>, using SQL Developer for database management. On the front end, I built responsive, interactive interfaces with JavaScript frameworks such as <b>Ext JS</b> and <b>jQuery</b>, ensuring seamless integration with backend systems. Additionally, I worked in the <b>4D programming language</b> in-depth, contributing to end-to-end enterprise applications that utilize this technology.
           </Text>
           <br/>
           <Text>
