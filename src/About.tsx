@@ -54,8 +54,8 @@ function RenderSkillsSection({ skills }: SkillsProps) {
       <Paper p="xl">
         {skills.map(({ name, Icon }) => (
           <Group key={name}>
-            {Icon ? <Icon size={24}/> : <></>}
-            <Text>{name}</Text>
+            {Icon ? <Icon className="skillIcon" size={24}/> : <></>}
+            <Text className="skillText">{name}</Text>
           </Group>
         ))}
       </Paper>

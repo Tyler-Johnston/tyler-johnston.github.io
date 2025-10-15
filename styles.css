@@ -1,33 +1,84 @@
-/* TODO: stop hard coding sizes. ensure they are responsive for all screen sizes / on mobile devices */
-
 .smallImage {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 35%;
-    margin-bottom: 20px;
-  }
-  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
 .mediumImage {
-    width: 525px;
-    height: auto;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  max-width: 525px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .textHeading {
-    font-size: 42px;
-    
+  font-size: clamp(2rem, 4vw, 2.625rem);
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .textSubHeading {
-    font-size: 26px;
+  font-size: clamp(1.25rem, 3vw, 1.625rem);
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .flexContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  padding: 1rem;
+}
+
+.skillIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.skillText {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .smallImage {
+    width: 70%;
+    max-width: 300px;
+  }
+
+  .mediumImage {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .textHeading {
+    font-size: 1.75rem;
+  }
+
+  .textSubHeading {
+    font-size: 1.125rem;
+  }
+
+  .flexContainer {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .skillIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .skillText {
+    font-size: 14px;
+  }
 }
