@@ -1,4 +1,15 @@
-import { Container, Card, Text, Title, Button, Image, Accordion, Grid, Group } from '@mantine/core';
+import {
+  Container,
+  Card,
+  Text,
+  Title,
+  Button,
+  Image,
+  Accordion,
+  Grid,
+  Group,
+  Space,
+} from '@mantine/core';
 import { Link } from 'react-router-dom';
 import vintagefinds from "../images/vintagefinds.png";
 import reptiletracker from "../images/reptiletracker.png";
@@ -8,142 +19,179 @@ import lunarlander from "../images/lunarlander.png";
 import aws from "../images/aws.png";
 import facialexpression from "../images/facialexpression.png";
 import maze from "../images/maze.png";
-import market from "../images/job_market.jpg"
-import customer_behavior from "../images/customer-behavior.jpg"
-import bees from "../images/bees.jpg"
-import rps from "../images/rps.png"
+import market from "../images/job_market.jpg";
+import customer_behavior from "../images/customer-behavior.jpg";
+import bees from "../images/bees.jpg";
+import rps from "../images/rps.png";
+import { FaUsers, FaUser } from 'react-icons/fa';
 
 const projects = {
   dataAnalytics: [
     {
       id: 9,
       title: 'Utah Programmer Job Market Analysis',
-      description: 'Analyzed wage and cost-of-living data across Utah counties to determine the most affordable locations for programmers. Created an affordability index, visualized trends, and used regression and T-tests to compare compensation by job category.',
+      description:
+        'Analyzed wage and cost-of-living data across Utah counties to determine the most affordable locations for programmers. Created an affordability index, visualized trends, and used regression and T-tests to compare compensation by job category.',
       imageUrl: market,
-      projectUrl: 'https://github.com/Tyler-Johnston/Utah-Programmer-Job-Market-Analysis'
+      projectUrl: 'https://github.com/Tyler-Johnston/Utah-Programmer-Job-Market-Analysis',
     },
     {
       id: 10,
       title: 'Customer Behavior Analysis',
-      description: 'Built classification models to predict online shopper purchase intent and bank customer churn. Compared logistic regression and SVMs with different kernels, addressed class imbalance, and visualized decision boundaries.',
+      description:
+        'Built classification models to predict online shopper purchase intent and bank customer churn. Compared logistic regression and SVMs, addressed class imbalance, and visualized decision boundaries.',
       imageUrl: customer_behavior,
-      projectUrl: 'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis'
-    }
+      projectUrl: 'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis',
+    },
   ],
   machineLearning: [
     {
       id: 6,
       title: 'Cartpole Reinforcement Learning',
-      description: 'Developed a reinforcement learning (ANN) model for OpenAI\'s cart pole using DeepQLearning.',
+      description:
+        "Developed a reinforcement learning (ANN) model for OpenAI's cart pole using Deep Q-Learning.",
       imageUrl: cartpole1,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning'
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning',
     },
     {
       id: 7,
       title: 'Beehive Weight Prediction',
-      description: 'Developed Artificial Neural Network (ANN), Convolutional Neural Network (ConvNet), and Long Short‐Term Memory (LSTM) models for the purpose of forecasting beehive weight based on its internal temperature using Keras. Developed ResNet50 and YOLO ConvNet models for bee/non‐bee image classification using PyTorch.',
+      description:
+        'Built ANN, CNN, and LSTM models for forecasting beehive weight using Keras and PyTorch. Included ResNet50 and YOLO for bee/non-bee image classification.',
       imageUrl: bees,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction'
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction',
     },
     {
       id: 8,
       title: 'Facial Expression Recognition',
-      description: 'Developed a SVM model to recognize facial expressions based on Local Binary Patterns and Oriented FAST and rotated BRIEF features.',
+      description:
+        'Trained a Support Vector Machine (SVM) to classify facial expressions using Local Binary Patterns and ORB feature extraction.',
       imageUrl: facialexpression,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition'
-    }
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition',
+    },
   ],
   webDev: [
     {
       id: 4,
       title: 'Reptile Tracker',
-      description: 'A full-stack application for managing pet reptile care schedules, including feeding, cleaning, and husbandry tracking. Built with a React.js front-end and an Express.js back-end, the app supports user authentication and data persistence.',
+      description:
+        'A full-stack application for managing pet reptile care schedules. Built with React.js and Express.js, including authentication and persistent cloud storage.',
       imageUrl: reptiletracker,
-      projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker'
-    },    
+      projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker',
+    },
     {
       id: 3,
       title: 'Vintage Finds',
-      description: 'A web application built with Next.js and Firebase to showcase inventory for a local antique business. Features include real-time database integration, user authentication, and an admin interface for managing stock. Developed to help customers easily browse available items and stay updated on new finds.',
+      description:
+        'A Next.js + Firebase web app built for a local antique business. Features an admin dashboard, authentication, and real-time inventory updates.',
       imageUrl: vintagefinds,
-      projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds'
-    },    
+      projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds',
+    },
     {
       id: 5,
       title: 'AWS Widget Requests',
-      description: 'Designed and implemented both Producer and Consumer applications with AWS, responsible for generating user widgets, queuing them via SQS, processing the data, and persisting results in either S3 buckets or DynamoDB tables.',
+      description:
+        'Developed AWS Producer and Consumer apps handling widget generation, SQS messaging, and data persistence to S3 and DynamoDB.',
       imageUrl: aws,
-      projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests'
+      projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests',
     },
     {
       id: 9,
       title: 'Rock Paper Scissors Idle Game',
-      description: 'A full-stack Angular Single Page Application (SPA) where players engage in an evolving idle game loop. Features cloud saving, Supabase authentication, reactive service-driven architecture, automated gameplay upgrades, and achievement tracking.',
+      description:
+        'An Angular SPA with Supabase backend featuring authentication, achievements, and automated gameplay loops.',
       imageUrl: rps,
-      projectUrl: 'https://github.com/Tyler-Johnston/RPS'
-    }
+      projectUrl: 'https://github.com/Tyler-Johnston/RPS',
+    },
   ],
   gameDev: [
     {
       id: 0,
       title: 'Multiplayer Snake Game',
-      description: 'A modern, competitive take on the classic Snake experience, designed for real-time, multiplayer gameplay. Players aim to grow the longest snake while navigating an arena filled with other players.',
+      description:
+        'A real-time multiplayer version of the classic Snake game. Compete to grow the longest snake while navigating shared arenas.',
       imageUrl: snakegame,
-      projectUrl: 'https://github.com/Tyler-Johnston/Multiplayer-Snake-Game'
+      projectUrl: 'https://github.com/Tyler-Johnston/Multiplayer-Snake-Game',
     },
     {
       id: 1,
       title: 'Lunar Lander Game',
-      description: "A physics-based game where the player controls a lunar module's descent, adjusting thrust and angle to land safely on the moon's surface. The player must carefully balance speed and fuel to avoid crashing.",
+      description:
+        "A physics-based lunar descent simulator requiring careful thrust control to land safely while managing limited fuel.",
       imageUrl: lunarlander,
-      projectUrl: 'https://github.com/Tyler-Johnston/Lunar-Lander'
+      projectUrl: 'https://github.com/Tyler-Johnston/Lunar-Lander',
     },
     {
       id: 2,
       title: 'Maze Game',
-      description: 'A maze game with guaranteed, procedurally generated paths from one corner of the map to the other.',
+      description:
+        'A procedurally generated maze game ensuring solvable paths for each level, built with dynamic rendering logic.',
       imageUrl: maze,
-      projectUrl: 'https://github.com/Tyler-Johnston/Maze-Game'
-    }
-  ]
-  
-  
+      projectUrl: 'https://github.com/Tyler-Johnston/Maze-Game',
+    },
+  ],
 };
 
 const Portfolio = () => {
   return (
     <Container size="lg" my={40}>
-      <Title>Portfolio</Title>
-      <br/>
+      <Title order={1} mb="sm" c="blue.6">
+        Portfolio
+      </Title>
+
       <Text size="lg" mb="xl">
-        Welcome to my portfolio! Here, you'll find a curated selection of my work and projects, organized into four main categories: <b>Data Analytics</b>, <b>Machine Learning</b>, <b>Web Development</b>, and <b>Game Development</b>. 
-        Feel free to explore each project and view their source code. If you have any questions or would like to discuss my work, please don't hesitate to <Link to="mailto:johnstontyler@protonmail.com">contact me</Link>.
+        Welcome to my portfolio! Here, you’ll find a curated selection of my projects; these span from <b>Data Analytics</b>, <b>Machine Learning</b>, <b>Web Development</b>, and <b>Game Development</b>. Each project reflects a step in my journey as a developer passionate about <b>data, design, and functionality</b>.
       </Text>
 
-      <Accordion multiple defaultValue={['dataAnalytics']}>
+      <Text size="md" c="dimmed" mb="lg">
+        Click a category below to explore projects, view source code, and dive into their technical details.
+      </Text>
+
+      <Accordion multiple defaultValue={[]}>
         {Object.entries(projects).map(([category, categoryProjects]) => (
           <Accordion.Item value={category} key={category}>
-            <Accordion.Control>
-              {category === 'dataAnalytics' && 'Data Analytics'}
-              {category === 'machineLearning' && 'Machine Learning'}
-              {category === 'webDev' && 'Web Development'}
-              {category === 'gameDev' && 'Game Development'}
+            <Accordion.Control fw={600}>
+              {category === 'dataAnalytics' && '📊 Data Analytics'}
+              {category === 'machineLearning' && '🤖 Machine Learning'}
+              {category === 'webDev' && '💻 Web Development'}
+              {category === 'gameDev' && '🎮 Game Development'}
             </Accordion.Control>
+
             <Accordion.Panel>
-              <Grid>
+              <Grid gutter="xl">
                 {categoryProjects.map((project) => (
-                  <Grid.Col span={12} key={project.id}>
-                    <Card shadow="sm" padding="lg">
+                  <Grid.Col key={project.id} span={{ base: 12, sm: 6, lg: 4 }}>
+                    <Card
+                      shadow="sm"
+                      padding="lg"
+                      radius="md"
+                      withBorder
+                      style={{
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.transform = 'translateY(-5px)')
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.transform = 'translateY(0)')
+                      }
+                    >
                       <Card.Section>
                         <Image src={project.imageUrl} alt={project.title} height={160} />
                       </Card.Section>
-                      <Text size="lg" mt="md">{project.title}</Text>
-                      <Text size="sm" mt="md">{project.description}</Text>
+
+                      <Title order={4} mt="md" c="blue.6">
+                        {project.title}
+                      </Title>
+                      <Text size="sm" mt="xs" mb="sm" c="dimmed">
+                        {project.description}
+                      </Text>
+
                       <Button
                         variant="light"
                         color="blue"
                         fullWidth
-                        mt="md"
+                        mt="sm"
                         component="a"
                         href={project.projectUrl}
                         target="_blank"
@@ -159,14 +207,29 @@ const Portfolio = () => {
         ))}
       </Accordion>
 
-      <Group justify="center" mt="md">
-        <Button component={Link} to="/" size="md">
+      <Space h="xl" />
+
+      <Group justify="center" mt="xl">
+        <Button
+          component={Link}
+          to="/"
+          size="md"
+          leftSection={<FaUser />}
+          variant="light"
+        >
           View About Me
         </Button>
-        <Button component={Link} to="/experience" size="md">
+        <Button
+          component={Link}
+          to="/experience"
+          size="md"
+          leftSection={<FaUsers />}
+          variant="filled"
+        >
           View Experience
         </Button>
       </Group>
+
     </Container>
   );
 };
