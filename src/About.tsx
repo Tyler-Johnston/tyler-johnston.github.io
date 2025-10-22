@@ -1,140 +1,242 @@
-import { Text, Paper, Container, Title, Group, Grid, Image, Button, Divider } from '@mantine/core';
+import {
+  Text,
+  Paper,
+  Container,
+  Title,
+  Group,
+  Grid,
+  Image,
+  Button,
+  Divider,
+  Space,
+  Stack,
+} from '@mantine/core';
 import { IconType } from 'react-icons';
-import { FaPython, FaJava, FaReact, FaDocker, FaGitAlt, FaLinux, FaUsers, FaStream, FaLightbulb, FaComments, FaRegClock, FaHandsHelping} from 'react-icons/fa';
-import { SiCplusplus, SiCsharp, SiAngular, SiDotnet, Si4D, SiJquery, SiJavascript} from 'react-icons/si';
-import { TbSql, TbDiamondFilled } from "react-icons/tb";
+import {
+  FaPython,
+  FaJava,
+  FaReact,
+  FaGitAlt,
+  FaLinux,
+  FaUsers,
+  FaLightbulb,
+  FaComments,
+  FaRegClock,
+} from 'react-icons/fa';
+import {
+  SiCplusplus,
+  SiCsharp,
+  SiAngular,
+  SiDotnet,
+  Si4D,
+  SiJquery,
+  SiJavascript,
+} from 'react-icons/si';
+import { TbSql, TbDiamondFilled } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
-import "../styles.css"
-import headshot from "../images/headshot_portugal.jpg";
-import grad from "../images/grad.jpeg";
-
+import headshot from '../images/headshot_portugal.jpg';
+import grad from '../images/grad.jpeg';
+import '../styles.css';
 
 const languages = [
-    { name: 'C#', Icon: SiCsharp },
-    { name: 'JavaScript', Icon: SiJavascript },
-    { name: 'Oracle SQL', Icon: TbSql },
-    { name: 'Python', Icon: FaPython },
-    { name: 'C++', Icon: SiCplusplus },
-    { name: 'Java', Icon: FaJava },
-    { name: '4D', Icon: Si4D },
+  { name: 'C#', Icon: SiCsharp },
+  { name: 'JavaScript', Icon: SiJavascript },
+  { name: 'SQL', Icon: TbSql },
+  { name: 'Python', Icon: FaPython },
+  { name: 'C++', Icon: SiCplusplus },
+  { name: 'Java', Icon: FaJava },
+  { name: '4D', Icon: Si4D },
 ];
 
 const software = [
-    { name: '.NET', Icon: SiDotnet },
-    { name: 'jQuery', Icon: SiJquery },
-    { name: 'Git', Icon: FaGitAlt },
-    { name: 'AngularJS', Icon: SiAngular },
-    { name: 'React.js', Icon: FaReact },
-    { name: 'Docker', Icon: FaDocker },
-    { name: 'Linux', Icon: FaLinux },
-
+  { name: '.NET', Icon: SiDotnet },
+  { name: 'jQuery', Icon: SiJquery },
+  { name: 'Git', Icon: FaGitAlt },
+  { name: 'AngularJS', Icon: SiAngular },
+  { name: 'React.js', Icon: FaReact },
+  { name: 'Power BI', Icon: FaLightbulb },
+  { name: 'Linux', Icon: FaLinux },
+  
 ];
 
-const softSkills =[
-    { name: 'Quality Assurance', Icon: TbDiamondFilled },
-    { name: 'Agile Methodology', Icon: FaUsers },
-    { name: 'Waterfall Methodology', Icon: FaStream },
-    { name: 'Teamwork', Icon: FaHandsHelping },
-    { name: 'Problem‐Solving', Icon: FaLightbulb },
-    { name: 'Communication', Icon: FaComments },
-    { name: 'Time‐Management', Icon: FaRegClock },
+const softSkills = [
+  { name: 'Quality Assurance', Icon: TbDiamondFilled },
+  { name: 'Problem‐Solving', Icon: FaLightbulb },
+  { name: 'Communication', Icon: FaComments },
+  { name: 'Time‐Management', Icon: FaRegClock },
 ];
 
-interface Skills {
-    name: string;
-    Icon: IconType;
+interface Skill {
+  name: string;
+  Icon: IconType;
 }
 
 interface SkillsProps {
-    skills: Skills[]
+  title: string;
+  skills: Skill[];
 }
 
-function RenderSkillsSection({ skills }: SkillsProps) {
-    return (
-      <Paper p="xl">
+function RenderSkillsSection({ title, skills }: SkillsProps) {
+  return (
+    <Paper withBorder radius="md" p={{ base: 'md', sm: 'lg' }} shadow="sm">
+      <Title order={4} ta="center" mb="sm" c="blue.6">
+        {title}
+      </Title>
+
+      <Group justify="center" gap="md" wrap="wrap">
         {skills.map(({ name, Icon }) => (
-          <Group key={name}>
-            {Icon ? <Icon className="skillIcon" size={24}/> : <></>}
-            <Text className="skillText">{name}</Text>
+          <Group key={name} gap={6} style={{ width: 'fit-content' }}>
+            {Icon && <Icon size={20} color="#1971c2" />}
+            <Text size="sm">{name}</Text>
           </Group>
         ))}
-      </Paper>
-    );
+      </Group>
+    </Paper>
+  );
 }
 
+
 const About = () => {
+  return (
+    <>
+      {/* ======================== INTRO SECTION ======================== */}
+      <Container size="lg" py="xl">
+        <Grid align="center">
+          <Grid.Col span={{ base: 12, md: 5 }}>
+            <Image
+              radius="lg"
+              src={headshot}
+              alt="Portrait of Tyler Johnston"
+              className="smallImage"
+            />
+          </Grid.Col>
 
-    return (
-        <>
-        <Container>
-          <Title>Hi, I'm Tyler Johnston!</Title>
-          <Paper p="xl">
-          <Image radius="md" src={headshot} className='smallImage'/>
-          <Text>I am currently pursuing a <b>Master's degree in Information Management (specializing in Business Intelligence)</b> from NOVA IMS University in Lisbon, Portugal. I originally grew up in Nashville, Tennessee, and upon receiving a full-ride presidential scholarship at Utah State University, I relocated to Logan Utah to pursue a bachelors in Computer Science.</Text>
-          <br/>
-          <Text>While attending Utah State University, I focused on gaining both a strong education and hands-on experience. I graduated <b>Magna Cum Laude</b>, an honor awarded to the top-performing students, with a <b>3.92/4.00 GPA</b>, earning a Major in Computer Science and a Minor in Mathematics. During my studies here, I gained hands-on experience as a <b>Web Developer, a Modern C++ Teaching Assistant, and a Computer Vision Research Assistant</b>.</Text>
-          <br/>
-          <Text>Prior to graduating from Utah State University, I received a job offer as a <b>Full-Stack Developer</b> for Footprints, Inc., where I worked in their Logan, UT office. In this role, I developed end-to-end enterprise applications using <b>C#/.NET</b>, <b>JavaScript</b> (Ext JS / jQuery), <b>Oracle SQL</b>, and the 4D programming language. I completed over 240 full-stack tasks across front-end, back-end, and database systems, optimized SQL queries to improve performance, and conducted rigorous <b>Quality Assurance</b> to ensure reliable, high-quality deliverables for business-critical workflows.</Text>
-          <br/>
-          <Text>I thrive in collaborative environments where problem-solving and innovation are at the forefront. Working closely with our development team has taught me the importance of effective communication in driving successful projects. My goal is to work in an environment that both challenges and enriches me professionally, where I can contribute meaningfully while continuously learning and growing as a developer.</Text>
-          <br />
-          </Paper>
-        <Divider my="lg" />
-        </Container>
+          <Grid.Col span={{ base: 12, md: 7 }}>
+            <Title order={1} mb="sm">
+              Hi, I'm <span style={{ color: '#1971c2' }}>Tyler Johnston</span>!
+            </Title>
 
-        <Container>
-            <Title>Skills</Title>
-            <Grid>
-                <Grid.Col span={4}>
-                    <RenderSkillsSection skills={languages} />
-                </Grid.Col>
-                <Grid.Col span={4}>
-                    <RenderSkillsSection skills={software} />
-                </Grid.Col>
-                <Grid.Col span={4}>
-                    <RenderSkillsSection skills={softSkills} />
-                </Grid.Col>
-            </Grid>
+
+            <Text size="lg">
+              I’m currently pursuing a <b>Master's in Information Management (specializing in Business Intelligence)</b> at NOVA IMS in Lisbon, Portugal. Originally from Nashville, Tennessee, I earned a <b>full-ride Presidential Scholarship</b> to study <b>Computer Science</b> at Utah State University.
+            </Text>
+
+            <Space h="md" />
+
+            <Text size="lg">
+              I graduated <b>Magna Cum Laude</b> with a <b>3.92 GPA</b>, gaining experience as a <b>Web Developer, Modern C++ Teaching Assistant, and Computer Vision Research Assistant</b>. 
+              Before graduating, I joined <b>Footprints, Inc.</b> as a <b>Full-Stack Developer</b>, developing enterprise applications with 
+              <b> C#/.NET, JavaScript (Ext JS/jQuery), Oracle SQL,</b> and <b>4D</b>. Over 240 full-stack tasks later, I’d improved query performance, streamlined workflows, and sharpened my QA instincts.
+            </Text>
+
+            <Space h="md" />
+
+            <Text size="lg">
+              I thrive where <b>problem-solving</b>, <b>data-driven design</b>, and <b>team collaboration</b> meet. My goal is to grow within environments that challenge me technically while letting me contribute meaningfully to impactful, scalable solutions.
+            </Text>
+          </Grid.Col>
+        </Grid>
+      </Container>
+
+      {/* ======================== SKILLS SECTION ======================== */}
+      <Container size="lg" py="xl">
         <Divider my="lg" />
-        </Container>
-  
-        <Container>
-          <Title>Education</Title>
-          <Image radius="md" src={grad} className='mediumImage'/>
-          <Paper p="xl">
-            <Text size="19px" fw={700} style={{ textAlign: 'center' }}>
-              BS in Computer Science with Minor in Mathematics – Magna Cum Laude
-            </Text>
-            <Text style={{ textAlign: 'center' }}>
-              <i>Utah State University, Logan, UT</i>
-            </Text>
-            <br/>
-            <Text>
-              I entered Utah State University on a full-ride Presidential Scholarship and graduated <b>Magna Cum Laude</b> with a 3.92/4.00 GPA May of 2024. During my studies, I built strong technical foundations in software development, algorithms, and data analysis, complemented by hands-on experience as a Web Developer, Modern C++ Teaching Assistant, and Computer Vision Research Assistant.
-            </Text>
-            <br/>
-            <Text size="19px" fw={700} style={{ textAlign: 'center' }}>
-              Master’s in Information Management – Specialization in Business Intelligence
-            </Text>
-            <Text style={{ textAlign: 'center' }}>
-              <i>Nova IMS, Lisbon, Portugal</i>
-            </Text>
-            <br/>
-            <Text>
-              I am currently pursuing a Master’s in Information Management at Nova IMS in Lisbon, specializing in Business Intelligence. My focus is on transforming complex data into actionable insights, developing dashboards and analytics solutions, and applying data-driven strategies to real-world business challenges.
-            </Text>
-          </Paper>
-          <Group justify="center" mt="md">
-              <Button component={Link} to="/portfolio" size="md">
-                View Projects
-              </Button>
-              <Button component={Link} to="/experience" size="md" variant="outline">
-                View Experience
-              </Button>
-           </Group>
-        </Container>
-      </>
-    );
-  };
-  
-  export default About;
+        <Title order={2} mb="lg" ta="center">
+          Skills
+        </Title>
+
+        <Grid gutter="lg">
+          <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+            <RenderSkillsSection title="Languages" skills={languages} />
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+            <RenderSkillsSection title="Frameworks & Tools" skills={software} />
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+            <RenderSkillsSection title="Soft Skills" skills={softSkills} />
+          </Grid.Col>
+        </Grid>
+
+        <Space h="xl" />
+
+        <Text size="lg" ta="left" maw={900} mx="auto" lh={1.7}>
+          My technical background bridges <b>full-stack development</b> and <b>data-driven design</b>. I’ve built enterprise applications using <b>C#/.NET</b>, <b>JavaScript</b> (Ext JS / jQuery), 
+          and <b>Oracle SQL</b>, where I learned to turn complex systems into efficient, maintainable solutions. Now, as I specialize in <b>Business Intelligence</b> at NOVA IMS, I’m expanding that foundation through <b>Python-based analytics</b>, <b>Power BI</b> dashboards, <b>MySQL</b> database design, and <b>data visualization</b> techniques that translate raw information into clear, actionable insights.
+        </Text>
+
+      </Container>
+
+      {/* ======================== EDUCATION SECTION ======================== */}
+      <Container size="lg" py="xl">
+        <Divider my="lg" /> 
+        <Title order={2} ta="center" mb="lg">
+          Education
+        </Title>
+
+        <Grid align="center">
+          <Grid.Col span={{ base: 12, md: 5 }}>
+            <Image
+              radius="lg"
+              src={grad}
+              alt="Graduation photo"
+              className="mediumImage"
+            />
+          </Grid.Col>
+
+          <Grid.Col span={{ base: 12, md: 7 }}>
+            <Stack gap="md">
+              <Paper withBorder p="lg" radius="md" shadow="sm">
+                <Title order={4} ta="center" mb="xs">
+                  B.S. in Computer Science <Text span fw={400}>with Minor in Mathematics</Text>
+                </Title>
+                <Text ta="center" c="dimmed">
+                  Utah State University — Logan, UT
+                </Text>
+                <Space h="xs" />
+                <Text>
+                  Graduated <b>Magna Cum Laude</b> in May 2024 with a <b>3.92 GPA</b> on a full-ride Presidential Scholarship. Developed foundations in software engineering, algorithms, and data analysis through hands-on roles as a Web Developer, C++ Teaching Assistant, and Computer Vision Research Assistant.
+                </Text>
+              </Paper>
+
+              <Paper withBorder p="lg" radius="md" shadow="sm">
+                <Title order={4} ta="center" mb="xs">
+                  Master’s in Information Management — <Text span fw={400}>Specialization in Business Intelligence</Text>
+                </Title>
+                <Text ta="center" c="dimmed">
+                  Nova IMS — Lisbon, Portugal
+                </Text>
+                <Space h="xs" />
+                <Text>
+                  Pursuing advanced skills in data modeling, analytics, and visualization. My focus is on turning complex datasets into clear insights and designing intelligent, human-centered BI solutions.
+                </Text>
+              </Paper>
+            </Stack>
+          </Grid.Col>
+        </Grid>
+
+        <Group justify="center" mt="xl">
+          <Button
+            component={Link}
+            to="/portfolio"
+            size="md"
+            leftSection={<FaReact />}
+            variant="filled"
+          >
+            View Projects
+          </Button>
+          <Button
+            component={Link}
+            to="/experience"
+            size="md"
+            leftSection={<FaUsers />}
+            variant="light"
+          >
+            View Experience
+          </Button>
+        </Group>
+      </Container>
+    </>
+  );
+};
+
+export default About;

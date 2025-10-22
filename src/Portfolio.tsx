@@ -163,7 +163,7 @@ const Portfolio = () => {
         <Button component={Link} to="/" size="md">
           View About Me
         </Button>
-        <Button component={Link} to="/experience" size="md" variant="outline">
+        <Button component={Link} to="/experience" size="md">
           View Experience
         </Button>
       </Group>
