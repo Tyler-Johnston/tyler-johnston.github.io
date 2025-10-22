@@ -11,7 +11,7 @@ import {
   Space,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { FaUser, FaReact, FaUsers } from 'react-icons/fa';
+import { FaUser, FaReact } from 'react-icons/fa';
 import blockbuilder from '../images/blockbuilder.jpeg';
 import bucketvector from '../images/bucketvector.png';
 import boundingbox from '../images/boundingbox.png';
