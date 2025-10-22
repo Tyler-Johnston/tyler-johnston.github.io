@@ -138,7 +138,7 @@ const Experience = () => {
         <Text lh={1.7}>
           Conducted evaluations of <b>C++ Modules</b> with GCC, providing feedback on adoption
           feasibility. Additionally, I designed a custom <b>bucket-based std::vector</b> that
-          optimizes memory allocation for large datasets. The prototype assignment is available{' '}
+          optimizes memory allocation for large datasets. View the prototype{' '}
           <Link to="https://github.com/Tyler-Johnston/Bucket-Vector" target="_blank">
             here
           </Link>
