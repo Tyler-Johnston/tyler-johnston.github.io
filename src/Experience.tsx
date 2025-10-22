@@ -1,152 +1,245 @@
-import { Container, Title, Paper, Text, Image, Button, Group, List, Divider} from '@mantine/core';
-import blockbuilder from "../images/blockbuilder.jpeg"
-import bucketvector from "../images/bucketvector.png"
-import boundingbox from "../images/boundingbox.png"
-import fp from "../images/footprints.png"
+import {
+  Container,
+  Title,
+  Paper,
+  Text,
+  Image,
+  Button,
+  Group,
+  List,
+  Divider,
+  Space,
+} from '@mantine/core';
 import { Link } from 'react-router-dom';
-import "../styles.css"
+import { FaUser, FaReact, FaUsers } from 'react-icons/fa';
+import blockbuilder from '../images/blockbuilder.jpeg';
+import bucketvector from '../images/bucketvector.png';
+import boundingbox from '../images/boundingbox.png';
+import fp from '../images/footprints.png';
+import '../styles.css';
 
 const Experience = () => {
   return (
-    <>
-      <Container size="md" my={40}>
-        <Paper p="md" my="lg" radius="md">
-          <Title order={3}>Full-Stack Developer | Footprints, Inc., Logan, UT</Title>
-          <Text size="sm" style={{ marginBottom: 10 }}>March 2024 - August 2025</Text>
+    <Container size="md" my={40}>
+      <Title order={1} mb="xl" c="blue.6">
+        Professional Experience
+      </Title>
 
-          <Text>
-            I worked as a full-stack developer where I designed and implemented applications for engineering teams in the aerospace and steel manufacturing industries. My work focused on creating tools that help users plan, organize, and track critical workflows, ensuring efficiency and precision in highly technical environments.
-          </Text>
-          <br/>
-          <Text>
-            On the back end, I leveraged <b>C#/.NET</b>, <b>AJAX</b>, and <b>Oracle SQL</b>, using SQL Developer for database management. On the front end, I built responsive, interactive interfaces with JavaScript frameworks such as <b>Ext JS</b> and <b>jQuery</b>, ensuring seamless integration with backend systems. Additionally, I worked in the <b>4D programming language</b> in-depth, contributing to end-to-end enterprise applications that utilize this technology.
-          </Text>
-          <br/>
-          <Text>
-            Throughout this role, I successfully completed <b>240+ full-stack tasks (~2,000 hours)</b> spanning front-end, back-end, and database systems. I optimized SQL queries, improved system performance, and delivered reliable solutions for business-critical workflows. I also performed <b>QA testing and debugging</b>, maintaining code integrity and preventing production issues.
-          </Text>
-          <br/>
-          <Text>
-            Collaboration was central to my approach. I worked closely with cross-functional teams to solve complex problems, gather requirements, and deliver projects on schedule. My strong communication skills allowed me to provide clear technical feedback and foster a productive, supportive team environment.
-          </Text>
-          <br/>
-          <Image className="smallImage" src={fp}/>
-          <Text>Key Achievements:</Text>
-          <br/>
-          <List
-            spacing="xs"
-            size="sm"
-            style={{ marginBottom: 10 }}
-          >
-            <List.Item>Developed end-to-end enterprise applications using <b>C#/.NET, JavaScript (Ext JS / jQuery), Oracle SQL, and 4D</b>.</List.Item>
-            <List.Item>Completed <b>240+ full-stack tasks (~2,000 hours)</b> across front-end, back-end, and database systems.</List.Item>
-            <List.Item>Optimized SQL queries, improved system performance, and delivered reliable solutions for business-critical workflows.</List.Item>
-            <List.Item>Conducted <b>QA testing and debugging</b> to maintain code integrity and prevent production issues.</List.Item>
-          </List>
-        </Paper>
+      {/* ===================== FOOTPRINTS ===================== */}
+      <Paper p="lg" my="xl" radius="md" shadow="xs">
+        <Title order={3} c="blue.6">
+          Full-Stack Developer | Footprints, Inc.
+        </Title>
+        <Text size="sm" c="dimmed" mb="md">
+          March 2024 – August 2025
+        </Text>
 
-        <Divider my="lg" />
+        <Text lh={1.7}>
+          As a <b>Full-Stack Developer</b> at Footprints, I designed and implemented enterprise
+          applications for engineering teams in the aerospace and steel manufacturing industries.
+          My focus was on tools that help users plan, organize, and track mission-critical workflows
+          with precision and reliability.
+        </Text>
+        <Space h="md" />
+        <Text lh={1.7}>
+          I developed with <b>C#/.NET</b>, <b>AJAX</b>, and <b>Oracle SQL</b> on the back end, and
+          <b> JavaScript</b> (Ext JS / jQuery) on the front end. I also worked extensively with the{' '}
+          <b>4D programming language</b>, supporting legacy systems that integrate with modern web
+          interfaces.
+        </Text>
+        <Space h="md" />
+        <Text lh={1.7}>
+          Over <b>240+ full-stack tasks (~2,000 hours)</b>, I optimized SQL queries, improved system
+          performance, and ensured robust quality assurance across the product line. Collaboration
+          and communication were central, as I worked with cross-functional teams to gather
+          requirements and deliver polished, scalable solutions.
+        </Text>
 
-        <Paper p="md" my="lg" radius="md">
-          <Title order={3}>Computer Vision Research Assistant | Utah State University, Logan, UT</Title>
-          <Text size="sm" style={{ marginBottom: 10 }}>January 2024 - May 2024</Text>
+        <Image src={fp} alt="Footprints dashboard example" className="smallImage" mt="lg" />
 
-          <Text>
-            I served as a computer vision research assistant under Dr. Brent Chamberlain, with guidance from CS department head Dr. Xiaojun Qi, to apply artificial intelligence for urban infrastructure analysis. Here, I developed automated pipelines to detect and map features such as curb ramps, pedestrian signs, and traffic light posts to assess city-level compliance with the <b>Americans with Disabilities Act (ADA)</b>.
-          </Text>
-          <br/>
-          <Text>
-            To do so, I leveraged <b>YOLOv8</b> and <b>Roboflow</b> for object detection, and I trained models on annotated datasets to accurately identify key infrastructure elements across multiple urban environments. Additionally, I implemented Python scripts to batch-download Google Street View imagery, to extract geospatial metadata, and to generate structured latitude/longitude datasets for further analysis. As a result, I produced city-scale visualizations and datasets that support actionable insights for ADA compliance evaluation.
-          </Text>
-          <br/>
-          <Image className="mediumImage" src={boundingbox} alt="Bounding box detection example"/>
-          <Text>Key Achievements:</Text>
-          <br/>
-          <List
-            spacing="xs"
-            size="sm"
-            style={{ marginBottom: 10 }}
-          >
-            <List.Item>Applied <b>YOLOv8</b> and <b>Roboflow</b> to detect and classify urban infrastructure across multiple U.S. cities.</List.Item>
-            <List.Item>Developed Python scripts to automate retrieval of Google Street View imagery and extract geospatial coordinates for mapping infrastructure.</List.Item>
-            <List.Item>Generated structured datasets and visualizations to evaluate city-level <b>ADA compliance</b> and identify accessibility gaps.</List.Item>
-          </List>
-        </Paper>
+        <Title order={5} mt="md">
+          Key Achievements:
+        </Title>
+        <List spacing="xs" size="sm" mt="xs">
+          <List.Item>
+            Built enterprise-grade apps with <b>C#/.NET, JavaScript (Ext JS/jQuery), Oracle SQL, and 4D</b>.
+          </List.Item>
+          <List.Item>
+            Completed <b>240+ full-stack tasks</b> improving reliability and performance across production.
+          </List.Item>
+          <List.Item>Optimized SQL queries and streamlined data retrieval pipelines.</List.Item>
+          <List.Item>Performed QA testing, debugging, and production-level bug prevention.</List.Item>
+        </List>
+      </Paper>
 
-        <Divider my="lg" />
+      <Divider my="xl" />
 
-        <Paper p="md" my="lg" radius="md">
-          <Title order={3}>Modern C++ Teaching Assistant | Utah State University, Logan, UT</Title>
-          <Text size="sm" style={{ marginBottom: 10 }}>August 2023 - December 2023</Text>
+      {/* ===================== COMPUTER VISION ===================== */}
+      <Paper p="lg" my="xl" radius="md" shadow="xs">
+        <Title order={3} c="blue.6">
+          Computer Vision Research Assistant | Utah State University
+        </Title>
+        <Text size="sm" c="dimmed" mb="md">
+          January 2024 – May 2024
+        </Text>
 
-          <Text>
-            I served as a Modern C++ Teaching Assistant for Dr. Dean Mathias to enhance the Modern C++ course curriculum. My responsibilities included developing student-facing documentation, researching emerging C++ features, and updating homework assignments to incorporate modern practices and prepare the course for future semesters.
-          </Text>
-          <br/>
-          <Text>
-            During this role, I conducted an in-depth evaluation of <b>C++ Modules</b> using the GCC compiler, identifying limitations in current compiler support. Afterwards, I provided actionable insights on the integration feasibility of modules into the course, balancing experimental features with teaching reliability.
-          </Text>
-          <br/>
-          <Text>
-            Finally, I designed and implemented a custom <b>std::vector</b> variant utilizing a bucket-based memory allocation system, which allocates memory in chunks rather than contiguous blocks. My goal was to create a rough-draft "proof-of-concept" future homework assignment, to assess vital C++ skills such as templates, iterators, and memory management. The source code is available <Link to="https://github.com/Tyler-Johnston/Bucket-Vector" target="_blank">here</Link>.
-          </Text>
-          <br/>
-          <Image className="mediumImage" src={bucketvector} alt="Bucket vector implementation example"/>
-          <Text>Key Achievements:</Text>
-          <br/>
-          <List
-            spacing="xs"
-            size="sm"
-            style={{ marginBottom: 10 }}
-          >
-            <List.Item>Enhanced the Modern C++ course by drafting documentation, updating assignments, and researching new language features.</List.Item>
-            <List.Item>Analyzed <b>C++ Modules</b> in GCC, identifying limitations and providing recommendations for safe curriculum integration.</List.Item>
-            <List.Item>Developed a custom bucket-based <b>std::vector</b> demonstrating templates, iterators, and optimized memory allocation for large datasets.</List.Item>
-            <List.Item>Produced educational resources and practical examples that highlight advanced C++ concepts for student learning.</List.Item>
-          </List>
-        </Paper>
+        <Text lh={1.7}>
+          I collaborated with Dr. Brent Chamberlain and Dr. Xiaojun Qi on an AI-driven urban
+          accessibility project, developing pipelines to detect and map infrastructure features for
+          evaluating <b>ADA (Americans with Disabilities Act)</b> compliance at city scale.
+        </Text>
+        <Space h="md" />
+        <Text lh={1.7}>
+          Using <b>YOLOv8</b> and <b>Roboflow</b>, I trained models to detect curb ramps, pedestrian
+          signs, and traffic lights from <b>Google Street View</b> imagery. I then automated image
+          downloads, extracted GPS metadata, and built geospatial datasets for visualization and
+          compliance analysis.
+        </Text>
 
+        <Image
+          src={boundingbox}
+          alt="Bounding box detection example"
+          className="mediumImage"
+          mt="lg"
+        />
 
-        <Divider my="lg" />
+        <Title order={5} mt="md">
+          Key Achievements:
+        </Title>
+        <List spacing="xs" size="sm" mt="xs">
+          <List.Item>
+            Applied <b>YOLOv8</b> and <b>Roboflow</b> to classify infrastructure across U.S. cities.
+          </List.Item>
+          <List.Item>
+            Automated data retrieval and metadata extraction from <b>Google Street View</b>.
+          </List.Item>
+          <List.Item>
+            Produced datasets and heatmaps for <b>ADA compliance</b> evaluation.
+          </List.Item>
+        </List>
+      </Paper>
 
-        <Paper p="md" my="lg" radius="md">
-          <Title order={3}>Web Developer | Space Dynamics Laboratory (Remote)</Title>
-          <Text size="sm" style={{ marginBottom: 10 }}>March 2023 - June 2023</Text>
+      <Divider my="xl" />
 
-          <Text>
-            I collaborated with Utah State University's Analytics Solutions Center to develop a full-stack web application for Space Dynamics Laboratory (SDL), aimed at modernizing workflows for proprietary software. I designed and implemented the front-end using <b>React.js</b> and <b>React-Flow</b> for interactive drag-and-drop process visualization, and developed the back-end in <b>C#/.NET</b> to connect with a <b>Docker</b> container for automated data extraction.
-          </Text>
-          <br/>
-          <Text>
-            Previously, SDL developers manually created and edited deeply nested XML documents, a process that was error-prone and inefficient. To resolve this, I developed <b>BlockBuilder</b>, enabling users to create, edit, and connect flow processes visually. With it, users are able to start a new process from scratch or upload/modify/tweak existing processes. Following which, they can export the results in <b>JSON or XML</b> formats for seamless integration with SDL's proprietary applications.
-          </Text>
-          <br/>
-          <Image className="mediumImage" src={blockbuilder} alt="BlockBuilder interface"/>
-          <Text>Key Achievements:</Text>
-          <br/>
-          <List
-            spacing="xs"
-            size="sm"
-            style={{ marginBottom: 10 }}
-          >
-            <List.Item>Developed an interactive <b>drag-and-drop UI</b> using <b>React.js</b> and <b>React-Flow</b> to read, display, edit, and export JSON and XML data for SDL's proprietary software.</List.Item>
-            <List.Item>Implemented a <b>C#/.NET back-end</b> that connected to a <b>Docker</b> image and transferred data to the front-end via RESTful API calls.</List.Item>
-            <List.Item>Enabled clients to create flow processes from scratch or upload existing ones, edit or create new parameters, and export in <b>JSON or XML</b> formats for integration with SDL software.</List.Item>
-            <List.Item>Streamlined development workflows, reducing errors and increasing productivity for SDL developers.</List.Item>
-          </List>
-        </Paper>
+      {/* ===================== C++ TEACHING ASSISTANT ===================== */}
+      <Paper p="lg" my="xl" radius="md" shadow="xs">
+        <Title order={3} c="blue.6">
+          Modern C++ Teaching Assistant | Utah State University
+        </Title>
+        <Text size="sm" c="dimmed" mb="md">
+          August 2023 – December 2023
+        </Text>
 
+        <Text lh={1.7}>
+          Supported Dr. Dean Mathias in refining the <b>Modern C++</b> curriculum through updated
+          documentation, assignment design, and research into emerging C++ features.
+        </Text>
+        <Space h="md" />
+        <Text lh={1.7}>
+          Conducted evaluations of <b>C++ Modules</b> with GCC, providing feedback on adoption
+          feasibility. Additionally, I designed a custom <b>bucket-based std::vector</b> that
+          optimizes memory allocation for large datasets. The prototype assignment is available{' '}
+          <Link to="https://github.com/Tyler-Johnston/Bucket-Vector" target="_blank">
+            here
+          </Link>
+          .
+        </Text>
 
-        <Group justify="center" mt="md">
-        <Button component={Link} to="/" size="md">
+        <Image
+          src={bucketvector}
+          alt="Bucket vector implementation example"
+          className="mediumImage"
+          mt="lg"
+        />
+
+        <Title order={5} mt="md">
+          Key Achievements:
+        </Title>
+        <List spacing="xs" size="sm" mt="xs">
+          <List.Item>
+            Enhanced the Modern C++ course with new materials and documentation.
+          </List.Item>
+          <List.Item>
+            Analyzed <b>C++ Modules</b> and recommended safe curriculum integration strategies.
+          </List.Item>
+          <List.Item>
+            Developed a bucket-based <b>std::vector</b> to demonstrate templates and iterators.
+          </List.Item>
+          <List.Item>Produced practical examples of advanced memory management in C++.</List.Item>
+        </List>
+      </Paper>
+
+      <Divider my="xl" />
+
+      {/* ===================== SDL ===================== */}
+      <Paper p="lg" my="xl" radius="md" shadow="xs">
+        <Title order={3} c="blue.6">
+          Web Developer | Space Dynamics Laboratory (Remote)
+        </Title>
+        <Text size="sm" c="dimmed" mb="md">
+          March 2023 – June 2023
+        </Text>
+
+        <Text lh={1.7}>
+          Developed a full-stack web application, <b>BlockBuilder</b>, to modernize XML workflow
+          editing for Space Dynamics Laboratory. I implemented the front end with{' '}
+          <b>React.js</b> and <b>React Flow</b> for drag-and-drop visualization, and built a{' '}
+          <b>C#/.NET</b> backend interfacing with <b>Docker</b> containers.
+        </Text>
+        <Space h="md" />
+        <Text lh={1.7}>
+          The application replaced manual XML editing with a visual process designer, allowing users
+          to upload, modify, and export configurations in <b>JSON</b> or <b>XML</b> formats. This
+          significantly reduced errors and improved developer productivity.
+        </Text>
+
+        <Image
+          src={blockbuilder}
+          alt="BlockBuilder interface"
+          className="mediumImage"
+          mt="lg"
+        />
+
+        <Title order={5} mt="md">
+          Key Achievements:
+        </Title>
+        <List spacing="xs" size="sm" mt="xs">
+          <List.Item>
+            Built an interactive <b>drag-and-drop UI</b> using <b>React.js</b> and <b>React Flow</b>.
+          </List.Item>
+          <List.Item>
+            Developed a <b>C#/.NET backend</b> integrated with <b>Docker</b> containers.
+          </List.Item>
+          <List.Item>
+            Enabled import/export of <b>JSON</b> and <b>XML</b> configurations for SDL software.
+          </List.Item>
+          <List.Item>
+            Streamlined workflows, reducing XML-related errors and improving efficiency.
+          </List.Item>
+        </List>
+      </Paper>
+
+      <Group justify="center" mt="xl">
+        <Button
+          component={Link}
+          to="/"
+          size="md"
+          leftSection={<FaUser />}
+          variant="light"
+        >
           View About Me
         </Button>
-        <Button component={Link} to="/portfolio" size="md">
+        <Button
+          component={Link}
+          to="/portfolio"
+          size="md"
+          leftSection={<FaReact />}
+          variant="filled"
+        >
           View Projects
         </Button>
       </Group>
-      </Container>
-    </>
+    </Container>
   );
 };
 
