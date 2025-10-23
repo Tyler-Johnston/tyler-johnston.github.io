@@ -108,7 +108,7 @@ const projects: Record<CategoryKey, Project[]> = {
       id: 6,
       title: 'Reptile Tracker',
       description:
-        'A React.js + Express.js web app for managing pet reptile care, including authentication and persistent cloud storage.',
+        'A React.js + Express.js web app for managing pet reptile care, including authentication and persistent storage.',
       imageUrl: reptiletracker,
       projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker',
     },

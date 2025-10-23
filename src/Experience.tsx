@@ -174,7 +174,7 @@ const Experience = () => {
       {/* ===================== SDL ===================== */}
       <Paper p="lg" my="xl" radius="md" shadow="xs">
         <Title order={3} c="blue.6">
-          Web Developer | Space Dynamics Laboratory (Remote)
+          Web Developer | Space Dynamics Laboratory
         </Title>
         <Text size="sm" c="dimmed" mb="md">
           March 2023 – June 2023
