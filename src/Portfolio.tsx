@@ -27,6 +27,7 @@ import market from '../images/job_market.jpg';
 import customer_behavior from '../images/customer-behavior.jpg';
 import bees from '../images/bees.jpg';
 import rps from '../images/rps.png';
+import absentee from '../images/absentee.png'
 
 const categories = [
   { key: 'dataAnalytics', label: '📊 Data Analytics' },
@@ -49,6 +50,13 @@ const projects: Record<CategoryKey, Project[]> = {
   dataAnalytics: [
     {
       id: 1,
+      title: 'Absentee Analysis',
+      description: 'Analyzed employee absenteeism data using clustering techniques to identify patterns and actionable insights.',
+      imageUrl: absentee,
+      projectUrl: 'https://github.com/Tyler-Johnston/Absentee-Analysis',
+    },
+    {
+      id: 2,
       title: 'Utah Job Market Analysis',
       description:
         'Analyzed wage and cost-of-living data across Utah counties to determine the most affordable locations for programmers.',
@@ -57,14 +65,14 @@ const projects: Record<CategoryKey, Project[]> = {
         'https://github.com/Tyler-Johnston/Utah-Programmer-Job-Market-Analysis',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Customer Behavior Analysis',
       description:
       'Developed classification models to predict purchase intent and customer churn, comparing logistic regression and SVMs.',
       imageUrl: customer_behavior,
       projectUrl:
         'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis',
-    },
+    }
   ],
   machineLearning: [
     {
