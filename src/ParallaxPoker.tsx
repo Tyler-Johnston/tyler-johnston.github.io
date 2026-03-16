@@ -574,6 +574,8 @@ const tiltStates = [
 
 const TiltDemo = () => {
   const [tiltIndex, setTiltIndex] = useState(0);
+  const [randomAcc1] = useState(() => Math.floor(Math.random() * 16));
+  const [randomAcc2] = useState(() => Math.floor(Math.random() * 16));
   const tilt = tiltStates[tiltIndex];
 
   return (
@@ -624,19 +626,19 @@ const TiltDemo = () => {
               {boyWizardExpressions ? (
                 <>
                 <SpriteLayer
-                  src={boyWizardAccessory1}
-                  frame={0}
+                  src={steveAccessory1}
+                  frame={randomAcc1}
                   label="Accessory 1"
                   zIndex={1}
                 />
                 <SpriteLayer
-                  src={boyWizardAccessory2}
-                  frame={0}
+                  src={steveAccessory2}
+                  frame={randomAcc2}
                   label="Accessory 2"
                   zIndex={1}
                 />
                 <SpriteLayer
-                  src={boyWizardExpressions}
+                  src={steveExpressions}
                   frame={tilt.expressionFrame}
                   label="Face"
                   zIndex={1}
@@ -870,6 +872,11 @@ const circuitColors: Record<string, string> = {
 
 const CharacterSelect = () => {
   const [index, setIndex] = useState(0);
+  
+  // Calculate a random frame (0 to 15) once on component load
+  const [randomAcc1] = useState(() => Math.floor(Math.random() * 16));
+  const [randomAcc2] = useState(() => Math.floor(Math.random() * 16));
+  
   const c = characters[index];
 
   const prev = () =>
@@ -980,8 +987,8 @@ const CharacterSelect = () => {
             >
               {c.expressions ? (
                 <>
-                  <SpriteLayer src={c.acc1} frame={0} label="Accessory 1" zIndex={1} />
-                  <SpriteLayer src={c.acc2} frame={0} label="Accessory 2" zIndex={2} />
+                  <SpriteLayer src={c.acc1} frame={randomAcc1} label="Accessory 1" zIndex={1} />
+                  <SpriteLayer src={c.acc2} frame={randomAcc2} label="Accessory 2" zIndex={2} />
                   <SpriteLayer src={c.expressions} frame={0} label="Face" zIndex={3} />
                 </>
               ) : (
@@ -1089,6 +1096,7 @@ const CharacterSelect = () => {
     </Card>
   );
 };
+
 
 const techStack = [
   { label: 'Language', value: 'C#' },
