@@ -16,6 +16,7 @@ import {
   Table,
   ActionIcon,
   Tooltip,
+  Collapse,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import {
@@ -27,25 +28,68 @@ import {
   FaChessKnight,
   FaDice,
   FaGlobeAmericas,
-  FaClock,
   FaEye,
   FaCommentDots,
   FaVolumeUp,
   FaLayerGroup,
   FaBook,
-  FaDesktop,
   FaChevronLeft,
   FaChevronRight,
+  FaChevronDown,
   FaRandom,
 } from 'react-icons/fa';
 
-import boyWizardExpressions from '../images/boy_wizard_expressions.png';
-import boyWizardAccessory1 from '../images/boywizard_accessories1.png';
-import boyWizardAccessory2 from '../images/boywizard_accessories2.png';
+import parallaxPokerMain from '../images/parallax-poker-main.png';
+
+import steveExpressions from '../images/expressions/steve_expressions.png';
+import steveAccessory1 from '../images/accessories/steve_accessories1.png';
+import steveAccessory2 from '../images/accessories/steve_accessories2.png';
+
+import aryllExpressions from '../images/expressions/aryll_expressions.png';
+import aryllAccessory1 from '../images/accessories/aryll_accessories1.png';
+import aryllAccessory2 from '../images/accessories/aryll_accessories2.png';
+
+import boyWizardExpressions from '../images/expressions/boy_wizard_expressions.png';
+import boyWizardAccessory1 from '../images/accessories/boywizard_accessories1.png';
+import boyWizardAccessory2 from '../images/accessories/boywizard_accessories2.png';
+
+import princessExpressions from '../images/expressions/princess_expressions.png';
+import princessAccessory1 from '../images/accessories/princess_accessories1.png';
+import princessAccessory2 from '../images/accessories/princess_accessories2.png';
+
+import malandroExpressions from '../images/expressions/malandro_expressions.png';
+import malandroAccessory1 from '../images/accessories/malandro_accessories1.png';
+import malandroAccessory2 from '../images/accessories/malandro_accessories2.png';
+
+import cowboyExpressions from '../images/expressions/cowboy_expressions.png';
+import cowboyAccessory1 from '../images/accessories/cowboy_accessories1.png';
+import cowboyccessory2 from '../images/accessories/cowboy_accessories2.png';
+
+import kingExpressions from '../images/expressions/king_expressions.png';
+import kingAccessory1 from '../images/accessories/king_accessories1.png';
+import kingAcessory2 from '../images/accessories/king_accessories2.png';
+
+import oldWizardExpressions from '../images/expressions/old_wizard_expressions.png';
+import oldWizardAccessory1 from '../images/accessories/oldwizard_accessories1.png';
+import oldWizardAccessory2 from '../images/accessories/oldwizard_accessories2.png';
+
+import akaliteExpressions from '../images/expressions/akalite_expressions.png';
+import akaliteAccessory1 from '../images/accessories/akalite_accessories1.png';
+import akaliteAccessory2 from '../images/accessories/akalite_accessories2.png';
+
+import morning_a from '../images/backgrounds/morning_a.png';
+import morning_b from '../images/backgrounds/morning_b.png';
+import afternoon_a from '../images/backgrounds/afternoon_a.png';
+import afternoon_b from '../images/backgrounds/afternoon_b.png';
+import evening_a from '../images/backgrounds/evening_a.png';
+import evening_b from '../images/backgrounds/evening_b.png';
+import night_a from '../images/backgrounds/night_a.png';
+import night_b from '../images/backgrounds/night_b.png';
+
+const boyWizardBackgrounds: string[] = [morning_a, morning_b, afternoon_a, afternoon_b, evening_a, evening_b, night_a, night_b]; ;
 
 const TOTAL_FRAMES = 16;
 
-// Must match the Expression enum order in the game
 const expressionLabels: Record<number, string> = {
   0: 'Neutral',
   1: 'Neutral (tilted)',
@@ -68,7 +112,7 @@ const expressionLabels: Record<number, string> = {
 const boyWizardNames = [
   'Boy Wizard', 'Wiz Kid', 'Abracadaniel', 'Apprentice', 'Dijkstra',
   'Larry', 'Fibonacci', 'Cipher', 'Enigma', 'Mark II',
-  'David', 'Doctor', 'Beans', 'Tom', 'Scott',
+  'David', 'Doctor', 'Beans', 'Tom', 'Scott', 'Turing',
 ];
 
 const timeSlots = [
@@ -256,6 +300,24 @@ const SpriteLayerDemo = () => {
               backgroundColor: 'var(--mantine-color-dark-7)',
             }}
           >
+            {/* Background layer */}
+            {boyWizardBackgrounds[bgSlot * 2 + bgVariant] && (
+              <img
+                src={boyWizardBackgrounds[bgSlot * 2 + bgVariant]}
+                alt={`${currentSlot.label} background`}
+                draggable={false}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  imageRendering: 'pixelated',
+                  zIndex: 0,
+                }}
+              />
+            )}
             {hasImages ? (
               <>
                 <SpriteLayer
@@ -467,9 +529,216 @@ const SpriteLayerDemo = () => {
   );
 };
 
+const tiltStates = [
+  {
+    name: 'Zen',
+    color: 'green',
+    expressionFrame: 0,
+    outlineColor: 'transparent',
+    glowSize: 0,
+    description:
+      'Calm and collected. Clean speech blips at normal pitch. No visual distortion. Environmental lighting drives the sprite outline — cyan at night, warm at evening, off during day.',
+    statEffect: 'Baseline personality stats — playing as designed.',
+  },
+  {
+    name: 'Annoyed',
+    color: 'yellow',
+    expressionFrame: 10,
+    outlineColor: 'transparent',
+    glowSize: 0,
+    description:
+      'Starting to crack. Voice pitch drops slightly. Personality stats begin shifting — aggression, bluff frequency, and risk tolerance scale upward by per-character tilt weights.',
+    statEffect: 'Play becomes noticeably more reckless and loose.',
+  },
+  {
+    name: 'Steaming',
+    color: 'orange',
+    expressionFrame: 11,
+    outlineColor: '#ff8c1a',
+    glowSize: 6,
+    description:
+      'Visibly upset. Speech blips gain a second overlapping interrupt 60ms later. A glowing orange shader outline burns around the character sprite, overriding all environmental lighting.',
+    statEffect: 'Hero calls activate. Bluff shove probability doubles.',
+  },
+  {
+    name: 'Monkey',
+    color: 'red',
+    expressionFrame: 11,
+    outlineColor: '#ff2a2a',
+    glowSize: 10,
+    description:
+      'Full meltdown. Three stacked low-pitch blip interrupts. Intense red shader outline. Expression locked to Angry. All personality stats maximally distorted by tilt weights.',
+    statEffect: 'Rage quit threshold approaching. One more bad beat could end the match.',
+  },
+];
+
+const TiltDemo = () => {
+  const [tiltIndex, setTiltIndex] = useState(0);
+  const tilt = tiltStates[tiltIndex];
+
+  return (
+    <Card
+      shadow="sm"
+      radius="md"
+      withBorder
+      p={0}
+      style={{
+        overflow: 'hidden',
+        backgroundColor: 'var(--mantine-color-dark-8)',
+      }}
+    >
+      <Grid gutter={0}>
+        {/* Left: character preview with tilt glow */}
+        <Grid.Col span={{ base: 12, sm: 5 }}>
+          <Box
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 'var(--mantine-spacing-xl)',
+              minHeight: 280,
+              backgroundColor: 'var(--mantine-color-dark-8)',
+            }}
+          >
+            {/* Sprite with glow effect */}
+            <Box
+              style={{
+                position: 'relative',
+                width: 140,
+                height: 140,
+                borderRadius: 'var(--mantine-radius-md)',
+                overflow: 'hidden',
+                backgroundColor: 'var(--mantine-color-dark-7)',
+                boxShadow:
+                  tilt.glowSize > 0
+                    ? `0 0 ${tilt.glowSize * 2}px ${tilt.glowSize}px ${tilt.outlineColor}, inset 0 0 ${tilt.glowSize}px 0px ${tilt.outlineColor}40`
+                    : 'none',
+                transition: 'box-shadow 0.5s ease',
+                border:
+                  tilt.glowSize > 0
+                    ? `2px solid ${tilt.outlineColor}`
+                    : '2px solid transparent',
+              }}
+            >
+              {boyWizardExpressions ? (
+                <>
+                <SpriteLayer
+                  src={boyWizardAccessory1}
+                  frame={0}
+                  label="Accessory 1"
+                  zIndex={1}
+                />
+                <SpriteLayer
+                  src={boyWizardAccessory2}
+                  frame={0}
+                  label="Accessory 2"
+                  zIndex={1}
+                />
+                <SpriteLayer
+                  src={boyWizardExpressions}
+                  frame={tilt.expressionFrame}
+                  label="Face"
+                  zIndex={1}
+                />
+                </>
+              ) : (
+                <Stack align="center" justify="center" h="100%" gap={4}>
+                  <FaVolumeUp
+                    size={24}
+                    color={
+                      tilt.outlineColor !== 'transparent'
+                        ? tilt.outlineColor
+                        : 'var(--mantine-color-blue-4)'
+                    }
+                  />
+                </Stack>
+              )}
+            </Box>
+
+            {/* Tilt state selector */}
+            <Group justify="center" mt="md" gap={6}>
+              {tiltStates.map((t, i) => (
+                <Tooltip key={t.name} label={t.name} position="bottom" withArrow>
+                  <Badge
+                    size="md"
+                    variant={i === tiltIndex ? 'filled' : 'light'}
+                    color={t.color}
+                    style={{ cursor: 'pointer', transition: 'all 0.2s ease' }}
+                    onClick={() => setTiltIndex(i)}
+                  >
+                    {t.name}
+                  </Badge>
+                </Tooltip>
+              ))}
+            </Group>
+          </Box>
+        </Grid.Col>
+
+        {/* Right: description */}
+        <Grid.Col span={{ base: 12, sm: 7 }}>
+          <Box
+            p="xl"
+            style={{
+              backgroundColor: 'var(--mantine-color-dark-7)',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Group gap="sm" mb="sm">
+              <Badge size="lg" variant="filled" color={tilt.color}>
+                {tilt.name}
+              </Badge>
+              <Text size="xs" c="dimmed">
+                Tilt state {tiltIndex + 1} of 4
+              </Text>
+            </Group>
+
+            <Text size="sm" c="gray.3" mb="md">
+              {tilt.description}
+            </Text>
+
+            <Box
+              p="sm"
+              style={{
+                borderLeft: `3px solid var(--mantine-color-${tilt.color}-6)`,
+                backgroundColor: 'var(--mantine-color-dark-6)',
+                borderRadius:
+                  '0 var(--mantine-radius-sm) var(--mantine-radius-sm) 0',
+              }}
+            >
+              <Text size="xs" c="dimmed" fs="italic">
+                {tilt.statEffect}
+              </Text>
+            </Box>
+          </Box>
+        </Grid.Col>
+      </Grid>
+
+      <Box
+        py={6}
+        style={{
+          backgroundColor: 'var(--mantine-color-dark-7)',
+          textAlign: 'center',
+        }}
+      >
+        <Text size="xs" c="dimmed">
+          Tilt scales by pot size — a 2 BB loss barely registers, a 50 BB
+          all-in loss is devastating. Bad beats hit hardest.
+        </Text>
+      </Box>
+    </Card>
+  );
+};
+
 const characters = [
   {
     name: 'Steve',
+    expressions: steveExpressions,
+    acc1: steveAccessory1,
+    acc2: steveAccessory2,
     circuit: 'Green',
     country: 'Australia',
     flag: '🇦🇺',
@@ -477,9 +746,13 @@ const characters = [
     archetype: 'Honest player — folds to pressure',
     color: 'green',
     flavor: 'Laid-back skater kid who wears his heart on his sleeve',
+    quote: "Yeah nah, I'm out mate.",
   },
   {
     name: 'Aryll',
+    expressions: aryllExpressions,
+    acc1: aryllAccessory1,
+    acc2: aryllAccessory2,
     circuit: 'Green',
     country: 'Canada',
     flag: '🇨🇦',
@@ -487,9 +760,13 @@ const characters = [
     archetype: 'Sticky calling station — never folds',
     color: 'green',
     flavor: 'Passive and stubborn, will call anything out of spite',
+    quote: "I'll call. I always call.",
   },
   {
     name: 'Boy Wizard',
+    expressions: boyWizardExpressions,
+    acc1: boyWizardAccessory1,
+    acc2: boyWizardAccessory2,
     circuit: 'Green',
     country: 'England',
     flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
@@ -497,9 +774,13 @@ const characters = [
     archetype: 'Fake aggro — bets big but crumbles when re-raised',
     color: 'green',
     flavor: 'Chaotic student who bluffs constantly but panics under pressure',
+    quote: 'I doubt you can afford to match this.',
   },
   {
     name: 'Princess',
+    expressions: princessExpressions,
+    acc1: princessAccessory1,
+    acc2: princessAccessory2,
     circuit: 'Red',
     country: 'South Korea',
     flag: '🇰🇷',
@@ -507,19 +788,27 @@ const characters = [
     archetype: 'Balanced — solid value and bluff mix',
     color: 'red',
     flavor: 'Whimsical and unpredictable, hard to get a read on',
+    quote: "You think you know what I'm doing?",
   },
   {
     name: 'Cowboy',
+    expressions: cowboyExpressions,
+    acc1: cowboyAccessory1,
+    acc2: cowboyccessory2,
     circuit: 'Red',
     country: 'United States',
     flag: '🇺🇸',
     age: 29,
     archetype: 'LAG — wide ranges, constant pressure',
     color: 'red',
-    flavor: 'Traditional rancher who bets like he\'s got nothing to lose',
+    flavor: "Traditional rancher who bets like he's got nothing to lose",
+    quote: "Let's kick it up a notch.",
   },
   {
     name: 'Malandro',
+    expressions: malandroExpressions,
+    acc1: malandroAccessory1,
+    acc2: malandroAccessory2,
     circuit: 'Red',
     country: 'Brazil',
     flag: '🇧🇷',
@@ -527,19 +816,27 @@ const characters = [
     archetype: 'Maniac — hyper-aggressive, almost never folds',
     color: 'red',
     flavor: 'Street-smart grinder who treats every hand like a street fight',
+    quote: 'Fold? Never heard of it.',
   },
   {
     name: 'King',
+    expressions: kingExpressions,
+    acc1: kingAccessory1,
+    acc2: kingAcessory2,
     circuit: 'Blue',
     country: 'Morocco',
     flag: '🇲🇦',
     age: 41,
     archetype: 'GTO Boss — balanced frequencies across all streets',
     color: 'blue',
-    flavor: 'Elegant and calculated, plays like he\'s solved the game',
+    flavor: "Elegant and calculated, plays like he's solved the game",
+    quote: 'Every decision has a correct answer.',
   },
   {
     name: 'Old Wizard',
+    expressions: oldWizardExpressions,
+    acc1: oldWizardAccessory1,
+    acc2: oldWizardAccessory2,
     circuit: 'Blue',
     country: 'Fictitious land',
     flag: '🏔️',
@@ -547,9 +844,13 @@ const characters = [
     archetype: 'TAG — only plays premium hands, punishes mistakes',
     color: 'blue',
     flavor: 'Ancient and patient, loves mac and cheese (juxtaposition humor)',
+    quote: 'Patience, young one. The cards will come.',
   },
   {
     name: 'Akalite',
+    expressions: akaliteExpressions,
+    acc1: akaliteAccessory1,
+    acc2: akaliteAccessory2,
     circuit: 'Blue',
     country: 'Iceland',
     flag: '🇮🇸',
@@ -557,8 +858,237 @@ const characters = [
     archetype: 'Unreadable Wall — refuses to fold, impossible to bluff',
     color: 'blue',
     flavor: 'Cool Nordic presence, never gives anything away',
+    quote: '...',
   },
 ];
+
+const circuitColors: Record<string, string> = {
+  Green: 'green',
+  Red: 'red',
+  Blue: 'blue',
+};
+
+const CharacterSelect = () => {
+  const [index, setIndex] = useState(0);
+  const c = characters[index];
+
+  const prev = () =>
+    setIndex((index - 1 + characters.length) % characters.length);
+  const next = () => setIndex((index + 1) % characters.length);
+
+  return (
+    <Card
+      shadow="md"
+      radius="md"
+      withBorder
+      p={0}
+      style={{
+        overflow: 'hidden',
+        backgroundColor: 'var(--mantine-color-dark-8)',
+      }}
+    >
+      {/* Top bar: circuit indicators */}
+      <Group justify="center" gap={6} py="sm" px="md"
+        style={{ backgroundColor: 'var(--mantine-color-dark-7)' }}
+      >
+        {characters.map((ch, i) => (
+          <Tooltip key={ch.name} label={ch.name} position="top" withArrow>
+            <Box
+              onClick={() => setIndex(i)}
+              style={{
+                width: i === index ? 14 : 10,
+                height: i === index ? 14 : 10,
+                borderRadius: '50%',
+                backgroundColor: i === index
+                  ? `var(--mantine-color-${circuitColors[ch.circuit]}-5)`
+                  : `var(--mantine-color-${circuitColors[ch.circuit]}-9)`,
+                border: i === index
+                  ? `2px solid var(--mantine-color-${circuitColors[ch.circuit]}-3)`
+                  : '2px solid transparent',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+            />
+          </Tooltip>
+        ))}
+      </Group>
+
+      {/* Main content */}
+      <Grid gutter={0}>
+        {/* Left: portrait area */}
+        <Grid.Col span={{ base: 12, sm: 5 }}>
+          <Box
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 'var(--mantine-spacing-xl)',
+              minHeight: 300,
+              position: 'relative',
+            }}
+          >
+            {/* Nav arrows */}
+            <ActionIcon
+              variant="subtle"
+              color="gray"
+              size="lg"
+              onClick={prev}
+              radius="xl"
+              style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)' }}
+              aria-label="Previous character"
+            >
+              <FaChevronLeft size={14} />
+            </ActionIcon>
+            <ActionIcon
+              variant="subtle"
+              color="gray"
+              size="lg"
+              onClick={next}
+              radius="xl"
+              style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)' }}
+              aria-label="Next character"
+            >
+              <FaChevronRight size={14} />
+            </ActionIcon>
+
+            {/* Character display */}
+            <Badge
+              size="sm"
+              variant="filled"
+              color={circuitColors[c.circuit]}
+              mb="xs"
+            >
+              {c.circuit} Circuit
+            </Badge>
+
+            {/* Portrait updated with Character Art */}
+            <Box
+              style={{
+                position: 'relative',
+                width: 140,
+                height: 140,
+                borderRadius: '50%',
+                overflow: 'hidden',
+                backgroundColor: `var(--mantine-color-${circuitColors[c.circuit]}-9)`,
+                border: `3px solid var(--mantine-color-${circuitColors[c.circuit]}-6)`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 'var(--mantine-spacing-sm)'
+              }}
+            >
+              {c.expressions ? (
+                <>
+                  <SpriteLayer src={c.acc1} frame={0} label="Accessory 1" zIndex={1} />
+                  <SpriteLayer src={c.acc2} frame={0} label="Accessory 2" zIndex={2} />
+                  <SpriteLayer src={c.expressions} frame={0} label="Face" zIndex={3} />
+                </>
+              ) : (
+                <Text size="3rem" style={{ lineHeight: 1 }}>{c.flag}</Text>
+              )}
+            </Box>
+
+            <Title order={3} c="white" ta="center">
+              {c.name}
+            </Title>
+            <Text size="xs" c="dimmed" ta="center">
+              Age {c.age} · {c.country}
+            </Text>
+          </Box>
+        </Grid.Col>
+
+        {/* Right: details */}
+        <Grid.Col span={{ base: 12, sm: 7 }}>
+          <Box
+            p="xl"
+            style={{
+              backgroundColor: 'var(--mantine-color-dark-7)',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <Badge
+              size="xs"
+              variant="light"
+              color={circuitColors[c.circuit]}
+              mb="sm"
+            >
+              {c.archetype}
+            </Badge>
+
+            <Text size="sm" c="gray.3" mb="md">
+              {c.flavor}
+            </Text>
+
+            <Box
+              p="sm"
+              mb="md"
+              style={{
+                borderLeft: `3px solid var(--mantine-color-${circuitColors[c.circuit]}-6)`,
+                backgroundColor: 'var(--mantine-color-dark-6)',
+                borderRadius: '0 var(--mantine-radius-sm) var(--mantine-radius-sm) 0',
+              }}
+            >
+              <Text size="xs" c="dimmed" fs="italic">
+                &ldquo;{c.quote}&rdquo;
+              </Text>
+            </Box>
+
+            <Group gap="lg">
+              <Box>
+                <Text size="xs" c="dimmed" tt="uppercase" fw={500} mb={2}>
+                  Circuit
+                </Text>
+                <Badge
+                  variant="dot"
+                  color={circuitColors[c.circuit]}
+                  size="sm"
+                >
+                  {c.circuit}
+                </Badge>
+              </Box>
+              <Box>
+                <Text size="xs" c="dimmed" tt="uppercase" fw={500} mb={2}>
+                  Origin
+                </Text>
+                <Text size="sm" c="gray.3">
+                  {c.flag} {c.country}
+                </Text>
+              </Box>
+              <Box>
+                <Text size="xs" c="dimmed" tt="uppercase" fw={500} mb={2}>
+                  Difficulty
+                </Text>
+                <Text size="sm" c="gray.3">
+                  {c.circuit === 'Green'
+                    ? 'Beginner'
+                    : c.circuit === 'Red'
+                    ? 'Intermediate'
+                    : 'Advanced'}
+                </Text>
+              </Box>
+            </Group>
+          </Box>
+        </Grid.Col>
+      </Grid>
+
+      {/* Keyboard hint */}
+      <Group
+        justify="center"
+        py={6}
+        style={{ backgroundColor: 'var(--mantine-color-dark-7)' }}
+      >
+        <Text size="xs" c="dimmed">
+          {index + 1} / {characters.length} — Click the dots or use the arrows
+          to browse
+        </Text>
+      </Group>
+    </Card>
+  );
+};
 
 const techStack = [
   { label: 'Language', value: 'C#' },
@@ -570,6 +1100,8 @@ const techStack = [
 ];
 
 const ParallaxPoker = () => {
+  const [techOpen, setTechOpen] = useState(false);
+
   return (
     <Container size="lg" my={40}>
       {/* ── Back link ── */}
@@ -615,7 +1147,7 @@ const ParallaxPoker = () => {
           <Box
             style={{
               // TODO: replace with actual hero image
-              // backgroundImage: `url(${heroImg})`,
+              backgroundImage: parallaxPokerMain,
               // backgroundSize: 'cover',
               // backgroundPosition: 'center',
               backgroundColor: 'var(--mantine-color-dark-7)',
@@ -679,69 +1211,25 @@ const ParallaxPoker = () => {
             A Roster from Around the World
           </Title>
         </Group>
+        <Text size="sm" c="dimmed" mb="sm">
+          The fiction is simple: you're playing online poker against people from
+          all over the world. The game clock runs on UTC (London time), and
+          every opponent has a real timezone offset based on where they live —
+          so the same run might catch Cowboy in his quiet Texas morning while
+          Princess is playing loose and aggressive in a late Seoul night.
+        </Text>
         <Text size="sm" c="dimmed" mb="lg">
-          9 opponents implemented across three circuits. Each character is from a
-          different country, plays in their local timezone, and has a personality
-          shaped by 15+ tunable stats. Their behavior, dialogue, background art,
-          and mood all shift based on what time it is where they live.
+          Time of day isn't just cosmetic. It shifts personality stats (morning
+          play is tighter, night play is reckless), changes the background art
+          to match their local environment, and adjusts the character lighting
+          — a night player gets a cyan monitor-glow outline, evening gets sunset
+          warmth. Every run rolls the same UTC hour from its seed, so the
+          timezone offsets are consistent but the resulting moods are different
+          per opponent. 9 characters across three circuits, each shaped by 15+
+          tunable stats. Browse the roster below.
         </Text>
 
-        <Stack gap="md">
-          {(['Green', 'Red', 'Blue'] as const).map((circuit) => (
-            <Box key={circuit}>
-              <Badge
-                size="sm"
-                variant="filled"
-                color={
-                  circuit === 'Green'
-                    ? 'green'
-                    : circuit === 'Red'
-                    ? 'red'
-                    : 'blue'
-                }
-                mb="sm"
-              >
-                {circuit} Circuit
-              </Badge>
-              <Grid gutter="md">
-                {characters
-                  .filter((c) => c.circuit === circuit)
-                  .map((c) => (
-                    <Grid.Col
-                      key={c.name}
-                      span={{ base: 12, sm: 6, lg: 4 }}
-                    >
-                      <Card
-                        shadow="sm"
-                        padding="md"
-                        radius="md"
-                        withBorder
-                        h="100%"
-                      >
-                        <Group justify="space-between" mb={6}>
-                          <Group gap="xs">
-                            <Text size="lg">{c.flag}</Text>
-                            <Text fw={600} size="sm">
-                              {c.name}
-                            </Text>
-                          </Group>
-                          <Text size="xs" c="dimmed">
-                            Age {c.age} · {c.country}
-                          </Text>
-                        </Group>
-                        <Text size="xs" c="blue.6" fw={500} mb={4}>
-                          {c.archetype}
-                        </Text>
-                        <Text size="xs" c="dimmed" fs="italic">
-                          {c.flavor}
-                        </Text>
-                      </Card>
-                    </Grid.Col>
-                  ))}
-              </Grid>
-            </Box>
-          ))}
-        </Stack>
+        <CharacterSelect />
       </Box>
 
       <Divider my="xl" />
@@ -755,44 +1243,44 @@ const ParallaxPoker = () => {
             <FaLayerGroup size={16} />
           </ThemeIcon>
           <Title order={2} c="blue.6">
-            32,768 Visual Identities per Character
+            Every Run is a Parallel World
           </Title>
         </Group>
         <Text size="sm" c="dimmed" mb="lg">
-          Each opponent's appearance is assembled from layered sprite sheets,
-          selected deterministically by the run seed. No two runs look the same.
+          This is where the name comes from. Each run generates a unique
+          <i> version</i> of every opponent — a different name, different
+          accessories, different background, different time of day. Same
+          personality archetype, but a parallel-world variant you may have never
+          seen before.
         </Text>
 
         <Grid gutter="lg" mb="lg">
           <Grid.Col span={{ base: 12, md: 7 }}>
             <Text size="sm" mb="md">
-              Every character has a base sprite with 16 expression frames driven
-              live by the tell system. On top of the base, two accessory layers
-              are composited — each drawn from a sprite sheet of 16 color/style
-              variations. At run start, the seeded RNG picks one frame from each
-              accessory sheet and one of 16 name variations.
+              At run start, a seeded RNG rolls each character's identity: one of
+              16 name variations, one of 16 accessory-slot-1 palettes, one of 16
+              accessory-slot-2 palettes, and a time-of-day background with A/B
+              variants. Expressions are separate — those 16 frames are driven
+              live by the tell system during gameplay, not locked at run start.
             </Text>
             <Text size="sm" mb="md">
-              That's <b>16 × 16 × 16 = 4,096</b> name + accessory combinations
-              per character. Each character also has backgrounds for all four
-              time slots — Morning, Afternoon, Evening, and Night — with A/B
-              variants each, giving <b>4 × 2 = 8</b> possible backgrounds.
-              Multiply them together: <b>4,096 × 8 = 32,768</b> distinct
-              visual presentations per character, before personality variance
-              (stat randomization within the circuit tier) is even applied.
+              That gives <b>16 × 16 × 16 = 4,096</b> name + accessory combos.
+              Multiply by <b>4 time slots × 2 background variants = 8</b>, and
+              you get <b>32,768 parallel-world versions</b> of every character —
+              before personality variance (stat randomization within the circuit
+              tier) is even applied.
             </Text>
             <Text size="sm">
               The seed is deterministic — replaying the same run always produces
-              the same opponent appearance, name, and stat spread. This makes
-              the planned Journal system possible: players can track which
-              visual variants they've encountered across runs and work toward
-              completion.
+              the same variant. This enables the planned Journal system: players
+              catalog which parallel-world versions they've encountered across
+              runs and work toward completion.
             </Text>
           </Grid.Col>
           <Grid.Col span={{ base: 12, md: 5 }}>
             <Card shadow="sm" padding="lg" radius="md" withBorder>
               <Title order={5} c="blue.6" mb="sm">
-                Per-character layers
+                What makes each variant unique
               </Title>
               <Table
                 highlightOnHover
@@ -803,24 +1291,12 @@ const ParallaxPoker = () => {
                   <Table.Tr>
                     <Table.Td>
                       <Text size="sm" c="dimmed">
-                        Expression frames
-                      </Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Text size="sm" fw={500}>
-                        16 (driven live by tell system)
-                      </Text>
-                    </Table.Td>
-                  </Table.Tr>
-                  <Table.Tr>
-                    <Table.Td>
-                      <Text size="sm" c="dimmed">
                         Accessory slot 1
                       </Text>
                     </Table.Td>
                     <Table.Td>
                       <Text size="sm" fw={500}>
-                        16 variations (color/style)
+                        16 color/style palettes
                       </Text>
                     </Table.Td>
                   </Table.Tr>
@@ -832,14 +1308,14 @@ const ParallaxPoker = () => {
                     </Table.Td>
                     <Table.Td>
                       <Text size="sm" fw={500}>
-                        16 variations (color/style)
+                        16 color/style palettes
                       </Text>
                     </Table.Td>
                   </Table.Tr>
                   <Table.Tr>
                     <Table.Td>
                       <Text size="sm" c="dimmed">
-                        Name variations
+                        Display name
                       </Text>
                     </Table.Td>
                     <Table.Td>
@@ -851,41 +1327,33 @@ const ParallaxPoker = () => {
                   <Table.Tr>
                     <Table.Td>
                       <Text size="sm" c="dimmed">
-                        Time slots
+                        Time-of-day background
                       </Text>
                     </Table.Td>
                     <Table.Td>
                       <Text size="sm" fw={500}>
-                        4 (morning / afternoon / evening / night)
-                      </Text>
-                    </Table.Td>
-                  </Table.Tr>
-                  <Table.Tr>
-                    <Table.Td>
-                      <Text size="sm" c="dimmed">
-                        Background variants per slot
-                      </Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Text size="sm" fw={500}>
-                        2 (a/b)
+                        4 slots × 2 variants = 8
                       </Text>
                     </Table.Td>
                   </Table.Tr>
                   <Table.Tr>
                     <Table.Td>
                       <Text size="sm" fw={600}>
-                        Total per character
+                        Parallel-world versions
                       </Text>
                     </Table.Td>
                     <Table.Td>
                       <Text size="sm" fw={600} c="blue.6">
-                        32,768 unique presentations
+                        32,768 per character
                       </Text>
                     </Table.Td>
                   </Table.Tr>
                 </Table.Tbody>
               </Table>
+              <Text size="xs" c="dimmed" mt="sm" fs="italic">
+                Expressions (16 frames) are separate — they're driven live by
+                the tell system during gameplay, not rolled at run start.
+              </Text>
             </Card>
           </Grid.Col>
         </Grid>
@@ -966,481 +1434,113 @@ const ParallaxPoker = () => {
             </Card>
           </Grid.Col>
         </Grid>
+
+        {/* Tell demo GIF */}
+        <Card
+          shadow="sm"
+          radius="md"
+          withBorder
+          p={0}
+          mt="lg"
+          style={{ overflow: 'hidden' }}
+        >
+          <Box
+            style={{
+              backgroundColor: 'var(--mantine-color-dark-7)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minHeight: 240,
+            }}
+          >
+            {/* TODO: replace with actual gameplay GIF showing a tell in action */}
+            <Stack align="center" gap={4}>
+              <FaEye size={24} color="var(--mantine-color-blue-4)" />
+              <Text size="xs" c="dimmed" ta="center" px="md">
+                Gameplay GIF — a bluff leaking through face + dialogue
+              </Text>
+            </Stack>
+          </Box>
+        </Card>
       </Box>
 
       <Divider my="xl" />
 
       {/* ══════════════════════════════════════════════════════════════
-          TIME OF DAY + INTERNATIONAL
+          BREAKING YOUR OPPONENT
       ══════════════════════════════════════════════════════════════ */}
       <Box mb="xl">
         <Group mb="sm">
           <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-            <FaClock size={16} />
+            <FaChessKnight size={16} />
           </ThemeIcon>
           <Title order={2} c="blue.6">
-            Time of Day Across the World
-          </Title>
-        </Group>
-        <Text size="sm" c="dimmed" mb="md">
-          Every run locks a UTC start hour via the run seed. Each character's
-          timezone offset converts that into their local time — so the same run
-          can mean morning in Seoul and night in Texas. This isn't just cosmetic.
-        </Text>
-
-        <Grid gutter="lg" mb="lg">
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-              <Title order={5} c="blue.6" mb="sm">
-                What changes by time slot
-              </Title>
-              <List spacing="xs" size="sm">
-                <List.Item>
-                  <b>Personality stats</b> — Morning play is tighter and more
-                  composed. Night play is loose, aggressive, and emotionally
-                  volatile. Afternoon is the most risk-seeking.
-                </List.Item>
-                <List.Item>
-                  <b>Background art</b> — Each character has hand-drawn
-                  backgrounds for each time slot (morning café, afternoon park,
-                  evening apartment, night bar), with A/B variants for variety.
-                </List.Item>
-                <List.Item>
-                  <b>Character lighting</b> — Night backgrounds apply a cyan
-                  monitor-glow outline to the sprite. Evening gets a faint sunset
-                  warmth. Daytime turns the environmental lighting off.
-                </List.Item>
-                <List.Item>
-                  <b>Tilt sensitivity</b> — Characters tilt faster at night and
-                  recover slower, reflecting fatigue and emotional volatility.
-                </List.Item>
-              </List>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, md: 6 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-              <Title order={5} c="blue.6" mb="sm">
-                Example: same run, different worlds
-              </Title>
-              <Text size="sm" c="dimmed" mb="sm">
-                Run starts at 14:00 UTC:
-              </Text>
-              <Table
-                highlightOnHover
-                withTableBorder={false}
-                withColumnBorders={false}
-              >
-                <Table.Tbody>
-                  <Table.Tr>
-                    <Table.Td>
-                      <Text size="sm">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Boy Wizard</Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Text size="sm" c="dimmed">
-                        UTC+0 → 14:00
-                      </Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Badge size="xs" color="yellow" variant="light">
-                        Afternoon
-                      </Badge>
-                    </Table.Td>
-                  </Table.Tr>
-                  <Table.Tr>
-                    <Table.Td>
-                      <Text size="sm">🇺🇸 Cowboy</Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Text size="sm" c="dimmed">
-                        UTC-7 → 07:00
-                      </Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Badge size="xs" color="cyan" variant="light">
-                        Morning
-                      </Badge>
-                    </Table.Td>
-                  </Table.Tr>
-                  <Table.Tr>
-                    <Table.Td>
-                      <Text size="sm">🇰🇷 Princess</Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Text size="sm" c="dimmed">
-                        UTC+9 → 23:00
-                      </Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Badge size="xs" color="indigo" variant="light">
-                        Night
-                      </Badge>
-                    </Table.Td>
-                  </Table.Tr>
-                  <Table.Tr>
-                    <Table.Td>
-                      <Text size="sm">🇲🇦 King</Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Text size="sm" c="dimmed">
-                        UTC+1 → 15:00
-                      </Text>
-                    </Table.Td>
-                    <Table.Td>
-                      <Badge size="xs" color="yellow" variant="light">
-                        Afternoon
-                      </Badge>
-                    </Table.Td>
-                  </Table.Tr>
-                </Table.Tbody>
-              </Table>
-              <Text size="xs" c="dimmed" mt="sm" fs="italic">
-                Boy Wizard is risk-seeking and loose (afternoon). Cowboy is
-                tight and composed (morning). Princess is volatile and aggressive
-                (night). Same seed, different opponents, different strategies
-                needed.
-              </Text>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Box>
-
-      <Divider my="xl" />
-
-      {/* ══════════════════════════════════════════════════════════════
-          TILT & AUDIOVISUAL SYSTEM
-      ══════════════════════════════════════════════════════════════ */}
-      <Box mb="xl">
-        <Group mb="sm">
-          <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-            <FaVolumeUp size={16} />
-          </ThemeIcon>
-          <Title order={2} c="blue.6">
-            Tilt & Audiovisual Degradation
+            Breaking Your Opponent
           </Title>
         </Group>
         <Text size="sm" c="dimmed" mb="lg">
-          When opponents lose badly, their emotional state degrades — and the
-          entire presentation degrades with them.
+          Every match is a battle of attrition, and there's more than one way to
+          end it. Each character is vulnerable to different strategies.
         </Text>
 
-        <Grid gutter="lg">
-          <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-            <Card shadow="sm" padding="md" radius="md" withBorder h="100%">
-              <Badge size="xs" color="green" variant="light" mb="xs">
-                Zen
+        <Grid gutter="lg" mb="xl">
+          <Grid.Col span={{ base: 12, sm: 4 }}>
+            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
+              <Badge size="xs" color="green" variant="light" mb="sm">
+                Chip knockout
               </Badge>
+              <Text size="sm" fw={500} mb={4}>
+                Take all their chips
+              </Text>
               <Text size="xs" c="dimmed">
-                Clean speech blips, normal pitch, no visual distortion, neutral
-                expression by default. Environmental lighting normal.
+                The classic poker win. Grind them down hand by hand, trap them
+                into big pots with strong hands, or exploit their bluffs until
+                their stack hits zero.
               </Text>
             </Card>
           </Grid.Col>
-          <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-            <Card shadow="sm" padding="md" radius="md" withBorder h="100%">
-              <Badge size="xs" color="yellow" variant="light" mb="xs">
-                Annoyed
+          <Grid.Col span={{ base: 12, sm: 4 }}>
+            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
+              <Badge size="xs" color="red" variant="light" mb="sm">
+                Rage quit
               </Badge>
+              <Text size="sm" fw={500} mb={4}>
+                Tilt them until they snap
+              </Text>
               <Text size="xs" c="dimmed">
-                Slightly lower voice pitch. Tilt-influenced stat boosts kick in
-                — aggression, bluff frequency, and risk tolerance all scale
-                upward by per-character tilt weights. Play becomes noticeably
-                more reckless.
+                Every character has a Rage Quit threshold on their tilt meter.
+                Apply relentless pressure — overbets, re-raises, bad-beat
+                setups — until the emotional damage overwhelms them and they
+                storm off.
               </Text>
             </Card>
           </Grid.Col>
-          <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-            <Card shadow="sm" padding="md" radius="md" withBorder h="100%">
-              <Badge size="xs" color="orange" variant="light" mb="xs">
-                Steaming
+          <Grid.Col span={{ base: 12, sm: 4 }}>
+            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
+              <Badge size="xs" color="blue" variant="light" mb="sm">
+                Surrender
               </Badge>
-              <Text size="xs" c="dimmed">
-                Speech blips gain a second overlapping interrupt 60ms later.
-                A glowing orange shader outline appears around the character
-                sprite, overriding all environmental lighting. Expression
-                shifts to visibly upset.
+              <Text size="sm" fw={500} mb={4}>
+                Bleed them slowly
               </Text>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, sm: 6, lg: 3 }}>
-            <Card shadow="sm" padding="md" radius="md" withBorder h="100%">
-              <Badge size="xs" color="red" variant="light" mb="xs">
-                Monkey
-              </Badge>
               <Text size="xs" c="dimmed">
-                Three stacked low-pitch blip interrupts. An intense red shader
-                outline burns around the sprite. Expression locked to Angry.
-                All personality stats are maximally distorted by tilt weights.
-                Rage quit threshold approaching.
+                Each character has a chip threshold below which they'll walk
+                away — but only if they're calm. A zen opponent who's lost 60%
+                of their stack may fold the match entirely, cutting their losses
+                before it gets worse.
               </Text>
             </Card>
           </Grid.Col>
         </Grid>
-        <Text size="xs" c="dimmed" mt="md" fs="italic">
-          Tilt scales by pot size in big blinds — losing a 2 BB pot barely
-          registers, losing a 50 BB all-in at showdown is devastating. Bad beats
-          (opponent was ahead) hit harder than normal losses. Wins reduce tilt
-          proportionally, but small pots give no relief.
-        </Text>
-      </Box>
 
-      {/* ══════════════════════════════════════════════════════════════
-          SECTION DIVIDER — PITCH → TECHNICAL
-      ══════════════════════════════════════════════════════════════ */}
-      <Box my="xl" py="xl" style={{ textAlign: 'center' }}>
-        <Divider
-          mb="lg"
-          label={
-            <Badge size="lg" variant="light" color="gray" radius="sm">
-              Under the hood
-            </Badge>
-          }
-          labelPosition="center"
-        />
-        <Text size="sm" c="dimmed">
-          The systems above describe the player experience. Everything below is
-          how it's built — the technical architecture, tooling, and workflows
-          that make the game possible.
-        </Text>
-      </Box>
-
-      {/* ══════════════════════════════════════════════════════════════
-          SHADER STACK
-      ══════════════════════════════════════════════════════════════ */}
-      <Box mb="xl">
-        <Group mb="sm">
-          <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-            <FaDesktop size={16} />
-          </ThemeIcon>
-          <Title order={2} c="blue.6">
-            Three-Layer Shader Stack
-          </Title>
-        </Group>
         <Text size="sm" c="dimmed" mb="lg">
-          The game's visual identity comes from three custom GLSL shaders
-          composited on top of each other, all running in real time.
+          The tilt system is what makes rage quits possible — and what makes
+          calm opponents dangerous. When an opponent loses badly, their emotional
+          state degrades through four stages, and the entire audiovisual
+          presentation degrades with them. Click through the states below.
         </Text>
 
-        <Grid gutter="lg">
-          <Grid.Col span={{ base: 12, lg: 4 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-              <Badge size="xs" color="blue" variant="light" mb="sm">
-                Layer 1 — Sprite outline
-              </Badge>
-              <Text size="xs" c="dimmed">
-                An 8-direction sample outline shader applied to the layered
-                character sprite. Draws a colored glow only where the sprite is
-                transparent, creating a clean border. At Zen, the outline color
-                reflects environmental lighting — cyan for night (monitor glow),
-                warm white for evening, off during daytime. When tilt overrides
-                kick in, the outline snaps to orange (Steaming) or red (Monkey),
-                plus a drop shadow for depth.
-              </Text>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, lg: 4 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-              <Badge size="xs" color="blue" variant="light" mb="sm">
-                Layer 2 — Webcam simulation
-              </Badge>
-              <Text size="xs" c="dimmed">
-                A full-screen shader on the opponent view that simulates a
-                low-quality video call: barrel distortion, chromatic aberration,
-                scanlines, film grain, and a slow rolling glitch band. A
-                bottom-up monitor glow effect lights the character from below
-                (like a laptop screen in a dark room), with vignette darkening
-                at the edges to simulate room lighting.
-              </Text>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, lg: 4 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-              <Badge size="xs" color="blue" variant="light" mb="sm">
-                Layer 3 — CRT/LCD overlay
-              </Badge>
-              <Text size="xs" c="dimmed">
-                A screen-wide shader that applies an LCD pixel grid effect with
-                visible RGB subpixel separation, anti-glare grain texture, and
-                subtle darkening between pixel rows. This sits over the entire
-                game — cards, table, chips, UI — giving everything a cohesive
-                retro-digital aesthetic.
-              </Text>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Box>
-
-      <Divider my="xl" />
-
-      {/* ══════════════════════════════════════════════════════════════
-          AI DECISION ENGINE + TECH
-      ══════════════════════════════════════════════════════════════ */}
-      <Box mb="xl">
-        <Group mb="sm">
-          <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-            <FaBrain size={16} />
-          </ThemeIcon>
-          <Title order={2} c="blue.6">
-            AI Decision Engine
-          </Title>
-        </Group>
-
-        <Grid gutter="lg">
-          <Grid.Col span={{ base: 12, md: 7 }}>
-            <Text size="sm" mb="md">
-              Every AI decision is computed from scratch — no scripted sequences.
-              A ported Pheval hand evaluator ranks the current hand, which feeds
-              into a strength evaluator that factors in draw potential (flush
-              draws, straight draws, backdoors) and board texture analysis.
-            </Text>
-            <Text size="sm" mb="md">
-              The decision maker takes this hand strength plus the full game
-              state — pot size, bet ratios, position, stack depths — and runs it
-              through personality-weighted thresholds. Each character has 15+
-              personality stats (aggression, bluff frequency, fold-to-pressure,
-              call tendency, raise resistance, risk tolerance, composure, tilt
-              sensitivity, and per-street aggression multipliers) that combine to
-              produce genuinely distinct play styles.
-            </Text>
-            <Text size="sm">
-              The system also handles bluff/value tagging, semi-bluff zone
-              detection, trap decisions (checking strong hands to induce bets),
-              hero call logic for tilted states, and all-in commitment math for
-              deep and short stacks.
-            </Text>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, md: 5 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder>
-              <Group mb="sm">
-                <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-                  <FaCogs size={16} />
-                </ThemeIcon>
-                <Title order={4} c="blue.6">
-                  Tech Stack
-                </Title>
-              </Group>
-              <Stack gap="xs">
-                {techStack.map((item) => (
-                  <Group key={item.label} justify="space-between">
-                    <Text size="sm" c="dimmed">
-                      {item.label}
-                    </Text>
-                    <Text size="sm" fw={500}>
-                      {item.value}
-                    </Text>
-                  </Group>
-                ))}
-              </Stack>
-            </Card>
-          </Grid.Col>
-        </Grid>
-      </Box>
-
-      <Divider my="xl" />
-
-      {/* ══════════════════════════════════════════════════════════════
-          BALANCING PIPELINE
-      ══════════════════════════════════════════════════════════════ */}
-      <Box mb="xl">
-        <Group mb="sm">
-          <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-            <FaChartBar size={16} />
-          </ThemeIcon>
-          <Title order={2} c="blue.6">
-            Data-Driven Balancing Pipeline
-          </Title>
-        </Group>
-        <Text size="sm" c="dimmed" mb="md">
-          One of the most technically interesting parts of this project is the
-          feedback loop between gameplay and data analysis.
-        </Text>
-
-        <Grid gutter="lg" mb="lg">
-          <Grid.Col span={{ base: 12, sm: 6 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-              <Group mb="sm">
-                <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-                  <FaDice size={16} />
-                </ThemeIcon>
-                <Title order={4} c="blue.6">
-                  Monte Carlo gauntlet
-                </Title>
-              </Group>
-              <Text size="sm" c="dimmed">
-                A headless simulation mode runs thousands of AI-vs-AI matches.
-                Each character pairing is tested across all four time slots and
-                variance tiers, producing win-rate distributions and behavioral
-                statistics at scale — no manual playtesting required.
-              </Text>
-            </Card>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, sm: 6 }}>
-            <Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-              <Group mb="sm">
-                <ThemeIcon variant="light" color="blue" size="lg" radius="md">
-                  <FaChartBar size={16} />
-                </ThemeIcon>
-                <Title order={4} c="blue.6">
-                  Analysis reports
-                </Title>
-              </Group>
-              <Text size="sm" c="dimmed">
-                A Python pipeline reads the CSV logs and generates HTML reports
-                with archetype verification, stat-vs-observed alignment charts,
-                engine health diagnostics, and clustering detection. The report
-                flags when characters deviate from their target archetype.
-              </Text>
-            </Card>
-          </Grid.Col>
-        </Grid>
-
-        <Text size="sm" mb="sm" fw={500}>
-          The feedback loop:
-        </Text>
-        <List spacing="xs" size="sm" mb="md">
-          <List.Item>
-            Every AI decision is logged to CSV with 30+ columns — hand strength,
-            bet ratio, tilt state, personality stats, and the final action.
-          </List.Item>
-          <List.Item>
-            The gauntlet collects thousands of rows per archetype across all time
-            slots and variance tiers.
-          </List.Item>
-          <List.Item>
-            The Python analyzer compares observed behavior against target
-            archetypes and flags misalignments (e.g., "Boy Wizard should fold
-            under pressure but his FTP% is 0%").
-          </List.Item>
-          <List.Item>
-            Fixes are applied to the engine or personality resources, the
-            gauntlet re-runs, and the cycle repeats.
-          </List.Item>
-        </List>
-      </Box>
-
-      <Divider my="xl" />
-
-      {/* ══════════════════════════════════════════════════════════════
-          JOURNAL (PLANNED)
-      ══════════════════════════════════════════════════════════════ */}
-      <Box mb="xl">
-        <Group mb="sm">
-          <ThemeIcon variant="light" color="gray" size="lg" radius="md">
-            <FaBook size={16} />
-          </ThemeIcon>
-          <Title order={2} c="blue.6">
-            The Journal
-          </Title>
-          <Badge size="sm" variant="light" color="gray">
-            Planned
-          </Badge>
-        </Group>
-        <Text size="sm" c="dimmed">
-          A persistent completion tracker where players catalog every opponent
-          variant they've encountered — name variations, accessory combinations,
-          background time slots, tells observed, and dialogue heard. With 32,768
-          visual presentations per character and 16 names each, the Journal
-          turns replayability into a collection metagame.
-        </Text>
+        <TiltDemo />
       </Box>
 
       <Divider my="xl" />
@@ -1458,7 +1558,7 @@ const ParallaxPoker = () => {
           </Title>
         </Group>
         <Text size="sm" c="dimmed" mb="lg">
-          Screenshots and gameplay footage will be added here as the project
+          Screenshots and gameplay footage will be added as the project
           progresses.
         </Text>
 
@@ -1466,12 +1566,10 @@ const ParallaxPoker = () => {
           {[
             'Gameplay — active hand with tells',
             'Character select / circuit map',
-            'Balance report output',
             'Tilt progression (Zen → Monkey)',
             'Time-of-day background comparison',
-            'Accessory variation gallery',
           ].map((label) => (
-            <Grid.Col key={label} span={{ base: 12, sm: 6, lg: 4 }}>
+            <Grid.Col key={label} span={{ base: 12, sm: 6 }}>
               <Card
                 shadow="sm"
                 radius="md"
@@ -1485,7 +1583,7 @@ const ParallaxPoker = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    minHeight: 160,
+                    minHeight: 200,
                   }}
                 >
                   <Text size="xs" c="dimmed" ta="center" px="sm">
@@ -1496,6 +1594,275 @@ const ParallaxPoker = () => {
             </Grid.Col>
           ))}
         </Grid>
+      </Box>
+
+      {/* ══════════════════════════════════════════════════════════════
+          COLLAPSIBLE TECHNICAL DEEP DIVE
+      ══════════════════════════════════════════════════════════════ */}
+      <Box my="xl">
+        <Divider mb="lg" />
+        <Group justify="center">
+          <Button
+            variant={techOpen ? 'light' : 'filled'}
+            color="gray"
+            size="md"
+            onClick={() => setTechOpen((o) => !o)}
+            rightSection={
+              <FaChevronDown
+                size={12}
+                style={{
+                  transform: techOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transition: 'transform 0.3s ease',
+                }}
+              />
+            }
+          >
+            {techOpen ? 'Hide technical details' : 'Under the hood — Technical deep dive'}
+          </Button>
+        </Group>
+        <Text size="sm" c="dimmed" ta="center" mt="sm">
+          {techOpen
+            ? 'The architecture, tooling, and workflows behind the game.'
+            : 'AI engine, balancing pipeline, Monte Carlo simulations, and more.'}
+        </Text>
+
+        <Collapse in={techOpen}>
+          <Box mt="xl">
+            {/* AI DECISION ENGINE */}
+            <Box mb="xl">
+              <Group mb="sm">
+                <ThemeIcon variant="light" color="blue" size="lg" radius="md">
+                  <FaBrain size={16} />
+                </ThemeIcon>
+                <Title order={2} c="blue.6">
+                  AI Decision Engine
+                </Title>
+              </Group>
+
+              <Grid gutter="lg">
+                <Grid.Col span={{ base: 12, md: 7 }}>
+                  <Text size="sm" mb="md">
+                    Every AI decision is computed from scratch — no scripted
+                    sequences. A ported Pheval hand evaluator ranks the current
+                    hand, which feeds into a strength evaluator that factors in
+                    draw potential (flush draws, straight draws, backdoors) and
+                    board texture analysis.
+                  </Text>
+                  <Text size="sm" mb="md">
+                    The decision maker takes this hand strength plus the full
+                    game state — pot size, bet ratios, position, stack depths —
+                    and runs it through personality-weighted thresholds. Each
+                    character has 15+ personality stats (aggression, bluff
+                    frequency, fold-to-pressure, call tendency, raise resistance,
+                    risk tolerance, composure, tilt sensitivity, and per-street
+                    aggression multipliers) that combine to produce genuinely
+                    distinct play styles.
+                  </Text>
+                  <Text size="sm">
+                    The system also handles bluff/value tagging, semi-bluff zone
+                    detection, trap decisions (checking strong hands to induce
+                    bets), hero call logic for tilted states, and all-in
+                    commitment math for deep and short stacks.
+                  </Text>
+                </Grid.Col>
+                <Grid.Col span={{ base: 12, md: 5 }}>
+                  <Card shadow="sm" padding="lg" radius="md" withBorder>
+                    <Group mb="sm">
+                      <ThemeIcon
+                        variant="light"
+                        color="blue"
+                        size="lg"
+                        radius="md"
+                      >
+                        <FaCogs size={16} />
+                      </ThemeIcon>
+                      <Title order={4} c="blue.6">
+                        Tech Stack
+                      </Title>
+                    </Group>
+                    <Stack gap="xs">
+                      {techStack.map((item) => (
+                        <Group key={item.label} justify="space-between">
+                          <Text size="sm" c="dimmed">
+                            {item.label}
+                          </Text>
+                          <Text size="sm" fw={500}>
+                            {item.value}
+                          </Text>
+                        </Group>
+                      ))}
+                    </Stack>
+                  </Card>
+                </Grid.Col>
+              </Grid>
+            </Box>
+
+            <Divider my="xl" />
+
+            {/* BALANCING PIPELINE */}
+            <Box mb="xl">
+              <Group mb="sm">
+                <ThemeIcon variant="light" color="blue" size="lg" radius="md">
+                  <FaChartBar size={16} />
+                </ThemeIcon>
+                <Title order={2} c="blue.6">
+                  Data-Driven Balancing Pipeline
+                </Title>
+              </Group>
+              <Text size="sm" c="dimmed" mb="md">
+                One of the most technically interesting parts of this project is
+                the feedback loop between gameplay and data analysis.
+              </Text>
+
+              <Grid gutter="lg" mb="lg">
+                <Grid.Col span={{ base: 12, sm: 6 }}>
+                  <Card
+                    shadow="sm"
+                    padding="lg"
+                    radius="md"
+                    withBorder
+                    h="100%"
+                  >
+                    <Group mb="sm">
+                      <ThemeIcon
+                        variant="light"
+                        color="blue"
+                        size="lg"
+                        radius="md"
+                      >
+                        <FaDice size={16} />
+                      </ThemeIcon>
+                      <Title order={4} c="blue.6">
+                        Monte Carlo gauntlet
+                      </Title>
+                    </Group>
+                    <Text size="sm" c="dimmed">
+                      A headless simulation mode runs thousands of AI-vs-AI
+                      matches. Each character pairing is tested across all four
+                      time slots and variance tiers, producing win-rate
+                      distributions and behavioral statistics at scale — no
+                      manual playtesting required.
+                    </Text>
+                  </Card>
+                </Grid.Col>
+                <Grid.Col span={{ base: 12, sm: 6 }}>
+                  <Card
+                    shadow="sm"
+                    padding="lg"
+                    radius="md"
+                    withBorder
+                    h="100%"
+                  >
+                    <Group mb="sm">
+                      <ThemeIcon
+                        variant="light"
+                        color="blue"
+                        size="lg"
+                        radius="md"
+                      >
+                        <FaChartBar size={16} />
+                      </ThemeIcon>
+                      <Title order={4} c="blue.6">
+                        Analysis reports
+                      </Title>
+                    </Group>
+                    <Text size="sm" c="dimmed">
+                      A Python pipeline reads the CSV logs and generates HTML
+                      reports with archetype verification, stat-vs-observed
+                      alignment charts, engine health diagnostics, and clustering
+                      detection. The report flags when characters deviate from
+                      their target archetype.
+                    </Text>
+                  </Card>
+                </Grid.Col>
+              </Grid>
+
+              <Text size="sm" mb="sm" fw={500}>
+                The feedback loop:
+              </Text>
+              <List spacing="xs" size="sm" mb="md">
+                <List.Item>
+                  Every AI decision is logged to CSV with 30+ columns — hand
+                  strength, bet ratio, tilt state, personality stats, and the
+                  final action.
+                </List.Item>
+                <List.Item>
+                  The gauntlet collects thousands of rows per archetype across
+                  all time slots and variance tiers.
+                </List.Item>
+                <List.Item>
+                  The Python analyzer compares observed behavior against target
+                  archetypes and flags misalignments (e.g., &ldquo;Boy Wizard
+                  should fold under pressure but his FTP% is 0%&rdquo;).
+                </List.Item>
+                <List.Item>
+                  Fixes are applied to the engine or personality resources, the
+                  gauntlet re-runs, and the cycle repeats.
+                </List.Item>
+              </List>
+
+              {/* Analysis report screenshot */}
+              <Card
+                shadow="sm"
+                radius="md"
+                withBorder
+                p={0}
+                style={{ overflow: 'hidden' }}
+              >
+                <Box
+                  style={{
+                    backgroundColor: 'var(--mantine-color-dark-7)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: 240,
+                  }}
+                >
+                  <Stack align="center" gap={4}>
+                    <FaChartBar
+                      size={24}
+                      color="var(--mantine-color-blue-4)"
+                    />
+                    <Text size="xs" c="dimmed" ta="center" px="md">
+                      Balance analysis report — archetype verification, stat
+                      alignment charts, engine diagnostics
+                    </Text>
+                  </Stack>
+                </Box>
+              </Card>
+            </Box>
+
+            <Divider my="xl" />
+
+            {/* JOURNAL (PLANNED) */}
+            <Box mb="xl">
+              <Group mb="sm">
+                <ThemeIcon
+                  variant="light"
+                  color="gray"
+                  size="lg"
+                  radius="md"
+                >
+                  <FaBook size={16} />
+                </ThemeIcon>
+                <Title order={2} c="blue.6">
+                  The Journal
+                </Title>
+                <Badge size="sm" variant="light" color="gray">
+                  Planned
+                </Badge>
+              </Group>
+              <Text size="sm" c="dimmed">
+                A persistent completion tracker where players catalog every
+                opponent variant they've encountered — name variations, accessory
+                combinations, background time slots, tells observed, and dialogue
+                heard. With 32,768 visual presentations per character and 16
+                names each, the Journal turns replayability into a collection
+                metagame.
+              </Text>
+            </Box>
+          </Box>
+        </Collapse>
       </Box>
 
       {/* ── Footer nav ── */}
