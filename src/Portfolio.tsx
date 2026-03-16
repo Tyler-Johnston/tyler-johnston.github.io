@@ -11,9 +11,12 @@ import {
   Space,
   Collapse,
   Divider,
+  Box,
+  Badge,
+  Stack,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { FaUsers, FaUser } from 'react-icons/fa';
+import { FaUsers, FaUser, FaChessKnight, FaArrowRight } from 'react-icons/fa';
 
 import vintagefinds from '../images/vintagefinds.png';
 import reptiletracker from '../images/reptiletracker.png';
@@ -27,16 +30,18 @@ import market from '../images/job_market.jpg';
 import customer_behavior from '../images/customer-behavior.jpg';
 import bees from '../images/bees.jpg';
 import rps from '../images/rps.png';
-import absentee from '../images/absentee.png'
+import absentee from '../images/absentee.png';
+// TODO: import hero image once available
+// import parallaxPokerHero from '../images/parallax-poker-hero.png';
 
 const categories = [
-  { key: 'dataAnalytics', label: '📊 Data Analytics' },
-  { key: 'machineLearning', label: '🤖 Machine Learning' },
-  { key: 'webDev', label: '💻 Web Development' },
-  { key: 'gameDev', label: '🎮 Game Development' },
+  { key: 'dataAnalytics', label: 'Data Analytics' },
+  { key: 'machineLearning', label: 'Machine Learning' },
+  { key: 'webDev', label: 'Web Development' },
+  { key: 'gameDev', label: 'Game Development' },
 ] as const;
 
-type CategoryKey = typeof categories[number]['key'];
+type CategoryKey = (typeof categories)[number]['key'];
 
 type Project = {
   id: number;
@@ -51,7 +56,8 @@ const projects: Record<CategoryKey, Project[]> = {
     {
       id: 1,
       title: 'Absentee Analysis',
-      description: 'Analyzed employee absenteeism data using clustering techniques to identify patterns and actionable insights.',
+      description:
+        'Analyzed employee absenteeism data using clustering techniques to identify patterns and actionable insights.',
       imageUrl: absentee,
       projectUrl: 'https://github.com/Tyler-Johnston/Absentee-Analysis',
     },
@@ -68,11 +74,11 @@ const projects: Record<CategoryKey, Project[]> = {
       id: 3,
       title: 'Customer Behavior Analysis',
       description:
-      'Developed classification models to predict purchase intent and customer churn, comparing logistic regression and SVMs.',
+        'Developed classification models to predict purchase intent and customer churn, comparing logistic regression and SVMs.',
       imageUrl: customer_behavior,
       projectUrl:
         'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis',
-    }
+    },
   ],
   machineLearning: [
     {
@@ -145,8 +151,7 @@ const projects: Record<CategoryKey, Project[]> = {
       description:
         'A real-time multiplayer version of the classic Snake game. Compete to grow the longest snake while navigating shared arenas.',
       imageUrl: snakegame,
-      projectUrl:
-        'https://github.com/Tyler-Johnston/Multiplayer-Snake-Game',
+      projectUrl: 'https://github.com/Tyler-Johnston/Multiplayer-Snake-Game',
     },
     {
       id: 11,
@@ -185,11 +190,136 @@ const Portfolio = () => {
       </Title>
 
       <Text size="lg" mb="xl">
-        Explore a curated selection of projects that bridge <b>software engineering</b>, <b>data analytics</b>, and <b>creative design</b>. These works highlight how I approach complex technical problems: by balancing scalability, usability, and visual clarity.
+        Explore a curated selection of projects that bridge{' '}
+        <b>software engineering</b>, <b>data analytics</b>, and{' '}
+        <b>creative design</b>. These works highlight how I approach complex
+        technical problems: by balancing scalability, usability, and visual
+        clarity.
       </Text>
 
       <Divider my="lg" />
 
+      {/* ── FEATURED PROJECT: Parallax Poker ── */}
+      <Box mb="xl">
+        <Badge size="lg" variant="filled" color="blue" mb="md">
+          Featured Project
+        </Badge>
+
+        <Card
+          shadow="md"
+          padding={0}
+          radius="md"
+          withBorder
+          style={{
+            overflow: 'hidden',
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-4px)';
+            e.currentTarget.style.boxShadow =
+              '0 12px 40px rgba(0, 0, 0, 0.12)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '';
+          }}
+        >
+          <Grid gutter={0}>
+            {/* Left: image area */}
+            <Grid.Col span={{ base: 12, md: 5 }}>
+              <Box
+                h="100%"
+                miw={280}
+                style={{
+                  // TODO: replace with actual screenshot once available
+                  // backgroundImage: `url(${parallaxPokerHero})`,
+                  // backgroundSize: 'cover',
+                  // backgroundPosition: 'center',
+                  backgroundColor: 'var(--mantine-color-dark-7)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: 260,
+                }}
+              >
+                <Stack align="center" gap={8}>
+                  <FaChessKnight
+                    size={48}
+                    color="var(--mantine-color-blue-4)"
+                  />
+                  <Text size="sm" c="dimmed">
+                    Screenshot coming soon
+                  </Text>
+                </Stack>
+              </Box>
+            </Grid.Col>
+
+            {/* Right: description */}
+            <Grid.Col span={{ base: 12, md: 7 }}>
+              <Box p="xl">
+                <Title order={2} c="blue.6" mb={4}>
+                  Parallax Poker
+                </Title>
+                <Text size="sm" c="dimmed" mb="md">
+                  Character-driven poker roguelite &middot; C# &middot; Godot
+                  Engine
+                </Text>
+
+                <Text size="sm" mb="md">
+                  A heads-up poker game where every opponent has a distinct
+                  personality — from the unreadable calling station to the
+                  hyper-aggressive maniac. Each archetype is powered by a
+                  data-driven AI engine with personality stats that control
+                  aggression, bluff frequency, tilt response, and
+                  fold-to-pressure behavior.
+                </Text>
+
+                <Text size="sm" mb="lg">
+                  Includes a full Monte Carlo simulation pipeline for balancing
+                  matchups, CSV decision logging, and automated analysis reports
+                  that compare target archetypes against observed behavior across
+                  thousands of hands.
+                </Text>
+
+                <Group gap="xs" mb="lg" style={{ flexWrap: 'wrap' }}>
+                  {[
+                    'C#',
+                    'Godot 4',
+                    'AI Decision Engine',
+                    'Monte Carlo Sim',
+                    'Data Pipeline',
+                    'Character Art',
+                  ].map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="light"
+                      color="blue"
+                      size="sm"
+                      radius="sm"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </Group>
+
+                <Button
+                  component={Link}
+                  to="/parallax-poker"
+                  variant="filled"
+                  color="blue"
+                  rightSection={<FaArrowRight size={12} />}
+                >
+                  View Project Details
+                </Button>
+              </Box>
+            </Grid.Col>
+          </Grid>
+        </Card>
+      </Box>
+
+      <Divider my="lg" />
+
+      {/* ── CATEGORY GRIDS ── */}
       {categories.map(({ key, label }) => {
         const allProjects = projects[key];
         const preview = allProjects.slice(0, 3);
@@ -210,7 +340,8 @@ const Portfolio = () => {
                     radius="md"
                     withBorder
                     style={{
-                      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      transition:
+                        'transform 0.2s ease, box-shadow 0.2s ease',
                     }}
                     onMouseEnter={(e) =>
                       (e.currentTarget.style.transform = 'translateY(-5px)')
@@ -274,23 +405,22 @@ const Portfolio = () => {
             </Collapse>
 
             {rest.length > 0 && (
-              <>
-                <Group justify="center" mt="md">
-                  <Button
-                    variant="light"
-                    color="blue"
-                    size="md"
-                    onClick={() => toggle(key)}
-                    radius="md"
-                  >
-                    {expanded[key]
-                      ? `Hide additional ${label.split(' ')[1]} projects ↑`
-                      : `Show all ${label.split(' ')[1]} projects ↓`}
-                  </Button>
-                </Group>
-              </>
+              <Group justify="center" mt="md">
+                <Button
+                  variant="light"
+                  color="blue"
+                  size="md"
+                  onClick={() => toggle(key)}
+                  radius="md"
+                >
+                  {expanded[key]
+                    ? `Hide additional ${label.split(' ')[1]} projects ↑`
+                    : `Show all ${label.split(' ')[1]} projects ↓`}
+                </Button>
+              </Group>
             )}
-          <Divider my="lg" />
+
+            <Divider my="lg" />
           </div>
         );
       })}
@@ -298,7 +428,13 @@ const Portfolio = () => {
       <Space h="xl" />
 
       <Group justify="center" mt="xl">
-        <Button component={Link} to="/" size="md" leftSection={<FaUser />} variant="light">
+        <Button
+          component={Link}
+          to="/"
+          size="md"
+          leftSection={<FaUser />}
+          variant="light"
+        >
           View About Me
         </Button>
         <Button

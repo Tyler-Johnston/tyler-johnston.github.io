@@ -9,6 +9,7 @@ import Portfolio from "./Portfolio";
 import About from "./About";
 import Experience from "./Experience";
 import Scroll from "./Scroll";
+import ParallaxPoker from './ParallaxPoker';
 
 export default function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -46,6 +47,7 @@ function PageTrackerWrapper() {
         <Route path="/" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/experience" element={<Experience />} />
+        <Route path="/parallax-poker" element={<ParallaxPoker />} />
       </Routes>
       <FooterCentered />
     </>
