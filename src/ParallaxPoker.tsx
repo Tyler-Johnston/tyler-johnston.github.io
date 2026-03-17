@@ -40,6 +40,8 @@ import {
 } from 'react-icons/fa';
 
 import parallaxPokerMain from '../images/parallax-poker-main.png';
+import tellGameplayGif from '../images/reaction.gif'; 
+import balanceReport from '../images/balance_report.png';
 
 import steveExpressions from '../images/expressions/steve_expressions.png';
 import steveAccessory1 from '../images/accessories/steve_accessories1.png';
@@ -840,9 +842,9 @@ const characters = [
     acc1: oldWizardAccessory1,
     acc2: oldWizardAccessory2,
     circuit: 'Blue',
-    country: 'Fictitious land',
+    country: 'Nepal',
     flag: '🏔️',
-    age: 56,
+    age: 70,
     archetype: 'TAG — only plays premium hands, punishes mistakes',
     color: 'blue',
     flavor: 'Ancient and patient, loves mac and cheese (juxtaposition humor)',
@@ -1138,12 +1140,11 @@ const ParallaxPoker = () => {
           </Badge>
         </Group>
         <Text size="lg" c="dimmed" mb="lg">
-          A character-driven poker roguelite where every opponent has a
-          personality, a country, a mood, and 32,000+ visual identities — built
-          solo in C# with the Godot engine.
+          Inspired by Balatro and Poker Night at the Inventory, Parallax Poker is a character-driven poker roguelite where every opponent has a
+          personality you can read. This is being built solo in C# and the Godot engine.
         </Text>
 
-        {/* Hero image placeholder */}
+        {/* Hero Image */}
         <Card
           shadow="sm"
           radius="md"
@@ -1154,25 +1155,27 @@ const ParallaxPoker = () => {
         >
           <Box
             style={{
-              // TODO: replace with actual hero image
-              backgroundImage: parallaxPokerMain,
-              // backgroundSize: 'cover',
-              // backgroundPosition: 'center',
               backgroundColor: 'var(--mantine-color-dark-7)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               minHeight: 360,
+              width: '100%'
             }}
           >
-            <Stack align="center" gap={8}>
-              <FaChessKnight size={56} color="var(--mantine-color-blue-4)" />
-              <Text size="sm" c="dimmed">
-                Hero screenshot / trailer coming soon
-              </Text>
-            </Stack>
+            <img 
+              src={parallaxPokerMain} 
+              alt="Parallax Poker Main Title" 
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block'
+              }}
+            />
           </Box>
         </Card>
+
       </Box>
 
       {/* ══════════════════════════════════════════════════════════════
@@ -1184,7 +1187,7 @@ const ParallaxPoker = () => {
         </Title>
         <Text size="md" mb="md">
           Parallax Poker is a heads-up Texas Hold'em roguelite where the
-          challenge isn't the cards — it's the person sitting across from you.
+          challenge isn't the cards: it's the person sitting across from you.
           Every opponent is a fully realized character from somewhere in the
           world, with their own play style, visual identity, dialogue voice,
           emotional triggers, and tells that leak through their face and words
@@ -1220,17 +1223,17 @@ const ParallaxPoker = () => {
           </Title>
         </Group>
         <Text size="sm" c="dimmed" mb="sm">
-          The fiction is simple: you're playing online poker against people from
+          In this world, you're playing online poker against people from
           all over the world. The game clock runs on UTC (London time), and
-          every opponent has a real timezone offset based on where they live —
-          so the same run might catch Cowboy in his quiet Texas morning while
+          every opponent has a real timezone offset based on where they live.
+          The same run might catch Cowboy in his quiet Texas morning while
           Princess is playing loose and aggressive in a late Seoul night.
         </Text>
         <Text size="sm" c="dimmed" mb="lg">
-          Time of day isn't just cosmetic. It shifts personality stats (morning
+          Time of day also affects personality stats (morning
           play is tighter, night play is reckless), changes the background art
-          to match their local environment, and adjusts the character lighting
-          — a night player gets a cyan monitor-glow outline, evening gets sunset
+          to match their local environment, and adjusts the character lighting.
+          A night player gets a cyan monitor-glow outline, evening gets sunset
           warmth. Every run rolls the same UTC hour from its seed, so the
           timezone offsets are consistent but the resulting moods are different
           per opponent. 9 characters across three circuits, each shaped by 15+
@@ -1255,36 +1258,30 @@ const ParallaxPoker = () => {
           </Title>
         </Group>
         <Text size="sm" c="dimmed" mb="lg">
-          This is where the name comes from. Each run generates a unique
-          <i> version</i> of every opponent — a different name, different
-          accessories, different background, different time of day. Same
-          personality archetype, but a parallel-world variant you may have never
-          seen before.
+          Each run generates a unique
+          <i> version</i> of every opponent: a different name, different
+          accessories, different background, different time of day.
         </Text>
 
         <Grid gutter="lg" mb="lg">
-          <Grid.Col span={{ base: 12, md: 7 }}>
+         <Grid.Col span={{ base: 12, md: 7 }}>
             <Text size="sm" mb="md">
-              At run start, a seeded RNG rolls each character's identity: one of
-              16 name variations, one of 16 accessory-slot-1 palettes, one of 16
-              accessory-slot-2 palettes, and a time-of-day background with A/B
-              variants. Expressions are separate — those 16 frames are driven
-              live by the tell system during gameplay, not locked at run start.
+              You are a dimension-hopping poker player. Each time you bust out,
+              simply hop to a parallel world! Learn the nuanced playstyles of each world's inhabitants,
+              and take all their chips!
             </Text>
             <Text size="sm" mb="md">
-              That gives <b>16 × 16 × 16 = 4,096</b> name + accessory combos.
-              Multiply by <b>4 time slots × 2 background variants = 8</b>, and
-              you get <b>32,768 parallel-world versions</b> of every character —
-              before personality variance (stat randomization within the circuit
-              tier) is even applied.
+              Every universe shifts the environment, the local time of day, and the mood around the table. 
+              An opponent who plays loosely during a late-night session in one timeline 
+              might be a tight, disciplined fortress in another world's quiet morning. 
+              You have to read the room, find their emotional cracks, and exploit them.
             </Text>
             <Text size="sm">
-              The seed is deterministic — replaying the same run always produces
-              the same variant. This enables the planned Journal system: players
-              catalog which parallel-world versions they've encountered across
-              runs and work toward completion.
+              A Journal system will allow players to catalog the specific parallel-world identities 
+              they've encountered, mapping out variations of the tournament roster as they build their bankroll.
             </Text>
           </Grid.Col>
+
           <Grid.Col span={{ base: 12, md: 5 }}>
             <Card shadow="sm" padding="lg" radius="md" withBorder>
               <Title order={5} c="blue.6" mb="sm">
@@ -1358,10 +1355,6 @@ const ParallaxPoker = () => {
                   </Table.Tr>
                 </Table.Tbody>
               </Table>
-              <Text size="xs" c="dimmed" mt="sm" fs="italic">
-                Expressions (16 frames) are separate — they're driven live by
-                the tell system during gameplay, not rolled at run start.
-              </Text>
             </Card>
           </Grid.Col>
         </Grid>
@@ -1459,17 +1452,21 @@ const ParallaxPoker = () => {
               alignItems: 'center',
               justifyContent: 'center',
               minHeight: 240,
+              width: '100%'
             }}
           >
-            {/* TODO: replace with actual gameplay GIF showing a tell in action */}
-            <Stack align="center" gap={4}>
-              <FaEye size={24} color="var(--mantine-color-blue-4)" />
-              <Text size="xs" c="dimmed" ta="center" px="md">
-                Gameplay GIF — a bluff leaking through face + dialogue
-              </Text>
-            </Stack>
+            <img 
+              src={tellGameplayGif} 
+              alt="Gameplay showing tell reaction" 
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block'
+              }}
+            />
           </Box>
         </Card>
+
       </Box>
 
       <Divider my="xl" />
@@ -1551,12 +1548,12 @@ const ParallaxPoker = () => {
         <TiltDemo />
       </Box>
 
-      <Divider my="xl" />
+      {/* <Divider my="xl" /> */}
 
       {/* ══════════════════════════════════════════════════════════════
           GALLERY
       ══════════════════════════════════════════════════════════════ */}
-      <Box mb="xl">
+      {/* <Box mb="xl">
         <Group mb="sm">
           <ThemeIcon variant="light" color="blue" size="lg" radius="md">
             <FaPaintBrush size={16} />
@@ -1602,7 +1599,7 @@ const ParallaxPoker = () => {
             </Grid.Col>
           ))}
         </Grid>
-      </Box>
+      </Box> */}
 
       {/* ══════════════════════════════════════════════════════════════
           COLLAPSIBLE TECHNICAL DEEP DIVE
@@ -1826,49 +1823,23 @@ const ParallaxPoker = () => {
                     minHeight: 240,
                   }}
                 >
-                  <Stack align="center" gap={4}>
-                    <FaChartBar
-                      size={24}
-                      color="var(--mantine-color-blue-4)"
-                    />
-                    <Text size="xs" c="dimmed" ta="center" px="md">
-                      Balance analysis report — archetype verification, stat
-                      alignment charts, engine diagnostics
-                    </Text>
-                  </Stack>
+              <img 
+                src={balanceReport} 
+                alt="Linear Graph of Opponent Stats" 
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block'
+                }}
+              />
                 </Box>
               </Card>
             </Box>
 
-            <Divider my="xl" />
+            {/* <Divider my="xl" /> */}
 
             {/* JOURNAL (PLANNED) */}
-            <Box mb="xl">
-              <Group mb="sm">
-                <ThemeIcon
-                  variant="light"
-                  color="gray"
-                  size="lg"
-                  radius="md"
-                >
-                  <FaBook size={16} />
-                </ThemeIcon>
-                <Title order={2} c="blue.6">
-                  The Journal
-                </Title>
-                <Badge size="sm" variant="light" color="gray">
-                  Planned
-                </Badge>
-              </Group>
-              <Text size="sm" c="dimmed">
-                A persistent completion tracker where players catalog every
-                opponent variant they've encountered — name variations, accessory
-                combinations, background time slots, tells observed, and dialogue
-                heard. With 32,768 visual presentations per character and 16
-                names each, the Journal turns replayability into a collection
-                metagame.
-              </Text>
-            </Box>
+
           </Box>
         </Collapse>
       </Box>

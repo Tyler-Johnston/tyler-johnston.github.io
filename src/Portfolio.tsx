@@ -31,8 +31,7 @@ import customer_behavior from '../images/customer-behavior.jpg';
 import bees from '../images/bees.jpg';
 import rps from '../images/rps.png';
 import absentee from '../images/absentee.png';
-// TODO: import hero image once available
-// import parallaxPokerHero from '../images/parallax-poker-hero.png';
+import heroImg from '../images/heroImg.png'
 
 const categories = [
   { key: 'dataAnalytics', label: 'Data Analytics' },
@@ -232,9 +231,9 @@ const Portfolio = () => {
                 miw={280}
                 style={{
                   // TODO: replace with actual screenshot once available
-                  // backgroundImage: `url(${parallaxPokerHero})`,
-                  // backgroundSize: 'cover',
-                  // backgroundPosition: 'center',
+                  backgroundImage: `url(${heroImg})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                   backgroundColor: 'var(--mantine-color-dark-7)',
                   display: 'flex',
                   alignItems: 'center',
@@ -242,15 +241,6 @@ const Portfolio = () => {
                   minHeight: 260,
                 }}
               >
-                <Stack align="center" gap={8}>
-                  <FaChessKnight
-                    size={48}
-                    color="var(--mantine-color-blue-4)"
-                  />
-                  <Text size="sm" c="dimmed">
-                    Screenshot coming soon
-                  </Text>
-                </Stack>
               </Box>
             </Grid.Col>
 
