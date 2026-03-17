@@ -20,7 +20,19 @@
       gtag('config', 'G-1EF602MFGR', { cookie_flags: 'SameSite=None;Secure', cookie_domain: 'none' });
     </script>
 
-    <script type="module" crossorigin src="/assets/index-pFm8vO4G.js"></script>
+  <script>
+    (function(l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function(s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
+    <script type="module" crossorigin src="/assets/index-BdSFf5el.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-h0QDy1mM.css">
   </head>
   <body>
