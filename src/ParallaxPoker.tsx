@@ -40,7 +40,7 @@ import {
 } from 'react-icons/fa';
 
 import parallaxPokerMain from '../images/parallax-poker-main.png';
-import tellGameplayGif from '../images/reaction.gif'; 
+import tellGameplayGif from '../images/reaction_small.gif'; 
 import balanceReport from '../images/balance_report.png';
 
 import steveExpressions from '../images/expressions/steve_expressions.png';
