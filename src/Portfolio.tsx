@@ -13,10 +13,9 @@ import {
   Divider,
   Box,
   Badge,
-  Stack,
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { FaUsers, FaUser, FaChessKnight, FaArrowRight } from 'react-icons/fa';
+import { FaUsers, FaUser, FaArrowRight } from 'react-icons/fa';
 
 import vintagefinds from '../images/vintagefinds.png';
 import reptiletracker from '../images/reptiletracker.png';
@@ -31,13 +30,13 @@ import customer_behavior from '../images/customer-behavior.jpg';
 import bees from '../images/bees.jpg';
 import rps from '../images/rps.png';
 import absentee from '../images/absentee.png';
-import heroImg from '../images/heroImg.png'
+import heroImg from '../images/heroImg.png';
 
 const categories = [
-  { key: 'dataAnalytics', label: 'Data Analytics' },
-  { key: 'machineLearning', label: 'Machine Learning' },
-  { key: 'webDev', label: 'Web Development' },
-  { key: 'gameDev', label: 'Game Development' },
+  { key: 'dataAnalytics', label: 'Data Analytics', shortLabel: 'analytics' },
+  { key: 'machineLearning', label: 'Machine Learning', shortLabel: 'ML' },
+  { key: 'webDev', label: 'Web Development', shortLabel: 'web' },
+  { key: 'gameDev', label: 'Game Development', shortLabel: 'game' },
 ] as const;
 
 type CategoryKey = (typeof categories)[number]['key'];
@@ -81,7 +80,7 @@ const projects: Record<CategoryKey, Project[]> = {
   ],
   machineLearning: [
     {
-      id: 3,
+      id: 4,
       title: 'Cartpole Reinforcement Learning',
       description:
         "Developed a reinforcement learning (ANN) model for OpenAI's cart pole using Deep Q-Learning.",
@@ -90,7 +89,7 @@ const projects: Record<CategoryKey, Project[]> = {
         'https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning',
     },
     {
-      id: 4,
+      id: 5,
       title: 'Beehive Weight Prediction',
       description:
         'Built ANN, CNN, and LSTM models for forecasting beehive weight using Keras and PyTorch.',
@@ -99,7 +98,7 @@ const projects: Record<CategoryKey, Project[]> = {
         'https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction',
     },
     {
-      id: 5,
+      id: 6,
       title: 'Facial Expression Recognition',
       description:
         'Trained a Support Vector Machine (SVM) to classify facial expressions using Local Binary Patterns and ORB feature extraction.',
@@ -110,7 +109,7 @@ const projects: Record<CategoryKey, Project[]> = {
   ],
   webDev: [
     {
-      id: 9,
+      id: 7,
       title: 'Rock Paper Scissors Idle Web Game',
       description:
         'An Angular SPA with Supabase backend featuring authentication, achievements, and automated gameplay loops.',
@@ -118,7 +117,7 @@ const projects: Record<CategoryKey, Project[]> = {
       projectUrl: 'https://github.com/Tyler-Johnston/RPS',
     },
     {
-      id: 6,
+      id: 8,
       title: 'Reptile Tracker',
       description:
         'A React.js + Express.js web app for managing pet reptile care, including authentication and persistent storage.',
@@ -126,7 +125,7 @@ const projects: Record<CategoryKey, Project[]> = {
       projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker',
     },
     {
-      id: 7,
+      id: 9,
       title: 'Vintage Finds',
       description:
         'A Next.js + Firebase web app built for a local antique business. Features an admin dashboard, authentication, and real-time inventory updates.',
@@ -134,7 +133,7 @@ const projects: Record<CategoryKey, Project[]> = {
       projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds',
     },
     {
-      id: 8,
+      id: 10,
       title: 'AWS Widget Requests',
       description:
         'Developed AWS Producer and Consumer apps handling widget generation, SQS messaging, and data persistence to S3 and DynamoDB.',
@@ -145,7 +144,7 @@ const projects: Record<CategoryKey, Project[]> = {
   ],
   gameDev: [
     {
-      id: 10,
+      id: 11,
       title: 'Multiplayer Snake Game',
       description:
         'A real-time multiplayer version of the classic Snake game. Compete to grow the longest snake while navigating shared arenas.',
@@ -153,15 +152,15 @@ const projects: Record<CategoryKey, Project[]> = {
       projectUrl: 'https://github.com/Tyler-Johnston/Multiplayer-Snake-Game',
     },
     {
-      id: 11,
+      id: 12,
       title: 'Lunar Lander Game',
       description:
-        "A physics-based lunar descent simulator requiring careful thrust control to land safely while managing limited fuel.",
+        'A physics-based lunar descent simulator requiring careful thrust control to land safely while managing limited fuel.',
       imageUrl: lunarlander,
       projectUrl: 'https://github.com/Tyler-Johnston/Lunar-Lander',
     },
     {
-      id: 12,
+      id: 13,
       title: 'Maze Game',
       description:
         'A procedurally generated maze game ensuring solvable paths for each level, built with dynamic rendering logic.',
@@ -170,6 +169,60 @@ const projects: Record<CategoryKey, Project[]> = {
     },
   ],
 };
+
+/* ── Shared hover handlers ── */
+const hoverEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.currentTarget.style.transform = 'translateY(-5px)';
+  e.currentTarget.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.12)';
+};
+const hoverLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.currentTarget.style.transform = 'translateY(0)';
+  e.currentTarget.style.boxShadow = '';
+};
+
+/* ── Reusable project card ── */
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <Card
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      h="100%"
+      style={{
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      onMouseEnter={hoverEnter}
+      onMouseLeave={hoverLeave}
+    >
+      <Card.Section>
+        <Image src={project.imageUrl} alt={project.title} height={160} />
+      </Card.Section>
+
+      <Title order={4} mt="md" c="blue.6">
+        {project.title}
+      </Title>
+
+      <Text size="sm" mt="xs" mb="sm" c="dimmed" style={{ flex: 1 }}>
+        {project.description}
+      </Text>
+
+      <Button
+        variant="light"
+        color="blue"
+        fullWidth
+        component="a"
+        href={project.projectUrl}
+        target="_blank"
+        mt="auto"
+      >
+        View Project
+      </Button>
+    </Card>
+  );
+}
 
 const Portfolio = () => {
   const [expanded, setExpanded] = useState<Record<CategoryKey, boolean>>({
@@ -218,19 +271,14 @@ const Portfolio = () => {
             e.currentTarget.style.boxShadow =
               '0 12px 40px rgba(0, 0, 0, 0.12)';
           }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '';
-          }}
+          onMouseLeave={hoverLeave}
         >
           <Grid gutter={0}>
-            {/* Left: image area */}
             <Grid.Col span={{ base: 12, md: 5 }}>
               <Box
                 h="100%"
                 miw={280}
                 style={{
-                  // TODO: replace with actual screenshot once available
                   backgroundImage: `url(${heroImg})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -240,11 +288,9 @@ const Portfolio = () => {
                   justifyContent: 'center',
                   minHeight: 260,
                 }}
-              >
-              </Box>
+              />
             </Grid.Col>
 
-            {/* Right: description */}
             <Grid.Col span={{ base: 12, md: 7 }}>
               <Box p="xl">
                 <Title order={2} c="blue.6" mb={4}>
@@ -310,7 +356,7 @@ const Portfolio = () => {
       <Divider my="lg" />
 
       {/* ── CATEGORY GRIDS ── */}
-      {categories.map(({ key, label }) => {
+      {categories.map(({ key, label, shortLabel }) => {
         const allProjects = projects[key];
         const preview = allProjects.slice(0, 3);
         const rest = allProjects.slice(3);
@@ -324,42 +370,7 @@ const Portfolio = () => {
             <Grid gutter="xl">
               {preview.map((p) => (
                 <Grid.Col key={p.id} span={{ base: 12, sm: 6, lg: 4 }}>
-                  <Card
-                    shadow="sm"
-                    padding="lg"
-                    radius="md"
-                    withBorder
-                    style={{
-                      transition:
-                        'transform 0.2s ease, box-shadow 0.2s ease',
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.transform = 'translateY(-5px)')
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.transform = 'translateY(0)')
-                    }
-                  >
-                    <Card.Section>
-                      <Image src={p.imageUrl} alt={p.title} height={160} />
-                    </Card.Section>
-                    <Title order={4} mt="md" c="blue.6">
-                      {p.title}
-                    </Title>
-                    <Text size="sm" mt="xs" mb="sm" c="dimmed">
-                      {p.description}
-                    </Text>
-                    <Button
-                      variant="light"
-                      color="blue"
-                      fullWidth
-                      component="a"
-                      href={p.projectUrl}
-                      target="_blank"
-                    >
-                      View Project
-                    </Button>
-                  </Card>
+                  <ProjectCard project={p} />
                 </Grid.Col>
               ))}
             </Grid>
@@ -368,27 +379,7 @@ const Portfolio = () => {
               <Grid gutter="xl" mt="md">
                 {rest.map((p) => (
                   <Grid.Col key={p.id} span={{ base: 12, sm: 6, lg: 4 }}>
-                    <Card shadow="sm" padding="lg" radius="md" withBorder>
-                      <Card.Section>
-                        <Image src={p.imageUrl} alt={p.title} height={160} />
-                      </Card.Section>
-                      <Title order={4} mt="md" c="blue.6">
-                        {p.title}
-                      </Title>
-                      <Text size="sm" mt="xs" mb="sm" c="dimmed">
-                        {p.description}
-                      </Text>
-                      <Button
-                        variant="light"
-                        color="blue"
-                        fullWidth
-                        component="a"
-                        href={p.projectUrl}
-                        target="_blank"
-                      >
-                        View Project
-                      </Button>
-                    </Card>
+                    <ProjectCard project={p} />
                   </Grid.Col>
                 ))}
               </Grid>
@@ -404,8 +395,8 @@ const Portfolio = () => {
                   radius="md"
                 >
                   {expanded[key]
-                    ? `Hide additional ${label.split(' ')[1]} projects ↑`
-                    : `Show all ${label.split(' ')[1]} projects ↓`}
+                    ? `Hide ${shortLabel} projects`
+                    : `Show all ${allProjects.length} ${shortLabel} projects`}
                 </Button>
               </Group>
             )}

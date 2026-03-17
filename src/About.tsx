@@ -10,6 +10,7 @@ import {
   Divider,
   Space,
   Stack,
+  Box,
 } from '@mantine/core';
 import { IconType } from 'react-icons';
 import {
@@ -56,7 +57,6 @@ const software = [
   { name: 'React.js', Icon: FaReact },
   { name: 'Power BI', Icon: FaLightbulb },
   { name: 'Linux', Icon: FaLinux },
-  
 ];
 
 const softSkills = [
@@ -76,9 +76,41 @@ interface SkillsProps {
   skills: Skill[];
 }
 
+/* ── Shared hover helpers ── */
+const cardEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.currentTarget.style.transform = 'translateY(-3px)';
+  // e.currentTarget.style.boxShadow =
+  //   '0 10px 28px rgba(0, 0, 0, 0.22), 0 0 0 1px var(--mantine-color-blue-9)';
+};
+const cardLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.currentTarget.style.transform = 'translateY(0)';
+  e.currentTarget.style.boxShadow = '';
+};
+
+const imgEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.currentTarget.style.transform = 'scale(1.02)';
+  e.currentTarget.style.boxShadow = '0 14px 44px rgba(0, 0, 0, 0.35)';
+};
+const imgLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  e.currentTarget.style.transform = 'scale(1)';
+  e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.25)';
+};
+
 function RenderSkillsSection({ title, skills }: SkillsProps) {
   return (
-    <Paper withBorder radius="md" p={{ base: 'md', sm: 'lg' }} shadow="sm">
+    <Paper
+      withBorder
+      radius="md"
+      p={{ base: 'md', sm: 'lg' }}
+      shadow="md"
+      h="100%"
+      style={{
+        transition: 'transform 0.2s ease, box-shadow 0.25s ease',
+        borderColor: 'var(--mantine-color-dark-4)',
+      }}
+      onMouseEnter={cardEnter}
+      onMouseLeave={cardLeave}
+    >
       <Title order={4} ta="center" mb="sm" c="blue.6">
         {title}
       </Title>
@@ -95,7 +127,6 @@ function RenderSkillsSection({ title, skills }: SkillsProps) {
   );
 }
 
-
 const About = () => {
   return (
     <>
@@ -103,12 +134,25 @@ const About = () => {
       <Container size="lg" py="xl">
         <Grid align="center">
           <Grid.Col span={{ base: 12, md: 5 }}>
-            <Image
-              radius="lg"
-              src={headshot}
-              alt="Portrait of Tyler Johnston"
-              className="smallImage"
-            />
+            <Box
+              mx="auto"
+              style={{
+                maxWidth: 340,
+                borderRadius: 'var(--mantine-radius-lg)',
+                overflow: 'hidden',
+                border: '3px solid var(--mantine-color-dark-4)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              }}
+              onMouseEnter={imgEnter}
+              onMouseLeave={imgLeave}
+            >
+              <Image
+                src={headshot}
+                alt="Portrait of Tyler Johnston"
+                style={{ display: 'block', width: '100%' }}
+              />
+            </Box>
           </Grid.Col>
 
           <Grid.Col span={{ base: 12, md: 7 }}>
@@ -116,23 +160,42 @@ const About = () => {
               Hi, I'm <span style={{ color: '#1971c2' }}>Tyler Johnston</span>!
             </Title>
 
-
             <Text size="lg">
-              I’m currently pursuing a <b>Master's in Information Management (specializing in Business Intelligence)</b> at NOVA IMS in Lisbon, Portugal. Originally from Nashville, Tennessee, I earned a <b>full-ride Presidential Scholarship</b> to study <b>Computer Science</b> at Utah State University.
+              I'm currently pursuing a{' '}
+              <b>
+                Master's in Information Management (specializing in Business
+                Intelligence)
+              </b>{' '}
+              at NOVA IMS in Lisbon, Portugal. Originally from Nashville,
+              Tennessee, I earned a <b>full-ride Presidential Scholarship</b> to
+              study <b>Computer Science</b> at Utah State University.
             </Text>
 
             <Space h="md" />
 
             <Text size="lg">
-              I graduated <b>Magna Cum Laude</b> with a <b>3.92 GPA</b>, gaining experience as a <b>Web Developer, Modern C++ Teaching Assistant, and Computer Vision Research Assistant</b>. 
-              Before graduating, I joined <b>Footprints, Inc.</b> as a <b>Full-Stack Developer</b>, developing enterprise applications with 
-              <b> C#/.NET, JavaScript (Ext JS/jQuery), Oracle SQL,</b> and <b>4D</b>. Over 240 full-stack tasks later, I’d improved query performance, streamlined workflows, and sharpened my QA instincts.
+              I graduated <b>Magna Cum Laude</b> with a <b>3.92 GPA</b>,
+              gaining experience as a{' '}
+              <b>
+                Web Developer, Modern C++ Teaching Assistant, and Computer Vision
+                Research Assistant
+              </b>
+              . Before graduating, I joined <b>Footprints, Inc.</b> as a{' '}
+              <b>Full-Stack Developer</b>, developing enterprise applications
+              with
+              <b> C#/.NET, JavaScript (Ext JS/jQuery), Oracle SQL,</b> and{' '}
+              <b>4D</b>. Over 240 full-stack tasks later, I'd improved query
+              performance, streamlined workflows, and sharpened my QA instincts.
             </Text>
 
             <Space h="md" />
 
             <Text size="lg">
-              I thrive where <b>problem-solving</b>, <b>data-driven design</b>, and <b>team collaboration</b> meet. My goal is to grow within environments that challenge me technically while letting me contribute meaningfully to impactful, scalable solutions.
+              I thrive where <b>problem-solving</b>,{' '}
+              <b>data-driven design</b>, and <b>team collaboration</b> meet. My
+              goal is to grow within environments that challenge me technically
+              while letting me contribute meaningfully to impactful, scalable
+              solutions.
             </Text>
           </Grid.Col>
         </Grid>
@@ -160,54 +223,111 @@ const About = () => {
         <Space h="xl" />
 
         <Text size="lg" ta="left" maw={900} mx="auto" lh={1.7}>
-          My technical background bridges <b>full-stack development</b> and <b>data-driven design</b>. I’ve built enterprise applications using <b>C#/.NET</b>, <b>JavaScript</b> (Ext JS / jQuery), 
-          and <b>Oracle SQL</b>, where I learned to turn complex systems into efficient, maintainable solutions. Now, as I specialize in <b>Business Intelligence</b> at NOVA IMS, I’m expanding that foundation through <b>Python-based analytics</b>, <b>Power BI</b> dashboards, <b>MySQL</b> database design, and <b>data visualization</b> techniques that translate raw information into clear, actionable insights.
+          My technical background bridges <b>full-stack development</b> and{' '}
+          <b>data-driven design</b>. I've built enterprise applications using{' '}
+          <b>C#/.NET</b>, <b>JavaScript</b> (Ext JS / jQuery), and{' '}
+          <b>Oracle SQL</b>, where I learned to turn complex systems into
+          efficient, maintainable solutions. Now, as I specialize in{' '}
+          <b>Business Intelligence</b> at NOVA IMS, I'm expanding that
+          foundation through <b>Python-based analytics</b>, <b>Power BI</b>{' '}
+          dashboards, <b>MySQL</b> database design, and{' '}
+          <b>data visualization</b> techniques that translate raw information
+          into clear, actionable insights.
         </Text>
-
       </Container>
 
       {/* ======================== EDUCATION SECTION ======================== */}
       <Container size="lg" py="xl">
-        <Divider my="lg" /> 
+        <Divider my="lg" />
         <Title order={2} ta="center" mb="lg">
           Education
         </Title>
 
         <Grid align="center">
           <Grid.Col span={{ base: 12, md: 5 }}>
-            <Image
-              radius="lg"
-              src={grad}
-              alt="Graduation photo"
-              className="mediumImage"
-            />
+            <Box
+              mx="auto"
+              style={{
+                maxWidth: 400,
+                borderRadius: 'var(--mantine-radius-lg)',
+                overflow: 'hidden',
+                border: '3px solid var(--mantine-color-dark-4)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              }}
+              onMouseEnter={imgEnter}
+              onMouseLeave={imgLeave}
+            >
+              <Image
+                src={grad}
+                alt="Graduation photo"
+                style={{ display: 'block', width: '100%' }}
+              />
+            </Box>
           </Grid.Col>
 
           <Grid.Col span={{ base: 12, md: 7 }}>
             <Stack gap="md">
-              <Paper withBorder p="lg" radius="md" shadow="sm">
+              {/* Master's first */}
+              <Paper
+                withBorder
+                p="lg"
+                radius="md"
+                shadow="md"
+                style={{
+                  transition: 'transform 0.2s ease, box-shadow 0.25s ease',
+                  borderColor: 'var(--mantine-color-dark-4)',
+                }}
+                onMouseEnter={cardEnter}
+                onMouseLeave={cardLeave}
+              >
                 <Title order={4} ta="center" mb="xs">
-                  B.S. in Computer Science <Text span fw={400}>with Minor in Mathematics</Text>
-                </Title>
-                <Text ta="center" c="dimmed">
-                  Utah State University — Logan, UT
-                </Text>
-                <Space h="xs" />
-                <Text>
-                  Graduated <b>Magna Cum Laude</b> in May 2024 with a <b>3.92 GPA</b> on a full-ride Presidential Scholarship. Developed foundations in software engineering, algorithms, and data analysis through hands-on roles as a Web Developer, C++ Teaching Assistant, and Computer Vision Research Assistant.
-                </Text>
-              </Paper>
-
-              <Paper withBorder p="lg" radius="md" shadow="sm">
-                <Title order={4} ta="center" mb="xs">
-                  Master’s in Information Management — <Text span fw={400}>Specialization in Business Intelligence</Text>
+                  Master's in Information Management —{' '}
+                  <Text span fw={400}>
+                    Specialization in Business Intelligence
+                  </Text>
                 </Title>
                 <Text ta="center" c="dimmed">
                   Nova IMS — Lisbon, Portugal
                 </Text>
                 <Space h="xs" />
                 <Text>
-                  Pursuing advanced skills in data modeling, analytics, and visualization. My focus is on turning complex datasets into clear insights and designing intelligent, human-centered BI solutions.
+                  Pursuing advanced skills in data modeling, analytics, and
+                  visualization. My focus is on turning complex datasets into
+                  clear insights and designing intelligent, human-centered BI
+                  solutions.
+                </Text>
+              </Paper>
+
+              {/* B.S. second */}
+              <Paper
+                withBorder
+                p="lg"
+                radius="md"
+                shadow="md"
+                style={{
+                  transition: 'transform 0.2s ease, box-shadow 0.25s ease',
+                  borderColor: 'var(--mantine-color-dark-4)',
+                }}
+                onMouseEnter={cardEnter}
+                onMouseLeave={cardLeave}
+              >
+                <Title order={4} ta="center" mb="xs">
+                  B.S. in Computer Science{' '}
+                  <Text span fw={400}>
+                    with Minor in Mathematics
+                  </Text>
+                </Title>
+                <Text ta="center" c="dimmed">
+                  Utah State University — Logan, UT
+                </Text>
+                <Space h="xs" />
+                <Text>
+                  Graduated <b>Magna Cum Laude</b> in May 2024 with a{' '}
+                  <b>3.92 GPA</b> on a full-ride Presidential Scholarship.
+                  Developed foundations in software engineering, algorithms, and
+                  data analysis through hands-on roles as a Web Developer, C++
+                  Teaching Assistant, and Computer Vision Research Assistant.
                 </Text>
               </Paper>
             </Stack>
