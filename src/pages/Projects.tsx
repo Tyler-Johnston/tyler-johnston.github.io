@@ -46,7 +46,7 @@ export function Projects() {
           </Title>
           <Text c="dimmed" size="md" maw={600} lh={1.7} mt={4}>
             A mix of enterprise work, creative games, data pipelines, and machine learning
-            experiments — built across full-stack web, C#, Python, and Angular.
+            projects.
           </Text>
         </Stack>
       </motion.div>

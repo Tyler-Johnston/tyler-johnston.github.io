@@ -10,7 +10,7 @@ import { Projects } from './pages/Projects';
 import { About } from './pages/About';
 import { Experience } from './pages/Experience';
 import { FlashcardDungeon } from './pages/projects/FlashcardDungeon';
-import ParallaxPoker from './ParallaxPoker';
+import { ParallaxPoker } from './pages/projects/ParallaxPoker';
 import Scroll from './Scroll';
 import { theme } from './theme/theme';
 

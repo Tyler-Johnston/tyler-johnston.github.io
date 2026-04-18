@@ -1,5 +1,6 @@
 import {
-  parallaxPokerMain,
+  ppImg,
+  fdLanding,
   reptiletracker,
   vintagefinds,
   blockbuilder,
@@ -46,19 +47,18 @@ export const flagshipProjects: FlagshipProject[] = [
     title: 'Parallax Poker',
     subtitle: 'C# / Godot 4 Roguelite Card Game',
     description:
-      'A character-driven poker roguelite inspired by Balatro and Poker Night at the Inventory. Each opponent has a unique personality system with 15+ stats driving bluff frequency, tilt thresholds, and tell behaviors — all balanced via a Monte Carlo simulation pipeline.',
-    imageUrl: parallaxPokerMain,
-    techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo', 'Pixel Art'],
+      'A character-driven poker roguelite inspired by Balatro and Poker Night at the Inventory. Each opponent has a unique personality system with 15+ stats driving bluff frequency, tilt thresholds, and tell behaviors.',
+    imageUrl: ppImg,
+    techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'],
     achievements: [
       'AI decision engine using Pheval hand evaluator with 15+ per-character personality stats',
-      'Monte Carlo gauntlet generates CSV logs analyzed by Python/Pandas/Plotly balance reports',
+      'Character-Specific archetypes are balanced via automated Monte Carlo generated balance reports',
       '32,768 unique character sprite combinations via layered expression, accessory, and background systems',
       'Parallel worlds system: timezone-based environment and personality shifts across sessions',
       'Tell system: two independent channels (face composure + bluff frequency) for deductive gameplay',
     ],
     cta: [
-      { label: 'View Details', href: '/projects/parallax-poker', variant: 'filled' },
-      { label: 'GitHub', href: 'https://github.com/tyler-johnston', variant: 'outline' },
+      { label: 'View Details', href: '/projects/parallax-poker', variant: 'filled' }
     ],
     accentColor: 'indigo',
   },
@@ -68,8 +68,8 @@ export const flagshipProjects: FlagshipProject[] = [
     subtitle: 'Angular Full-Stack Language Learning App',
     description:
       'A language learning web app built around a dungeon metaphor. Users progress through a CEFR-mapped node graph, unlocking and practicing flashcard decks across 7 languages. Features offline-first IndexedDB persistence and a journal-based deck editing workflow.',
-    imageUrl: parallaxPokerMain,
-    techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Signals', 'CEFR'],
+    imageUrl: fdLanding,
+    techStack: ['Angular', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB', 'Signals'],
     achievements: [
       'CEFR-level node graph roadmap (A1–C2) with lazy-loaded feature modules per language topic',
       'Prebuilt deck system: static TypeScript arrays per language/level (7 languages supported)',
@@ -79,7 +79,7 @@ export const flagshipProjects: FlagshipProject[] = [
     ],
     cta: [
       { label: 'View Details', href: '/projects/flashcard-dungeon', variant: 'filled' },
-      { label: 'View Source', href: 'https://github.com/tyler-johnston', variant: 'outline' },
+      { label: 'Try Web App', href: 'https://flashcarddungeon.com', variant: 'outline' },
     ],
     accentColor: 'cyan',
   },

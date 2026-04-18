@@ -33,7 +33,7 @@ export function Footer() {
             </ActionIcon>
             <ActionIcon
               component="a"
-              href="https://linkedin.com/in/tyler-johnston"
+              href="https://linkedin.com/in/tylerjohnstonn"
               target="_blank"
               rel="noopener noreferrer"
               variant="subtle"

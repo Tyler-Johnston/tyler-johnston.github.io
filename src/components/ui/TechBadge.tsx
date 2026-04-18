@@ -20,6 +20,7 @@ const colorMap: Record<string, string> = {
   'C++20': 'pink',
   IndexedDB: 'teal',
   Signals: 'teal',
+  Supabase: 'green',
   CEFR: 'indigo',
 };
 

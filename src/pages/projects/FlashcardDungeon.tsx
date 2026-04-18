@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Container,
   Title,
@@ -11,9 +12,10 @@ import {
   ThemeIcon,
   List,
   Table,
+  ActionIcon,
   useMantineColorScheme,
 } from '@mantine/core';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   IconArrowLeft,
   IconBrandGithub,
@@ -24,26 +26,86 @@ import {
   IconDatabase,
   IconDeviceMobile,
   IconBook,
+  IconChevronLeft,
+  IconChevronRight,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
+import {
+  fdLanding,
+  fdEmberBattle,
+  fdCryptBattle,
+  fdMonsterManual,
+  fdRoadmap,
+  fdShop,
+  fdJournal,
+  fdStats,
+} from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 
+const screenshots = [
+  {
+    src: fdLanding,
+    label: 'Home Screen',
+    caption:
+      'Dashboard showing day streak, active decks with progress bars, and navigation to Shop, Stats, and Roadmap.',
+  },
+  {
+    src: fdEmberBattle,
+    label: 'Ember Fantasy — Combat',
+    caption:
+      'Default dungeon. The Knight shields every other turn — players must answer cards fast to deal damage before the block activates.',
+  },
+  {
+    src: fdCryptBattle,
+    label: 'Moonlit Crypt — Combat',
+    caption:
+      'Dungeon #2, unlockable from the Shop. The Mutant Frog permanently gains +3 ATK whenever you take longer than 10 seconds to answer.',
+  },
+  {
+    src: fdShop,
+    label: 'Shop',
+    caption:
+      'Permanent upgrades purchased with in-game gold. Dungeons (Ember Fantasy, Moonlit Crypt, Poker Table), health upgrades, and meta items — all persist across runs.',
+  },
+  {
+    src: fdJournal,
+    label: 'Journal',
+    caption:
+      'Full deck editor with search, card status breakdown (Learning / Review / New), import from .txt file or paste, and per-card scheduling info.',
+  },
+  {
+    src: fdStats,
+    label: 'Stats',
+    caption:
+      '80 runs started, 29 won, 83% win rate. Tracks runs, combat damage dealt/taken, best run, and full per-deck learning history.',
+  },
+  {
+    src: fdMonsterManual,
+    label: 'Monster Manual',
+    caption:
+      'Bestiary tracking every enemy — Tier, HP, ATK, unique ability, and your personal kill/death record. Tabs switch between Ember Fantasy and Moonlit Crypt.',
+  },
+  {
+    src: fdRoadmap,
+    label: 'CEFR Roadmap',
+    caption:
+      'Node graph for European Portuguese. Gold = mastered, teal ring = in-progress. Each node maps to a prebuilt deck of vocabulary or grammar cards.',
+  },
+];
+
 const techStack = [
-  { tech: 'Angular 17+', role: 'Frontend framework — standalone components, lazy-loaded modules' },
+  { tech: 'Angular 17+', role: 'Frontend framework — standalone components, lazy-loaded feature modules' },
   { tech: 'TypeScript', role: 'Static typing throughout — interfaces, generics, strict mode' },
   { tech: 'Angular Signals', role: 'Reactive state without NgRx — fine-grained reactivity' },
-  { tech: 'IndexedDB', role: 'Client-side persistence for decks, progress, and user data' },
+  { tech: 'IndexedDB', role: 'Offline-first client-side persistence for decks, progress, and user data' },
+  { tech: 'Supabase', role: 'Cloud sync backend — PostgreSQL database with auth and real-time APIs' },
+  { tech: 'PostgreSQL', role: 'Relational database backing Supabase for cross-device deck sync' },
   { tech: 'CEFR Standard', role: 'A1–C2 proficiency mapping for node graph and deck organization' },
 ];
 
 const languages = [
-  'European Portuguese',
-  'Brazilian Portuguese',
-  'French',
-  'German',
-  'Spanish',
-  'Japanese',
-  'Korean',
+  'European Portuguese', 'Brazilian Portuguese', 'French',
+  'German', 'Spanish', 'Japanese', 'Korean',
 ];
 
 const architecturePoints = [
@@ -58,21 +120,21 @@ const architecturePoints = [
     icon: IconBook,
     title: 'Prebuilt Deck System',
     detail:
-      'Each language has static TypeScript arrays (PrebuiltDeckDef[]) stored under prebuilt/<language>/ with per-CEFR-level files. Decks are looked up by languageCode + nodeId at runtime, making it trivial to add new content without touching app logic.',
+      'Each language has static TypeScript arrays (PrebuiltDeckDef[]) under prebuilt/<language>/ with per-CEFR-level files. Decks are looked up by languageCode + nodeId at runtime, making it trivial to add new content without touching app logic.',
     color: 'cyan',
   },
   {
     icon: IconDatabase,
-    title: 'Offline-First with IndexedDB',
+    title: 'IndexedDB + Supabase Sync',
     detail:
-      'All user progress, custom decks, and card edits are persisted in IndexedDB — no account required for full functionality. A cloud sync modal allows users to export/import deck data across sessions and devices.',
+      'All user progress is persisted locally in IndexedDB — no account required for full functionality. Supabase (PostgreSQL backend) powers optional cloud sync: users authenticate and push/pull deck data across devices via a sync modal.',
     color: 'violet',
   },
   {
     icon: IconDeviceMobile,
     title: 'Standalone Components & Signals',
     detail:
-      'Built with Angular\'s standalone component model and signals for reactive state. No NgRx boilerplate — signals handle deck selection, progress tracking, and UI state with minimal ceremony and excellent performance.',
+      "Built with Angular's standalone component model and signals for reactive state. No NgRx boilerplate — signals handle deck selection, progress tracking, and UI state with minimal ceremony and excellent performance.",
     color: 'teal',
   },
   {
@@ -83,6 +145,157 @@ const architecturePoints = [
     color: 'orange',
   },
 ];
+
+interface CarouselProps {
+  screenshots: { src: string; label: string; caption: string }[];
+  isDark: boolean;
+  border: string;
+  surface: string;
+}
+
+const slideVariants = {
+  enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
+  center: { opacity: 1, x: 0 },
+  exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
+};
+
+function ScreenshotCarousel({ screenshots, isDark, border, surface }: CarouselProps) {
+  const [[index, direction], setSlide] = useState([0, 0]);
+
+  const go = (next: number) => {
+    const dir = next > index ? 1 : -1;
+    setSlide([(next + screenshots.length) % screenshots.length, dir]);
+  };
+
+  const current = screenshots[index];
+
+  return (
+    <Box
+      style={{
+        border: `1px solid ${border}`,
+        borderRadius: 16,
+        background: surface,
+        overflow: 'hidden',
+      }}
+    >
+      {/* Main image area */}
+      <Box
+        style={{
+          position: 'relative',
+          background: isDark ? '#0f1117' : '#f1f5f9',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: 420,
+          overflow: 'hidden',
+        }}
+      >
+        <AnimatePresence initial={false} custom={direction} mode="wait">
+          <motion.div
+            key={index}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.3, ease: [0.32, 0, 0.67, 0] }}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+              padding: '24px 48px',
+            }}
+          >
+            <img
+              src={current.src}
+              alt={current.label}
+              style={{
+                maxHeight: 480,
+                maxWidth: '100%',
+                objectFit: 'contain',
+                borderRadius: 8,
+                boxShadow: isDark
+                  ? '0 8px 40px rgba(0,0,0,0.6)'
+                  : '0 8px 40px rgba(0,0,0,0.12)',
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Prev / Next buttons */}
+        <ActionIcon
+          variant="filled"
+          color="dark"
+          radius="xl"
+          size="lg"
+          onClick={() => go(index - 1)}
+          style={{
+            position: 'absolute',
+            left: 12,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: isDark ? 'rgba(30,33,48,0.85)' : 'rgba(255,255,255,0.85)',
+            border: `1px solid ${border}`,
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          <IconChevronLeft size={18} color={isDark ? '#f1f5f9' : '#1e2130'} />
+        </ActionIcon>
+        <ActionIcon
+          variant="filled"
+          color="dark"
+          radius="xl"
+          size="lg"
+          onClick={() => go(index + 1)}
+          style={{
+            position: 'absolute',
+            right: 12,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            background: isDark ? 'rgba(30,33,48,0.85)' : 'rgba(255,255,255,0.85)',
+            border: `1px solid ${border}`,
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          <IconChevronRight size={18} color={isDark ? '#f1f5f9' : '#1e2130'} />
+        </ActionIcon>
+      </Box>
+
+      {/* Caption */}
+      <Box px="xl" py="md" style={{ borderTop: `1px solid ${border}` }}>
+        <Group justify="space-between" wrap="wrap" gap="md">
+          <Box style={{ flex: 1 }}>
+            <Text fw={600} size="sm" mb={4}>{current.label}</Text>
+            <Text size="sm" c="dimmed" lh={1.6}>{current.caption}</Text>
+          </Box>
+          <Text size="xs" c="dimmed" style={{ whiteSpace: 'nowrap' }}>
+            {index + 1} / {screenshots.length}
+          </Text>
+        </Group>
+      </Box>
+
+      {/* Dot indicators */}
+      <Group justify="center" pb="md" gap={6}>
+        {screenshots.map((_, i) => (
+          <Box
+            key={i}
+            onClick={() => go(i)}
+            style={{
+              width: i === index ? 20 : 6,
+              height: 6,
+              borderRadius: 3,
+              background: i === index
+                ? 'var(--mantine-color-cyan-5)'
+                : isDark ? '#2e3347' : 'var(--mantine-color-gray-3)',
+              cursor: 'pointer',
+              transition: 'width 0.2s ease, background 0.2s ease',
+            }}
+          />
+        ))}
+      </Group>
+    </Box>
+  );
+}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -100,6 +313,7 @@ export function FlashcardDungeon() {
 
   return (
     <Container size="lg" py={60}>
+
       {/* Back nav */}
       <motion.div {...fadeUp(0)}>
         <Button
@@ -128,9 +342,9 @@ export function FlashcardDungeon() {
             Flashcard Dungeon
           </Title>
           <Text size="lg" c="dimmed" maw={680} lh={1.7}>
-            A language learning web application built around a dungeon metaphor. Users progress
-            through a CEFR-mapped node graph, unlocking and practicing flashcard decks across 7
-            languages — with full offline support and cloud sync.
+            A language learning web application built around a dungeon-crawl metaphor. Users battle
+            monsters by answering flashcards, progress through a CEFR-mapped node graph across 7
+            languages, and unlock new dungeons with a shop system — all offline-first with IndexedDB.
           </Text>
           <Group gap="sm" mt={4} wrap="wrap">
             <Button
@@ -157,60 +371,25 @@ export function FlashcardDungeon() {
         </Stack>
       </motion.div>
 
-      {/* Placeholder image area */}
-      <motion.div {...fadeUp(0.1)}>
-        <Box
-          mb={60}
-          style={{
-            borderRadius: 16,
-            border: `1px solid ${border}`,
-            background: isDark
-              ? 'linear-gradient(135deg, #1a1d27 0%, #0f1117 100%)'
-              : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-            height: 360,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            overflow: 'hidden',
-          }}
-        >
-          <Stack align="center" gap="sm">
-            <IconLanguage size={48} style={{ opacity: 0.2 }} />
-            <Text size="sm" c="dimmed">
-              Screenshot coming soon
-            </Text>
-          </Stack>
-        </Box>
-      </motion.div>
-
-      {/* Supported languages */}
-      <motion.div {...fadeUp(0.1)}>
-        <Card mb={60} style={{ border: `1px solid ${border}`, background: surface }}>
-          <Text fw={600} mb="md">
-            Supported Languages
+      {/* Screenshot carousel */}
+      <motion.div {...fadeUp(0.08)}>
+        <Stack gap={4} mb={24}>
+          <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>
+            Screenshots
           </Text>
-          <Group gap="sm" wrap="wrap">
-            {languages.map((lang) => (
-              <Box
-                key={lang}
-                px="md"
-                py={6}
-                style={{
-                  borderRadius: 8,
-                  border: `1px solid ${border}`,
-                  background: isDark ? '#22263a' : 'var(--mantine-color-gray-0)',
-                }}
-              >
-                <Text size="sm" fw={500}>
-                  {lang}
-                </Text>
-              </Box>
-            ))}
-          </Group>
-        </Card>
+          <Title order={2} style={{ fontWeight: 800 }}>
+            See It In Action
+          </Title>
+        </Stack>
       </motion.div>
 
-      {/* Architecture deep-dive */}
+      <motion.div {...fadeUp(0.12)}>
+        <ScreenshotCarousel screenshots={screenshots} isDark={isDark} border={border} surface={surface} />
+      </motion.div>
+
+      <Box mb={60} />
+
+      {/* Architecture */}
       <motion.div {...fadeUp(0.1)}>
         <Stack gap={4} mb={32}>
           <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>
@@ -225,28 +404,18 @@ export function FlashcardDungeon() {
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" mb={60}>
         {architecturePoints.map((point, i) => (
           <motion.div key={point.title} {...fadeUp(i * 0.07)}>
-            <Card
-              style={{
-                border: `1px solid ${border}`,
-                background: surface,
-                height: '100%',
-              }}
-            >
+            <Card style={{ border: `1px solid ${border}`, background: surface, height: '100%' }}>
               <ThemeIcon color={point.color} variant="light" size="lg" radius="md" mb="sm">
                 <point.icon size={20} />
               </ThemeIcon>
-              <Text fw={600} mb={6}>
-                {point.title}
-              </Text>
-              <Text size="sm" c="dimmed" lh={1.7}>
-                {point.detail}
-              </Text>
+              <Text fw={600} mb={6}>{point.title}</Text>
+              <Text size="sm" c="dimmed" lh={1.7}>{point.detail}</Text>
             </Card>
           </motion.div>
         ))}
       </SimpleGrid>
 
-      {/* Tech stack table */}
+      {/* Tech stack */}
       <motion.div {...fadeUp(0.1)}>
         <Stack gap={4} mb={32}>
           <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>
@@ -270,13 +439,9 @@ export function FlashcardDungeon() {
             <Table.Tbody>
               {techStack.map((row) => (
                 <Table.Tr key={row.tech}>
+                  <Table.Td><TechBadge label={row.tech} /></Table.Td>
                   <Table.Td>
-                    <TechBadge label={row.tech} />
-                  </Table.Td>
-                  <Table.Td>
-                    <Text size="sm" c="dimmed">
-                      {row.role}
-                    </Text>
+                    <Text size="sm" c="dimmed">{row.role}</Text>
                   </Table.Td>
                 </Table.Tr>
               ))}
@@ -285,7 +450,7 @@ export function FlashcardDungeon() {
         </Card>
       </motion.div>
 
-      {/* Key achievements */}
+      {/* Achievements */}
       <motion.div {...fadeUp(0.1)}>
         <Stack gap={4} mb={32}>
           <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>
@@ -310,15 +475,16 @@ export function FlashcardDungeon() {
             {[
               'CEFR-level node graph roadmap (A1–C2) with lazy-loaded Angular feature modules per language topic',
               'Prebuilt deck system: typed TypeScript arrays per language/level across 7 supported languages',
+              'Dungeon shop system with unlockable dungeons (Ember Fantasy default, Moonlit Crypt purchasable)',
+              'Monster combat mechanics tied to flashcard performance — enemy abilities punish slow answers',
+              'Monster Manual bestiary tracking all enemies with personal kill/death records',
               'Standalone Angular components with signals — reactive state without NgRx boilerplate',
-              'IndexedDB offline-first persistence with cloud sync modal for cross-session deck data',
+              'IndexedDB offline-first persistence — full functionality without an account',
+              'Supabase (PostgreSQL) cloud sync: authenticated users push/pull deck data across devices',
               'Journal component for creating, renaming, and editing cards with DeckImportService',
-              'Lazy-loaded feature modules reduce initial bundle size — roadmap, journal, and review as separate chunks',
             ].map((achievement) => (
               <List.Item key={achievement}>
-                <Text size="sm" c="dimmed" lh={1.6}>
-                  {achievement}
-                </Text>
+                <Text size="sm" c="dimmed" lh={1.6}>{achievement}</Text>
               </List.Item>
             ))}
           </List>

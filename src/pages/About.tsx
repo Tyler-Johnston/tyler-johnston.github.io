@@ -61,16 +61,15 @@ export function About() {
         <motion.div {...fadeUp(0.1)}>
           <Stack gap="lg">
             <Text size="md" lh={1.8} c="dimmed">
-              I'm a full-stack software engineer completing my M.S. in Computer Science at NOVA
-              IMS (Lisbon), specializing in Business Intelligence. I graduated Magna Cum Laude
-              from Utah State University (3.92 GPA) with a B.S. in Computer Science and a
+              I'm a full-stack software engineer completing my M.S. in Information Management at NOVA
+              IMS, specializing in Business Intelligence. I graduated Magna Cum Laude
+              from Utah State University with a B.S. in Computer Science and a
               Mathematics minor.
             </Text>
             <Text size="md" lh={1.8} c="dimmed">
               My work spans enterprise C#/.NET applications, Angular and React front-ends, data
               pipelines, ML models, and game systems. I enjoy building things that are technically
-              interesting and actually useful — whether that's a Monte Carlo balancing pipeline for
-              a card game AI or an ADA compliance detector using YOLOv8.
+              interesting and actually useful in my daily life.
             </Text>
             <Text size="md" lh={1.8} c="dimmed">
               I'm actively seeking full-stack or software engineering roles. Comfortable working
@@ -193,13 +192,12 @@ export function About() {
         {[
           {
             school: 'NOVA IMS',
-            degree: 'M.S. Computer Science',
+            degree: 'M.S. Information Management',
             sub: 'Business Intelligence Specialization',
-            period: '2025 – 2026',
+            period: '2025 – 2027',
             location: 'Lisbon, Portugal',
             highlights: [
-              'Full-ride scholarship recipient',
-              'Business Intelligence, Data Warehousing, Advanced Analytics',
+              // 'Business Intelligence, Data Warehousing, Advanced Analytics',
             ],
           },
           {
@@ -207,10 +205,10 @@ export function About() {
             degree: 'B.S. Computer Science',
             sub: 'Mathematics Minor',
             period: '2020 – 2024',
-            location: 'Logan, UT',
+            location: 'Logan, UT. USA',
             highlights: [
               'Magna Cum Laude — 3.92 GPA',
-              'Dean\'s List every semester',
+              'Full-ride scholarship recipient',
               'Teaching Assistant, Research Assistant',
             ],
           },

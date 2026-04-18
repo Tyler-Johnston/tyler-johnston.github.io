@@ -18,6 +18,20 @@ import facialExpression from '../../images/facialexpression.png';
 import footprints from '../../images/footprints.png';
 import boundingbox from '../../images/boundingbox.png';
 import bucketvector from '../../images/bucketvector.png';
+import fdLanding from '../../images/landingpage.png';
+import fdEmberBattle from '../../images/ember_cardbattle.png';
+import fdCryptBattle from '../../images/crypt_cardbattle.png';
+import fdMonsterManual from '../../images/monster_manual.png';
+import fdRoadmap from '../../images/roadmap.png';
+import fdShop from '../../images/shop.png';
+import fdJournal from '../../images/journal.png';
+import fdStats from '../../images/stats.png';
+import ppImg from '../../images/parallaxpoker_img.png';
+import ppBalance from '../../images/balance_report.png';
+import ppAchievements from '../../images/achievements.png';
+import ppSettings from '../../images/settings_modal.png';
+import ppDialogue from '../../images/dialogue.png';
+import ppReaction from '../../images/reaction_small.gif';
 
 export {
   parallaxPokerMain,
@@ -39,4 +53,18 @@ export {
   footprints,
   boundingbox,
   bucketvector,
+  fdLanding,
+  fdEmberBattle,
+  fdCryptBattle,
+  fdMonsterManual,
+  fdRoadmap,
+  fdShop,
+  fdJournal,
+  fdStats,
+  ppImg,
+  ppBalance,
+  ppAchievements,
+  ppSettings,
+  ppDialogue,
+  ppReaction,
 };
