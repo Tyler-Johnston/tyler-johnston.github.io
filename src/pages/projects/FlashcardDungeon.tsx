@@ -70,12 +70,12 @@ const slides: Slide[] = [
   {
     src: fdShop,
     label: 'Shop',
-    caption: 'Permanent upgrades purchased with in-game gold. Dungeons, health upgrades, and meta items all persist across runs.',
+    caption: 'Permanent upgrades purchased with in-game gold. Purchased health upgrades, weapons, and armor persist across all runs.',
   },
   {
     src: fdJournal,
     label: 'Journal',
-    caption: 'Full deck editor with search, card status breakdown (Learning / Review / New), import from .txt or paste, and per-card scheduling info.',
+    caption: 'Full deck editor with search, card status breakdown (Learning / Review / New), and per-card scheduling info.',
   },
   {
     pair: [
@@ -96,14 +96,11 @@ const slides: Slide[] = [
   {
     src: fdRoadmap,
     label: 'CEFR Roadmap',
-    caption: 'Node graph for European Portuguese. Gold = mastered, teal ring = in-progress. Each node maps to a prebuilt deck of vocabulary or grammar cards.',
+    caption: 'While users can generate their own decks, they may also use prebuilt language decks via the CERF Roadmap.',
   },
   {
-    pair: [
-      { src: fdAchievements, label: 'Achievements' },
-      { src: fdSettings, label: 'Settings' },
-    ],
-    label: 'Achievements & Settings',
+    src: fdAchievements,
+    label: 'Achievements',
     caption: 'Achievement system tracking milestones across runs, plus app settings for audio, sync, and display preferences.',
   },
 ];
@@ -302,9 +299,7 @@ export function FlashcardDungeon() {
             Flashcard Dungeon
           </Title>
           <Text size="lg" c="dimmed" maw={680} lh={1.7}>
-            A language learning web app built around a dungeon-crawl metaphor. Users battle monsters
-            by answering flashcards, progress through a CEFR-mapped node graph across 7 languages, and
-            unlock new dungeons — all offline-first with IndexedDB and optional cloud sync via Supabase.
+            A dungeon-crawling flashcard app where spaced repetition meets RPG progression. Battle monsters, navigate a CEFR-mapped world, complete your Monster Manual, and unlock loot as you master a new language.
           </Text>
           <Group gap="sm" mt={4} wrap="wrap">
             <Button
