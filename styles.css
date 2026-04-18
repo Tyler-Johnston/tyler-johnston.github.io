@@ -1,3 +1,55 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/900.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-mantine-color-scheme='dark'] body {
+  background-color: #0f1117;
+}
+
+[data-mantine-color-scheme='light'] body {
+  background-color: #f8fafc;
+}
+
+/* Card hover shadows */
+[data-mantine-color-scheme='dark'] .project-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px #3a3f5c;
+}
+
+[data-mantine-color-scheme='light'] .project-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px #c7d2fe;
+}
+
+/* Skill tile hover */
+[data-mantine-color-scheme='dark'] .skill-tile:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-color: #3a3f5c !important;
+}
+
+[data-mantine-color-scheme='light'] .skill-tile:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-color: #a5b4fc !important;
+}
+
+/* Legacy classes (used in ParallaxPoker showcase) */
 .smallImage {
   width: 100%;
   max-width: 400px;
@@ -36,12 +88,12 @@
 }
 
 .skillIcon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .skillText {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 @media (max-width: 768px) {
@@ -53,19 +105,6 @@
   .mediumImage {
     width: 90%;
     max-width: 400px;
-  }
-
-  .textHeading {
-    font-size: 1.75rem;
-  }
-
-  .textSubHeading {
-    font-size: 1.125rem;
-  }
-
-  .flexContainer {
-    flex-direction: column;
-    padding: 0.5rem;
   }
 
   .skillIcon {
