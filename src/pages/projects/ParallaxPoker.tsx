@@ -35,11 +35,9 @@ import {
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
-  ppImg,
   ppBalance,
   ppDialogue,
   ppReaction,
-  parallaxPokerMain,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 

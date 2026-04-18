@@ -21,6 +21,7 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
+  IconSchool,
   IconCircleCheck,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -188,7 +189,7 @@ export function About() {
         </Stack>
       </motion.div>
 
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
+      <Stack gap={0}>
         {[
           {
             school: 'NOVA IMS',
@@ -196,65 +197,76 @@ export function About() {
             sub: 'Business Intelligence Specialization',
             period: '2025 – 2027',
             location: 'Lisbon, Portugal',
-            highlights: [
-              // 'Business Intelligence, Data Warehousing, Advanced Analytics',
-            ],
+            color: 'indigo' as const,
+            highlights: [] as string[],
           },
           {
             school: 'Utah State University',
             degree: 'B.S. Computer Science',
             sub: 'Mathematics Minor',
             period: '2020 – 2024',
-            location: 'Logan, UT. USA',
+            location: 'Logan, UT',
+            color: 'teal' as const,
             highlights: [
               'Magna Cum Laude — 3.92 GPA',
               'Full-ride scholarship recipient',
-              'Teaching Assistant, Research Assistant',
+              'Teaching Assistant · Research Assistant',
             ],
           },
-        ].map((edu, i) => (
+        ].map((edu, i, arr) => (
           <motion.div key={edu.school} {...fadeUp(i * 0.1)}>
-            <Card
-              style={{
-                border: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-3)'}`,
-                background: isDark ? '#1a1d27' : '#ffffff',
-              }}
-            >
-              <Stack gap="xs">
-                <Group justify="space-between" wrap="wrap">
-                  <Text fw={700}>{edu.school}</Text>
-                  <Text size="xs" c="dimmed">
-                    {edu.period}
-                  </Text>
+            <Box style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 0 }}>
+              <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <ThemeIcon color={edu.color} variant="light" size="md" radius="xl" style={{ zIndex: 1 }}>
+                  <IconSchool size={14} />
+                </ThemeIcon>
+                {i < arr.length - 1 && (
+                  <Box style={{
+                    width: 2, flex: 1, minHeight: 40,
+                    background: isDark ? '#2e3347' : 'var(--mantine-color-gray-3)',
+                    marginTop: 8, marginBottom: 8,
+                  }} />
+                )}
+              </Box>
+
+              <Card
+                mb={i < arr.length - 1 ? 'xl' : 0}
+                ml="md"
+                style={{
+                  border: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-3)'}`,
+                  background: isDark ? '#1a1d27' : '#ffffff',
+                }}
+              >
+                <Group justify="space-between" wrap="wrap" gap="xs" mb={4}>
+                  <Box>
+                    <Text fw={700} size="lg">{edu.school}</Text>
+                    <Text fw={600} c={edu.color} size="sm">{edu.degree}</Text>
+                    <Text size="xs" c="dimmed">{edu.sub} · {edu.location}</Text>
+                  </Box>
+                  <Text size="xs" c="dimmed" fw={500}>{edu.period}</Text>
                 </Group>
-                <Text fw={600} c="indigo" size="sm">
-                  {edu.degree}
-                </Text>
-                <Text size="sm" c="dimmed">
-                  {edu.sub} · {edu.location}
-                </Text>
-                <List
-                  spacing={4}
-                  mt={4}
-                  icon={
-                    <ThemeIcon color="indigo" variant="light" size="xs" radius="xl">
-                      <IconCircleCheck size={10} />
-                    </ThemeIcon>
-                  }
-                >
-                  {edu.highlights.map((h) => (
-                    <List.Item key={h}>
-                      <Text size="sm" c="dimmed">
-                        {h}
-                      </Text>
-                    </List.Item>
-                  ))}
-                </List>
-              </Stack>
-            </Card>
+                {edu.highlights.length > 0 && (
+                  <List
+                    spacing={4}
+                    mt="sm"
+                    icon={
+                      <ThemeIcon color={edu.color} variant="light" size="xs" radius="xl">
+                        <IconCircleCheck size={10} />
+                      </ThemeIcon>
+                    }
+                  >
+                    {edu.highlights.map((h) => (
+                      <List.Item key={h}>
+                        <Text size="sm" c="dimmed">{h}</Text>
+                      </List.Item>
+                    ))}
+                  </List>
+                )}
+              </Card>
+            </Box>
           </motion.div>
         ))}
-      </SimpleGrid>
+      </Stack>
     </Container>
   );
 }

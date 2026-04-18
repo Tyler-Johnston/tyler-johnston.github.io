@@ -41,7 +41,6 @@ import {
   fdStats,
   fdStats2,
   fdAchievements,
-  fdSettings,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 

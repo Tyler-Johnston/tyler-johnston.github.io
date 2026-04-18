@@ -50,30 +50,18 @@ export function Experience() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
           >
-            <Box
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '40px 1fr',
-                gap: 0,
-                paddingBottom: i < roles.length - 1 ? 0 : 0,
-              }}
-            >
+            <Box style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 0 }}>
               {/* Timeline column */}
               <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <ThemeIcon color="indigo" variant="light" size="md" radius="xl" style={{ zIndex: 1 }}>
                   <IconBriefcase size={14} />
                 </ThemeIcon>
                 {i < roles.length - 1 && (
-                  <Box
-                    style={{
-                      width: 2,
-                      flex: 1,
-                      minHeight: 40,
-                      background: isDark ? '#2e3347' : 'var(--mantine-color-gray-3)',
-                      marginTop: 8,
-                      marginBottom: 8,
-                    }}
-                  />
+                  <Box style={{
+                    width: 2, flex: 1, minHeight: 40,
+                    background: isDark ? '#2e3347' : 'var(--mantine-color-gray-3)',
+                    marginTop: 8, marginBottom: 8,
+                  }} />
                 )}
               </Box>
 
@@ -90,27 +78,15 @@ export function Experience() {
                   <Stack gap="sm">
                     <Box>
                       <Group justify="space-between" wrap="wrap" gap="xs">
-                        <Text fw={700} size="lg">
-                          {role.title}
-                        </Text>
-                        <Text size="xs" c="dimmed" fw={500}>
-                          {role.period}
-                        </Text>
+                        <Text fw={700} size="lg">{role.title}</Text>
+                        <Text size="xs" c="dimmed" fw={500}>{role.period}</Text>
                       </Group>
-                      <Text c="indigo" size="sm" fw={600}>
-                        {role.organization}
-                      </Text>
-                      <Text size="xs" c="dimmed">
-                        {role.location}
-                      </Text>
+                      <Text c="indigo" size="sm" fw={600}>{role.organization}</Text>
+                      <Text size="xs" c="dimmed">{role.location}</Text>
                     </Box>
-
                     {role.description.map((para, j) => (
-                      <Text key={j} size="sm" c="dimmed" lh={1.7}>
-                        {para}
-                      </Text>
+                      <Text key={j} size="sm" c="dimmed" lh={1.7}>{para}</Text>
                     ))}
-
                     <Group gap={6} wrap="wrap" mt={4}>
                       {role.techStack.map((tech) => (
                         <TechBadge key={tech} label={tech} size="xs" />
@@ -119,9 +95,7 @@ export function Experience() {
                   </Stack>
 
                   <Stack gap="sm">
-                    <Text fw={600} size="sm">
-                      Key Contributions
-                    </Text>
+                    <Text fw={600} size="sm">Key Contributions</Text>
                     <List
                       spacing={6}
                       icon={
@@ -132,9 +106,7 @@ export function Experience() {
                     >
                       {role.highlights.map((h) => (
                         <List.Item key={h}>
-                          <Text size="sm" c="dimmed" lh={1.5}>
-                            {h}
-                          </Text>
+                          <Text size="sm" c="dimmed" lh={1.5}>{h}</Text>
                         </List.Item>
                       ))}
                     </List>
