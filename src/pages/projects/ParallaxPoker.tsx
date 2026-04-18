@@ -26,7 +26,7 @@ import {
   IconCircleCheck,
   IconBrain,
   IconChartBar,
-  IconWorld,
+
   IconEye,
   IconCards,
   IconChevronLeft,
@@ -35,8 +35,11 @@ import {
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
+  ppImg,
   ppBalance,
   ppDialogue,
+  ppReaction,
+  parallaxPokerMain,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 
@@ -60,14 +63,17 @@ const screenshots = [
   {
     src: ppDialogue,
     label: 'Dialogue System',
-    caption:
-      'Characters react to hands with personality-driven dialogue. Speech blip pitch and rhythm shift by tilt state.',
+    caption: 'Characters react to hands with personality-driven dialogue. Speech blip pitch and rhythm shift by tilt state — Zen is clean, Monkey is erratic.',
+  },
+  {
+    src: ppReaction,
+    label: 'Tell System',
+    caption: 'Two independent tell channels: face composure (expression updates) and bluff frequency (betting pattern drift). Read both to deduce hand strength.',
   },
   {
     src: ppBalance,
     label: 'Monte Carlo Balance Report',
-    caption:
-      'Python/Pandas/Plotly pipeline: 32,768+ simulation runs generate CSV logs, then produce per-character winrate charts to validate balance before each release.',
+    caption: 'Python/Pandas/Plotly pipeline: 32,768+ simulation runs generate CSV logs, then produce per-character winrate charts to validate balance before each release.',
   },
 ];
 
@@ -85,37 +91,30 @@ const architecturePoints = [
   {
     icon: IconBrain,
     title: 'AI Decision Engine',
-    detail:
-      'Each character runs the PHeval hand evaluator to estimate hand equity, then applies 15+ personality stats — aggression, bluff frequency, tilt weights, hero call threshold — to make decisions. Stats shift dynamically based on tilt state and pot size relative to stack.',
+    detail: 'PHeval estimates hand equity in real time; 15+ per-character personality stats then skew that decision with aggression, bluff frequency, and hero call thresholds. All stats shift dynamically with tilt state and pot size.',
+    stat: '15+ personality stats per character',
     color: 'indigo',
   },
   {
     icon: IconCards,
     title: 'Character Compositor',
-    detail:
-      'Characters are built from layered pixel art sprite sheets: expression layer (16 frames), two accessory layers (16 frames each), and a background that shifts by time-of-day slot. Each character gets a pool of display names, yielding 32,768+ unique visual combinations per character.',
+    detail: 'Each character is built from three layered sprite sheets (expression, two accessories) plus a time-of-day background — yielding 32,768+ unique visual combinations. Each character also draws from a pool of display names.',
+    stat: '32,768+ combinations per character',
     color: 'violet',
   },
   {
     icon: IconChartBar,
     title: 'Monte Carlo Balance Pipeline',
-    detail:
-      'A Python simulation gauntlet runs thousands of heads-up matches for every opponent pairing, logging outcomes to CSV. Pandas aggregates the results and Plotly renders interactive balance reports — making it easy to spot outlier winrates before shipping a character.',
+    detail: 'A Python gauntlet runs thousands of heads-up matches per opponent pairing, logs outcomes to CSV, and feeds Pandas/Plotly reports that surface winrate outliers before each character ships.',
+    stat: '32k+ simulation runs per release',
     color: 'cyan',
   },
   {
     icon: IconEye,
     title: 'Tilt & Tell System',
-    detail:
-      'Two independent tell channels let players read opponents: face composure (expression frame updates) and bluff frequency (betting pattern drift). A 4-state tilt system (Zen → Annoyed → Steaming → Monkey) distorts personality stats and applies sprite glow shaders, voice pitch shifts, and dialogue tone changes.',
+    detail: 'Two independent tell channels — face composure and bluff frequency drift — let players read opponents without perfect information. A 4-state tilt system (Zen → Annoyed → Steaming → Monkey) distorts stats and applies glow shaders and voice shifts.',
+    stat: '4 tilt states × 2 tell channels',
     color: 'orange',
-  },
-  {
-    icon: IconWorld,
-    title: 'Parallel Worlds System',
-    detail:
-      "The game detects the player's local timezone to assign an environment slot (Morning / Afternoon / Evening / Night) and a matching background variant. Each slot shifts character personalities slightly — a character who is calm in the morning may be aggressive at night — creating a sense of a living world.",
-    color: 'teal',
   },
 ];
 
@@ -621,10 +620,15 @@ export function ParallaxPoker() {
         {architecturePoints.map((point, i) => (
           <motion.div key={point.title} {...fadeUp(i * 0.07)}>
             <Card style={{ border: `1px solid ${border}`, background: surface, height: '100%' }}>
-              <ThemeIcon color={point.color} variant="light" size="lg" radius="md" mb="sm">
-                <point.icon size={20} />
-              </ThemeIcon>
-              <Text fw={600} mb={6}>{point.title}</Text>
+              <Group gap="sm" mb="sm" align="center" wrap="nowrap">
+                <ThemeIcon color={point.color} variant="light" size="lg" radius="md" style={{ flexShrink: 0 }}>
+                  <point.icon size={20} />
+                </ThemeIcon>
+                <Box>
+                  <Text fw={700} size="sm">{point.title}</Text>
+                  <Text size="xs" c={`${point.color}.4`} fw={500}>{point.stat}</Text>
+                </Box>
+              </Group>
               <Text size="sm" c="dimmed" lh={1.7}>{point.detail}</Text>
             </Card>
           </motion.div>

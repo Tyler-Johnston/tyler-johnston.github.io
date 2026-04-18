@@ -71,7 +71,7 @@ export const flagshipProjects: FlagshipProject[] = [
     imageUrl: fdLanding,
     techStack: ['Angular', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB', 'Signals'],
     achievements: [
-      'CEFR-level node graph roadmap (A1–C2) with lazy-loaded feature modules per language topic',
+      'CEFR-level node graph roadmap (A1–B2) with lazy-loaded feature modules per language topic',
       'Prebuilt deck system: static TypeScript arrays per language/level (7 languages supported)',
       'Standalone Angular components with signals for reactive state — no NgRx boilerplate',
       'IndexedDB client-side persistence with cloud sync modal for cross-session deck data',

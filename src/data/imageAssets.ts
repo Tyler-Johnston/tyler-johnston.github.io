@@ -26,10 +26,13 @@ import fdRoadmap from '../../images/roadmap.png';
 import fdShop from '../../images/shop.png';
 import fdJournal from '../../images/journal.png';
 import fdStats from '../../images/stats.png';
+import fdStats2 from '../../images/stats2.png';
+import fdMonsterManualEmber from '../../images/monster_manual_ember.png';
+import fdMonsterManualCrypt from '../../images/monster_manual_crypt.png';
+import fdAchievements from '../../images/achievements.png';
+import fdSettings from '../../images/settings_modal.png';
 import ppImg from '../../images/parallaxpoker_img.png';
 import ppBalance from '../../images/balance_report.png';
-import ppAchievements from '../../images/achievements.png';
-import ppSettings from '../../images/settings_modal.png';
 import ppDialogue from '../../images/dialogue.png';
 import ppReaction from '../../images/reaction_small.gif';
 
@@ -61,10 +64,13 @@ export {
   fdShop,
   fdJournal,
   fdStats,
+  fdStats2,
+  fdMonsterManualEmber,
+  fdMonsterManualCrypt,
+  fdAchievements,
+  fdSettings,
   ppImg,
   ppBalance,
-  ppAchievements,
-  ppSettings,
   ppDialogue,
   ppReaction,
 };
