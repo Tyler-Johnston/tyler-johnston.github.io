@@ -31,13 +31,29 @@ import fdMonsterManualEmber from '../../images/monster_manual_ember.png';
 import fdMonsterManualCrypt from '../../images/monster_manual_crypt.png';
 import fdAchievements from '../../images/achievements.png';
 import fdSettings from '../../images/settings_modal.png';
-import ppImg from '../../images/parallaxpoker_img.png';
 import ppBalance from '../../images/balance_report.png';
 import ppDialogue from '../../images/dialogue.png';
-import ppReaction from '../../images/reaction_small.gif';
+
+import ppKing from '../../images/ppKing.png';
+import ppPrincess from '../../images/ppPrincess.png';
+import ppCowboy from '../../images/ppCowboy.png';
+import ppSteve from '../../images/ppSteve.png';
+import ppMalandro from '../../images/ppMalandro.png';
+import ppAryll from '../../images/ppAryll.png';
+import ppAkalite from '../../images/ppAkalite.png';
+import ppOldWizard from '../../images/ppOldWizard.png';
+import ppBoyWizard from '../../images/ppBoyWizard.png';
 
 export {
-  parallaxPokerMain,
+  ppKing,
+  ppOldWizard,
+  ppBoyWizard,
+  ppAryll,
+  ppAkalite,
+  ppPrincess,
+  ppCowboy,
+  ppSteve,
+  ppMalandro,
   heroImg,
   headshot,
   blockbuilder,
@@ -69,8 +85,6 @@ export {
   fdMonsterManualCrypt,
   fdAchievements,
   fdSettings,
-  ppImg,
   ppBalance,
   ppDialogue,
-  ppReaction,
 };

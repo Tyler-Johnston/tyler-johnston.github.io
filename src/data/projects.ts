@@ -1,5 +1,4 @@
 import {
-  ppImg,
   fdLanding,
   reptiletracker,
   vintagefinds,
@@ -14,6 +13,7 @@ import {
   cartpole,
   bees,
   facialExpression,
+  ppKing,
 } from './imageAssets';
 
 export type ProjectCategory = 'webDev' | 'gameDev' | 'dataAnalytics' | 'machineLearning';
@@ -48,7 +48,7 @@ export const flagshipProjects: FlagshipProject[] = [
     subtitle: 'C# / Godot 4 Roguelite Card Game',
     description:
       'A character-driven poker roguelite inspired by Balatro, Poker Night at the Inventory, and Punch Out.',
-    imageUrl: ppImg,
+    imageUrl: ppKing,
     techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'],
     achievements: [
       'AI decision engine using Pheval hand evaluator with 15+ per-character personality stats',

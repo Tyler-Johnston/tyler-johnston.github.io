@@ -33,9 +33,15 @@ import {
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
-  ppBalance,
-  ppDialogue,
-  ppReaction,
+  ppKing,
+  ppPrincess,
+  ppCowboy,
+  ppSteve,
+  ppMalandro,
+  ppAkalite,
+  ppAryll,
+  ppOldWizard,
+  ppBoyWizard,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 
@@ -57,20 +63,51 @@ import night_b from '../../../images/backgrounds/night_b.png';
 
 const screenshots = [
   {
-    src: ppDialogue,
-    label: 'Dialogue System',
-    caption: 'Characters react to hands with personality-driven dialogue. Speech blip pitch and rhythm shift by tilt state — Zen is clean, Monkey is erratic.',
+    src: ppSteve,
+    label: 'The Australian Schoolkid',
+    caption: 'Archetype: Honest. Plays face-up. If he bets, he has it. Folds easily to pressure. Lesson: How to steal blinds and read obvious tells.',
   },
   {
-    src: ppReaction,
-    label: 'Tell System',
-    caption: 'Two independent tell channels: face composure (expression updates) and bluff frequency (betting pattern drift). Read both to deduce hand strength.',
+    src: ppAryll,
+    label: 'The Canadian College Student',
+    caption: 'Archetype: The Optimist. The sticky caller. Visibly emotional but refuses to fold because she wants to see the next card. Lesson: Stop bluffing, just bet when you actually have a good hand.',
   },
   {
-    src: ppBalance,
-    label: 'Monte Carlo Balance Report',
-    caption: 'Python/Pandas/Plotly pipeline: 32,768+ simulation runs generate CSV logs, then produce per-character winrate charts to validate balance before each release.',
+    src: ppBoyWizard,
+    label: 'The English Boy Wizard',
+    caption: 'Archetype: The Showman. The pressure mage. High bluffs, huge overbets, but folds if you re-raise him. Lesson: How to call a bluff and re-raise',
   },
+  {
+    src: ppPrincess,
+    label: 'The South Korean Star',
+    caption: 'Archetype: The Balanced Baseline: Straightforward, intermediate poker. Mixes some bluffs but mostly plays solid math. Lesson: Standard poker pattern recognition.',
+  },
+  {
+    src: ppMalandro,
+    label: 'The Brazilian Malandro',
+    caption: 'Archetype: The Maniac. 90%+ bluff rate. Hyper-volatile and completely unpredictable. Lesson: Patience. Let him hang himself by giving him the rope to bluff away all his chips.',
+  },
+  {
+    src: ppCowboy,
+    label: 'The American Cowboy',
+    caption: 'Archetype: The Sheriff / LAG: Relentless pressure. He plays a very wide range of cards and constantly raises to bully the table. Lesson: How to tighten your own range to trap an aggressive player',
+  },
+  {
+    src: ppKing,
+    label: 'The Moroccan King',
+    caption: 'Archetype: The GTO Boss: Mathematically optimal poker. He balances his bluffs and value bets perfectly, making him the ultimate test of pure poker skill.',
+  },
+  {
+    src: ppOldWizard,
+    label: 'The Tibetan Wizard',
+    caption: 'Archetype: Soul Reader. The human lie detector. He doesn\'t play cards, he plays you. Reads betting patterns, timing, and table behavior to know exactly what you\'re holding. Lesson: How to balance your play and disguise your hand strength so you stop being an open book.',
+  },
+  {
+    src: ppAkalite,
+    label: 'The Icelandic Aristocrat',
+    caption: 'Archetype: The Wall. The unreadable station. Calls everything, but shows zero tells. Lesson: How to play against someone who gives you zero psychological information.',
+  },
+
 ];
 
 const techStack = [
