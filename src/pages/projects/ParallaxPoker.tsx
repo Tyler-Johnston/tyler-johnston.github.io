@@ -10,8 +10,6 @@ import {
   Button,
   Box,
   ThemeIcon,
-  List,
-  Table,
   ActionIcon,
   Badge,
   Grid,
@@ -23,15 +21,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   IconArrowLeft,
   IconBrandGithub,
-  IconCircleCheck,
   IconBrain,
   IconChartBar,
-
   IconEye,
   IconCards,
   IconChevronLeft,
   IconChevronRight,
   IconRefresh,
+  IconCpu,
+  IconGitBranch,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
@@ -85,34 +83,55 @@ const techStack = [
   { tech: 'Pixel Art', role: 'Custom layered sprite sheets — 32,768 unique character combinations per character' },
 ];
 
+const statStrip = [
+  { label: '9 AI opponents', sub: 'unique personalities' },
+  { label: '25+ parameters', sub: 'tunable per character' },
+  { label: '288k hands', sub: 'StressTest mode' },
+  { label: 'O(1) evaluation', sub: 'pheval lookup tables' },
+];
+
 const architecturePoints = [
+  {
+    icon: IconCpu,
+    title: 'Poker Engine',
+    detail: 'Rules-correct Texas Hold\'em covering partial all-ins, full raise/reopening semantics, and uncalled chip refunds — the edge cases most hobby implementations get wrong. Every action returns an ActionApplyResult struct for clean, decoupled HUD updates.',
+    stat: 'Full raise / reopening / all-in semantics',
+    color: 'teal',
+  },
   {
     icon: IconBrain,
     title: 'AI Decision Engine',
-    detail: 'PHeval estimates hand equity in real time; 15+ per-character personality stats then skew that decision with aggression, bluff frequency, and hero call thresholds. All stats shift dynamically with tilt state and pot size.',
-    stat: '15+ personality stats per character',
+    detail: 'Probabilistic model covering preflop hand strength, pheval postflop equity, draw detection (flush draws, OESDs, gutshots), board wetness scoring, and SPR-based river commitment. Three decision branches — check-or-bet, facing-a-bet, facing-a-shove — each with independent raise-sizing logic.',
+    stat: '15+ personality stats · draw detection · SPR',
     color: 'indigo',
   },
   {
     icon: IconCards,
     title: 'Character Compositor',
-    detail: 'Each character is built from three layered sprite sheets (expression, two accessories) plus a time-of-day background — yielding 32,768+ unique visual combinations. Each character also draws from a pool of display names.',
+    detail: 'Each character is built from three layered sprite sheets (expression, two accessories) plus a time-of-day background — yielding 32,768+ unique visual combinations per character. Timezone offsets compute each opponent\'s local hour so Night opponents are genuinely more dangerous.',
     stat: '32,768+ combinations per character',
     color: 'violet',
   },
   {
     icon: IconChartBar,
     title: 'Monte Carlo Balance Pipeline',
-    detail: 'A Python gauntlet runs thousands of heads-up matches per opponent pairing, logs outcomes to CSV, and feeds Pandas/Plotly reports that surface winrate outliers before each character ships.',
-    stat: '32k+ simulation runs per release',
+    detail: 'A headless Godot gauntlet (PlayerAutoBot + GauntletMatrix) runs up to 288,000 heads-up hands per run, logging every AI decision in 20-column CSV rows. Python/Pandas/Plotly then surface winrate outliers across all 9×8 pairings before each character ships.',
+    stat: '288k simulation hands · 9×8 pairings',
     color: 'cyan',
   },
   {
     icon: IconEye,
     title: 'Tilt & Tell System',
-    detail: 'Two independent tell channels — face composure and bluff frequency drift — let players read opponents without perfect information. A 4-state tilt system (Zen → Annoyed → Steaming → Monkey) distorts stats and applies glow shaders and voice shifts.',
+    detail: 'Two independent tell channels — face composure and bluff frequency drift — let players read opponents without perfect information. A 4-state tilt meter (Zen → Annoyed → Steaming → Monkey) live-mutates stats each hand, driven by result type, pot size, and streak multipliers.',
     stat: '4 tilt states × 2 tell channels',
     color: 'orange',
+  },
+  {
+    icon: IconGitBranch,
+    title: '8-State Async FSM',
+    detail: 'InitHand → BettingRound → PlayerTurn → AITurn → AdvanceStreet → Showdown → BetweenHands → GameOver. All transitions use CallDeferred to break the async call chain — the load-bearing decision that prevents stack overflows during 20× speed headless simulation.',
+    stat: '8 states · CallDeferred chain-break',
+    color: 'pink',
   },
 ];
 
@@ -536,46 +555,41 @@ export function ParallaxPoker() {
   return (
     <Container size="lg" py={60}>
 
-      {/* Back nav */}
       <motion.div {...fadeUp(0)}>
         <Button
-          component={Link}
-          to="/projects"
-          variant="subtle"
-          color="gray"
+          component={Link} to="/projects"
+          variant="subtle" color="gray"
           leftSection={<IconArrowLeft size={16} />}
-          mb="xl"
-          size="sm"
+          mb="xl" size="sm"
         >
           All Projects
         </Button>
       </motion.div>
 
-      {/* Hero */}
       <motion.div {...fadeUp(0.05)}>
-        <Stack gap="sm" mb={48}>
+        <Stack gap="xs" mb={48}>
           <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            C# · Godot 4 Roguelite Card Game
+            C# · Godot 4 · Texas Hold'em Roguelite
           </Text>
-          <Title
-            order={1}
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontWeight: 900, lineHeight: 1.1 }}
-          >
+          <Title order={1} style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontWeight: 900, lineHeight: 1.1 }}>
             Parallax Poker
           </Title>
-          <Text size="lg" c="dimmed" maw={680} lh={1.7}>
-            A character-driven poker roguelite inspired by Balatro and Poker Night at the Inventory.
-            Each opponent has a unique personality system with 15+ stats driving bluff frequency, tilt
-            thresholds, and tell behaviors.
+          <Text size="lg" c="dimmed" maw={660} lh={1.7}>
+            A heads-up Texas Hold'em roguelite built in Godot 4. Nine AI opponents — each with a distinct personality that fractures under pressure, shifts with time of day, and runs on real poker math.
           </Text>
-          <Group gap="sm" mt={4} wrap="wrap">
+          <Group gap={32} mt={8} wrap="wrap">
+            {statStrip.map((s) => (
+              <Box key={s.label}>
+                <Text fw={800} size="sm" c="indigo">{s.label}</Text>
+                <Text size="xs" c="dimmed">{s.sub}</Text>
+              </Box>
+            ))}
+          </Group>
+          <Group gap="sm" mt={12} wrap="wrap">
             <Button
-              component="a"
-              href="https://github.com/tyler-johnston"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              color="gray"
+              component="a" href="https://github.com/tyler-johnston"
+              target="_blank" rel="noopener noreferrer"
+              variant="outline" color="gray"
               leftSection={<IconBrandGithub size={16} />}
             >
               GitHub
@@ -584,39 +598,57 @@ export function ParallaxPoker() {
         </Stack>
       </motion.div>
 
-      {/* Screenshots */}
+      <motion.div {...fadeUp(0.1)}>
+        <ScreenshotCarousel screenshots={screenshots} isDark={isDark} border={border} surface={surface} />
+      </motion.div>
+
+      <Box mb={80} />
+
       <motion.div {...fadeUp(0.08)}>
-        <Stack gap={4} mb={24}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            Screenshots
+        <Stack gap={4} mb={20}>
+          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>The Psychology</Text>
+          <Title order={2} style={{ fontWeight: 800 }}>Opponents you can read — if you know what to look for</Title>
+          <Text size="md" c="dimmed" maw={700} lh={1.7} mt={4}>
+            Each AI carries ~25 personality parameters that live-mutate as the session progresses. A four-state tilt meter tracks cumulative pressure from bad beats and big losses — when an opponent tilts, they bluff more, hero-call more, and make increasingly reckless plays. Two independent tell channels let you catch them if you're watching closely.
           </Text>
-          <Title order={2} style={{ fontWeight: 800 }}>
-            See It In Action
-          </Title>
         </Stack>
       </motion.div>
 
       <motion.div {...fadeUp(0.12)}>
-        <ScreenshotCarousel screenshots={screenshots} isDark={isDark} border={border} surface={surface} />
+        <Box mb={80}>
+          <TiltSystemDemo isDark={isDark} surface={surface} border={border} />
+        </Box>
       </motion.div>
 
-      <Box mb={60} />
-
-      {/* Architecture */}
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            Architecture
+      <motion.div {...fadeUp(0.08)}>
+        <Stack gap={4} mb={20}>
+          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>The Characters</Text>
+          <Title order={2} style={{ fontWeight: 800 }}>32,768+ combinations per opponent</Title>
+          <Text size="md" c="dimmed" maw={700} lh={1.7} mt={4}>
+            Each character is built from three layered sprite sheets — expression, two accessories — against a time-of-day background. Timezone offsets compute each opponent's local hour, so night opponents are genuinely more dangerous.
           </Text>
-          <Title order={2} style={{ fontWeight: 800 }}>
-            Technical Design
-          </Title>
         </Stack>
       </motion.div>
 
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" mb={40}>
+      <motion.div {...fadeUp(0.12)}>
+        <Box mb={80}>
+          <SpriteCompositorDemo isDark={isDark} surface={surface} border={border} />
+        </Box>
+      </motion.div>
+
+      <motion.div {...fadeUp(0.08)}>
+        <Stack gap={4} mb={20}>
+          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>Under the Hood</Text>
+          <Title order={2} style={{ fontWeight: 800 }}>Built to get the edge cases right</Title>
+          <Text size="md" c="dimmed" maw={700} lh={1.7} mt={4}>
+            The poker engine covers partial all-ins, raise/reopening semantics, and uncalled chip refunds — the cases most hobby implementations get wrong. The AI runs real equity calculations on every decision. Every character ships after surviving a 288,000-hand simulation gauntlet.
+          </Text>
+        </Stack>
+      </motion.div>
+
+      <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg" mb={80}>
         {architecturePoints.map((point, i) => (
-          <motion.div key={point.title} {...fadeUp(i * 0.07)}>
+          <motion.div key={point.title} {...fadeUp(i * 0.06)}>
             <Card style={{ border: `1px solid ${border}`, background: surface, height: '100%' }}>
               <Group gap="sm" mb="sm" align="center" wrap="nowrap">
                 <ThemeIcon color={point.color} variant="light" size="lg" radius="md" style={{ flexShrink: 0 }}>
@@ -633,101 +665,15 @@ export function ParallaxPoker() {
         ))}
       </SimpleGrid>
 
-      {/* Interactive demos */}
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={24}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            Interactive
-          </Text>
-          <Title order={2} style={{ fontWeight: 800 }}>
-            Try the Systems
-          </Title>
-        </Stack>
-      </motion.div>
-
-      <motion.div {...fadeUp(0.12)}>
-        <Stack gap="lg" mb={60}>
-          <SpriteCompositorDemo isDark={isDark} surface={surface} border={border} />
-          <TiltSystemDemo isDark={isDark} surface={surface} border={border} />
-        </Stack>
-      </motion.div>
-
-      {/* Tech stack */}
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            Stack
-          </Text>
-          <Title order={2} style={{ fontWeight: 800 }}>
-            Technologies Used
-          </Title>
-        </Stack>
-      </motion.div>
-
-      <motion.div {...fadeUp(0.15)}>
-        <Card mb={60} style={{ border: `1px solid ${border}`, background: surface, padding: 0 }}>
-          <Table striped highlightOnHover>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Technology</Table.Th>
-                <Table.Th>Role in Project</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>
-              {techStack.map((row) => (
-                <Table.Tr key={row.tech}>
-                  <Table.Td><TechBadge label={row.tech} /></Table.Td>
-                  <Table.Td>
-                    <Text size="sm" c="dimmed">{row.role}</Text>
-                  </Table.Td>
-                </Table.Tr>
-              ))}
-            </Table.Tbody>
-          </Table>
-        </Card>
-      </motion.div>
-
-      {/* Achievements */}
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            Highlights
-          </Text>
-          <Title order={2} style={{ fontWeight: 800 }}>
-            Technical Achievements
-          </Title>
-        </Stack>
-      </motion.div>
-
-      <motion.div {...fadeUp(0.15)}>
-        <Card style={{ border: `1px solid ${border}`, background: surface }}>
-        <List
-          spacing="sm"
-          icon={
-            <ThemeIcon color="indigo" variant="light" size="sm" radius="xl">
-              <IconCircleCheck size={12} />
-            </ThemeIcon>
-          }
-        >
-          {[
-            'Custom poker AI decision engine — fold/bet/raise/all-in decisions driven by hand strength (PHeval), board texture, position, and bet sizing; value betting, semi-bluffs, traps, and bluff-raises tuned per-character via aggression, bluff frequency, and risk tolerance',
-            'Tilt system (Zen → Annoyed → Steaming → Monkey) — escalates bluffing and aggression while degrading fold discipline, triggering costly all-ins and tell leakage',
-            'Monte Carlo gauntlet: 32,768+ simulation runs per matchup generating CSV logs analyzed via Python/Pandas for balance reporting',
-            'All character artwork — hand-created sprite layering (expressions, accessories, environments) across circuit themes',
-            'MVC architecture — strict separation of engine logic (poker rules, AI decisions) from view layer, enabling rapid large-scale balance testing',
-            'Tell system — dual-channel behavioral patterns (composure + bluff tendency) readable by player for hand strength deduction',
-            'Dynamic personality shifts — timezone-based mood and strategy modifications alter AI behavior across sessions',
-            'Dialogue system — personality-driven reactive speech with tone and pitch shifts based on tilt state',
-          ].map((achievement) => (
-            <List.Item key={achievement}>
-              <Text size="sm" c="dimmed" lh={1.6}>
-                {achievement}
-              </Text>
-            </List.Item>
+      <motion.div {...fadeUp(0.08)}>
+        <Text size="xs" tt="uppercase" fw={700} c="indigo" mb={12} style={{ letterSpacing: '0.12em' }}>Stack</Text>
+        <Group gap="sm" wrap="wrap">
+          {techStack.map((row) => (
+            <TechBadge key={row.tech} label={row.tech} />
           ))}
-        </List>
-        </Card>
+        </Group>
       </motion.div>
+
     </Container>
   );
 }

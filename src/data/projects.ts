@@ -47,7 +47,7 @@ export const flagshipProjects: FlagshipProject[] = [
     title: 'Parallax Poker',
     subtitle: 'C# / Godot 4 Roguelite Card Game',
     description:
-      'A character-driven poker roguelite inspired by Balatro and Poker Night at the Inventory. Each opponent has a unique personality system with 15+ stats driving bluff frequency, tilt thresholds, and tell behaviors.',
+      'A character-driven poker roguelite inspired by Balatro, Poker Night at the Inventory, and Punch Out.',
     imageUrl: ppImg,
     techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'],
     achievements: [
@@ -67,11 +67,11 @@ export const flagshipProjects: FlagshipProject[] = [
     title: 'Flashcard Dungeon',
     subtitle: 'Angular Full-Stack Language Learning App',
     description:
-      'A language learning web app built around a dungeon metaphor. Users progress through a CEFR-mapped node graph, unlocking and practicing flashcard decks across 7 languages. Features offline-first IndexedDB persistence and a journal-based deck editing workflow.',
+      'A dungeon-crawling flashcard app where spaced repetition meets RPG progression. Battle monsters, navigate a CEFR-mapped world, complete your Monster Manual, and unlock loot as you master a new language.',
     imageUrl: fdLanding,
-    techStack: ['Angular', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB', 'Signals'],
+    techStack: ['Angular', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB'],
     achievements: [
-      'CEFR-level node graph roadmap (A1–B2) with lazy-loaded feature modules per language topic',
+      'CEFR-level node graph roadmap (A1–B2) with lazy-loaded prebuilt decks, specifically curated for each chosen (supported) language.',
       'Prebuilt deck system: static TypeScript arrays per language/level (7 languages supported)',
       'Standalone Angular components with signals for reactive state — no NgRx boilerplate',
       'IndexedDB client-side persistence with cloud sync modal for cross-session deck data',

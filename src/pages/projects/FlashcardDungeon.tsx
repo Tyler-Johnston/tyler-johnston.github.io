@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Container,
   Title,
@@ -10,107 +9,91 @@ import {
   Button,
   Box,
   ThemeIcon,
-  List,
-  Table,
-  ActionIcon,
+  Grid,
   useMantineColorScheme,
 } from '@mantine/core';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   IconArrowLeft,
   IconBrandGithub,
   IconExternalLink,
-  IconCircleCheck,
   IconLanguage,
   IconMap,
   IconDatabase,
   IconDeviceMobile,
-  IconChevronLeft,
-  IconChevronRight,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
-  fdLanding,
   fdEmberBattle,
   fdCryptBattle,
   fdMonsterManualEmber,
-  fdMonsterManualCrypt,
   fdRoadmap,
   fdShop,
   fdJournal,
   fdStats,
-  fdStats2,
-  fdAchievements,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 
-type SingleSlide = { src: string; label: string; caption: string };
-type PairSlide = {
-  pair: [{ src: string; label: string }, { src: string; label: string }];
+type NarrativeBeat = {
   label: string;
-  caption: string;
+  heading: string;
+  body: string;
+  color: string;
+  image: string | [string, string];
 };
-type Slide = SingleSlide | PairSlide;
 
-const slides: Slide[] = [
+const narrativeBeats: NarrativeBeat[] = [
   {
-    src: fdLanding,
-    label: 'Home Screen',
-    caption: 'Dashboard showing day streak, active decks with progress bars, and navigation to Shop, Stats, and Roadmap.',
+    label: 'The Dungeon',
+    heading: 'Every card is a weapon',
+    body: 'Answer correctly and you deal damage. Answer wrong and the monster strikes back. Two dungeons ship with the app — Ember Fantasy is unlocked from the start, Moonlit Crypt is a shop purchase.',
+    color: 'orange',
+    image: [fdEmberBattle, fdCryptBattle],
   },
   {
-    pair: [
-      { src: fdEmberBattle, label: 'Ember Fantasy' },
-      { src: fdCryptBattle, label: 'Moonlit Crypt' },
-    ],
-    label: 'Dungeons',
-    caption: 'Ember Fantasy (default) and Moonlit Crypt (shop unlock).',
+    label: 'Between Runs',
+    heading: 'Gold carries over',
+    body: "Every run earns gold. Spend it in the shop on permanent upgrades — health boosts, weapons, armor, and new dungeons to unlock. The shop turns isolated runs into a real meta-progression loop.",
+    color: 'yellow',
+    image: fdShop,
   },
   {
-    src: fdShop,
-    label: 'Shop',
-    caption: 'Permanent upgrades purchased with in-game gold. Purchased health upgrades, weapons, and armor persist across all runs.',
+    label: 'Your Decks',
+    heading: 'Study your way',
+    body: 'Create and manage your own cards in the Journal — search, filter by status (Learning / Review / New), and import full decks. Or skip custom decks entirely and follow the prebuilt CEFR roadmap.',
+    color: 'violet',
+    image: fdJournal,
   },
   {
-    src: fdJournal,
-    label: 'Journal',
-    caption: 'Full deck editor with search, card status breakdown (Learning / Review / New), and per-card scheduling info.',
-  },
-  {
-    pair: [
-      { src: fdStats, label: 'Stats' },
-      { src: fdStats2, label: 'Stats — History' },
-    ],
-    label: 'Stats',
-    caption: 'Tracks runs, win rate, combat damage, best run, and full per-deck learning history across all sessions.',
-  },
-  {
-    pair: [
-      { src: fdMonsterManualEmber, label: 'Ember Fantasy' },
-      { src: fdMonsterManualCrypt, label: 'Moonlit Crypt' },
-    ],
     label: 'Monster Manual',
-    caption: 'Bestiary tracking every enemy — Tier, HP, ATK, unique ability, and your personal kill/death record per dungeon.',
+    heading: 'Fill the bestiary',
+    body: 'Every enemy you encounter gets logged — Tier, HP, ATK, unique ability, and your personal kill/death record per dungeon. A completionist layer that rewards exploring every dungeon.',
+    color: 'red',
+    image: fdMonsterManualEmber,
   },
   {
-    src: fdRoadmap,
-    label: 'CEFR Roadmap',
-    caption: 'While users can generate their own decks, they may also use prebuilt language decks via the CERF Roadmap.',
+    label: 'Your Progress',
+    heading: 'Everything tracked',
+    body: 'Win rate, total runs, combat damage, best runs, and full per-deck learning history across every session — all persisted locally so nothing disappears between sessions.',
+    color: 'teal',
+    image: fdStats,
   },
   {
-    src: fdAchievements,
-    label: 'Achievements',
-    caption: 'Achievement system tracking milestones across runs, plus app settings for audio, sync, and display preferences.',
+    label: 'The World',
+    heading: 'Structured from A1 to B2',
+    body: 'The app ships with prebuilt language decks organized by CEFR proficiency level across 7 languages. Complete nodes to unlock adjacent ones — or ignore the roadmap entirely and use your own decks.',
+    color: 'indigo',
+    image: fdRoadmap,
   },
 ];
 
 const techStack = [
-  { tech: 'Angular 17+', role: 'Frontend framework. Standalone components, lazy-loaded feature modules' },
-  { tech: 'TypeScript', role: 'Static typing throughout. Interfaces, generics, strict mode' },
-  { tech: 'Angular Signals', role: 'Reactive state without NgRx' },
-  { tech: 'IndexedDB', role: 'Offline-first client-side persistence for decks, progress, and user data' },
-  { tech: 'Supabase', role: 'Cloud sync backend. PostgreSQL database with auth and real-time APIs' },
-  { tech: 'CEFR Standard', role: 'A1–B2 proficiency mapping for node graph and deck organization' },
+  { tech: 'Angular 17+' },
+  { tech: 'TypeScript' },
+  { tech: 'Angular Signals' },
+  { tech: 'IndexedDB' },
+  { tech: 'Supabase' },
+  { tech: 'CEFR Standard' },
 ];
 
 const architecturePoints = [
@@ -144,123 +127,6 @@ const architecturePoints = [
   },
 ];
 
-const slideVariants = {
-  enter: (dir: number) => ({ opacity: 0, x: dir > 0 ? 60 : -60 }),
-  center: { opacity: 1, x: 0 },
-  exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
-};
-
-function ScreenshotCarousel({ slides, isDark, border, surface }: {
-  slides: Slide[]; isDark: boolean; border: string; surface: string;
-}) {
-  const [[index, direction], setSlide] = useState([0, 0]);
-
-  const go = (next: number) => {
-    const dir = next > index ? 1 : -1;
-    setSlide([(next + slides.length) % slides.length, dir]);
-  };
-
-  const current = slides[index];
-  const isPair = 'pair' in current;
-
-  return (
-    <Box style={{ border: `1px solid ${border}`, borderRadius: 16, background: surface, overflow: 'hidden' }}>
-      <Box style={{
-        position: 'relative', background: isDark ? '#0f1117' : '#f1f5f9',
-        display: 'flex', justifyContent: 'center', alignItems: 'center',
-        minHeight: 420, overflow: 'hidden',
-      }}>
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.div
-            key={index}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3, ease: [0.32, 0, 0.67, 0] }}
-            style={{
-              display: 'flex', justifyContent: 'center', alignItems: 'flex-end',
-              width: '100%', padding: '24px 48px', gap: 12,
-            }}
-          >
-            {isPair ? (
-              (current as PairSlide).pair.map(({ src, label }) => (
-                <Box key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-                  <Text size="xs" fw={600} c="dimmed">{label}</Text>
-                  <img
-                    src={src} alt={label}
-                    style={{
-                      width: '100%', maxHeight: 400, objectFit: 'contain', borderRadius: 8,
-                      boxShadow: isDark ? '0 8px 40px rgba(0,0,0,0.6)' : '0 8px 40px rgba(0,0,0,0.12)',
-                    }}
-                  />
-                </Box>
-              ))
-            ) : (
-              <img
-                src={(current as SingleSlide).src} alt={(current as SingleSlide).label}
-                style={{
-                  maxHeight: 480, maxWidth: '100%', objectFit: 'contain', borderRadius: 8,
-                  boxShadow: isDark ? '0 8px 40px rgba(0,0,0,0.6)' : '0 8px 40px rgba(0,0,0,0.12)',
-                }}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
-
-        <ActionIcon
-          variant="filled" color="dark" radius="xl" size="lg" onClick={() => go(index - 1)}
-          style={{
-            position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)',
-            background: isDark ? 'rgba(30,33,48,0.85)' : 'rgba(255,255,255,0.85)',
-            border: `1px solid ${border}`, backdropFilter: 'blur(4px)',
-          }}
-        >
-          <IconChevronLeft size={18} color={isDark ? '#f1f5f9' : '#1e2130'} />
-        </ActionIcon>
-        <ActionIcon
-          variant="filled" color="dark" radius="xl" size="lg" onClick={() => go(index + 1)}
-          style={{
-            position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
-            background: isDark ? 'rgba(30,33,48,0.85)' : 'rgba(255,255,255,0.85)',
-            border: `1px solid ${border}`, backdropFilter: 'blur(4px)',
-          }}
-        >
-          <IconChevronRight size={18} color={isDark ? '#f1f5f9' : '#1e2130'} />
-        </ActionIcon>
-      </Box>
-
-      <Box px="xl" py="md" style={{ borderTop: `1px solid ${border}` }}>
-        <Group justify="space-between" wrap="wrap" gap="md">
-          <Box style={{ flex: 1 }}>
-            <Text fw={600} size="sm" mb={4}>{current.label}</Text>
-            <Text size="sm" c="dimmed" lh={1.6}>{current.caption}</Text>
-          </Box>
-          <Text size="xs" c="dimmed" style={{ whiteSpace: 'nowrap' }}>
-            {index + 1} / {slides.length}
-          </Text>
-        </Group>
-      </Box>
-
-      <Group justify="center" pb="md" gap={6}>
-        {slides.map((_, i) => (
-          <Box
-            key={i} onClick={() => go(i)}
-            style={{
-              width: i === index ? 20 : 6, height: 6, borderRadius: 3,
-              background: i === index
-                ? 'var(--mantine-color-cyan-5)'
-                : isDark ? '#2e3347' : 'var(--mantine-color-gray-3)',
-              cursor: 'pointer', transition: 'width 0.2s ease, background 0.2s ease',
-            }}
-          />
-        ))}
-      </Group>
-    </Box>
-  );
-}
-
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -274,6 +140,8 @@ export function FlashcardDungeon() {
 
   const surface = isDark ? '#1a1d27' : '#ffffff';
   const border = isDark ? '#2e3347' : 'var(--mantine-color-gray-3)';
+  const imgBg = isDark ? '#0f1117' : '#f1f5f9';
+  const shadow = isDark ? '0 8px 40px rgba(0,0,0,0.6)' : '0 8px 40px rgba(0,0,0,0.12)';
 
   return (
     <Container size="lg" py={60}>
@@ -290,17 +158,17 @@ export function FlashcardDungeon() {
       </motion.div>
 
       <motion.div {...fadeUp(0.05)}>
-        <Stack gap="sm" mb={48}>
+        <Stack gap="xs" mb={72}>
           <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>
             Angular · Full-Stack Web App
           </Text>
           <Title order={1} style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontWeight: 900, lineHeight: 1.1 }}>
             Flashcard Dungeon
           </Title>
-          <Text size="lg" c="dimmed" maw={680} lh={1.7}>
-            A dungeon-crawling flashcard app where spaced repetition meets RPG progression. Battle monsters, navigate a CEFR-mapped world, complete your Monster Manual, and unlock loot as you master a new language.
+          <Text size="lg" c="dimmed" maw={660} lh={1.7}>
+            Answer right, deal damage. Answer wrong, take a hit. A dungeon-crawling flashcard app where studying a language sends you into battle.
           </Text>
-          <Group gap="sm" mt={4} wrap="wrap">
+          <Group gap="sm" mt={12} wrap="wrap">
             <Button
               component="a" href="#" target="_blank"
               color="cyan" leftSection={<IconExternalLink size={16} />}
@@ -317,27 +185,84 @@ export function FlashcardDungeon() {
         </Stack>
       </motion.div>
 
+      {narrativeBeats.map((beat, i) => {
+        const imageFirst = i % 2 === 0;
+        const isPair = Array.isArray(beat.image);
+
+        const imageNode = (
+          <Box style={{
+            background: imgBg,
+            borderRadius: 16,
+            padding: isPair ? '32px 20px' : 32,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            gap: 12,
+            minHeight: 380,
+          }}>
+            {isPair ? (
+              (beat.image as [string, string]).map((src, j) => (
+                <img
+                  key={j} src={src} alt=""
+                  style={{
+                    flex: 1, maxHeight: 360, maxWidth: '50%',
+                    objectFit: 'contain', borderRadius: 8, boxShadow: shadow,
+                  }}
+                />
+              ))
+            ) : (
+              <img
+                src={beat.image as string} alt=""
+                style={{
+                  maxHeight: 420, maxWidth: '100%',
+                  objectFit: 'contain', borderRadius: 8, boxShadow: shadow,
+                }}
+              />
+            )}
+          </Box>
+        );
+
+        const textNode = (
+          <Stack gap="sm" justify="center" style={{ height: '100%', paddingTop: 8, paddingBottom: 8 }}>
+            <Text size="xs" tt="uppercase" fw={700} c={beat.color} style={{ letterSpacing: '0.12em' }}>
+              {beat.label}
+            </Text>
+            <Title order={2} style={{ fontWeight: 800, fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', lineHeight: 1.2 }}>
+              {beat.heading}
+            </Title>
+            <Text size="md" c="dimmed" lh={1.8}>
+              {beat.body}
+            </Text>
+          </Stack>
+        );
+
+        return (
+          <motion.div key={beat.label} {...fadeUp(0.08)}>
+            <Grid gutter={48} align="center" mb={80}>
+              <Grid.Col
+                span={{ base: 12, sm: 6 }}
+                order={{ base: 1, sm: imageFirst ? 1 : 2 }}
+              >
+                {imageFirst ? imageNode : textNode}
+              </Grid.Col>
+              <Grid.Col
+                span={{ base: 12, sm: 6 }}
+                order={{ base: 2, sm: imageFirst ? 2 : 1 }}
+              >
+                {imageFirst ? textNode : imageNode}
+              </Grid.Col>
+            </Grid>
+          </motion.div>
+        );
+      })}
+
       <motion.div {...fadeUp(0.08)}>
-        <Stack gap={4} mb={24}>
-          <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>Screenshots</Text>
-          <Title order={2} style={{ fontWeight: 800 }}>See It In Action</Title>
-        </Stack>
+        <Text size="xs" tt="uppercase" fw={700} c="cyan" mb={24} style={{ letterSpacing: '0.12em' }}>
+          Under the Hood
+        </Text>
       </motion.div>
 
-      <motion.div {...fadeUp(0.12)}>
-        <ScreenshotCarousel slides={slides} isDark={isDark} border={border} surface={surface} />
-      </motion.div>
-
-      <Box mb={60} />
-
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>Architecture</Text>
-          <Title order={2} style={{ fontWeight: 800 }}>Technical Design</Title>
-        </Stack>
-      </motion.div>
-
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" mb={60}>
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg" mb={80}>
         {architecturePoints.map((point, i) => (
           <motion.div key={point.title} {...fadeUp(i * 0.07)}>
             <Card style={{ border: `1px solid ${border}`, background: surface, height: '100%' }}>
@@ -356,69 +281,15 @@ export function FlashcardDungeon() {
         ))}
       </SimpleGrid>
 
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>Stack</Text>
-          <Title order={2} style={{ fontWeight: 800 }}>Technologies Used</Title>
-        </Stack>
+      <motion.div {...fadeUp(0.08)}>
+        <Text size="xs" tt="uppercase" fw={700} c="cyan" mb={12} style={{ letterSpacing: '0.12em' }}>Stack</Text>
+        <Group gap="sm" wrap="wrap">
+          {techStack.map((row) => (
+            <TechBadge key={row.tech} label={row.tech} />
+          ))}
+        </Group>
       </motion.div>
 
-      <motion.div {...fadeUp(0.15)}>
-        <Card mb={60} style={{ border: `1px solid ${border}`, background: surface, padding: 0 }}>
-          <Table striped highlightOnHover>
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>Technology</Table.Th>
-                <Table.Th>Role in Project</Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>
-              {techStack.map((row) => (
-                <Table.Tr key={row.tech}>
-                  <Table.Td><TechBadge label={row.tech} /></Table.Td>
-                  <Table.Td><Text size="sm" c="dimmed">{row.role}</Text></Table.Td>
-                </Table.Tr>
-              ))}
-            </Table.Tbody>
-          </Table>
-        </Card>
-      </motion.div>
-
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="cyan" style={{ letterSpacing: '0.12em' }}>Highlights</Text>
-          <Title order={2} style={{ fontWeight: 800 }}>Technical Achievements</Title>
-        </Stack>
-      </motion.div>
-
-      <motion.div {...fadeUp(0.15)}>
-        <Card style={{ border: `1px solid ${border}`, background: surface }}>
-          <List
-            spacing="sm"
-            icon={
-              <ThemeIcon color="cyan" variant="light" size="sm" radius="xl">
-                <IconCircleCheck size={12} />
-              </ThemeIcon>
-            }
-          >
-            {[
-              'CEFR-level node graph roadmap (A1–B2) with lazy-loaded Angular feature modules per language topic',
-              'Prebuilt deck system: typed TypeScript arrays per language/level across 7 supported languages',
-              'Dungeon shop system with unlockable dungeons, health upgrades, and meta items persisting across runs',
-              'Monster combat mechanics tied to flashcard performance — enemy abilities punish slow answers',
-              'Monster Manual bestiary tracking all enemies with personal kill/death records per dungeon',
-              'Standalone Angular components with signals — reactive state without NgRx boilerplate',
-              'IndexedDB offline-first persistence — full functionality without an account',
-              'Supabase (PostgreSQL) cloud sync: authenticated users push/pull deck data across devices',
-              'Journal component for creating, renaming, and editing cards with DeckImportService',
-            ].map((achievement) => (
-              <List.Item key={achievement}>
-                <Text size="sm" c="dimmed" lh={1.6}>{achievement}</Text>
-              </List.Item>
-            ))}
-          </List>
-        </Card>
-      </motion.div>
     </Container>
   );
 }
