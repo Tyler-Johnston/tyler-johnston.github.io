@@ -17,7 +17,6 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   IconArrowLeft,
-  IconBrandGithub,
   IconExternalLink,
   IconLanguage,
   IconMap,
@@ -188,6 +187,7 @@ function BeatImage({ images, isDark }: { images: BeatImageItem[]; isDark: boolea
             key={index}
             src={current.src}
             alt={current.label || ''}
+            loading="lazy"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -303,12 +303,6 @@ export function FlashcardDungeon() {
             >
               Try Web App
             </Button>
-            <Button
-              component="a" href="https://github.com/tyler-johnston" target="_blank" rel="noopener noreferrer"
-              variant="outline" color="gray" leftSection={<IconBrandGithub size={16} />}
-            >
-              View Source
-            </Button>
           </Group>
         </Stack>
       </motion.div>
@@ -335,18 +329,18 @@ export function FlashcardDungeon() {
         return (
           <motion.div key={beat.label} {...fadeUp(0.08)}>
             <Grid gutter={48} align="center" mb={80}>
-              <Grid.Col
-                span={{ base: 12, sm: 6 }}
-                order={{ base: 1, sm: imageFirst ? 1 : 2 }}
-              >
-                {imageFirst ? imageNode : textNode}
-              </Grid.Col>
-              <Grid.Col
-                span={{ base: 12, sm: 6 }}
-                order={{ base: 2, sm: imageFirst ? 2 : 1 }}
-              >
-                {imageFirst ? textNode : imageNode}
-              </Grid.Col>
+              {imageFirst ? (
+                <>
+                  <Grid.Col span={{ base: 12, sm: 6 }}>{imageNode}</Grid.Col>
+                  <Grid.Col span={{ base: 12, sm: 6 }}>{textNode}</Grid.Col>
+                </>
+              ) : (
+                <>
+                  <Grid.Col span={{ base: 12, sm: 6 }} visibleFrom="sm">{textNode}</Grid.Col>
+                  <Grid.Col span={{ base: 12, sm: 6 }}>{imageNode}</Grid.Col>
+                  <Grid.Col span={12} hiddenFrom="sm">{textNode}</Grid.Col>
+                </>
+              )}
             </Grid>
           </motion.div>
         );

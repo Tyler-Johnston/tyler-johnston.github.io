@@ -512,6 +512,7 @@ function ScreenshotCarousel({ screenshots, isDark, border, surface }: CarouselPr
             <img
               src={current.src}
               alt={current.label}
+              loading="lazy"
               style={{
                 maxHeight: 480, maxWidth: '100%', objectFit: 'contain', borderRadius: 8,
                 boxShadow: isDark ? '0 8px 40px rgba(0,0,0,0.6)' : '0 8px 40px rgba(0,0,0,0.12)',

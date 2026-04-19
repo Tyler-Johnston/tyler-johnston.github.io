@@ -98,8 +98,7 @@ export function Landing() {
                 maw={560}
                 lh={1.7}
               >
-                Building software from game AI to enterprise web apps — M.S. Computer Science,
-                NOVA IMS · B.S. Computer Science, Utah State University (Magna Cum Laude, 3.92 GPA)
+                American programmer based in Lisbon, Portugal. Currently pursuing a Master's in Information Management at Nova University. Building web apps, games, and data tools with C#, TypeScript, and Python.
               </Text>
             </motion.div>
 
