@@ -7,7 +7,6 @@ import {
   SimpleGrid,
   Tabs,
   Box,
-  useMantineColorScheme,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { flagshipProjects, projects, ProjectCategory } from '../data/projects';
@@ -23,9 +22,9 @@ const tabs: { value: 'all' | ProjectCategory; label: string }[] = [
 ];
 
 export function Projects() {
+  const isDark = true;
   const [activeTab, setActiveTab] = useState<'all' | ProjectCategory>('all');
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
+
 
   const filtered =
     activeTab === 'all' ? projects : projects.filter((p) => p.category === activeTab);

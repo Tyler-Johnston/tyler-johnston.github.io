@@ -7,7 +7,6 @@ import {
   Button,
   List,
   ThemeIcon,
-  useMantineColorScheme,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { IconCircleCheck } from '@tabler/icons-react';
@@ -21,8 +20,7 @@ interface FlagshipCardProps {
 }
 
 export function FlagshipCard({ project, reverse = false }: FlagshipCardProps) {
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
+  const isDark = true;
 
   return (
     <motion.div

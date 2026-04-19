@@ -15,7 +15,6 @@ import {
   Grid,
   Divider,
   Tooltip,
-  useMantineColorScheme,
 } from '@mantine/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -583,8 +582,8 @@ const fadeUp = (delay = 0) => ({
 });
 
 export function ParallaxPoker() {
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
+  const isDark = true;
+
 
   const surface = isDark ? '#1a1d27' : '#ffffff';
   const border = isDark ? '#2e3347' : 'var(--mantine-color-gray-3)';

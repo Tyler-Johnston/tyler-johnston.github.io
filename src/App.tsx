@@ -16,7 +16,7 @@ import { theme } from './theme/theme';
 
 export default function App() {
   return (
-    <MantineProvider theme={theme} defaultColorScheme="dark">
+    <MantineProvider theme={theme} forceColorScheme="dark">
       <Router>
         <PageTrackerWrapper />
       </Router>

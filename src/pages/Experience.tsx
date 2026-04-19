@@ -9,7 +9,6 @@ import {
   Box,
   ThemeIcon,
   List,
-  useMantineColorScheme,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { IconBriefcase, IconCircleCheck } from '@tabler/icons-react';
@@ -17,8 +16,8 @@ import { roles } from '../data/experience';
 import { TechBadge } from '../components/ui/TechBadge';
 
 export function Experience() {
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
+  const isDark = true;
+
 
   return (
     <Container size="lg" py={60}>

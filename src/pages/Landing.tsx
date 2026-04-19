@@ -8,7 +8,6 @@ import {
   SimpleGrid,
   Box,
   ThemeIcon,
-  useMantineColorScheme,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import {
@@ -49,8 +48,8 @@ const skills = [
 ];
 
 export function Landing() {
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
+  const isDark = true;
+
 
   return (
     <Box>

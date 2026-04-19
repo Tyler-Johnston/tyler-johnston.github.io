@@ -11,7 +11,6 @@ import {
   Image,
   ThemeIcon,
   List,
-  useMantineColorScheme,
   Anchor,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
@@ -40,8 +39,8 @@ const fadeUp = (delay = 0) => ({
 });
 
 export function About() {
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
+  const isDark = true;
+
 
   return (
     <Container size="lg" py={60}>

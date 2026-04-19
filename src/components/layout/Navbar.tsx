@@ -4,13 +4,10 @@ import {
   Drawer,
   Stack,
   Text,
-  ActionIcon,
-  useMantineColorScheme,
-  useComputedColorScheme,
   Box,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconSun, IconMoon, IconCode } from '@tabler/icons-react';
+import { IconCode } from '@tabler/icons-react';
 import { NavLink } from 'react-router-dom';
 import classes from './Navbar.module.css';
 
@@ -23,11 +20,6 @@ const links = [
 
 export function Navbar() {
   const [drawerOpen, { open, close }] = useDisclosure(false);
-  const { setColorScheme } = useMantineColorScheme();
-  const computedColorScheme = useComputedColorScheme('dark');
-
-  const toggleColorScheme = () =>
-    setColorScheme(computedColorScheme === 'dark' ? 'light' : 'dark');
 
   const navLinks = links.map((link) => (
     <NavLink
@@ -56,35 +48,9 @@ export function Navbar() {
 
           <Group gap="xs" visibleFrom="sm">
             <nav className={classes.navLinks}>{navLinks}</nav>
-            <ActionIcon
-              variant="subtle"
-              color="gray"
-              onClick={toggleColorScheme}
-              aria-label="Toggle color scheme"
-              size="lg"
-            >
-              {computedColorScheme === 'dark' ? (
-                <IconSun size={18} />
-              ) : (
-                <IconMoon size={18} />
-              )}
-            </ActionIcon>
           </Group>
 
-          <Group hiddenFrom="sm" gap="xs">
-            <ActionIcon
-              variant="subtle"
-              color="gray"
-              onClick={toggleColorScheme}
-              aria-label="Toggle color scheme"
-              size="lg"
-            >
-              {computedColorScheme === 'dark' ? (
-                <IconSun size={18} />
-              ) : (
-                <IconMoon size={18} />
-              )}
-            </ActionIcon>
+          <Group hiddenFrom="sm">
             <Burger
               opened={drawerOpen}
               onClick={open}
