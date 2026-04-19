@@ -30,13 +30,17 @@ import { Link } from 'react-router-dom';
 import {
   fdEmberBattle,
   fdCryptBattle,
+  fdShop1,
+  fdShop2,
+  fdJournal,
   fdMonsterManualEmber,
   fdMonsterManualCrypt,
-  fdRoadmap,
-  fdShop,
-  fdJournal,
-  fdStats,
+  fdStats1,
   fdStats2,
+  fdEmberRoadmap,
+  fdCryptRoadmap,
+  fdEmberAchievements,
+  fdCryptAchievements,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 
@@ -54,7 +58,7 @@ const narrativeBeats: NarrativeBeat[] = [
   {
     label: 'The Dungeon',
     heading: 'Every card is a weapon',
-    body: 'Answer correctly and you deal damage. Answer wrong and the monster strikes back. Two dungeons available — Ember Fantasy is unlocked from the start, Moonlit Crypt is a shop purchase.',
+    body: 'Answer correctly and you deal damage. Answer wrong and the monster strikes back. Ember Fantasy is unlocked from the start — Moonlit Crypt is a shop purchase.',
     color: 'orange',
     images: [
       { src: fdEmberBattle, label: 'Ember Fantasy' },
@@ -64,9 +68,12 @@ const narrativeBeats: NarrativeBeat[] = [
   {
     label: 'Between Runs',
     heading: 'Gold carries over',
-    body: "Every run earns gold. Spend it in the shop on permanent upgrades — health boosts, weapons, armor, and new dungeons to unlock. The shop turns isolated runs into a real meta-progression loop.",
+    body: 'Every run earns gold. Spend it in the shop on permanent upgrades: health boosts, weapons, armor, and new dungeons. The shop turns isolated runs into a real meta-progression loop.',
     color: 'yellow',
-    images: [{ src: fdShop }],
+    images: [
+      { src: fdShop1, label: 'Shop' },
+      { src: fdShop2, label: 'Shop — Upgrades' },
+    ],
   },
   {
     label: 'Your Decks',
@@ -78,7 +85,7 @@ const narrativeBeats: NarrativeBeat[] = [
   {
     label: 'Monster Manual',
     heading: 'Fill the bestiary',
-    body: 'Every enemy you encounter gets logged — Tier, HP, ATK, unique ability, and your personal kill/death record per dungeon. A completionist layer that rewards exploring every dungeon.',
+    body: 'Every enemy you encounter gets logged: Tier, HP, ATK, unique ability, and your personal kill/death record per dungeon. A completionist layer that rewards exploring every dungeon.',
     color: 'red',
     images: [
       { src: fdMonsterManualEmber, label: 'Ember Fantasy' },
@@ -91,16 +98,29 @@ const narrativeBeats: NarrativeBeat[] = [
     body: 'Win rate, total runs, combat damage, best runs, and full per-deck learning history across every session — all persisted locally so nothing disappears between sessions.',
     color: 'teal',
     images: [
-      { src: fdStats, label: 'Overview' },
+      { src: fdStats1, label: 'Overview' },
       { src: fdStats2, label: 'History' },
     ],
   },
   {
     label: 'The World',
     heading: 'Structured from A1 to B2',
-    body: 'The app ships with prebuilt language decks organized by CEFR proficiency level across 7 languages. Complete nodes to unlock adjacent ones — or ignore the roadmap entirely and use your own decks.',
+    body: 'Prebuilt language decks organized by CEFR proficiency level across 7 languages. Complete nodes to unlock adjacent ones and progress through a structured path — or use your own decks entirely.',
     color: 'indigo',
-    images: [{ src: fdRoadmap }],
+    images: [
+      { src: fdEmberRoadmap, label: 'Ember Fantasy' },
+      { src: fdCryptRoadmap, label: 'Moonlit Crypt' },
+    ],
+  },
+  {
+    label: 'Achievements',
+    heading: 'Every run counts',
+    body: 'Achievements track milestones across combat, learning streaks, and dungeon completion.',
+    color: 'teal',
+    images: [
+      { src: fdEmberAchievements, label: 'Ember Fantasy' },
+      { src: fdCryptAchievements, label: 'Moonlit Crypt' },
+    ],
   },
 ];
 
