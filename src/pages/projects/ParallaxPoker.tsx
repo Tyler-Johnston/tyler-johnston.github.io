@@ -622,7 +622,7 @@ export function ParallaxPoker() {
               </Box>
             ))}
           </Group>
-          <Group gap="sm" mt={12} wrap="wrap">
+          {/* <Group gap="sm" mt={12} wrap="wrap">
             <Button
               component="a" href="https://github.com/tyler-johnston"
               target="_blank" rel="noopener noreferrer"
@@ -631,7 +631,7 @@ export function ParallaxPoker() {
             >
               GitHub
             </Button>
-          </Group>
+          </Group> */}
         </Stack>
       </motion.div>
 
@@ -646,7 +646,7 @@ export function ParallaxPoker() {
           <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>The Psychology</Text>
           <Title order={2} style={{ fontWeight: 800 }}>Opponents you can read — if you know what to look for</Title>
           <Text size="md" c="dimmed" maw={700} lh={1.7} mt={4}>
-            Each AI carries ~25 personality parameters that live-mutate as the session progresses. A four-state tilt meter tracks cumulative pressure from bad beats and big losses — when an opponent tilts, they bluff more, hero-call more, and make increasingly reckless plays. Two independent tell channels let you catch them if you're watching closely.
+            Each AI carries ~25 personality parameters that live-mutate as the session progresses. A four-state tilt meter tracks cumulative pressure from bad beats and big losses (when an opponent tilts, they bluff more, hero-call more, and make increasingly reckless plays). Two independent tell channels let you catch them if you're watching closely.
           </Text>
         </Stack>
       </motion.div>
@@ -678,7 +678,7 @@ export function ParallaxPoker() {
           <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>Under the Hood</Text>
           <Title order={2} style={{ fontWeight: 800 }}>Built to get the edge cases right</Title>
           <Text size="md" c="dimmed" maw={700} lh={1.7} mt={4}>
-            The poker engine covers partial all-ins, raise/reopening semantics, and uncalled chip refunds — the cases most hobby implementations get wrong. The AI runs real equity calculations on every decision. Every character ships after surviving a 288,000-hand simulation gauntlet.
+            The poker engine covers partial all-ins, raise/reopening semantics, and uncalled chip refunds. The AI runs real equity calculations on every decision. Every character ships after surviving a 288,000-hand character balancing simulation gauntlet.
           </Text>
         </Stack>
       </motion.div>
