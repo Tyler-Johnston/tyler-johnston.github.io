@@ -138,8 +138,8 @@ const architecturePoints = [
   {
     icon: IconDeviceMobile,
     title: 'Standalone Components & Signals',
-    detail: "Built with Angular's standalone component model and signals for fine-grained reactive state. No NgRx boilerplate — signals drive deck selection, progress tracking, and UI state.",
-    stat: 'Zero NgRx — signals only',
+    detail: "Built with Angular's standalone component model and signals for fine-grained reactive state. Signals drive deck selection, progress tracking, and UI state throughout the app.",
+    stat: 'Standalone components · Signals',
     color: 'teal',
   },
 ];

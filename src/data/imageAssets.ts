@@ -1,8 +1,8 @@
 // Vite-processed image assets — imported as bundled URLs
-import parallaxPokerMain from '../../images/parallax-poker-main.png';
 import heroImg from '../../images/heroImg.png';
 import headshot from '../../images/headshot_portugal.jpg';
 import blockbuilder from '../../images/blockbuilder.jpeg';
+import aws from '../../images/aws.png';
 import reptiletracker from '../../images/reptiletracker.png';
 import vintagefinds from '../../images/vintagefinds.png';
 import rps from '../../images/rps.png';
@@ -57,6 +57,7 @@ export {
   heroImg,
   headshot,
   blockbuilder,
+  aws,
   reptiletracker,
   vintagefinds,
   rps,

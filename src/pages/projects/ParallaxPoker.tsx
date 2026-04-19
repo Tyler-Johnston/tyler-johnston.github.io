@@ -20,7 +20,6 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   IconArrowLeft,
-  IconBrandGithub,
   IconBrain,
   IconChartBar,
   IconEye,
@@ -662,7 +661,7 @@ export function ParallaxPoker() {
           <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>The Characters</Text>
           <Title order={2} style={{ fontWeight: 800 }}>32,768+ combinations per opponent</Title>
           <Text size="md" c="dimmed" maw={700} lh={1.7} mt={4}>
-            Each character is built from three layered sprite sheets — expression, two accessories — against a time-of-day background. Timezone offsets compute each opponent's local hour, so night opponents are genuinely more dangerous.
+            Each character is built from three layered sprite sheets: an expression and two accessories against a time-of-day background. Timezone offsets compute each opponent's local hour, so night opponents are genuinely more dangerous All character art done by myself.
           </Text>
         </Stack>
       </motion.div>
