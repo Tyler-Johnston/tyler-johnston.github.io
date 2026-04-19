@@ -1,54 +1,54 @@
 // Vite-processed image assets — imported as bundled URLs
 
 // Site
-import headshot from '../../images/headshot_portugal.jpg';
+import headshot from '../../images/headshot_portugal.webp';
 
 // Parallax Poker characters
-import ppKing from '../../images/parallax_poker/ppKing.png';
-import ppPrincess from '../../images/parallax_poker/ppPrincess.png';
-import ppCowboy from '../../images/parallax_poker/ppCowboy.png';
-import ppSteve from '../../images/parallax_poker/ppSteve.png';
-import ppMalandro from '../../images/parallax_poker/ppMalandro.png';
-import ppAryll from '../../images/parallax_poker/ppAryll.png';
-import ppAkalite from '../../images/parallax_poker/ppAkalite.png';
-import ppOldWizard from '../../images/parallax_poker/ppOldWizard.png';
-import ppBoyWizard from '../../images/parallax_poker/ppBoyWizard.png';
+import ppKing from '../../images/parallax_poker/ppKing.webp';
+import ppPrincess from '../../images/parallax_poker/ppPrincess.webp';
+import ppCowboy from '../../images/parallax_poker/ppCowboy.webp';
+import ppSteve from '../../images/parallax_poker/ppSteve.webp';
+import ppMalandro from '../../images/parallax_poker/ppMalandro.webp';
+import ppAryll from '../../images/parallax_poker/ppAryll.webp';
+import ppAkalite from '../../images/parallax_poker/ppAkalite.webp';
+import ppOldWizard from '../../images/parallax_poker/ppOldWizard.webp';
+import ppBoyWizard from '../../images/parallax_poker/ppBoyWizard.webp';
 
 // Flashcard Dungeon screenshots
-import fdLanding from '../../images/flashcard_dungeon/ember_landing.png';
-import fdEmberBattle from '../../images/flashcard_dungeon/ember_battle.png';
-import fdCryptBattle from '../../images/flashcard_dungeon/crypt_battle.png';
-import fdShop1 from '../../images/flashcard_dungeon/shop_1.png';
-import fdShop2 from '../../images/flashcard_dungeon/shop_2.png';
-import fdJournal from '../../images/flashcard_dungeon/journal.png';
-import fdMonsterManualEmber from '../../images/flashcard_dungeon/ember_MM.png';
-import fdMonsterManualCrypt from '../../images/flashcard_dungeon/crypt_MM.png';
-import fdEmberRoadmap from '../../images/flashcard_dungeon/ember_roadmap.png';
-import fdCryptRoadmap from '../../images/flashcard_dungeon/crypt_roadmap.png';
-import fdStats1 from '../../images/flashcard_dungeon/stats_1.png';
-import fdStats2 from '../../images/flashcard_dungeon/stats_2.png';
-import fdEmberAchievements from '../../images/flashcard_dungeon/ember_achievements.png';
-import fdCryptAchievements from '../../images/flashcard_dungeon/crpyt_achievements.png';
+import fdLanding from '../../images/flashcard_dungeon/ember_landing.webp';
+import fdEmberBattle from '../../images/flashcard_dungeon/ember_battle.webp';
+import fdCryptBattle from '../../images/flashcard_dungeon/crypt_battle.webp';
+import fdShop1 from '../../images/flashcard_dungeon/shop_1.webp';
+import fdShop2 from '../../images/flashcard_dungeon/shop_2.webp';
+import fdJournal from '../../images/flashcard_dungeon/journal.webp';
+import fdMonsterManualEmber from '../../images/flashcard_dungeon/ember_MM.webp';
+import fdMonsterManualCrypt from '../../images/flashcard_dungeon/crypt_MM.webp';
+import fdEmberRoadmap from '../../images/flashcard_dungeon/ember_roadmap.webp';
+import fdCryptRoadmap from '../../images/flashcard_dungeon/crypt_roadmap.webp';
+import fdStats1 from '../../images/flashcard_dungeon/stats_1.webp';
+import fdStats2 from '../../images/flashcard_dungeon/stats_2.webp';
+import fdEmberAchievements from '../../images/flashcard_dungeon/ember_achievements.webp';
+import fdCryptAchievements from '../../images/flashcard_dungeon/crpyt_achievements.webp';
 
 // Other projects
-import blockbuilder from '../../images/other_projects/blockbuilder.jpeg';
-import aws from '../../images/other_projects/aws.png';
-import reptiletracker from '../../images/other_projects/reptiletracker.png';
-import vintagefinds from '../../images/other_projects/vintagefinds.png';
-import rps from '../../images/other_projects/rps.png';
-import snakegame from '../../images/other_projects/snakegame.png';
-import lunarlander from '../../images/other_projects/lunarlander.png';
-import maze from '../../images/other_projects/maze.png';
-import absentee from '../../images/other_projects/absentee.png';
-import jobMarket from '../../images/other_projects/job_market.jpg';
-import customerBehavior from '../../images/other_projects/customer-behavior.jpg';
-import cartpole from '../../images/other_projects/cartpole1.png';
-import bees from '../../images/other_projects/bees.jpg';
-import facialExpression from '../../images/other_projects/facialexpression.png';
+import blockbuilder from '../../images/other_projects/blockbuilder.webp';
+import aws from '../../images/other_projects/aws.webp';
+import reptiletracker from '../../images/other_projects/reptiletracker.webp';
+import vintagefinds from '../../images/other_projects/vintagefinds.webp';
+import rps from '../../images/other_projects/rps.webp';
+import snakegame from '../../images/other_projects/snakegame.webp';
+import lunarlander from '../../images/other_projects/lunarlander.webp';
+import maze from '../../images/other_projects/maze.webp';
+import absentee from '../../images/other_projects/absentee.webp';
+import jobMarket from '../../images/other_projects/job_market.webp';
+import customerBehavior from '../../images/other_projects/customer-behavior.webp';
+import cartpole from '../../images/other_projects/cartpole1.webp';
+import bees from '../../images/other_projects/bees.webp';
+import facialExpression from '../../images/other_projects/facialexpression.webp';
 
 // Experience / misc
-import boundingbox from '../../images/boundingbox.png';
-import bucketvector from '../../images/bucketvector.png';
+import boundingbox from '../../images/boundingbox.webp';
+import bucketvector from '../../images/bucketvector.webp';
 const footprints = '';
 
 export {
