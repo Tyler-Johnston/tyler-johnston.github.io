@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Container,
   Title,
@@ -10,9 +11,10 @@ import {
   Box,
   ThemeIcon,
   Grid,
+  ActionIcon,
   useMantineColorScheme,
 } from '@mantine/core';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   IconArrowLeft,
   IconBrandGithub,
@@ -21,69 +23,84 @@ import {
   IconMap,
   IconDatabase,
   IconDeviceMobile,
+  IconChevronLeft,
+  IconChevronRight,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
   fdEmberBattle,
   fdCryptBattle,
   fdMonsterManualEmber,
+  fdMonsterManualCrypt,
   fdRoadmap,
   fdShop,
   fdJournal,
   fdStats,
+  fdStats2,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
+
+type BeatImageItem = { src: string; label?: string };
 
 type NarrativeBeat = {
   label: string;
   heading: string;
   body: string;
   color: string;
-  image: string | [string, string];
+  images: BeatImageItem[];
 };
 
 const narrativeBeats: NarrativeBeat[] = [
   {
     label: 'The Dungeon',
     heading: 'Every card is a weapon',
-    body: 'Answer correctly and you deal damage. Answer wrong and the monster strikes back. Two dungeons ship with the app — Ember Fantasy is unlocked from the start, Moonlit Crypt is a shop purchase.',
+    body: 'Answer correctly and you deal damage. Answer wrong and the monster strikes back. Two dungeons available — Ember Fantasy is unlocked from the start, Moonlit Crypt is a shop purchase.',
     color: 'orange',
-    image: [fdEmberBattle, fdCryptBattle],
+    images: [
+      { src: fdEmberBattle, label: 'Ember Fantasy' },
+      { src: fdCryptBattle, label: 'Moonlit Crypt' },
+    ],
   },
   {
     label: 'Between Runs',
     heading: 'Gold carries over',
     body: "Every run earns gold. Spend it in the shop on permanent upgrades — health boosts, weapons, armor, and new dungeons to unlock. The shop turns isolated runs into a real meta-progression loop.",
     color: 'yellow',
-    image: fdShop,
+    images: [{ src: fdShop }],
   },
   {
     label: 'Your Decks',
     heading: 'Study your way',
     body: 'Create and manage your own cards in the Journal — search, filter by status (Learning / Review / New), and import full decks. Or skip custom decks entirely and follow the prebuilt CEFR roadmap.',
     color: 'violet',
-    image: fdJournal,
+    images: [{ src: fdJournal }],
   },
   {
     label: 'Monster Manual',
     heading: 'Fill the bestiary',
     body: 'Every enemy you encounter gets logged — Tier, HP, ATK, unique ability, and your personal kill/death record per dungeon. A completionist layer that rewards exploring every dungeon.',
     color: 'red',
-    image: fdMonsterManualEmber,
+    images: [
+      { src: fdMonsterManualEmber, label: 'Ember Fantasy' },
+      { src: fdMonsterManualCrypt, label: 'Moonlit Crypt' },
+    ],
   },
   {
     label: 'Your Progress',
     heading: 'Everything tracked',
     body: 'Win rate, total runs, combat damage, best runs, and full per-deck learning history across every session — all persisted locally so nothing disappears between sessions.',
     color: 'teal',
-    image: fdStats,
+    images: [
+      { src: fdStats, label: 'Overview' },
+      { src: fdStats2, label: 'History' },
+    ],
   },
   {
     label: 'The World',
     heading: 'Structured from A1 to B2',
     body: 'The app ships with prebuilt language decks organized by CEFR proficiency level across 7 languages. Complete nodes to unlock adjacent ones — or ignore the roadmap entirely and use your own decks.',
     color: 'indigo',
-    image: fdRoadmap,
+    images: [{ src: fdRoadmap }],
   },
 ];
 
@@ -127,6 +144,99 @@ const architecturePoints = [
   },
 ];
 
+function BeatImage({ images, isDark }: { images: BeatImageItem[]; isDark: boolean }) {
+  const [index, setIndex] = useState(0);
+  const isMulti = images.length > 1;
+  const current = images[index];
+  const border = isDark ? '#2e3347' : 'var(--mantine-color-gray-3)';
+  const shadow = isDark ? '0 8px 40px rgba(0,0,0,0.6)' : '0 8px 40px rgba(0,0,0,0.12)';
+  const go = (next: number) => setIndex((next + images.length) % images.length);
+
+  return (
+    <Box style={{
+      background: isDark ? '#0f1117' : '#f1f5f9',
+      borderRadius: 16,
+      position: 'relative',
+      overflow: 'hidden',
+      minHeight: 380,
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      <Box style={{ flex: 1, position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', padding: 32 }}>
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={index}
+            src={current.src}
+            alt={current.label || ''}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              maxHeight: 420, maxWidth: '100%',
+              objectFit: 'contain', borderRadius: 8, boxShadow: shadow,
+              display: 'block',
+            }}
+          />
+        </AnimatePresence>
+
+        {isMulti && current.label && (
+          <Box style={{
+            position: 'absolute', top: 12, right: 12,
+            background: isDark ? 'rgba(20,22,34,0.9)' : 'rgba(255,255,255,0.9)',
+            border: `1px solid ${border}`, borderRadius: 6,
+            padding: '3px 10px', backdropFilter: 'blur(4px)',
+          }}>
+            <Text size="xs" fw={600}>{current.label}</Text>
+          </Box>
+        )}
+
+        {isMulti && (
+          <>
+            <ActionIcon
+              size="sm" radius="xl" variant="filled" onClick={() => go(index - 1)}
+              style={{
+                position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)',
+                background: isDark ? 'rgba(30,33,48,0.85)' : 'rgba(255,255,255,0.85)',
+                border: `1px solid ${border}`, backdropFilter: 'blur(4px)',
+              }}
+            >
+              <IconChevronLeft size={12} color={isDark ? '#f1f5f9' : '#1e2130'} />
+            </ActionIcon>
+            <ActionIcon
+              size="sm" radius="xl" variant="filled" onClick={() => go(index + 1)}
+              style={{
+                position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
+                background: isDark ? 'rgba(30,33,48,0.85)' : 'rgba(255,255,255,0.85)',
+                border: `1px solid ${border}`, backdropFilter: 'blur(4px)',
+              }}
+            >
+              <IconChevronRight size={12} color={isDark ? '#f1f5f9' : '#1e2130'} />
+            </ActionIcon>
+          </>
+        )}
+      </Box>
+
+      {isMulti && (
+        <Group justify="center" pb={12} gap={6} style={{ flexShrink: 0 }}>
+          {images.map((_, i) => (
+            <Box
+              key={i} onClick={() => setIndex(i)}
+              style={{
+                width: i === index ? 20 : 6, height: 6, borderRadius: 3,
+                background: i === index
+                  ? 'var(--mantine-color-cyan-5)'
+                  : isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.15)',
+                cursor: 'pointer', transition: 'width 0.2s ease, background 0.2s ease',
+              }}
+            />
+          ))}
+        </Group>
+      )}
+    </Box>
+  );
+}
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
@@ -140,8 +250,6 @@ export function FlashcardDungeon() {
 
   const surface = isDark ? '#1a1d27' : '#ffffff';
   const border = isDark ? '#2e3347' : 'var(--mantine-color-gray-3)';
-  const imgBg = isDark ? '#0f1117' : '#f1f5f9';
-  const shadow = isDark ? '0 8px 40px rgba(0,0,0,0.6)' : '0 8px 40px rgba(0,0,0,0.12)';
 
   return (
     <Container size="lg" py={60}>
@@ -187,40 +295,8 @@ export function FlashcardDungeon() {
 
       {narrativeBeats.map((beat, i) => {
         const imageFirst = i % 2 === 0;
-        const isPair = Array.isArray(beat.image);
 
-        const imageNode = (
-          <Box style={{
-            background: imgBg,
-            borderRadius: 16,
-            padding: isPair ? '32px 20px' : 32,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'flex-end',
-            gap: 12,
-            minHeight: 380,
-          }}>
-            {isPair ? (
-              (beat.image as [string, string]).map((src, j) => (
-                <img
-                  key={j} src={src} alt=""
-                  style={{
-                    flex: 1, maxHeight: 360, maxWidth: '50%',
-                    objectFit: 'contain', borderRadius: 8, boxShadow: shadow,
-                  }}
-                />
-              ))
-            ) : (
-              <img
-                src={beat.image as string} alt=""
-                style={{
-                  maxHeight: 420, maxWidth: '100%',
-                  objectFit: 'contain', borderRadius: 8, boxShadow: shadow,
-                }}
-              />
-            )}
-          </Box>
-        );
+        const imageNode = <BeatImage images={beat.images} isDark={isDark} />;
 
         const textNode = (
           <Stack gap="sm" justify="center" style={{ height: '100%', paddingTop: 8, paddingBottom: 8 }}>
