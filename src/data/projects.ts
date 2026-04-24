@@ -121,10 +121,10 @@ export const projects: Project[] = [
   {
     id: 'vintage-finds',
     title: 'Vintage Finds',
-    description: 'E-commerce marketplace for vintage goods with user auth, listings, and checkout flow.',
+    description: 'Full-stack antique storefront built for a local business. Admins manage listings, images, and inventory in real time via a secure dashboard; visitors browse items with photos, descriptions, and condition reports.',
     imageUrl: vintagefinds,
     projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds',
-    techStack: ['React', 'Express', 'MongoDB'],
+    techStack: ['Next.js', 'TypeScript', 'Firebase', 'Mantine UI', 'Vercel'],
     category: 'webDev',
   },
   {
