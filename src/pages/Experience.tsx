@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Container,
   Title,
@@ -11,13 +12,28 @@ import {
   List,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { IconBriefcase, IconCircleCheck } from '@tabler/icons-react';
 import { roles } from '../data/experience';
 import { TechBadge } from '../components/ui/TechBadge';
 
 export function Experience() {
   const isDark = true;
+  const location = useLocation();
+  const [highlightedId, setHighlightedId] = useState<string | null>(null);
 
+  useEffect(() => {
+    const scrollTo = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (!scrollTo) return;
+    const el = document.getElementById(scrollTo);
+    if (el) {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setHighlightedId(scrollTo);
+        setTimeout(() => setHighlightedId(null), 2000);
+      }, 100);
+    }
+  }, [location.state]);
 
   return (
     <Container size="lg" py={60}>
@@ -49,7 +65,7 @@ export function Experience() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
           >
-            <Box style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 0 }}>
+            <Box id={role.id} style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 0 }}>
               {/* Timeline column */}
               <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <ThemeIcon color="indigo" variant="light" size="md" radius="xl" style={{ zIndex: 1 }}>
@@ -68,6 +84,7 @@ export function Experience() {
               <Card
                 mb={i < roles.length - 1 ? 'xl' : 0}
                 ml="md"
+                className={highlightedId === role.id ? 'role-highlighted' : undefined}
                 style={{
                   border: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-3)'}`,
                   background: isDark ? '#1a1d27' : '#ffffff',

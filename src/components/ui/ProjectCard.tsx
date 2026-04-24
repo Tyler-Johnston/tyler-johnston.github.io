@@ -1,6 +1,7 @@
 import { Card, Image, Text, Group, Stack, Anchor, Badge } from '@mantine/core';
 import { motion } from 'framer-motion';
-import { IconExternalLink } from '@tabler/icons-react';
+import { IconExternalLink, IconBriefcase } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
 import { Project } from '../../data/projects';
 import { TechBadge } from './TechBadge';
 
@@ -9,6 +10,16 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const navigate = useNavigate();
+  const isExperienceLink = project.projectUrl?.startsWith('experience:');
+  const isExternal = project.projectUrl?.startsWith('http');
+
+  function handleExperienceClick(e: React.MouseEvent) {
+    e.preventDefault();
+    const scrollTo = project.projectUrl?.split(':')[1];
+    navigate('/experience', { state: { scrollTo } });
+  }
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -62,14 +73,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </Group>
           {project.projectUrl && (
             <Anchor
-              href={project.projectUrl}
-              target={project.projectUrl.startsWith('http') ? '_blank' : undefined}
-              rel={project.projectUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+              href={isExperienceLink ? undefined : project.projectUrl}
+              onClick={isExperienceLink ? handleExperienceClick : undefined}
+              target={isExternal ? '_blank' : undefined}
+              rel={isExternal ? 'noopener noreferrer' : undefined}
               size="sm"
               c="indigo"
-              style={{ display: 'flex', alignItems: 'center', gap: 4 }}
+              style={{ display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}
             >
-              View Project <IconExternalLink size={14} />
+              {isExperienceLink ? (
+                <>View in Experience <IconBriefcase size={14} /></>
+              ) : (
+                <>View Project <IconExternalLink size={14} /></>
+              )}
             </Anchor>
           )}
         </Stack>

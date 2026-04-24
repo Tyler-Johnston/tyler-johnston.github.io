@@ -132,6 +132,7 @@ export const projects: Project[] = [
     title: 'BlockBuilder',
     description: 'React Flow-based visual workflow builder with C#/.NET backend, built at Space Dynamics Lab.',
     imageUrl: blockbuilder,
+    projectUrl: 'experience:sdl',
     techStack: ['React Flow', 'C#', '.NET', 'Docker'],
     category: 'webDev',
   },
