@@ -3,6 +3,7 @@ import '../styles.css';
 import { MantineProvider } from '@mantine/core';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { usePageTracking } from '../hooks/usePageTracking';
+import { usePageTitle } from '../hooks/usePageTitle';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Landing } from './pages/Landing';
@@ -26,6 +27,7 @@ export default function App() {
 
 function PageTrackerWrapper() {
   usePageTracking();
+  usePageTitle();
   return (
     <>
       <Scroll />
