@@ -6,11 +6,9 @@ import {
   Stack,
   SimpleGrid,
   Tabs,
-  Box,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
-import { flagshipProjects, projects, ProjectCategory } from '../data/projects';
-import { FlagshipCard } from '../components/ui/FlagshipCard';
+import { projects, ProjectCategory } from '../data/projects';
 import { ProjectCard } from '../components/ui/ProjectCard';
 
 const tabs: { value: 'all' | ProjectCategory; label: string }[] = [
@@ -22,9 +20,7 @@ const tabs: { value: 'all' | ProjectCategory; label: string }[] = [
 ];
 
 export function Projects() {
-  const isDark = true;
   const [activeTab, setActiveTab] = useState<'all' | ProjectCategory>('all');
-
 
   const filtered =
     activeTab === 'all' ? projects : projects.filter((p) => p.category === activeTab);
@@ -36,7 +32,7 @@ export function Projects() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <Stack gap={4} mb={16}>
+        <Stack gap={4} mb={40}>
           <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
             Portfolio
           </Text>
@@ -50,44 +46,7 @@ export function Projects() {
         </Stack>
       </motion.div>
 
-      {/* Flagship section */}
-      <Box
-        py={60}
-        my={40}
-        style={{
-          borderTop: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-2)'}`,
-          borderBottom: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-2)'}`,
-        }}
-      >
-        <Text
-          size="xs"
-          tt="uppercase"
-          fw={700}
-          c="indigo"
-          mb={32}
-          style={{ letterSpacing: '0.12em' }}
-        >
-          Featured
-        </Text>
-        <Stack gap="xl">
-          {flagshipProjects.map((project, i) => (
-            <FlagshipCard key={project.id} project={project} reverse={i % 2 !== 0} />
-          ))}
-        </Stack>
-      </Box>
-
-      {/* All projects grid */}
       <Stack gap="xl">
-        <Text
-          size="xs"
-          tt="uppercase"
-          fw={700}
-          c="dimmed"
-          style={{ letterSpacing: '0.12em' }}
-        >
-          More Projects
-        </Text>
-
         <Tabs
           value={activeTab}
           onChange={(v) => setActiveTab((v as 'all' | ProjectCategory) ?? 'all')}

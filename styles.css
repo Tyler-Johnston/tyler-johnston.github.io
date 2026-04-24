@@ -116,3 +116,9 @@ body {
     font-size: 14px;
   }
 }
+
+@media (max-width: 600px) {
+  .flagship-image {
+    order: -1 !important;
+  }
+}

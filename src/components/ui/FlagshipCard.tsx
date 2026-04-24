@@ -44,6 +44,7 @@ export function FlagshipCard({ project, reverse = false }: FlagshipCardProps) {
           }}
         >
           <div
+            className="flagship-image"
             style={{
               order: reverse ? 1 : 0,
               position: 'relative',

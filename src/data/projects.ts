@@ -85,6 +85,29 @@ export const flagshipProjects: FlagshipProject[] = [
 ];
 
 export const projects: Project[] = [
+  // Flagship
+  {
+    id: 'parallax-poker',
+    title: 'Parallax Poker',
+    description:
+      'A character-driven poker roguelite inspired by Balatro, Poker Night at the Inventory, and Punch Out. AI opponents run real poker math validated by a 288,000-hand Monte Carlo simulation pipeline.',
+    imageUrl: ppKing,
+    projectUrl: '/projects/parallax-poker',
+    techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'],
+    category: 'gameDev',
+    featured: true,
+  },
+  {
+    id: 'flashcard-dungeon',
+    title: 'Flashcard Dungeon',
+    description:
+      'A dungeon-crawling flashcard app where spaced repetition meets RPG progression. Offline-first with optional cloud sync, CEFR-mapped world, and 7 languages supported.',
+    imageUrl: fdLanding,
+    projectUrl: '/projects/flashcard-dungeon',
+    techStack: ['Angular', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB'],
+    category: 'webDev',
+    featured: true,
+  },
   // Web Dev
   {
     id: 'vinyl-tracker',

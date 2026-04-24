@@ -1,4 +1,4 @@
-import { Card, Image, Text, Group, Stack, Anchor } from '@mantine/core';
+import { Card, Image, Text, Group, Stack, Anchor, Badge } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { IconExternalLink } from '@tabler/icons-react';
 import { Project } from '../../data/projects';
@@ -20,19 +20,31 @@ export function ProjectCard({ project }: ProjectCardProps) {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          border: '1px solid light-dark(var(--mantine-color-gray-3), #2e3347)',
+          border: project.featured
+            ? '1px solid var(--mantine-color-indigo-7)'
+            : '1px solid light-dark(var(--mantine-color-gray-3), #2e3347)',
           transition: 'box-shadow 0.2s ease',
         }}
         className="project-card"
       >
         {project.imageUrl && (
-          <Card.Section>
+          <Card.Section style={{ position: 'relative' }}>
             <Image
               src={project.imageUrl}
               height={160}
               alt={project.title}
               fallbackSrc="https://placehold.co/400x160/1a1d27/6366f1?text=Project"
             />
+            {project.featured && (
+              <Badge
+                size="xs"
+                variant="filled"
+                color="indigo"
+                style={{ position: 'absolute', top: 8, left: 8 }}
+              >
+                Featured
+              </Badge>
+            )}
           </Card.Section>
         )}
 
@@ -51,8 +63,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.projectUrl && (
             <Anchor
               href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={project.projectUrl.startsWith('http') ? '_blank' : undefined}
+              rel={project.projectUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
               size="sm"
               c="indigo"
               style={{ display: 'flex', alignItems: 'center', gap: 4 }}
