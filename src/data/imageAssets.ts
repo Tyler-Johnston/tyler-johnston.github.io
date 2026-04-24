@@ -33,7 +33,7 @@ import fdCryptAchievements from '../../images/flashcard_dungeon/crpyt_achievemen
 // Other projects
 import blockbuilder from '../../images/other_projects/blockbuilder.webp';
 import aws from '../../images/other_projects/aws.webp';
-import reptiletracker from '../../images/other_projects/reptiletracker.webp';
+import vinyltracker from '../../images/other_projects/vinyltracker.webp';
 import vintagefinds from '../../images/other_projects/vintagefinds.webp';
 import rps from '../../images/other_projects/rps.webp';
 import snakegame from '../../images/other_projects/snakegame.webp';
@@ -78,7 +78,7 @@ export {
   fdCryptAchievements,
   blockbuilder,
   aws,
-  reptiletracker,
+  vinyltracker,
   vintagefinds,
   rps,
   snakegame,

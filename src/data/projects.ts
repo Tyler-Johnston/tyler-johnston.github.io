@@ -1,6 +1,6 @@
 import {
   fdLanding,
-  reptiletracker,
+  vinyltracker,
   vintagefinds,
   blockbuilder,
   aws,
@@ -52,7 +52,7 @@ export const flagshipProjects: FlagshipProject[] = [
     imageUrl: ppKing,
     techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'],
     achievements: [
-      'AI opponents run real poker math:pheval equity, draw detection (flush/OESD/gutshot), board wetness scoring, and SPR-based river commitment',
+      'AI opponents run real poker math: pheval equity, draw detection (flush/OESD/gutshot), board wetness scoring, and SPR-based river commitment',
       'Balance validated by a 288,000-hand Monte Carlo simulation pipeline across all 9×8 character pairings before each release',
       '9 opponents each driven by 25+ tunable stats that live-mutate via a 4-state tilt system:aggression, composure, and bluff frequency all shift under pressure',
       '32,768+ unique character sprites composed at runtime from layered expression, accessory, and time-of-day background sheets',
@@ -87,12 +87,12 @@ export const flagshipProjects: FlagshipProject[] = [
 export const projects: Project[] = [
   // Web Dev
   {
-    id: 'reptile-tracker',
-    title: 'Reptile Tracker',
-    description: 'Full-stack CRUD app for tracking reptile care schedules, feeding logs, and health records.',
-    imageUrl: reptiletracker,
-    projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker',
-    techStack: ['React', 'Node.js', 'PostgreSQL'],
+    id: 'vinyl-tracker',
+    title: 'Vinyl Tracker',
+    description: 'Full-stack vinyl record collection manager with Discogs API integration, Goldmine grading, play logging, and an analytics dashboard.',
+    imageUrl: vinyltracker,
+    projectUrl: 'https://github.com/Tyler-Johnston/Vinyl-Tracker',
+    techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'SQLite'],
     category: 'webDev',
   },
   {

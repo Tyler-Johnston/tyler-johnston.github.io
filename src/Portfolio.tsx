@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 import { FaUsers, FaUser, FaArrowRight } from 'react-icons/fa';
 
 import vintagefinds from '../images/vintagefinds.png';
-import reptiletracker from '../images/reptiletracker.png';
+import vinyltracker from '../images/other_projects/vinyltracker.webp';
 import cartpole1 from '../images/cartpole1.png';
 import snakegame from '../images/snakegame.png';
 import lunarlander from '../images/lunarlander.png';
@@ -118,11 +118,11 @@ const projects: Record<CategoryKey, Project[]> = {
     },
     {
       id: 8,
-      title: 'Reptile Tracker',
+      title: 'Vinyl Tracker',
       description:
-        'A React.js + Express.js web app for managing pet reptile care, including authentication and persistent storage.',
-      imageUrl: reptiletracker,
-      projectUrl: 'https://github.com/Tyler-Johnston/Reptile-Tracker',
+        'A full-stack vinyl record collection manager with Discogs API integration, Goldmine grading, play logging, and an analytics dashboard.',
+      imageUrl: vinyltracker,
+      projectUrl: 'https://github.com/Tyler-Johnston/Vinyl-Tracker',
     },
     {
       id: 9,

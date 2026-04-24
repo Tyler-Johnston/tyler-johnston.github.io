@@ -297,7 +297,7 @@ export function FlashcardDungeon() {
           </Text>
           <Group gap="sm" mt={12} wrap="wrap">
             <Button
-              component="a" href="#" target="_blank"
+              component="a" href="https://flashcarddungeon.com" target="_blank"
               color="cyan" leftSection={<IconExternalLink size={16} />}
             >
               Try Web App
