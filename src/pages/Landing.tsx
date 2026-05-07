@@ -7,214 +7,263 @@ import {
   Stack,
   SimpleGrid,
   Box,
-  ThemeIcon,
+  Card,
+  Image,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import {
-  IconCode,
-  IconDatabase,
-  IconDeviceGamepad2,
   IconArrowRight,
+  IconBriefcase,
+  IconLanguage,
+  IconMapPin,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { flagshipProjects } from '../data/projects';
 import { FlagshipCard } from '../components/ui/FlagshipCard';
+import { headshot } from '../data/imageAssets';
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 18 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const, delay },
+  transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const, delay },
 });
 
-const skills = [
+const stats = [
+  { label: 'Professional experience', value: '2 years', icon: IconBriefcase },
+  { label: 'Language level', value: 'Portuguese B1', icon: IconLanguage },
+  { label: 'Base', value: 'Lisbon, Portugal', icon: IconMapPin },
+];
+
+const focusAreas = [
   {
-    icon: IconCode,
-    label: 'Full-Stack Web',
-    detail: 'React, Angular, C#/.NET, Node.js',
-    color: 'indigo',
+    title: 'Production software',
+    detail: 'C#/.NET, REST APIs, JavaScript, Oracle SQL, QA ownership, and release support.',
   },
   {
-    icon: IconDatabase,
-    label: 'Data & ML',
-    detail: 'Python, Pandas, PyTorch, Oracle SQL',
-    color: 'cyan',
+    title: 'Data & BI',
+    detail: 'Python, Pandas, Plotly, Power BI, Microsoft Fabric, geospatial analysis, and ML workflows.',
   },
   {
-    icon: IconDeviceGamepad2,
-    label: 'Game Development',
-    detail: 'C#, Godot 4, AI systems, Pixel Art',
-    color: 'violet',
+    title: 'Interactive systems',
+    detail: 'React, Angular 17+, Godot 4, React Flow, IndexedDB, and simulation-driven design.',
   },
 ];
 
 export function Landing() {
-  const isDark = true;
-
-
   return (
     <Box>
-      {/* Hero */}
-      <Box
-        py={100}
-        style={{
-          background: isDark
-            ? 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99,102,241,0.15) 0%, transparent 60%)'
-            : 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(79,70,229,0.08) 0%, transparent 60%)',
-        }}
-      >
-        <Container size="md">
-          <Stack align="center" gap="xl" ta="center">
+      <Box py={{ base: 56, md: 88 }}>
+        <Container size="lg">
+          <Box
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0, 1.2fr) minmax(340px, 0.8fr)',
+              gap: '52px',
+              alignItems: 'start',
+            }}
+          >
             <motion.div {...fadeUp(0)}>
-              <Text
-                size="sm"
-                tt="uppercase"
-                fw={700}
-                c="indigo"
-                style={{ letterSpacing: '0.12em' }}
-              >
-                Full Stack Developer
-              </Text>
+              <Stack gap="lg" style={{ maxWidth: 720 }}>
+                <Text
+                  size="xs"
+                  tt="uppercase"
+                  fw={700}
+                  c="orange"
+                  style={{ letterSpacing: '0.16em' }}
+                >
+                  Lisbon, Portugal
+                </Text>
+
+                <Title
+                  order={1}
+                  style={{
+                    fontSize: 'clamp(2.8rem, 7vw, 4.8rem)',
+                    lineHeight: 1.02,
+                    letterSpacing: '-0.05em',
+                  }}
+                >
+                  Full-stack developer building production software, data tools, and game systems.
+                </Title>
+
+                <Text size="lg" c="dimmed" maw={720} lh={1.8}>
+                  I’m Tyler Johnston, a full-stack developer in Lisbon with 2 years of professional experience
+                  building production workflow applications in C#/.NET, JavaScript/TypeScript, and
+                  Oracle SQL.
+                </Text>
+
+                <Group gap="sm" wrap="wrap">
+                  <Button
+                    component={Link}
+                    to="/projects"
+                    size="md"
+                    color="orange"
+                    rightSection={<IconArrowRight size={16} />}
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
+                    See All Projects
+                  </Button>
+                  <Button
+                    component="a"
+                    href="/cv.pdf"
+                    target="_blank"
+                    size="md"
+                    variant="outline"
+                    color="orange"
+                  >
+                    Download CV
+                  </Button>
+                </Group>
+              </Stack>
             </motion.div>
 
-            <motion.div {...fadeUp(0.1)}>
-              <Title
-                order={1}
+            <motion.div {...fadeUp(0.08)}>
+              <Card
+                p="xl"
                 style={{
-                  fontSize: 'clamp(2.4rem, 6vw, 4rem)',
-                  fontWeight: 900,
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.03em',
+                  border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
+                  background: 'light-dark(var(--mantine-color-white), #141a1e)',
                 }}
               >
-                Tyler Johnston
-              </Title>
-            </motion.div>
-
-            <motion.div {...fadeUp(0.2)}>
-              <Text
-                size="lg"
-                c="dimmed"
-                maw={560}
-                lh={1.7}
-              >
-                American programmer based in Lisbon, Portugal. Currently pursuing a Master's in Information Management at Nova University. Building web apps, games, and data tools with C#, TypeScript, and Python.
-              </Text>
-            </motion.div>
-
-            <motion.div {...fadeUp(0.3)}>
-              <Group gap="sm" justify="center" wrap="wrap">
-                <Button
-                  component={Link}
-                  to="/projects"
-                  size="md"
-                  color="indigo"
-                  rightSection={<IconArrowRight size={16} />}
+                <Box
+                  style={{
+                    overflow: 'hidden',
+                    borderRadius: 20,
+                    border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
+                  }}
                 >
-                  View Projects
-                </Button>
-                <Button
-                  component="a"
-                  href="/cv.pdf"
-                  target="_blank"
-                  size="md"
-                  variant="outline"
-                  color="indigo"
-                >
-                  Download CV
-                </Button>
-              </Group>
+                  <Image
+                    src={headshot}
+                    alt="Tyler Johnston"
+                    fallbackSrc="https://placehold.co/600x720/141a1e/f5a623?text=Tyler+Johnston"
+                  />
+                </Box>
+              </Card>
             </motion.div>
-          </Stack>
+          </Box>
         </Container>
       </Box>
 
-      {/* Skills snapshot */}
       <Container size="lg" pb={80}>
-        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg">
-          {skills.map((skill, i) => (
+        <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
+          {stats.map((stat, i) => (
             <motion.div
-              key={skill.label}
-              initial={{ opacity: 0, y: 20 }}
+              key={stat.label}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              transition={{ duration: 0.35, delay: i * 0.06 }}
             >
-              <Box
+              <Card
                 p="lg"
-                style={{
-                  border: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-3)'}`,
-                  borderRadius: 14,
-                  background: isDark ? '#1a1d27' : '#ffffff',
-                  transition: 'box-shadow 0.2s ease',
-                }}
                 className="skill-tile"
+                style={{
+                  border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
+                  background: 'light-dark(var(--mantine-color-white), #141a1e)',
+                }}
               >
-                <ThemeIcon color={skill.color} variant="light" size="lg" radius="md" mb="sm">
-                  <skill.icon size={20} />
-                </ThemeIcon>
-                <Text fw={600} size="sm" mb={4}>
-                  {skill.label}
+                <stat.icon size={18} color="var(--mantine-color-orange-6)" />
+                <Text fw={800} size="lg" mt="sm">
+                  {stat.value}
                 </Text>
-                <Text size="xs" c="dimmed">
-                  {skill.detail}
+                <Text size="xs" c="dimmed" tt="uppercase" style={{ letterSpacing: '0.08em' }}>
+                  {stat.label}
                 </Text>
-              </Box>
+              </Card>
             </motion.div>
           ))}
         </SimpleGrid>
       </Container>
 
-      {/* Featured Projects */}
       <Box
-        py={80}
+        py={84}
         style={{
-          background: isDark ? '#0f1117' : '#f8fafc',
-          borderTop: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-2)'}`,
-          borderBottom: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-2)'}`,
+          borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
+          borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
+          background: 'linear-gradient(180deg, transparent 0%, rgba(245, 158, 11, 0.04) 100%)',
         }}
       >
         <Container size="lg">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <Stack gap={4} mb={48} align="center" ta="center">
-              <Text
-                size="xs"
-                tt="uppercase"
-                fw={700}
-                c="indigo"
-                style={{ letterSpacing: '0.12em' }}
-              >
-                Flagship Projects
+            <Stack gap={4} mb={40}>
+              <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
+                Focus
               </Text>
-              <Title order={2} style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', fontWeight: 800 }}>
-                Things I'm most proud of
+              <Title order={2} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.3rem)', fontWeight: 800 }}>
+                What I spend my time on
               </Title>
             </Stack>
           </motion.div>
 
-          <Stack gap="xl">
-            {flagshipProjects.map((project, i) => (
-              <FlagshipCard key={project.id} project={project} reverse={i % 2 !== 0} />
+          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg">
+            {focusAreas.map((area, i) => (
+              <motion.div
+                key={area.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: i * 0.08 }}
+              >
+                <Card
+                  className="about-tile"
+                  style={{
+                    border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
+                    background: 'light-dark(var(--mantine-color-white), #141a1e)',
+                    height: '100%',
+                  }}
+                >
+                  <Text fw={700} mb="sm">
+                    {area.title}
+                  </Text>
+                  <Text size="sm" c="dimmed" lh={1.7}>
+                    {area.detail}
+                  </Text>
+                </Card>
+              </motion.div>
             ))}
-          </Stack>
-
-          <Group justify="center" mt={48}>
-            <Button
-              component={Link}
-              to="/projects"
-              variant="outline"
-              color="indigo"
-              rightSection={<IconArrowRight size={16} />}
-            >
-              View All Projects
-            </Button>
-          </Group>
+          </SimpleGrid>
         </Container>
       </Box>
+
+      <Container size="lg" py={80}>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <Stack gap={4} mb={32}>
+            <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
+              Selected Work
+            </Text>
+            <Title order={2} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.2rem)', fontWeight: 800 }}>
+              Projects I care about most
+            </Title>
+          </Stack>
+        </motion.div>
+
+        <Stack gap="xl">
+          {flagshipProjects.map((project, i) => (
+            <FlagshipCard key={project.id} project={project} reverse={i % 2 !== 0} />
+          ))}
+        </Stack>
+
+        <Group justify="center" mt={48}>
+          <Button
+            component={Link}
+            to="/projects"
+            variant="outline"
+            color="orange"
+            rightSection={<IconArrowRight size={16} />}
+          >
+            See All Selected Projects
+          </Button>
+        </Group>
+      </Container>
     </Box>
   );
 }

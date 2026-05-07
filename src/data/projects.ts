@@ -1,21 +1,4 @@
-import {
-  fdLanding,
-  vinyltracker,
-  vintagefinds,
-  blockbuilder,
-  aws,
-  rps,
-  snakegame,
-  lunarlander,
-  maze,
-  absentee,
-  jobMarket,
-  customerBehavior,
-  cartpole,
-  bees,
-  facialExpression,
-  ppKing,
-} from './imageAssets';
+import { fdLanding, absentee, aws, rps, vinyltracker, vintagefinds, snakegame, lunarlander, maze, jobMarket, customerBehavior, cartpole, bees, facialExpression, ppKing } from './imageAssets';
 
 export type ProjectCategory = 'webDev' | 'gameDev' | 'dataAnalytics' | 'machineLearning';
 
@@ -46,54 +29,46 @@ export const flagshipProjects: FlagshipProject[] = [
   {
     id: 'parallax-poker',
     title: 'Parallax Poker',
-    subtitle: 'C# / Godot 4 Roguelite Card Game',
+    subtitle: 'C# / Godot 4',
     description:
-      'A character-driven poker roguelite inspired by Balatro, Poker Night at the Inventory, and Punch Out.',
+      'A character-driven poker roguelite with a rules-correct Texas Hold\'em engine, personality-driven AI, and Monte Carlo balance testing.',
     imageUrl: ppKing,
-    techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'],
+    techStack: ['C#', 'Godot 4', 'Python', 'Pandas'],
     achievements: [
-      'AI opponents run real poker math: pheval equity, draw detection (flush/OESD/gutshot), board wetness scoring, and SPR-based river commitment',
-      'Balance validated by a 288,000-hand Monte Carlo simulation pipeline across all 9×8 character pairings before each release',
-      '9 opponents each driven by 25+ tunable stats that live-mutate via a 4-state tilt system:aggression, composure, and bluff frequency all shift under pressure',
-      '32,768+ unique character sprites composed at runtime from layered expression, accessory, and time-of-day background sheets',
+      'Rules-correct Hold\'em engine covering all-ins, raise reopening, and uncalled chip refunds',
+      '15+ AI behavior parameters with equity, draw, board texture, and tilt logic',
+      '288,000-hand Monte Carlo balancing pipeline used to tune opponent difficulty',
     ],
-    cta: [
-      { label: 'View Details', href: '/projects/parallax-poker', variant: 'filled' }
-    ],
-    accentColor: 'indigo',
+    cta: [{ label: 'View Project', href: '/projects/parallax-poker', variant: 'filled' }],
+    accentColor: 'orange',
   },
   {
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
-    subtitle: 'Angular Full-Stack Language Learning App',
+    subtitle: 'Angular 17+ / TypeScript / Supabase',
     description:
-      'A dungeon-crawling flashcard app where spaced repetition meets RPG progression. Battle monsters, navigate a CEFR-mapped world, complete your Monster Manual, and unlock loot as you master a new language.',
+      'A full-stack language-learning app for European Portuguese, combining spaced repetition, RPG combat, offline storage, and optional cloud sync.',
     imageUrl: fdLanding,
-    techStack: ['Angular', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB'],
+    techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
     achievements: [
-      'RPG combat loop built on spaced repetition:correct answers deal damage, wrong answers take hits, with shop upgrades and dungeon unlocks persisting between runs',
-      'CEFR language progression across 7 languages: a directed node graph from A1 to B2 with lazy-loaded prebuilt deck content per level',
-      'Offline-first via IndexedDB: full functionality with no account required, plus optional Supabase (PostgreSQL) cloud sync across devices',
-      'Reactive state via Angular Signals, driving combat, deck selection, and cross-session progress tracking',
+      'CEFR-mapped A1-B2 progression for European Portuguese',
+      'IndexedDB-first offline mode with optional Supabase/PostgreSQL sync',
+      'Native-speaker pronunciation guidance and RPG progression layered onto study workflows',
     ],
-    cta: [
-      { label: 'View Details', href: '/projects/flashcard-dungeon', variant: 'filled' },
-      { label: 'Try Web App', href: 'https://flashcarddungeon.com', variant: 'outline' },
-    ],
-    accentColor: 'cyan',
+    cta: [{ label: 'View Project', href: '/projects/flashcard-dungeon', variant: 'filled' }],
+    accentColor: 'teal',
   },
 ];
 
 export const projects: Project[] = [
-  // Flagship
   {
     id: 'parallax-poker',
     title: 'Parallax Poker',
     description:
-      'A character-driven poker roguelite inspired by Balatro, Poker Night at the Inventory, and Punch Out. AI opponents run real poker math validated by a 288,000-hand Monte Carlo simulation pipeline.',
+      'A C# / Godot 4 poker roguelite with a rules-correct Hold\'em engine, AI decision logic, and Monte Carlo balance testing.',
     imageUrl: ppKing,
     projectUrl: '/projects/parallax-poker',
-    techStack: ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'],
+    techStack: ['C#', 'Godot 4', 'Python', 'Pandas'],
     category: 'gameDev',
     featured: true,
   },
@@ -101,18 +76,28 @@ export const projects: Project[] = [
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
     description:
-      'A dungeon-crawling flashcard app where spaced repetition meets RPG progression. Offline-first with optional cloud sync, CEFR-mapped world, and 7 languages supported.',
+      'A full-stack language-learning app for European Portuguese with spaced repetition, RPG combat, offline storage, and optional cloud sync.',
     imageUrl: fdLanding,
     projectUrl: '/projects/flashcard-dungeon',
-    techStack: ['Angular', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB'],
+    techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
     category: 'webDev',
     featured: true,
   },
-  // Web Dev
+  {
+    id: 'absentee-analysis',
+    title: 'Absentee Analysis',
+    description:
+      'An HR dashboard that segments absenteeism risk groups with clustering methods and predicts risk membership with a Random Forest model.',
+    imageUrl: absentee,
+    projectUrl: 'https://github.com/Tyler-Johnston/Absentee-Analysis',
+    techStack: ['Python', 'Pandas', 'Plotly', 'Random Forest'],
+    category: 'dataAnalytics',
+  },
   {
     id: 'vinyl-tracker',
     title: 'Vinyl Tracker',
-    description: 'Full-stack vinyl record collection manager with Discogs API integration, Goldmine grading, play logging, and an analytics dashboard.',
+    description:
+      'A full-stack vinyl record collection manager with Discogs API integration, grading, play logging, and analytics.',
     imageUrl: vinyltracker,
     projectUrl: 'https://github.com/Tyler-Johnston/Vinyl-Tracker',
     techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'SQLite'],
@@ -121,44 +106,38 @@ export const projects: Project[] = [
   {
     id: 'vintage-finds',
     title: 'Vintage Finds',
-    description: 'Full-stack antique storefront built for a local business. Admins manage listings, images, and inventory in real time via a secure dashboard; visitors browse items with photos, descriptions, and condition reports.',
+    description:
+      'An antique storefront built for a local business with an admin dashboard, image management, and real-time inventory updates.',
     imageUrl: vintagefinds,
     projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds',
     techStack: ['Next.js', 'TypeScript', 'Firebase', 'Mantine UI', 'Vercel'],
     category: 'webDev',
   },
   {
-    id: 'block-builder',
-    title: 'BlockBuilder',
-    description: 'React Flow-based visual workflow builder with C#/.NET backend, built at Space Dynamics Lab.',
-    imageUrl: blockbuilder,
-    projectUrl: 'experience:sdl',
-    techStack: ['React Flow', 'C#', '.NET', 'Docker'],
-    category: 'webDev',
-  },
-  {
     id: 'aws-widget-requests',
     title: 'AWS Widget Requests',
-    description: 'Producer and Consumer apps handling widget generation, SQS messaging, and data persistence to S3 and DynamoDB.',
+    description:
+      'Producer and consumer apps handling widget generation, SQS messaging, and persistence to S3 and DynamoDB.',
     imageUrl: aws,
     projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests',
     techStack: ['AWS', 'SQS', 'S3', 'DynamoDB', 'Python'],
     category: 'webDev',
   },
   {
-    id: 'rps',
+    id: 'rock-paper-scissors',
     title: 'Rock Paper Scissors',
-    description: 'Browser-based game with animated results and local score tracking.',
+    description:
+      'A browser-based Rock Paper Scissors game with animated results and local score tracking.',
     imageUrl: rps,
     projectUrl: 'https://github.com/Tyler-Johnston/RPS',
     techStack: ['React', 'CSS'],
     category: 'webDev',
   },
-  // Game Dev
   {
     id: 'multiplayer-snake',
     title: 'Multiplayer Snake',
-    description: 'Competitive multiplayer Snake where players race to grow the longest snake in a shared arena. Built on a multithreaded message-queue server using the Entity-Component-System design pattern.',
+    description:
+      'A competitive multiplayer Snake game built on a multithreaded message-queue server and ECS architecture.',
     imageUrl: snakegame,
     projectUrl: 'https://github.com/Tyler-Johnston/Multiplayer-Snake-Game',
     techStack: ['C#', '.NET', 'MonoGame', 'ECS'],
@@ -167,7 +146,8 @@ export const projects: Project[] = [
   {
     id: 'lunar-lander',
     title: 'Lunar Lander',
-    description: 'Physics-based lunar descent simulator with procedurally generated terrain. Manage thrust and fuel to land safely:safe zones shrink each level, and high scores are saved.',
+    description:
+      'A physics-based lunar descent simulator with procedurally generated terrain, fuel management, and high scores.',
     imageUrl: lunarlander,
     projectUrl: 'https://github.com/Tyler-Johnston/Lunar-Lander',
     techStack: ['C#', '.NET', 'MonoGame'],
@@ -176,26 +156,18 @@ export const projects: Project[] = [
   {
     id: 'maze-game',
     title: 'Maze Game',
-    description: 'Procedurally generated mazes with guaranteed solvable paths across four sizes (5×5 to 20×20). Toggle breadcrumb trails or reveal the correct path on demand.',
+    description:
+      'Procedurally generated mazes with guaranteed solvable paths across multiple grid sizes.',
     imageUrl: maze,
     projectUrl: 'https://github.com/Tyler-Johnston/Maze-Game',
     techStack: ['C#', '.NET', 'MonoGame'],
     category: 'gameDev',
   },
-  // Data Analytics
   {
-    id: 'absentee-analysis',
-    title: 'Absentee Analysis',
-    description: 'Power BI dashboard analyzing employee absenteeism patterns with predictive indicators.',
-    imageUrl: absentee,
-    projectUrl: 'https://github.com/Tyler-Johnston/Absentee-Analysis',
-    techStack: ['Power BI', 'Python', 'Pandas'],
-    category: 'dataAnalytics',
-  },
-  {
-    id: 'utah-jobs',
+    id: 'utah-job-market',
     title: 'Utah Job Market Analysis',
-    description: 'Scraped and visualized Utah tech job listings to identify skill demand trends.',
+    description:
+      'A scraped and visualized analysis of Utah tech listings to identify skill demand trends.',
     imageUrl: jobMarket,
     projectUrl: 'https://github.com/Tyler-Johnston/Utah-Programmer-Job-Market-Analysis',
     techStack: ['Python', 'Plotly', 'BeautifulSoup'],
@@ -204,17 +176,18 @@ export const projects: Project[] = [
   {
     id: 'customer-behavior',
     title: 'Customer Behavior Analysis',
-    description: 'Segmentation analysis using clustering algorithms on retail transaction data.',
+    description:
+      'A segmentation study using clustering algorithms on retail transaction data.',
     imageUrl: customerBehavior,
     projectUrl: 'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis',
     techStack: ['Python', 'Scikit-learn', 'Seaborn'],
     category: 'dataAnalytics',
   },
-  // Machine Learning
   {
     id: 'cartpole-rl',
     title: 'CartPole RL',
-    description: 'Reinforcement learning agent trained with DQN to balance a pole on a cart.',
+    description:
+      'A reinforcement learning agent trained with DQN to balance a pole on a cart.',
     imageUrl: cartpole,
     projectUrl: 'https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning',
     techStack: ['Python', 'PyTorch', 'OpenAI Gym'],
@@ -223,7 +196,8 @@ export const projects: Project[] = [
   {
     id: 'beehive-weight',
     title: 'Beehive Weight Prediction',
-    description: 'Time-series regression model predicting beehive weight from environmental sensor data.',
+    description:
+      'A time-series regression model predicting beehive weight from environmental sensor data.',
     imageUrl: bees,
     projectUrl: 'https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction',
     techStack: ['Python', 'TensorFlow', 'Pandas'],
@@ -232,7 +206,8 @@ export const projects: Project[] = [
   {
     id: 'facial-expression',
     title: 'Facial Expression Recognition',
-    description: 'CNN classifier achieving high accuracy on FER-2013 with data augmentation techniques.',
+    description:
+      'A CNN classifier for FER-2013 built with data augmentation and image preprocessing.',
     imageUrl: facialExpression,
     projectUrl: 'https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition',
     techStack: ['Python', 'PyTorch', 'OpenCV'],

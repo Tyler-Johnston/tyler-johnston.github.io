@@ -5,13 +5,13 @@ import {
   Group,
   Stack,
   SimpleGrid,
-  Card,
   Button,
   Box,
   Image,
-  ThemeIcon,
-  List,
   Anchor,
+  List,
+  ThemeIcon,
+  Divider,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import {
@@ -20,67 +20,74 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
-  IconSchool,
   IconCircleCheck,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
-import { headshot } from '../data/imageAssets';
+import { grad } from '../data/imageAssets';
 import { TechBadge } from '../components/ui/TechBadge';
 
-const languages = ['C#', 'TypeScript', 'JavaScript', 'Python', 'C++', 'SQL', 'HTML/CSS'];
-const frameworks = ['React', 'Angular', '.NET', 'Node.js', 'Godot 4', 'PyTorch', 'Pandas'];
-const tools = ['Docker', 'Git', 'Oracle SQL', 'Power BI', 'Roboflow', 'Vite', 'IndexedDB'];
+const programming = ['C#', 'TypeScript', 'JavaScript', 'Python', 'SQL'];
+const frameworks = ['.NET', 'REST APIs', 'React.js', 'Angular 17+', 'React Flow', 'Docker'];
+const dataAndBI = ['Pandas', 'Plotly', 'Power BI', 'Microsoft Fabric', 'PostgreSQL', 'Supabase'];
+const devOpsAndQA = ['Git', 'Agile/Scrum', 'CI/CD', 'application testing', 'QA ownership', 'production support'];
+const languages = ['English (Native)', 'Portuguese (B1)'];
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 18 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.4, delay },
 });
 
+const skillGroups = [
+  { title: 'Programming', items: programming },
+  { title: 'Frameworks & Tools', items: frameworks },
+  { title: 'Data & BI', items: dataAndBI },
+  { title: 'DevOps & QA', items: devOpsAndQA },
+];
+
 export function About() {
-  const isDark = true;
-
-
   return (
     <Container size="lg" py={60}>
-      {/* Header */}
       <motion.div {...fadeUp(0)}>
-        <Stack gap={4} mb={60}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            About
+        <Stack gap={12} mb={52}>
+          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
+            Profile
           </Text>
-          <Title order={1} style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 900 }}>
+          <Title order={1} style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 900 }}>
             Tyler Johnston
           </Title>
+          <Text c="dimmed" size="md" maw={720} lh={1.8}>
+            American full-stack developer based in Lisbon with work authorization, focused on
+            production software and data work.
+          </Text>
         </Stack>
       </motion.div>
 
-      {/* Bio + photo */}
-      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={48} mb={80} style={{ alignItems: 'start' }}>
-        <motion.div {...fadeUp(0.1)}>
+      <SimpleGrid cols={{ base: 1, md: 2 }} spacing={56} mb={72} style={{ alignItems: 'start' }}>
+        <motion.div {...fadeUp(0.08)}>
           <Stack gap="lg">
-            <Text size="md" lh={1.8} c="dimmed">
-              I'm a full-stack software engineer completing my M.S. in Information Management at NOVA
-              IMS, specializing in Business Intelligence. I graduated Magna Cum Laude
-              from Utah State University with a B.S. in Computer Science and a
-              Mathematics minor.
+            <Text size="md" lh={1.85} c="dimmed">
+              I’m an MSc Information Management candidate at NOVA IMS specializing in Business
+              Intelligence. My background spans production web development, research, teaching,
+              and applied data work.
             </Text>
-            <Text size="md" lh={1.8} c="dimmed">
-              My work spans enterprise C#/.NET applications, Angular and React front-ends, data
-              pipelines, ML models, and game systems. I enjoy building things that are technically
-              interesting and actually useful in my daily life.
+            <Text size="md" lh={1.85} c="dimmed">
+              At Footprints, I worked on aerospace and steel-manufacturing systems across front
+              end, back end, APIs, databases, and QA. Earlier roles expanded that foundation into
+              computer vision, C++, and workflow tooling.
             </Text>
-            <Text size="md" lh={1.8} c="dimmed">
-              I'm actively seeking full-stack or software engineering roles. Comfortable working
-              across the stack, picking up new languages fast, and shipping production code.
+            <Text size="md" lh={1.85} c="dimmed">
+              I do my best work on systems that need technical depth, careful testing, and
+              practical delivery that holds up in production.
             </Text>
-            <Group gap="sm" wrap="wrap">
+
+            <Group gap="sm" wrap="wrap" mt={4}>
               <Button
                 component="a"
                 href="/cv.pdf"
                 target="_blank"
-                color="indigo"
+                color="orange"
                 leftSection={<IconDownload size={16} />}
               >
                 Download CV
@@ -89,27 +96,18 @@ export function About() {
                 component={Link}
                 to="/experience"
                 variant="outline"
-                color="indigo"
+                color="orange"
                 leftSection={<IconBriefcase size={16} />}
               >
                 View Experience
               </Button>
             </Group>
-            <Group gap="xs">
-              <Anchor
-                href="https://github.com/tyler-johnston"
-                target="_blank"
-                rel="noopener noreferrer"
-                c="dimmed"
-              >
+
+            <Group gap="xs" mt={2}>
+              <Anchor href="https://github.com/tyler-johnston" target="_blank" rel="noopener noreferrer" c="dimmed">
                 <IconBrandGithub size={20} />
               </Anchor>
-              <Anchor
-                href="https://linkedin.com/in/tyler-johnston"
-                target="_blank"
-                rel="noopener noreferrer"
-                c="dimmed"
-              >
+              <Anchor href="https://linkedin.com/in/tylerjohnstonn" target="_blank" rel="noopener noreferrer" c="dimmed">
                 <IconBrandLinkedin size={20} />
               </Anchor>
               <Anchor href="mailto:johnstontyler@protonmail.com" c="dimmed">
@@ -119,153 +117,149 @@ export function About() {
           </Stack>
         </motion.div>
 
-        <motion.div {...fadeUp(0.2)}>
+        <motion.div {...fadeUp(0.12)}>
           <Box
             style={{
-              borderRadius: 16,
               overflow: 'hidden',
-              border: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-3)'}`,
+              borderRadius: 24,
+              border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
+              background: 'light-dark(var(--mantine-color-white), #141a1e)',
             }}
           >
             <Image
-              src={headshot}
-              alt="Tyler Johnston"
-              style={{ display: 'block', width: '100%' }}
-              fallbackSrc="https://placehold.co/500x600/1a1d27/6366f1?text=TJ"
+              src={grad}
+              alt="Tyler Johnston at Utah State University in cap and gown"
+              fallbackSrc="https://placehold.co/600x720/141a1e/f5a623?text=Tyler+Johnston"
             />
           </Box>
         </motion.div>
       </SimpleGrid>
 
-      {/* Skills */}
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            Technical Skills
+      <Divider my={32} color="light-dark(var(--mantine-color-gray-3), #273138)" />
+
+      <motion.div {...fadeUp(0.08)}>
+        <Stack gap={4} mb={22}>
+          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
+            Education
           </Text>
           <Title order={2} style={{ fontWeight: 800 }}>
-            Stack & Tools
+            Academic background
           </Title>
         </Stack>
       </motion.div>
 
-      <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="lg" mb={80}>
-        {[
-          { title: 'Languages', items: languages },
-          { title: 'Frameworks & Libraries', items: frameworks },
-          { title: 'Tools & Platforms', items: tools },
-        ].map((group, i) => (
-          <motion.div key={group.title} {...fadeUp(i * 0.08)}>
-            <Card
-              style={{
-                border: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-3)'}`,
-                background: isDark ? '#1a1d27' : '#ffffff',
-                height: '100%',
-              }}
-            >
-              <Text fw={600} mb="md" size="sm">
-                {group.title}
-              </Text>
+      <Stack gap="lg" mb={56}>
+        <Box>
+          <Text size="sm" tt="uppercase" fw={700} c="dimmed" style={{ letterSpacing: '0.12em' }}>
+            Graduate study
+          </Text>
+          <Title order={3} size="h4" mt={6}>
+            NOVA IMS
+          </Title>
+          <Text size="md" c="dimmed" lh={1.7}>
+            M.S. Information Management, Business Intelligence
+          </Text>
+          <Text size="sm" c="dimmed" mt={6}>
+            Currently enrolled, expected 2027
+          </Text>
+        </Box>
+
+        <Divider color="light-dark(var(--mantine-color-gray-3), #273138)" />
+
+        <Box>
+          <Text size="sm" tt="uppercase" fw={700} c="dimmed" style={{ letterSpacing: '0.12em' }}>
+            Undergraduate study
+          </Text>
+          <Title order={3} size="h4" mt={6}>
+            Utah State University
+          </Title>
+          <Text size="md" c="dimmed" lh={1.7}>
+            B.S. Computer Science, Mathematics minor
+          </Text>
+          <Text size="sm" c="dimmed" mt={6}>
+            Magna Cum Laude · GPA 3.92 / 4.00 · Presidential Scholarship
+          </Text>
+        </Box>
+      </Stack>
+
+      <Divider my={32} color="light-dark(var(--mantine-color-gray-3), #273138)" />
+
+      <motion.div {...fadeUp(0.08)}>
+        <Stack gap={4} mb={22}>
+          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
+            Skills
+          </Text>
+          <Title order={2} style={{ fontWeight: 800 }}>
+            Stack and toolset
+          </Title>
+        </Stack>
+      </motion.div>
+
+      <Stack gap="xl" mb={56}>
+        {skillGroups.map((group, i) => (
+          <motion.div key={group.title} {...fadeUp(i * 0.05)}>
+            <Stack gap="sm">
+              <Text fw={700}>{group.title}</Text>
               <Group gap={6} wrap="wrap">
                 {group.items.map((item) => (
                   <TechBadge key={item} label={item} />
                 ))}
               </Group>
-            </Card>
+            </Stack>
           </motion.div>
         ))}
-      </SimpleGrid>
+      </Stack>
 
-      {/* Education */}
-      <motion.div {...fadeUp(0.1)}>
-        <Stack gap={4} mb={32}>
-          <Text size="xs" tt="uppercase" fw={700} c="indigo" style={{ letterSpacing: '0.12em' }}>
-            Education
+      <Divider my={32} color="light-dark(var(--mantine-color-gray-3), #273138)" />
+
+      <motion.div {...fadeUp(0.08)}>
+        <Stack gap={4} mb={22}>
+          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
+            Languages
           </Text>
           <Title order={2} style={{ fontWeight: 800 }}>
-            Academic Background
+            Communication
           </Title>
         </Stack>
       </motion.div>
 
-      <Stack gap={0}>
-        {[
-          {
-            school: 'NOVA IMS',
-            degree: 'M.S. Information Management',
-            sub: 'Business Intelligence Specialization',
-            period: '2025 – 2027',
-            location: 'Lisbon, Portugal',
-            color: 'indigo' as const,
-            highlights: [] as string[],
-          },
-          {
-            school: 'Utah State University',
-            degree: 'B.S. Computer Science',
-            sub: 'Mathematics Minor',
-            period: '2020 – 2024',
-            location: 'Logan, UT',
-            color: 'teal' as const,
-            highlights: [
-              'Magna Cum Laude — 3.92 GPA',
-              'Full-ride scholarship recipient',
-              'Teaching Assistant · Research Assistant',
-            ],
-          },
-        ].map((edu, i, arr) => (
-          <motion.div key={edu.school} {...fadeUp(i * 0.1)}>
-            <Box style={{ display: 'grid', gridTemplateColumns: '40px 1fr', gap: 0 }}>
-              <Box style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <ThemeIcon color={edu.color} variant="light" size="md" radius="xl" style={{ zIndex: 1 }}>
-                  <IconSchool size={14} />
-                </ThemeIcon>
-                {i < arr.length - 1 && (
-                  <Box style={{
-                    width: 2, flex: 1, minHeight: 40,
-                    background: isDark ? '#2e3347' : 'var(--mantine-color-gray-3)',
-                    marginTop: 8, marginBottom: 8,
-                  }} />
-                )}
-              </Box>
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={32}>
+        <Box>
+          <Text fw={700} mb="sm">
+            Spoken languages
+          </Text>
+          <Group gap={6} wrap="wrap">
+            {languages.map((item) => (
+              <TechBadge key={item} label={item} />
+            ))}
+          </Group>
+        </Box>
 
-              <Card
-                mb={i < arr.length - 1 ? 'xl' : 0}
-                ml="md"
-                style={{
-                  border: `1px solid ${isDark ? '#2e3347' : 'var(--mantine-color-gray-3)'}`,
-                  background: isDark ? '#1a1d27' : '#ffffff',
-                }}
-              >
-                <Group justify="space-between" wrap="wrap" gap="xs" mb={4}>
-                  <Box>
-                    <Text fw={700} size="lg">{edu.school}</Text>
-                    <Text fw={600} c={edu.color} size="sm">{edu.degree}</Text>
-                    <Text size="xs" c="dimmed">{edu.sub} · {edu.location}</Text>
-                  </Box>
-                  <Text size="xs" c="dimmed" fw={500}>{edu.period}</Text>
-                </Group>
-                {edu.highlights.length > 0 && (
-                  <List
-                    spacing={4}
-                    mt="sm"
-                    icon={
-                      <ThemeIcon color={edu.color} variant="light" size="xs" radius="xl">
-                        <IconCircleCheck size={10} />
-                      </ThemeIcon>
-                    }
-                  >
-                    {edu.highlights.map((h) => (
-                      <List.Item key={h}>
-                        <Text size="sm" c="dimmed">{h}</Text>
-                      </List.Item>
-                    ))}
-                  </List>
-                )}
-              </Card>
-            </Box>
-          </motion.div>
-        ))}
-      </Stack>
+        <Box>
+          <Text fw={700} mb="sm">
+            Working style
+          </Text>
+          <List
+            spacing={6}
+            icon={
+              <ThemeIcon color="orange" variant="light" size="xs" radius="xl">
+                <IconCircleCheck size={10} />
+              </ThemeIcon>
+            }
+          >
+            <List.Item>
+              <Text size="sm" c="dimmed">
+                Comfortable owning delivery across front end, API, database, and QA boundaries.
+              </Text>
+            </List.Item>
+            <List.Item>
+              <Text size="sm" c="dimmed">
+                Prefer systems that are testable, maintainable, and easy to hand off to other people.
+              </Text>
+            </List.Item>
+          </List>
+        </Box>
+      </SimpleGrid>
     </Container>
   );
 }

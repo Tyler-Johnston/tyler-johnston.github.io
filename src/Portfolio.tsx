@@ -28,7 +28,6 @@ import maze from '../images/maze.png';
 import market from '../images/job_market.jpg';
 import customer_behavior from '../images/customer-behavior.jpg';
 import bees from '../images/bees.jpg';
-import rps from '../images/rps.png';
 import absentee from '../images/absentee.png';
 import heroImg from '../images/heroImg.png';
 
@@ -108,14 +107,6 @@ const projects: Record<CategoryKey, Project[]> = {
     },
   ],
   webDev: [
-    {
-      id: 7,
-      title: 'Rock Paper Scissors Idle Web Game',
-      description:
-        'An Angular SPA with Supabase backend featuring authentication, achievements, and automated gameplay loops.',
-      imageUrl: rps,
-      projectUrl: 'https://github.com/Tyler-Johnston/RPS',
-    },
     {
       id: 8,
       title: 'Vinyl Tracker',

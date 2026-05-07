@@ -16,40 +16,76 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #f3efe8;
+  background:
+    radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), transparent 30%),
+    radial-gradient(circle at top right, rgba(148, 163, 184, 0.08), transparent 28%),
+    linear-gradient(180deg, #0c1114 0%, #10171b 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 80%);
+  opacity: 0.35;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+::selection {
+  background: rgba(245, 158, 11, 0.28);
+  color: #fff;
 }
 
 [data-mantine-color-scheme='dark'] body {
-  background-color: #0f1117;
+  background-color: transparent;
 }
 
 [data-mantine-color-scheme='light'] body {
-  background-color: #f8fafc;
+  color: #1f2933;
+  background:
+    radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), transparent 30%),
+    radial-gradient(circle at top right, rgba(15, 23, 42, 0.06), transparent 30%),
+    linear-gradient(180deg, #f7f3ee 0%, #fbfaf8 100%);
 }
 
-/* Card hover shadows */
+[data-mantine-color-scheme='light'] body::before {
+  opacity: 0.18;
+}
+
 [data-mantine-color-scheme='dark'] .project-card:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px #3a3f5c;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(245, 158, 11, 0.18);
 }
 
 [data-mantine-color-scheme='light'] .project-card:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 0 1px #c7d2fe;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(245, 158, 11, 0.18);
 }
 
-/* Skill tile hover */
-[data-mantine-color-scheme='dark'] .skill-tile:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border-color: #3a3f5c !important;
+[data-mantine-color-scheme='dark'] .skill-tile:hover,
+[data-mantine-color-scheme='dark'] .about-tile:hover {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.26);
+  border-color: #39444b !important;
 }
 
-[data-mantine-color-scheme='light'] .skill-tile:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border-color: #a5b4fc !important;
+[data-mantine-color-scheme='light'] .skill-tile:hover,
+[data-mantine-color-scheme='light'] .about-tile:hover {
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.06);
+  border-color: #d3c6b4 !important;
 }
 
-/* Legacy classes (used in ParallaxPoker showcase) */
 .smallImage {
   width: 100%;
   max-width: 400px;
@@ -124,9 +160,18 @@ body {
 }
 
 @keyframes role-highlight {
-  0%   { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); border-color: #2e3347; }
-  20%  { box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35); border-color: rgba(99, 102, 241, 0.7); }
-  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); border-color: #2e3347; }
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    border-color: #273138;
+  }
+  20% {
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.28);
+    border-color: rgba(245, 158, 11, 0.75);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    border-color: #273138;
+  }
 }
 
 .role-highlighted {

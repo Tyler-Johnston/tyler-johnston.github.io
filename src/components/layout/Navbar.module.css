@@ -2,11 +2,11 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  height: 60px;
-  backdrop-filter: blur(12px);
+  height: 64px;
+  backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #2e3347);
-  background: light-dark(rgba(248, 250, 252, 0.85), rgba(15, 17, 23, 0.85));
+  border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
+  background: light-dark(rgba(247, 243, 238, 0.82), rgba(12, 17, 20, 0.82));
 }
 
 .inner {
@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  max-width: 1100px;
+  max-width: 1160px;
   margin: 0 auto;
   padding: 0 var(--mantine-spacing-lg);
 }
@@ -49,15 +49,15 @@
 }
 
 .link:hover {
-  background: light-dark(var(--mantine-color-gray-1), #22263a);
+  background: light-dark(var(--mantine-color-gray-1), #1d2428);
   color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
 }
 
 .linkActive {
-  background: light-dark(var(--mantine-color-indigo-0), rgba(99, 102, 241, 0.15));
-  color: light-dark(var(--mantine-color-indigo-7), var(--mantine-color-indigo-3));
+  background: light-dark(rgba(245, 158, 11, 0.14), rgba(245, 158, 11, 0.12));
+  color: light-dark(var(--mantine-color-orange-8), var(--mantine-color-orange-2));
 }
 
 .linkActive:hover {
-  background: light-dark(var(--mantine-color-indigo-1), rgba(99, 102, 241, 0.2));
+  background: light-dark(rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.16));
 }

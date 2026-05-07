@@ -32,7 +32,7 @@ function PageTrackerWrapper() {
     <>
       <Scroll />
       <Navbar />
-      <main style={{ minHeight: 'calc(100vh - 60px)' }}>
+      <main style={{ minHeight: 'calc(100vh - 64px)' }}>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/projects" element={<Projects />} />

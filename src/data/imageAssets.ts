@@ -2,6 +2,7 @@
 
 // Site
 import headshot from '../../images/headshot_portugal.webp';
+import grad from '../../images/grad.jpeg';
 
 // Parallax Poker characters
 import ppKing from '../../images/parallax_poker/ppKing.webp';
@@ -53,6 +54,7 @@ const footprints = '';
 
 export {
   headshot,
+  grad,
   ppKing,
   ppOldWizard,
   ppBoyWizard,
