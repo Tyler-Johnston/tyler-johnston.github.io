@@ -17,13 +17,13 @@ export const roles: Role[] = [
     period: 'Mar 2024 - Aug 2025',
     location: 'Logan, UT',
     description: [
-      'Built and maintained production workflow applications for aerospace and steel-manufacturing engineering teams.',
-      'Worked across front end, back end, API, and database layers in an Agile delivery environment.',
+      'Built and maintained production workflow applications for aerospace and steel-manufacturing engineering teams using C#/.NET, REST APIs, JavaScript, Ext JS, jQuery, Oracle SQL, and 4D.',
+      'Worked across front end, back end, API, database, and workflow automation layers in an Agile delivery environment.',
     ],
     highlights: [
       '240+ full-stack development tasks completed across Agile sprints',
       'QA owner for full-stack releases before deployment',
-      'Optimized SQL queries, service logic, and data retrieval workflows',
+      'Optimized SQL queries, service-layer logic, and data retrieval workflows',
     ],
     techStack: ['C#', '.NET', 'REST APIs', 'JavaScript', 'Ext JS', 'jQuery', 'Oracle SQL', '4D'],
   },
@@ -39,9 +39,10 @@ export const roles: Role[] = [
     ],
     highlights: [
       'YOLOv8 and Roboflow pipelines for curb ramps, signage, and traffic lights',
+      'Automated image retrieval, GPS metadata extraction, and preprocessing workflows',
       'City-scale accessibility evaluation with geospatial heatmaps',
     ],
-    techStack: ['Python', 'YOLOv8', 'Roboflow', 'PyTorch', 'OpenCV'],
+    techStack: ['Python', 'YOLOv8', 'Roboflow', 'OpenCV'],
   },
   {
     id: 'cpp-ta',
@@ -50,12 +51,12 @@ export const roles: Role[] = [
     period: 'Aug 2023 - Dec 2023',
     location: 'Logan, UT',
     description: [
-      'Designed a custom std::vector prototype to demonstrate templates, iterators, and manual memory management.',
+      'Designed a custom C++ std::vector prototype using templates, iterators, and manual memory management.',
       'Evaluated C++ Modules in GCC and supported curriculum integration decisions.',
     ],
     highlights: [
-      'Bucket-based vector prototype for large-dataset allocation',
-      'Advanced memory management and container design',
+      'Custom std::vector prototype for large-dataset allocation',
+      'Templates, iterators, and manual memory management for advanced data structure design',
     ],
     techStack: ['C++20', 'C++ Modules', 'GCC'],
   },
@@ -66,12 +67,12 @@ export const roles: Role[] = [
     period: 'Mar 2023 - Jun 2023',
     location: 'Remote',
     description: [
-      'Built a full-stack workflow design tool using React, React Flow, C#/.NET, and Docker microservices.',
-      'Replaced manual XML editing with a drag-and-drop interface and configuration import/export support.',
+      'Developed a full-stack workflow design tool using React, React Flow, C#/.NET, and Docker microservices.',
+      'Replaced manual XML editing with a drag-and-drop interface and workflow configuration import/export support.',
     ],
     highlights: [
       'React Flow process designer for workflow creation',
-      'JSON and XML import/export via Docker-integrated services',
+      'JSON and XML workflow configuration import/export through Docker-integrated services',
     ],
     techStack: ['React', 'React Flow', 'C#', '.NET', 'Docker'],
   },

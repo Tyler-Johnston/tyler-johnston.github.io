@@ -151,6 +151,46 @@ export function About() {
         </motion.div>
       </SimpleGrid>
 
+      <motion.div {...fadeUp(0.08)}>
+        <Stack gap={4} mb={22}>
+          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
+            Skills
+          </Text>
+          <Title order={2} style={{ fontWeight: 800 }}>
+            Stack and toolset
+          </Title>
+          <Text size="sm" c="dimmed" maw={920} lh={1.7}>
+            I use these tools across production development, data work, testing, and delivery.
+          </Text>
+        </Stack>
+      </motion.div>
+
+      <Box
+        mb={56}
+        py={4}
+        style={{
+          borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
+          borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
+        }}
+      >
+        <SimpleGrid className="about-skills-grid" cols={{ base: 1, md: 2 }} spacing={{ base: 24, md: 32 }}>
+          {skillGroups.map((group, i) => (
+            <motion.div key={group.title} {...fadeUp(i * 0.05)}>
+              <Stack gap="sm" py={18}>
+                <Text size="sm" tt="uppercase" fw={700} c="dimmed" style={{ letterSpacing: '0.12em' }}>
+                  {group.title}
+                </Text>
+                <Group gap={6} wrap="wrap">
+                  {group.items.map((item) => (
+                    <TechBadge key={item} label={item} size="lg" />
+                  ))}
+                </Group>
+              </Stack>
+            </motion.div>
+          ))}
+        </SimpleGrid>
+      </Box>
+
       <Divider my={32} color="light-dark(var(--mantine-color-gray-3), #273138)" />
 
       <motion.div {...fadeUp(0.08)}>
@@ -213,48 +253,6 @@ export function About() {
             </Group>
           </Box>
         </Stack>
-      </Box>
-
-      <Divider my={32} color="light-dark(var(--mantine-color-gray-3), #273138)" />
-
-      <motion.div {...fadeUp(0.08)}>
-        <Stack gap={4} mb={22}>
-          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
-            Skills
-          </Text>
-          <Title order={2} style={{ fontWeight: 800 }}>
-            Stack and toolset
-          </Title>
-          <Text size="sm" c="dimmed" maw={920} lh={1.7}>
-            I use these tools across production development, data work, testing, and delivery.
-          </Text>
-        </Stack>
-      </motion.div>
-
-      <Box
-        mb={56}
-        py={4}
-        style={{
-          borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-          borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-        }}
-      >
-        <SimpleGrid className="about-skills-grid" cols={{ base: 1, md: 2 }} spacing={{ base: 24, md: 32 }}>
-          {skillGroups.map((group, i) => (
-            <motion.div key={group.title} {...fadeUp(i * 0.05)}>
-              <Stack gap="sm" py={18}>
-                <Text size="sm" tt="uppercase" fw={700} c="dimmed" style={{ letterSpacing: '0.12em' }}>
-                  {group.title}
-                </Text>
-                <Group gap={6} wrap="wrap">
-                  {group.items.map((item) => (
-                    <TechBadge key={item} label={item} size="lg" />
-                  ))}
-                </Group>
-              </Stack>
-            </motion.div>
-          ))}
-        </SimpleGrid>
       </Box>
     </Container>
   );

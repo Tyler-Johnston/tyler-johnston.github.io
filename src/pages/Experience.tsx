@@ -49,8 +49,8 @@ export function Experience() {
             Career timeline
           </Title>
           <Text c="dimmed" size="md" maw={640} lh={1.75} mt={4}>
-            Production software, computer vision research, teaching, and workflow tools. This is
-            the part of the site that should feel like evidence rather than decoration.
+            Production software, research, teaching, and workflow tools that reflect the kind of
+            work experience I bring to a team.
           </Text>
         </Stack>
       </motion.div>
@@ -119,7 +119,7 @@ export function Experience() {
 
                     <Group gap={6} wrap="wrap" mt={4}>
                       {role.techStack.map((tech) => (
-                        <TechBadge key={tech} label={tech} size="xs" />
+                        <TechBadge key={tech} label={tech} size="lg" />
                       ))}
                     </Group>
                   </Stack>

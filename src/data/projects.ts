@@ -90,10 +90,10 @@ export const projects: Project[] = [
     id: 'absentee-analysis',
     title: 'Absentee Analysis',
     description:
-      'An HR dashboard that segments absenteeism risk groups with clustering methods and predicts risk membership with a Random Forest model.',
+      'An HR analysis project that clusters absenteeism risk groups and predicts risk membership with a Random Forest model.',
     imageUrl: absentee,
     projectUrl: 'https://github.com/Tyler-Johnston/Absentee-Analysis',
-    techStack: ['Python', 'Pandas', 'Plotly', 'Random Forest'],
+    techStack: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
     category: 'dataAnalytics',
   },
   {
@@ -130,10 +130,10 @@ export const projects: Project[] = [
     id: 'rock-paper-scissors',
     title: 'Rock Paper Scissors',
     description:
-      'A browser-based Rock Paper Scissors game with animated results and local score tracking.',
+      'An Angular Rock Paper Scissors game with animated results and local score tracking.',
     imageUrl: rps,
     projectUrl: 'https://github.com/Tyler-Johnston/RPS',
-    techStack: ['React', 'CSS'],
+    techStack: ['Angular', 'TypeScript', 'CSS'],
     category: 'webDev',
   },
   {
@@ -168,22 +168,22 @@ export const projects: Project[] = [
   },
   {
     id: 'utah-job-market',
-    title: 'Utah Job Market Analysis',
+    title: 'Utah Programmer Job Market Analysis',
     description:
-      'A scraped and visualized analysis of Utah tech listings to identify skill demand trends.',
+      'An analysis of Utah programmer wages and cost of living, with an affordability index and wage modeling by county and role.',
     imageUrl: jobMarket,
     projectUrl: 'https://github.com/Tyler-Johnston/Utah-Programmer-Job-Market-Analysis',
-    techStack: ['Python', 'Plotly', 'BeautifulSoup'],
+    techStack: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
     category: 'dataAnalytics',
   },
   {
     id: 'customer-behavior',
     title: 'Customer Behavior Analysis',
     description:
-      'A segmentation study using clustering algorithms on retail transaction data.',
+      'A logistic-regression and SVM study of shopper purchase intent and bank customer churn.',
     imageUrl: customerBehavior,
     projectUrl: 'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis',
-    techStack: ['Python', 'Scikit-learn', 'Seaborn'],
+    techStack: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
     category: 'dataAnalytics',
   },
   {
