@@ -348,7 +348,7 @@ main {
 
   .parallax-identity-item {
     border-right: none !important;
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
+    border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138) !important;
     padding-right: 0 !important;
     padding-bottom: 18px !important;
     margin-bottom: 18px;
