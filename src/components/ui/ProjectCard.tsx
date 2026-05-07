@@ -1,6 +1,7 @@
 import { Card, Image, Text, Group, Stack, Anchor, Badge } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { IconBriefcase, IconExternalLink } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Project } from '../../data/projects';
 import { TechBadge } from './TechBadge';
@@ -12,7 +13,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const navigate = useNavigate();
   const isExperienceLink = project.projectUrl?.startsWith('experience:');
-  const isExternal = project.projectUrl?.startsWith('http');
+  const isInternal = project.projectUrl?.startsWith('/');
 
   function handleExperienceClick(e: React.MouseEvent) {
     e.preventDefault();
@@ -70,27 +71,39 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <TechBadge key={tech} label={tech} size="xs" />
             ))}
           </Group>
-          {project.projectUrl && (
-            <Anchor
-              href={isExperienceLink ? undefined : project.projectUrl}
-              onClick={isExperienceLink ? handleExperienceClick : undefined}
-              target={isExternal ? '_blank' : undefined}
-              rel={isExternal ? 'noopener noreferrer' : undefined}
-              size="sm"
-              c="orange"
-              style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
-            >
-              {isExperienceLink ? (
-                <>
-                  View in Experience <IconBriefcase size={14} />
-                </>
-              ) : (
-                <>
-                  View Project <IconExternalLink size={14} />
-                </>
-              )}
-            </Anchor>
-          )}
+          {project.projectUrl &&
+            (isExperienceLink ? (
+              <Anchor
+                href={undefined}
+                onClick={handleExperienceClick}
+                size="sm"
+                c="orange"
+                style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
+              >
+                View in Experience <IconBriefcase size={14} />
+              </Anchor>
+            ) : isInternal ? (
+              <Anchor
+                component={Link}
+                to={project.projectUrl}
+                size="sm"
+                c="orange"
+                style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
+              >
+                View Project <IconExternalLink size={14} />
+              </Anchor>
+            ) : (
+              <Anchor
+                href={project.projectUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="sm"
+                c="orange"
+                style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
+              >
+                View Project <IconExternalLink size={14} />
+              </Anchor>
+            ))}
         </Stack>
       </Card>
     </motion.div>

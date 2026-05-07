@@ -47,13 +47,17 @@ export function Projects() {
         }}
       >
         <Tabs value={activeTab} onChange={(v) => setActiveTab((v as 'all' | ProjectCategory) ?? 'all')}>
-          <Tabs.List>
-            {tabValues.map((tab) => (
-              <Tabs.Tab key={tab} value={tab}>
-                {tab === 'all' ? 'All' : categoryLabels[tab]}
-              </Tabs.Tab>
-            ))}
-          </Tabs.List>
+          <div className="projects-tabs-shell">
+            <div className="projects-tabs-scroll">
+              <Tabs.List className="projects-tabs-list">
+                {tabValues.map((tab) => (
+                  <Tabs.Tab key={tab} value={tab} className="projects-tab">
+                    {tab === 'all' ? 'All' : categoryLabels[tab]}
+                  </Tabs.Tab>
+                ))}
+              </Tabs.List>
+            </div>
+          </div>
         </Tabs>
       </Card>
 

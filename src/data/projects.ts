@@ -27,6 +27,25 @@ export interface FlagshipProject {
 
 export const flagshipProjects: FlagshipProject[] = [
   {
+    id: 'flashcard-dungeon',
+    title: 'Flashcard Dungeon',
+    subtitle: 'Angular 17+ / TypeScript / Supabase',
+    description:
+      'A full-stack language-learning app for European Portuguese, combining spaced repetition, RPG combat, offline storage, and optional cloud sync.',
+    imageUrl: fdLanding,
+    techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
+    achievements: [
+      'CEFR-mapped A1-B2 progression for European Portuguese',
+      'IndexedDB-first offline mode with optional Supabase/PostgreSQL sync',
+      'Native-speaker pronunciation guidance and RPG progression layered onto study workflows',
+    ],
+    cta: [
+      { label: 'View Project', href: '/projects/flashcard-dungeon', variant: 'filled' },
+      { label: 'Live Site', href: 'https://flashcarddungeon.com/', variant: 'outline' },
+    ],
+    accentColor: 'teal',
+  },
+  {
     id: 'parallax-poker',
     title: 'Parallax Poker',
     subtitle: 'C# / Godot 4',
@@ -41,22 +60,6 @@ export const flagshipProjects: FlagshipProject[] = [
     ],
     cta: [{ label: 'View Project', href: '/projects/parallax-poker', variant: 'filled' }],
     accentColor: 'orange',
-  },
-  {
-    id: 'flashcard-dungeon',
-    title: 'Flashcard Dungeon',
-    subtitle: 'Angular 17+ / TypeScript / Supabase',
-    description:
-      'A full-stack language-learning app for European Portuguese, combining spaced repetition, RPG combat, offline storage, and optional cloud sync.',
-    imageUrl: fdLanding,
-    techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
-    achievements: [
-      'CEFR-mapped A1-B2 progression for European Portuguese',
-      'IndexedDB-first offline mode with optional Supabase/PostgreSQL sync',
-      'Native-speaker pronunciation guidance and RPG progression layered onto study workflows',
-    ],
-    cta: [{ label: 'View Project', href: '/projects/flashcard-dungeon', variant: 'filled' }],
-    accentColor: 'teal',
   },
 ];
 
