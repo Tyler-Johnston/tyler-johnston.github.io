@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import {
-  Container,
-  Title,
-  Text,
-  Stack,
-  Card,
-  Group,
-  SimpleGrid,
   Box,
-  ThemeIcon,
+  Card,
+  Container,
+  Group,
   List,
+  SimpleGrid,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
@@ -41,7 +41,7 @@ export function Experience() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <Stack gap={4} mb={56}>
+        <Stack gap={4} mb={40}>
           <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
             Experience
           </Text>
@@ -49,8 +49,7 @@ export function Experience() {
             Career timeline
           </Title>
           <Text c="dimmed" size="md" maw={640} lh={1.75} mt={4}>
-            Production software, research, teaching, and workflow tools that reflect the kind of
-            work experience I bring to a team.
+            Production software, research, teaching, and workflow tools.
           </Text>
         </Stack>
       </motion.div>

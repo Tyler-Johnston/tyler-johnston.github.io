@@ -122,7 +122,6 @@ export function Landing() {
                     size="md"
                     color="orange"
                     rightSection={<IconArrowRight size={16} />}
-                    onClick={() => window.scrollTo(0, 0)}
                   >
                     See All Projects
                   </Button>
