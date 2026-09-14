@@ -202,7 +202,7 @@ export function FlashcardDungeon() {
             color="gray"
             leftSection={<IconArrowLeft size={16} />}
             size="sm"
-            style={{ alignSelf: 'flex-start' }}
+            style={{ alignSelf: 'flex-start', paddingInline: 0 }}
           >
             Back to projects
           </Button>
@@ -241,9 +241,8 @@ export function FlashcardDungeon() {
               </Group>
 
               <Text size="lg" c="dimmed" maw={720} lh={1.75}>
-                A full-stack language-learning app that turns spaced repetition into a roguelite dungeon
-                crawl. Each deck is a run: pick a build, fight through the cards as encounters, and let
-                the game track what you actually know.
+                A full-stack, general-purpose study app that turns spaced repetition into a roguelite
+                dungeon crawl.
               </Text>
 
               <Group gap="sm" wrap="wrap">

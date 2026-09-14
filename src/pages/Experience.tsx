@@ -39,9 +39,6 @@ export function Experience() {
         <Title order={1} style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 700 }}>
           Career timeline
         </Title>
-        <Text c="dimmed" size="md" maw={640} lh={1.75} mt={4}>
-          Production software, research, teaching, and workflow tools.
-        </Text>
       </Stack>
 
       <Stack gap={0}>

@@ -67,7 +67,7 @@ export const roles: Role[] = [
     title: 'Associate Back-End Engineer',
     organization: 'VML Portugal',
     period: 'Sep 2026 - Present',
-    location: 'Lisbon, Portugal',
+    location: 'Porto, Portugal',
     description: [
       'Joined VML Portugal, a global marketing and technology company, as an Associate Back-End Engineer building backend systems for enterprise clients.',
     ],

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Container, Title, Text, Stack, SimpleGrid, Tabs, Card } from '@mantine/core';
+import { Container, Title, Stack, SimpleGrid, Tabs, Card } from '@mantine/core';
 import { categoryLabels, projects, ProjectCategory } from '../data/projects';
 import { ProjectCard } from '../components/ui/ProjectCard';
 
@@ -22,11 +22,8 @@ export function Projects() {
     <Container size="lg" py={60}>
       <Stack gap={4} mb={40}>
         <Title order={1} style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 700 }}>
-          Projects by category
+          Selected projects
         </Title>
-        <Text c="dimmed" size="md" maw={700} lh={1.75} mt={4}>
-          This page curates my portfolio by category and keeps my strongest work near the top.
-        </Text>
       </Stack>
 
       <Card

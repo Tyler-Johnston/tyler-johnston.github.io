@@ -40,10 +40,6 @@ export function About() {
         <Title order={1} style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 700 }}>
           Tyler Johnston
         </Title>
-        <Text c="dimmed" size="md" maw={720} lh={1.8}>
-          American full-stack developer based in Porto with work authorization, focused on
-          production software and data work.
-        </Text>
       </Stack>
 
       <Box className="about-photo-mobile" mb={24}>
@@ -65,6 +61,11 @@ export function About() {
 
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={56} mb={72} style={{ alignItems: 'start' }}>
         <Stack gap="lg">
+          <Text size="md" lh={1.85} c="dimmed">
+            I’m currently an Associate Backend Engineer at VML Portugal, contributing to production
+            software and data-driven workflows.
+          </Text>
+
           <Text size="md" lh={1.85} c="dimmed">
             I’m an MSc Information Management candidate at NOVA IMS specializing in Business
             Intelligence. My background spans production web development, research, teaching,
@@ -209,6 +210,9 @@ export function About() {
                 <Title order={3} style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 2vw, 1.35rem)' }}>
                   NOVA IMS
                 </Title>
+                <Text size="sm" c="dimmed">
+                  Lisbon, Portugal
+                </Text>
                 <Text size="md" c="dimmed" lh={1.7}>
                   M.S. Information Management, Business Intelligence
                 </Text>
@@ -246,6 +250,9 @@ export function About() {
                 <Title order={3} style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 2vw, 1.35rem)' }}>
                   Utah State University
                 </Title>
+                <Text size="sm" c="dimmed">
+                  Logan, Utah, USA
+                </Text>
                 <Text size="md" c="dimmed" lh={1.7}>
                   B.S. Computer Science, Mathematics minor
                 </Text>

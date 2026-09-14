@@ -30,12 +30,12 @@ export const flagshipProjects: FlagshipProject[] = [
     title: 'Flashcard Dungeon',
     subtitle: 'Angular 17+ / TypeScript / Supabase',
     description:
-      'A full-stack language-learning app that turns spaced repetition into a roguelite dungeon crawl, with character builds, four battle mechanics, and a curriculum mapped like a skill tree.',
+      'A full-stack, general-purpose study app that turns spaced repetition into a roguelite dungeon crawl, with unlockable characters, a monster bestiary, deck notes, and multiple game modes.',
     imageUrl: fdDecksHome,
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
     achievements: [
-      'CEFR-mapped A1-B2 progression for European Portuguese, plus additional language and general-knowledge roadmaps unlockable through play',
-      'Roguelite run structure: character passives, meta-progression, and four distinct battle mechanics',
+      'Custom and curated learning paths, plus deck-level notes for keeping reference material alongside cards',
+      'Roguelite runs with unlockable characters, a monster bestiary, meta-progression, and eight study game modes',
       'IndexedDB-first offline mode with optional Supabase/PostgreSQL sync',
     ],
     cta: [
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
     description:
-      'A full-stack language-learning app that turns spaced repetition into a roguelite dungeon crawl, complete with character builds and a skill-tree curriculum.',
+      'A full-stack, general-purpose study app that turns spaced repetition into a roguelite dungeon crawl, with unlockable characters, a monster bestiary, deck notes, and multiple game modes.',
     imageUrl: fdDecksHome,
     projectUrl: '/projects/flashcard-dungeon',
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],

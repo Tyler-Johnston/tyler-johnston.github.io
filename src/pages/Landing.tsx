@@ -25,23 +25,23 @@ const quickFacts = [
 
 const focusAreas = [
   {
-    title: 'Production software',
-    detail: 'C#/.NET, REST APIs, JavaScript/TypeScript, Oracle SQL, QA ownership, and release support.',
+    title: 'Software people rely on',
+    detail: 'Full-stack systems, APIs, data flows, and the testing needed to ship them.',
   },
   {
-    title: 'Data & BI',
-    detail: 'Python, Pandas, Plotly, Power BI, Microsoft Fabric, geospatial analysis, and ML workflows.',
+    title: 'Tools that make data clearer',
+    detail: 'Dashboards, analysis workflows, and decision-support tools built from messy real-world data.',
   },
   {
-    title: 'Interactive systems',
-    detail: 'React, Angular 17+, Godot 4, React Flow, IndexedDB, and simulation-driven design.',
+    title: 'Interactive systems with depth',
+    detail: 'Games, simulations, and learning tools where rules, feedback, and progression matter.',
   },
 ];
 
 export function Landing() {
   return (
     <Box>
-      <Box py={{ base: 56, md: 88 }}>
+      <Box py={{ base: 48, md: 72 }}>
         <Container size="lg">
           <Box
             className="landing-hero-grid"
@@ -111,8 +111,9 @@ export function Landing() {
 
                 <Stack gap="lg">
                   <Text size="lg" c="dimmed" maw={720} lh={1.8}>
-                    I’m Tyler Johnston, based in Porto, with experience in C#/.NET,
-                    JavaScript/TypeScript, and Oracle SQL.
+                    I’m Tyler Johnston, a full-stack developer based in Porto. I build client-facing
+                    applications, backend services, data tools, and workflow systems using C#/.NET,
+                    TypeScript, Python, and SQL.
                   </Text>
 
                   <Group gap="sm" wrap="wrap">
@@ -202,16 +203,10 @@ export function Landing() {
         </Container>
       </Box>
 
-      <Box
-        py={84}
-        style={{
-          borderTop: '1px solid var(--line)',
-          borderBottom: '1px solid var(--line)',
-        }}
-      >
+      <Box py={64}>
         <Container size="lg">
           <Title order={2} mb={40} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.3rem)', fontWeight: 700 }}>
-            The kind of work I do well
+            What I build
           </Title>
 
           <Stack gap={0}>
@@ -224,8 +219,8 @@ export function Landing() {
                   borderBottom: '1px solid var(--line)',
                 }}
               >
-                <Group align="flex-start" gap={28} wrap="nowrap">
-                  <Text fw={700} size="lg" style={{ minWidth: 180 }}>
+                <Group align="flex-start" gap={28} wrap="wrap">
+                  <Text fw={700} style={{ minWidth: 240, fontSize: 'clamp(1.15rem, 2vw, 1.35rem)', lineHeight: 1.25 }}>
                     {area.title}
                   </Text>
                   <Text size="md" c="dimmed" lh={1.7}>
@@ -238,7 +233,7 @@ export function Landing() {
         </Container>
       </Box>
 
-      <Container size="lg" py={80}>
+      <Container size="lg" py={64}>
         <Title order={2} mb={32} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.2rem)', fontWeight: 700 }}>
           My best work
         </Title>
