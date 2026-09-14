@@ -18,7 +18,7 @@ import {
   IconMail,
 } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
-import { grad } from '../data/imageAssets';
+import { grad, usuLogo, novaImsLogo } from '../data/imageAssets';
 import { TechBadge } from '../components/ui/TechBadge';
 
 const programming = ['C#', 'TypeScript', 'JavaScript', 'Python', 'SQL'];
@@ -149,7 +149,7 @@ export function About() {
           borderTop: '1px solid var(--line)',
         }}
       >
-        <SimpleGrid className="about-skills-grid" cols={{ base: 1, md: 2 }} spacing={{ base: 24, md: 32 }}>
+        <SimpleGrid className="about-skills-grid" cols={2} spacing={{ base: 16, md: 32 }}>
           {skillGroups.map((group) => (
             <Stack key={group.title} gap="sm" py={18}>
               <Text size="sm" c="dimmed">
@@ -184,9 +184,27 @@ export function About() {
         <Stack gap={0}>
           <Box className="about-row" py={22} style={{ borderBottom: '1px solid var(--line)' }}>
             <Group className="about-row-inner" align="flex-start" gap={28} wrap="nowrap">
-              <Text className="about-row-label" size="sm" c="dimmed" style={{ minWidth: 150 }}>
-                Graduate
-              </Text>
+              <Box
+                className="about-row-label"
+                style={{
+                  minWidth: 150,
+                  width: 150,
+                  height: 88,
+                  borderRadius: 6,
+                  background: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: 14,
+                  flex: '0 0 auto',
+                }}
+              >
+                <Image
+                  src={novaImsLogo}
+                  alt="Nova IMS logo"
+                  style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto' }}
+                />
+              </Box>
               <Stack className="about-row-content" gap={6}>
                 <Title order={3} style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 2vw, 1.35rem)' }}>
                   NOVA IMS
@@ -203,9 +221,27 @@ export function About() {
 
           <Box className="about-row" py={22}>
             <Group className="about-row-inner" align="flex-start" gap={28} wrap="nowrap">
-              <Text className="about-row-label" size="sm" c="dimmed" style={{ minWidth: 150 }}>
-                Undergraduate
-              </Text>
+              <Box
+                className="about-row-label"
+                style={{
+                  minWidth: 150,
+                  width: 150,
+                  height: 88,
+                  borderRadius: 6,
+                  background: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: 14,
+                  flex: '0 0 auto',
+                }}
+              >
+                <Image
+                  src={usuLogo}
+                  alt="Utah State University logo"
+                  style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto' }}
+                />
+              </Box>
               <Stack className="about-row-content" gap={6}>
                 <Title order={3} style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 2vw, 1.35rem)' }}>
                   Utah State University

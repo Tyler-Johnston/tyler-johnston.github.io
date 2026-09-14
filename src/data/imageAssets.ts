@@ -3,6 +3,8 @@
 // Site
 import headshot from '../../images/headshot_portugal.webp';
 import grad from '../../images/grad.jpeg';
+import usuLogo from '../../images/usu_logo.webp';
+import novaImsLogo from '../../images/nova_ims_logo.webp';
 
 // Parallax Poker characters
 import ppKing from '../../images/parallax_poker/ppKing.webp';
@@ -55,6 +57,8 @@ import facialExpression from '../../images/other_projects/facialexpression.webp'
 
 export {
   headshot,
+  usuLogo,
+  novaImsLogo,
   grad,
   ppKing,
   ppOldWizard,
