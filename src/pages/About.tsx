@@ -45,18 +45,20 @@ export function About() {
 
       <Box className="about-photo-mobile" mb={24}>
         <Box
+          p={{ base: 8, md: 16 }}
           style={{
-            overflow: 'hidden',
-            borderRadius: 6,
+            borderRadius: 8,
             border: '1px solid var(--line)',
             background: 'var(--surface)',
           }}
         >
-          <Image
-            src={grad}
-            alt="Tyler Johnston at Utah State University in cap and gown"
-            fallbackSrc="https://placehold.co/600x720/1b1f25/3e7cb1?text=Tyler+Johnston"
-          />
+          <Box style={{ overflow: 'hidden', borderRadius: 4, border: '1px solid var(--line)' }}>
+            <Image
+              src={grad}
+              alt="Tyler Johnston at Utah State University in cap and gown"
+              fallbackSrc="https://placehold.co/600x720/1b1f25/3e7cb1?text=Tyler+Johnston"
+            />
+          </Box>
         </Box>
       </Box>
 
@@ -78,11 +80,6 @@ export function About() {
             end, back end, APIs, databases, and QA. Earlier roles expanded that foundation into
             computer vision, C++, and workflow tooling.
           </Text>
-          <Text size="md" lh={1.85} c="dimmed">
-            I do my best work on systems that need technical depth, careful testing, and
-            practical delivery that holds up in production.
-          </Text>
-
           <Group gap="sm" wrap="wrap" mt={4}>
             <Button
               component="a"
@@ -119,18 +116,20 @@ export function About() {
 
         <Box className="about-photo-desktop">
           <Box
+            p={{ base: 8, md: 16 }}
             style={{
-              overflow: 'hidden',
-              borderRadius: 6,
+              borderRadius: 8,
               border: '1px solid var(--line)',
               background: 'var(--surface)',
             }}
           >
-            <Image
-              src={grad}
-              alt="Tyler Johnston at Utah State University in cap and gown"
-              fallbackSrc="https://placehold.co/600x720/1b1f25/3e7cb1?text=Tyler+Johnston"
-            />
+            <Box style={{ overflow: 'hidden', borderRadius: 4, border: '1px solid var(--line)' }}>
+              <Image
+                src={grad}
+                alt="Tyler Johnston at Utah State University in cap and gown"
+                fallbackSrc="https://placehold.co/600x720/1b1f25/3e7cb1?text=Tyler+Johnston"
+              />
+            </Box>
           </Box>
         </Box>
       </SimpleGrid>
