@@ -5,8 +5,8 @@
   height: 64px;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
-  background: light-dark(rgba(247, 243, 238, 0.82), rgba(12, 17, 20, 0.82));
+  border-bottom: 1px solid var(--line);
+  background: rgba(19, 22, 26, 0.86);
 }
 
 .inner {
@@ -40,24 +40,25 @@
 .link {
   display: block;
   padding: 6px 14px;
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--mantine-radius-sm);
   font-size: var(--mantine-font-size-sm);
   font-weight: 500;
   text-decoration: none;
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-gray-3));
+  color: var(--text-dim);
   transition: background 0.15s ease, color 0.15s ease;
 }
 
 .link:hover {
-  background: light-dark(var(--mantine-color-gray-1), #1d2428);
-  color: light-dark(var(--mantine-color-gray-9), var(--mantine-color-gray-0));
+  background: var(--surface-raised);
+  color: var(--text);
 }
 
 .linkActive {
-  background: light-dark(rgba(245, 158, 11, 0.14), rgba(245, 158, 11, 0.12));
-  color: light-dark(var(--mantine-color-orange-8), var(--mantine-color-orange-2));
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+  border-radius: 0;
 }
 
 .linkActive:hover {
-  background: light-dark(rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.16));
+  background: transparent;
 }

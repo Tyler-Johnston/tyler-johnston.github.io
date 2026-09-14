@@ -16,15 +16,9 @@ import { flagshipProjects } from '../data/projects';
 import { FlagshipCard } from '../components/ui/FlagshipCard';
 import { headshot } from '../data/imageAssets';
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 18 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const, delay },
-});
-
 const quickFacts = [
-  { label: 'Professional experience', value: '2 years' },
-  { label: 'Based in', value: 'Lisbon, Portugal' },
+  { label: 'Currently', value: 'VML Portugal' },
+  { label: 'Based in', value: 'Porto, Portugal' },
   { label: 'Language', value: 'Portuguese B1' },
   { label: 'Study', value: 'NOVA IMS MSc' },
 ];
@@ -55,111 +49,122 @@ export function Landing() {
               display: 'grid',
               gridTemplateColumns: 'minmax(0, 1.1fr) minmax(380px, 0.9fr)',
               gap: '52px',
-              alignItems: 'start',
+              alignItems: 'stretch',
             }}
           >
-            <motion.div {...fadeUp(0)}>
-              <Stack gap="lg" style={{ maxWidth: 720 }}>
-                <Text
-                  size="xs"
-                  tt="uppercase"
-                  fw={700}
-                  c="orange"
-                  style={{ letterSpacing: '0.16em' }}
-                >
-                  Lisbon, Portugal
-                </Text>
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  height: '100%',
+                  maxWidth: 720,
+                }}
+              >
+                <Stack gap="lg">
+                  <Text size="sm" c="dimmed">
+                    Porto, Portugal
+                  </Text>
 
-                <Title
-                  order={1}
-                  className="landing-hero-title"
-                  style={{
-                    fontSize: 'clamp(2rem, 8.5vw, 4.8rem)',
-                    lineHeight: 1.02,
-                    letterSpacing: '-0.05em',
-                  }}
-                >
-                  Full-stack developer building production software, data tools, and game systems.
-                </Title>
+                  <Title
+                    order={1}
+                    className="landing-hero-title"
+                    style={{
+                      fontSize: 'clamp(2rem, 6vw, 3.6rem)',
+                      lineHeight: 1.08,
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
+                    Full-stack developer building production software, data tools, and game systems.
+                  </Title>
 
-                <motion.div {...fadeUp(0.06)}>
                   <Box className="landing-hero-image-mobile">
                     <Box
                       style={{
-                        padding: '10px',
-                        borderRadius: 22,
-                        border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
-                        background: 'linear-gradient(180deg, rgba(255,255,255,0.03), transparent 100%)',
+                        padding: '8px',
+                        borderRadius: 6,
+                        border: '1px solid var(--line)',
+                        background: 'var(--surface)',
                       }}
                     >
                       <Box
                         style={{
                           overflow: 'hidden',
-                          borderRadius: 18,
-                          border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
+                          borderRadius: 3,
+                          border: '1px solid var(--line)',
                         }}
                       >
                         <Image
                           src={headshot}
                           alt="Tyler Johnston"
-                          fallbackSrc="https://placehold.co/600x720/141a1e/f5a623?text=Tyler+Johnston"
+                          fallbackSrc="https://placehold.co/600x720/1b1f25/3e7cb1?text=Tyler+Johnston"
                         />
                       </Box>
                     </Box>
                   </Box>
-                </motion.div>
+                </Stack>
 
-                <Text size="lg" c="dimmed" maw={720} lh={1.8}>
-                  I’m Tyler Johnston, a full-stack developer in Lisbon with 2 years of professional experience
-                  building production workflow applications in C#/.NET, JavaScript/TypeScript, and
-                  Oracle SQL.
-                </Text>
+                <Stack gap="lg">
+                  <Text size="lg" c="dimmed" maw={720} lh={1.8}>
+                    I’m Tyler Johnston, based in Porto, with experience in C#/.NET,
+                    JavaScript/TypeScript, and Oracle SQL.
+                  </Text>
 
-                <Group gap="sm" wrap="wrap">
-                  <Button
-                    component={Link}
-                    to="/projects"
-                    size="md"
-                    color="orange"
-                    rightSection={<IconArrowRight size={16} />}
-                  >
-                    See All Projects
-                  </Button>
-                  <Button
-                    component="a"
-                    href="/cv.pdf"
-                    target="_blank"
-                    size="md"
-                    variant="outline"
-                    color="orange"
-                  >
-                    Download CV
-                  </Button>
-                </Group>
-              </Stack>
+                  <Group gap="sm" wrap="wrap">
+                    <Button
+                      component={Link}
+                      to="/projects"
+                      size="md"
+                      color="accent"
+                      rightSection={<IconArrowRight size={16} />}
+                    >
+                      See All Projects
+                    </Button>
+                    <Button
+                      component="a"
+                      href="/cv.pdf"
+                      target="_blank"
+                      size="md"
+                      variant="outline"
+                      color="accent"
+                    >
+                      Download CV
+                    </Button>
+                  </Group>
+                </Stack>
+              </div>
             </motion.div>
 
-            <motion.div {...fadeUp(0.08)}>
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+            >
               <Box
                 className="landing-hero-image-desktop"
                 style={{
-                  padding: '22px',
-                  borderRadius: 28,
-                  border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
-                  background: 'linear-gradient(180deg, rgba(255,255,255,0.03), transparent 100%)',
+                  padding: '16px',
+                  borderRadius: 8,
+                  border: '1px solid var(--line)',
+                  background: 'var(--surface)',
                 }}
               >
                 <Box
                   style={{
                     overflow: 'hidden',
-                    borderRadius: 22,
-                    border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
+                    borderRadius: 4,
+                    border: '1px solid var(--line)',
                   }}
                 >
                   <Image
                     src={headshot}
                     alt="Tyler Johnston"
-                    fallbackSrc="https://placehold.co/600x720/141a1e/f5a623?text=Tyler+Johnston"
+                    fallbackSrc="https://placehold.co/600x720/1b1f25/3e7cb1?text=Tyler+Johnston"
                   />
                 </Box>
               </Box>
@@ -171,8 +176,7 @@ export function Landing() {
             mt={44}
             pt={24}
             style={{
-              borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-              borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
+              borderTop: '1px solid var(--line)',
             }}
           >
             <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={0}>
@@ -182,16 +186,13 @@ export function Landing() {
                   key={fact.label}
                   style={{
                     padding: '6px 18px 22px',
-                    borderRight:
-                      i < quickFacts.length - 1
-                        ? '1px solid light-dark(var(--mantine-color-gray-2), #273138)'
-                        : 'none',
+                    borderRight: i < quickFacts.length - 1 ? '1px solid var(--line)' : 'none',
                   }}
                 >
-                  <Text size="xs" tt="uppercase" fw={700} c="dimmed" style={{ letterSpacing: '0.12em' }}>
+                  <Text size="sm" c="dimmed">
                     {fact.label}
                   </Text>
-                  <Text fw={800} size="lg" mt={6}>
+                  <Text fw={700} size="lg" mt={6}>
                     {fact.value}
                   </Text>
                 </Box>
@@ -204,75 +205,43 @@ export function Landing() {
       <Box
         py={84}
         style={{
-          borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-          borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-          background: 'linear-gradient(180deg, transparent 0%, rgba(245, 158, 11, 0.04) 100%)',
+          borderTop: '1px solid var(--line)',
+          borderBottom: '1px solid var(--line)',
         }}
       >
         <Container size="lg">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-          >
-            <Stack gap={4} mb={40}>
-              <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
-                What I bring
-              </Text>
-              <Title order={2} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.3rem)', fontWeight: 800 }}>
-                The kind of work I do well
-              </Title>
-            </Stack>
-          </motion.div>
+          <Title order={2} mb={40} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.3rem)', fontWeight: 700 }}>
+            The kind of work I do well
+          </Title>
 
           <Stack gap={0}>
             {focusAreas.map((area, i) => (
-              <motion.div
+              <Box
                 key={area.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: i * 0.08 }}
+                py={22}
+                style={{
+                  borderTop: i === 0 ? '1px solid var(--line)' : undefined,
+                  borderBottom: '1px solid var(--line)',
+                }}
               >
-                <Box
-                  py={22}
-                  style={{
-                    borderTop: i === 0 ? '1px solid light-dark(var(--mantine-color-gray-2), #273138)' : undefined,
-                    borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-                  }}
-                >
-                  <Group align="flex-start" gap={28} wrap="nowrap">
-                    <Text fw={800} size="lg" style={{ minWidth: 180 }}>
-                      {area.title}
-                    </Text>
-                    <Text size="md" c="dimmed" lh={1.7}>
-                      {area.detail}
-                    </Text>
-                  </Group>
-                </Box>
-              </motion.div>
+                <Group align="flex-start" gap={28} wrap="nowrap">
+                  <Text fw={700} size="lg" style={{ minWidth: 180 }}>
+                    {area.title}
+                  </Text>
+                  <Text size="md" c="dimmed" lh={1.7}>
+                    {area.detail}
+                  </Text>
+                </Group>
+              </Box>
             ))}
           </Stack>
         </Container>
       </Box>
 
       <Container size="lg" py={80}>
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          >
-            <Stack gap={4} mb={32}>
-              <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
-                Featured Projects
-              </Text>
-              <Title order={2} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.2rem)', fontWeight: 800 }}>
-                My best work
-              </Title>
-            </Stack>
-          </motion.div>
+        <Title order={2} mb={32} style={{ fontSize: 'clamp(1.7rem, 4vw, 2.2rem)', fontWeight: 700 }}>
+          My best work
+        </Title>
 
         <Stack gap="xl">
           {flagshipProjects.map((project, i) => (
@@ -285,7 +254,7 @@ export function Landing() {
             component={Link}
             to="/projects"
             variant="outline"
-            color="orange"
+            color="accent"
             rightSection={<IconArrowRight size={16} />}
           >
             See All Projects

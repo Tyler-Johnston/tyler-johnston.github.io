@@ -1,45 +1,62 @@
-import { createTheme } from '@mantine/core';
+import { createTheme, MantineColorsTuple } from '@mantine/core';
+
+const accent: MantineColorsTuple = [
+  '#EEF4F9',
+  '#D3E3EF',
+  '#AEC9DF',
+  '#87AFCE',
+  '#6699BE',
+  '#4C89B4',
+  '#3E7CB1',
+  '#316A99',
+  '#295A82',
+  '#1E4463',
+];
 
 export const theme = createTheme({
-  primaryColor: 'orange',
-  fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
-  fontFamilyMonospace: 'JetBrains Mono, Fira Code, monospace',
+  primaryColor: 'accent',
+  primaryShade: 6,
+  colors: {
+    accent,
+  },
+  fontFamily: '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif',
+  fontFamilyMonospace: '"IBM Plex Mono", "SFMono-Regular", Consolas, monospace',
   headings: {
-    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
-    fontWeight: '800',
+    fontFamily: '"IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif',
+    fontWeight: '700',
   },
   radius: {
-    xs: '6px',
-    sm: '8px',
-    md: '12px',
-    lg: '18px',
-    xl: '26px',
+    xs: '3px',
+    sm: '4px',
+    md: '6px',
+    lg: '8px',
+    xl: '10px',
   },
-  defaultRadius: 'lg',
+  defaultRadius: 'sm',
   other: {
-    bgBase: '#0c1114',
-    bgSurface: '#141a1e',
-    bgRaised: '#1b2227',
-    border: '#273138',
-    bgBaseLight: '#f7f3ee',
-    bgSurfaceLight: '#ffffff',
-    borderLight: '#e4ddd4',
+    ink: '#13161A',
+    surface: '#1B1F25',
+    surfaceRaised: '#232830',
+    line: '#2B303A',
+    lineStrong: '#3C4350',
+    text: '#E7E4DD',
+    textDim: '#8E949C',
   },
   components: {
     Button: {
       defaultProps: {
-        radius: 'xl',
+        radius: 'sm',
       },
     },
     Card: {
       defaultProps: {
-        radius: 'lg',
+        radius: 'md',
         padding: 'xl',
       },
     },
     Badge: {
       defaultProps: {
-        radius: 'xl',
+        radius: 'xs',
       },
     },
   },

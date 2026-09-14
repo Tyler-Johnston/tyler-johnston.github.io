@@ -1,8 +1,22 @@
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
-@import '@fontsource/inter/900.css';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-sans/700.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+:root {
+  --ink: #13161a;
+  --surface: #1b1f25;
+  --surface-raised: #232830;
+  --line: #2b303a;
+  --line-strong: #3c4350;
+  --text: #e7e4dd;
+  --text-dim: #8e949c;
+  --accent: #3e7cb1;
+  --accent-hover: #4c8fc7;
+  --accent-soft: rgba(62, 124, 177, 0.12);
+}
 
 *,
 *::before,
@@ -14,30 +28,26 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #f3efe8;
-  background:
-    radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), transparent 30%),
-    radial-gradient(circle at top right, rgba(148, 163, 184, 0.08), transparent 28%),
-    linear-gradient(180deg, #0c1114 0%, #10171b 100%);
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 80%);
-  opacity: 0.35;
+  color: var(--text);
+  background: var(--ink);
 }
 
 main {
@@ -46,44 +56,25 @@ main {
 }
 
 ::selection {
-  background: rgba(245, 158, 11, 0.28);
-  color: #fff;
+  background: var(--accent-soft);
+  color: var(--text);
 }
 
-[data-mantine-color-scheme='dark'] body {
-  background-color: transparent;
+a {
+  color: var(--accent);
 }
 
-[data-mantine-color-scheme='light'] body {
-  color: #1f2933;
-  background:
-    radial-gradient(circle at top left, rgba(245, 158, 11, 0.12), transparent 30%),
-    radial-gradient(circle at top right, rgba(15, 23, 42, 0.06), transparent 30%),
-    linear-gradient(180deg, #f7f3ee 0%, #fbfaf8 100%);
+.project-card {
+  transition: border-color 0.15s ease;
 }
 
-[data-mantine-color-scheme='light'] body::before {
-  opacity: 0.18;
+.project-card:hover {
+  border-color: var(--line-strong) !important;
 }
 
-[data-mantine-color-scheme='dark'] .project-card:hover {
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(245, 158, 11, 0.18);
-}
-
-[data-mantine-color-scheme='light'] .project-card:hover {
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(245, 158, 11, 0.18);
-}
-
-[data-mantine-color-scheme='dark'] .skill-tile:hover,
-[data-mantine-color-scheme='dark'] .about-tile:hover {
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.26);
-  border-color: #39444b !important;
-}
-
-[data-mantine-color-scheme='light'] .skill-tile:hover,
-[data-mantine-color-scheme='light'] .about-tile:hover {
-  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.06);
-  border-color: #d3c6b4 !important;
+.skill-tile:hover,
+.about-tile:hover {
+  border-color: var(--line-strong) !important;
 }
 
 .projects-tabs-list {
@@ -123,7 +114,7 @@ main {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: light-dark(var(--mantine-color-gray-2), #273138);
+  background: var(--line);
 }
 
 .projects-tabs-scroll {
@@ -145,11 +136,7 @@ main {
   right: 0;
   width: 44px;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0),
-    light-dark(rgba(247, 243, 238, 0.96), rgba(20, 26, 30, 0.96))
-  );
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0), var(--surface));
 }
 
 .landing-hero-image-mobile {
@@ -173,7 +160,7 @@ main {
 }
 
 .case-proof-strip .case-proof-item {
-  border-right: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
+  border-right: 1px solid var(--line);
 }
 
 .case-proof-strip .case-proof-item:last-child {
@@ -188,7 +175,7 @@ main {
     bottom: 10px;
     left: calc(50% - 0.5px);
     width: 1px;
-    background: light-dark(var(--mantine-color-gray-3), #273138);
+    background: var(--line);
     pointer-events: none;
   }
 
@@ -199,55 +186,9 @@ main {
     right: 0;
     top: calc(50% - 0.5px);
     height: 1px;
-    background: light-dark(var(--mantine-color-gray-3), #273138);
+    background: var(--line);
     pointer-events: none;
   }
-}
-
-.smallImage {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.mediumImage {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.textHeading {
-  font-size: clamp(2rem, 4vw, 2.625rem);
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.textSubHeading {
-  font-size: clamp(1.25rem, 3vw, 1.625rem);
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.flexContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 100%;
-  padding: 1rem;
-}
-
-.skillIcon {
-  width: 24px;
-  height: 24px;
-}
-
-.skillText {
-  font-size: 18px;
 }
 
 @media (max-width: 768px) {
@@ -259,12 +200,12 @@ main {
   .landing-hero-title {
     font-size: clamp(2.1rem, 12vw, 3.25rem) !important;
     line-height: 1.04 !important;
-    letter-spacing: -0.04em !important;
+    letter-spacing: -0.03em !important;
   }
 
   .landing-hero-image-desktop {
-    padding: 12px !important;
-    border-radius: 22px !important;
+    padding: 10px !important;
+    border-radius: 6px !important;
   }
 
   .landing-hero-image-mobile {
@@ -302,7 +243,7 @@ main {
 
   .about-split-left {
     border-right: none !important;
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
+    border-bottom: 1px solid var(--line);
   }
 
   .about-split-right {
@@ -311,7 +252,7 @@ main {
 
   .about-skills-grid > div {
     padding-bottom: 14px;
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
+    border-bottom: 1px solid var(--line);
   }
 
   .about-skills-grid > div:last-child {
@@ -335,7 +276,7 @@ main {
   .case-proof-item {
     border-right: none !important;
     display: block;
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
+    border-bottom: 1px solid var(--line);
     padding-bottom: 14px !important;
     margin-bottom: 14px;
   }
@@ -348,7 +289,7 @@ main {
 
   .parallax-identity-item {
     border-right: none !important;
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138) !important;
+    border-bottom: 1px solid var(--line) !important;
     padding-right: 0 !important;
     padding-bottom: 18px !important;
     margin-bottom: 18px;
@@ -362,31 +303,12 @@ main {
 
   .landing-fact {
     border-right: none !important;
-    border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), #273138);
+    border-bottom: 1px solid var(--line);
     padding: 14px 16px !important;
   }
 
   .landing-fact:last-child {
     border-bottom: none !important;
-  }
-
-  .smallImage {
-    width: 70%;
-    max-width: 300px;
-  }
-
-  .mediumImage {
-    width: 90%;
-    max-width: 400px;
-  }
-
-  .skillIcon {
-    width: 18px;
-    height: 18px;
-  }
-
-  .skillText {
-    font-size: 14px;
   }
 }
 
@@ -400,35 +322,20 @@ main {
   }
 
   .landing-hero-image-desktop {
-    padding: 10px !important;
+    padding: 8px !important;
   }
 
   .projects-tabs-list {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 600px) {
   .flagship-image {
     order: -1 !important;
   }
 }
 
-@keyframes role-highlight {
-  0% {
-    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
-    border-color: #273138;
-  }
-  20% {
-    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.28);
-    border-color: rgba(245, 158, 11, 0.75);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
-    border-color: #273138;
-  }
-}
-
 .role-highlighted {
-  animation: role-highlight 2s ease-out forwards;
+  border-color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+  transition: background 1.6s ease, border-color 1.6s ease;
 }

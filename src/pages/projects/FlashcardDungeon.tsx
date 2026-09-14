@@ -9,310 +9,287 @@ import {
   Box,
   Image,
 } from '@mantine/core';
-import { motion } from 'framer-motion';
-import {
-  IconArrowLeft,
-  IconDatabase,
-  IconDeviceMobile,
-  IconMap,
-  IconExternalLink,
-} from '@tabler/icons-react';
+import { IconArrowLeft, IconExternalLink } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
-  fdLanding,
-  fdEmberBattle,
-  fdShop1,
-  fdJournal,
-  fdStats1,
-  fdEmberRoadmap,
+  fdDecksHome,
+  fdRoadmap,
+  fdRoadmapPersonal,
+  fdRoadmapCurated,
+  fdAvatarSelect,
+  fdShopHub,
+  fdBattleFlip,
+  fdBattleMultipleChoice,
+  fdBattleActiveRecall,
+  fdBattleMatching,
+  fdBattleWordSort,
+  fdBattleAudioChoice,
+  fdBattleAudioRecall,
+  fdBestiary,
+  fdBestiaryDetail,
+  fdBestiaryDetail2,
+  fdIconPack,
+  fdCardEditor,
+  fdDeckNotes,
+  fdCardAudioTts,
+  fdProfile,
+  fdQuests,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
 
-const proofPoints = [
-  { value: 'A1-B2', label: 'curriculum span' },
-  { value: 'Offline', label: 'local-first progress' },
-  { value: 'Cloud', label: 'optional sync' },
-];
-
-const highlights = [
-  {
-    icon: IconMap,
-    title: 'Curriculum design',
-    text: 'The learning path is CEFR-mapped from A1 to B2 and stays focused on European Portuguese instead of spreading across many languages.',
-  },
-  {
-    icon: IconDatabase,
-    title: 'Offline-first data',
-    text: 'IndexedDB keeps the app usable offline, while Supabase handles optional sync when the user wants it.',
-  },
-  {
-    icon: IconDeviceMobile,
-    title: 'Study loop',
-    text: 'Flashcards, combat, shop upgrades, and progression tracking all feed into one loop, so studying feels like movement rather than repetition.',
-  },
-];
-
-const identityBlocks = [
-  {
-    eyebrow: 'Curriculum design',
-    title: 'A1 to B2 path',
-    text: 'The app stays focused on European Portuguese and maps each unit to CEFR levels so the progression is deliberate instead of generic.',
-  },
-  {
-    eyebrow: 'Offline-first progress',
-    title: 'Study keeps working',
-    text: 'IndexedDB stores progress locally so the app remains usable when the network drops or the user is away from sync.',
-  },
-  {
-    eyebrow: 'Optional cloud sync',
-    title: 'Sync when wanted',
-    text: 'Supabase sync is opt-in, which keeps the local study loop lightweight while still supporting cross-device continuity.',
-  },
-  {
-    eyebrow: 'Loop design',
-    title: 'Review feels like movement',
-    text: 'Flashcards, battle, shop upgrades, and notes all feed one loop so repetition still feels like advancement.',
-  },
-];
-
-const gallery = [
-  { src: fdLanding, label: 'Landing page', note: 'The first screen sets up the study loop and signals the game layer immediately.' },
-  { src: fdEmberBattle, label: 'Battle screen', note: 'Combat is tied to review outcomes instead of sitting on top of them.' },
-  { src: fdShop1, label: 'Shop', note: 'Upgrades create a sense of progression between study sessions.' },
-  { src: fdJournal, label: 'Journal', note: 'Notes and context live close to the learning flow.' },
-  { src: fdStats1, label: 'Progress view', note: 'The data view keeps motivation visible instead of hidden.' },
-  { src: fdEmberRoadmap, label: 'Roadmap', note: 'The roadmap shows that the product was built with expansion in mind.' },
-];
-
 const techStack = ['Angular', 'TypeScript', 'IndexedDB', 'Supabase', 'PostgreSQL'];
+
+interface Shot {
+  src: string;
+  label: string;
+  note: string;
+}
+
+interface ShowcaseSection {
+  title: string;
+  text: string;
+  shots: Shot[];
+}
+
+const sections: ShowcaseSection[] = [
+  {
+    title: 'Creating your own decks and cards',
+    text: 'Every deck starts as raw content: cards written and tagged by hand, with tools to speed up the parts that would otherwise be tedious.',
+    shots: [
+      {
+        src: fdCardEditor,
+        label: 'Cards',
+        note: 'Every card can be searched, tagged, and edited inline, front and back, without leaving the deck.',
+      },
+      {
+        src: fdCardAudioTts,
+        label: 'Audio generation',
+        note: 'Any deck can be sent through Google TTS to generate spoken audio for its cards, in the language and voice side you choose.',
+      },
+      {
+        src: fdIconPack,
+        label: 'Icon packs',
+        note: 'Cards can be given visuals from a built-in icon library instead of hunting down or drawing your own art for every single one.',
+      },
+      {
+        src: fdDeckNotes,
+        label: 'Notes',
+        note: 'Each deck can carry its own reference notes, like full conjugation tables and grammar explanations, alongside the cards themselves.',
+      },
+    ],
+  },
+  {
+    title: 'Personal and curated roadmaps',
+    text: 'Roadmaps are not fixed to what ships with the app. Build a personal one from scratch, or pull from a curated catalog spanning language starter packs and general-knowledge tracks.',
+    shots: [
+      {
+        src: fdRoadmap,
+        label: 'Roadmap',
+        note: 'Curriculum content is mapped as a skill tree, with a boss "Section Review" at the end of every zone.',
+      },
+      {
+        src: fdRoadmapPersonal,
+        label: 'Personal',
+        note: 'Custom roadmaps you build yourself sit alongside a one-tap option to create a new one from scratch.',
+      },
+      {
+        src: fdRoadmapCurated,
+        label: 'Curated',
+        note: 'The built-in catalog spans general-knowledge tracks and language starter packs, from Mexican Spanish to German.',
+      },
+    ],
+  },
+  {
+    title: 'Game modes and study methods',
+    text: 'Encounters do not all play the same way. The engine rotates through eight review mechanics: Standard flip-and-grade, Multiple Choice, typed Active Recall, Matching Pairs, word-by-word Word Sort, letter-by-letter Spell Sprint, and text-to-speech Audio Choice and Audio Recall.',
+    shots: [
+      {
+        src: fdBattleFlip,
+        label: 'Standard',
+        note: 'The baseline mechanic: reveal the card, then grade your own recall, the same way Anki does.',
+      },
+      {
+        src: fdBattleMultipleChoice,
+        label: 'Multiple Choice',
+        note: 'Pick the right answer from four options. The distractors are chosen deliberately, not pulled at random.',
+      },
+      {
+        src: fdBattleActiveRecall,
+        label: 'Active Recall',
+        note: 'No options to lean on: type the answer outright before it counts as correct.',
+      },
+      {
+        src: fdBattleMatching,
+        label: 'Matching Pairs',
+        note: 'Match every prompt on the board to its answer before the round runs out. The same mechanic works whether the deck is testing verb conjugations or world flags.',
+      },
+      {
+        src: fdBattleWordSort,
+        label: 'Word Sort',
+        note: 'Rebuild a sentence by tapping its words back into the right order.',
+      },
+      {
+        src: fdBattleAudioChoice,
+        label: 'Audio Choice',
+        note: 'The prompt is spoken instead of printed. Listen, then pick the right answer from the options below.',
+      },
+      {
+        src: fdBattleAudioRecall,
+        label: 'Audio Recall',
+        note: 'Same spoken prompt, no options this time: type what you heard from memory.',
+      },
+    ],
+  },
+  {
+    title: 'Dungeons and the bestiary',
+    text: 'Each zone is a real place with its own cast. The Undergrowth, the Labyrinth, the Bastion, and the Drain each carry a tiered set of monsters and a boss, tracked in a bestiary as you clear them.',
+    shots: [
+      {
+        src: fdBestiary,
+        label: 'Bestiary',
+        note: "The Undergrowth's seven-monster roster, tiered from the common Spore up to the boss Rootwretch.",
+      },
+      {
+        src: fdBestiaryDetail,
+        label: 'Monster record: Sludge',
+        note: 'Every monster keeps its own record: a line of lore, a battle profile with HP and attack, and a battle history of wins and losses against it.',
+      },
+      {
+        src: fdBestiaryDetail2,
+        label: 'Monster record: Royal Guard',
+        note: "Records also log rare shiny encounters and a \"Defeated By\" roster of which characters have checked it off, turning the bestiary into a completionist tracker.",
+      },
+    ],
+  },
+  {
+    title: 'Progress as you study',
+    text: 'New characters unlock as you play, each carrying its own passive. The shop spends earned gold to unlock dungeon regions, curated roadmaps, and icon packs. A quest log works like an achievement list, and the profile page keeps a running record of personal stats.',
+    shots: [
+      {
+        src: fdAvatarSelect,
+        label: 'Unlock characters',
+        note: 'Every unlockable character carries a passive that changes the run, from bonus gold to bonus damage.',
+      },
+      {
+        src: fdShopHub,
+        label: 'Shop',
+        note: 'Gold earned in runs buys travel between dungeon regions and unlocks the wider roadmap catalog, languages and general knowledge alike.',
+      },
+      {
+        src: fdQuests,
+        label: 'Quests',
+        note: 'Achievements span combat, study, practice, and roadmap progress.',
+      },
+      {
+        src: fdProfile,
+        label: 'Profile',
+        note: 'Streaks, levels, recall rate, and a 30-day review history keep the study side of the loop visible.',
+      },
+    ],
+  },
+];
 
 export function FlashcardDungeon() {
   return (
     <Container size="lg" py={60}>
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-        <Button component={Link} to="/projects" variant="subtle" color="gray" leftSection={<IconArrowLeft size={16} />} mb="xl" size="sm">
-          Back to projects
-        </Button>
-      </motion.div>
+      <SimpleGrid cols={{ base: 1, md: 2 }} spacing={36} mb={40} style={{ alignItems: 'stretch' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Button component={Link} to="/projects" variant="subtle" color="gray" leftSection={<IconArrowLeft size={16} />} size="sm" style={{ alignSelf: 'flex-start' }}>
+            Back to projects
+          </Button>
 
-      <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.05 }}>
-        <SimpleGrid cols={{ base: 1, md: 2 }} spacing={36} mb={40} style={{ alignItems: 'start' }}>
-          <Stack gap="md">
-            <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
-              Angular / TypeScript / Supabase
-            </Text>
-            <Title order={1} style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', fontWeight: 900, lineHeight: 1.06 }}>
-              Flashcard Dungeon
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Stack gap="md">
+              <Stack gap="xs">
+                <Text size="sm" c="dimmed" style={{ fontFamily: 'var(--mantine-font-family-monospace)' }}>
+                  Angular / TypeScript / Supabase
+                </Text>
+                <Title order={1} style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', fontWeight: 700, lineHeight: 1.06 }}>
+                  Flashcard Dungeon
+                </Title>
+              </Stack>
+
+              <Group gap="sm" wrap="wrap">
+                {techStack.map((tech) => (
+                  <TechBadge key={tech} label={tech} size="lg" />
+                ))}
+              </Group>
+
+              <Text size="lg" c="dimmed" maw={720} lh={1.75}>
+                A full-stack language-learning app that turns spaced repetition into a roguelite dungeon
+                crawl. Each deck is a run: pick a build, fight through the cards as encounters, and let
+                the game track what you actually know.
+              </Text>
+
+              <Group gap="sm" wrap="wrap">
+                <Button
+                  component="a"
+                  href="https://flashcarddungeon.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="filled"
+                  color="accent"
+                  leftSection={<IconExternalLink size={16} />}
+                >
+                  Visit Live Site
+                </Button>
+              </Group>
+            </Stack>
+          </div>
+        </div>
+
+        <Box
+          style={{
+            overflow: 'hidden',
+            borderRadius: 6,
+            border: '1px solid var(--line)',
+            background: 'var(--surface)',
+          }}
+        >
+          <Image
+            src={fdDecksHome}
+            alt="Flashcard Dungeon deck list with today's quests"
+            fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Flashcard+Dungeon"
+          />
+        </Box>
+      </SimpleGrid>
+
+      <Box mb={56} style={{ borderTop: '1px solid var(--line)' }} />
+
+      {sections.map((section, index) => (
+        <Box key={section.title} mb={index < sections.length - 1 ? 64 : 0}>
+          <Stack gap={4} mb={24}>
+            <Title order={2} style={{ fontWeight: 700 }}>
+              {section.title}
             </Title>
-            <Text size="lg" c="dimmed" maw={720} lh={1.75}>
-              A full-stack language-learning app that turns spaced repetition into a dungeon crawler.
-              It was built for European Portuguese and includes a full A1 to B2 curriculum.
+            <Text size="sm" c="dimmed" maw={780} lh={1.7}>
+              {section.text}
             </Text>
-
-            <Group gap="sm" wrap="wrap">
-              {techStack.map((tech) => (
-                <TechBadge key={tech} label={tech} size="lg" />
-              ))}
-            </Group>
-
-            <Group gap="sm" wrap="wrap" mt={4}>
-              <Button
-                component="a"
-                href="https://flashcarddungeon.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="filled"
-                color="orange"
-                leftSection={<IconExternalLink size={16} />}
-              >
-                Visit Live Site
-              </Button>
-            </Group>
           </Stack>
 
-          <Box
-            style={{
-              overflow: 'hidden',
-              borderRadius: 16,
-              border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
-              background: 'light-dark(var(--mantine-color-white), #141a1e)',
-            }}
-          >
-            <Image
-              src={fdLanding}
-              alt="Flashcard Dungeon landing page"
-              fallbackSrc="https://placehold.co/1200x780/141a1e/f5a623?text=Flashcard+Dungeon"
-            />
-          </Box>
-        </SimpleGrid>
-      </motion.div>
-
-      <Box
-        className="case-proof-strip"
-        mb={56}
-        py={18}
-        style={{
-          borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-          borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-        }}
-      >
-        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing={0}>
-          {proofPoints.map((point, index) => (
-            <Box
-              className="case-proof-item"
-              key={point.label}
-              pr={{ base: 0, sm: 20 }}
-              pl={{ base: 0, sm: index === 0 ? 0 : 20 }}
-              pb={{ base: 14, sm: 0 }}
-            >
-              <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.14em' }} mb={6}>
-                {point.label}
-              </Text>
-              <Title order={3} style={{ fontWeight: 900, lineHeight: 1.05 }}>
-                {point.value}
-              </Title>
-            </Box>
-          ))}
-        </SimpleGrid>
-      </Box>
-
-      <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.4 }}>
-        <Stack gap={4} mb={20}>
-          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
-            Why it stands out
-          </Text>
-          <Title order={2} style={{ fontWeight: 800 }}>
-            Built to keep the loop meaningful
-          </Title>
-          <Text size="sm" c="dimmed" maw={760} lh={1.7}>
-            The value is not just that it gamifies study. The product works because the progression,
-            storage, and reward loop were designed together.
-          </Text>
-        </Stack>
-      </motion.div>
-
-      <Box
-        mb={56}
-        style={{
-          borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-          borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-        }}
-      >
-        {highlights.map((item, index) => (
-          <Box
-            key={item.title}
-            py={22}
-            style={{
-              borderBottom:
-                index < highlights.length - 1
-                  ? '1px solid light-dark(var(--mantine-color-gray-2), #273138)'
-                  : 'none',
-            }}
-          >
-            <Group align="flex-start" gap={18} wrap="nowrap">
+          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+            {section.shots.map((shot) => (
               <Box
+                key={shot.label}
                 style={{
-                  width: 42,
-                  height: 42,
-                  borderRadius: 999,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'light-dark(rgba(255, 122, 0, 0.12), rgba(255, 122, 0, 0.16))',
-                  color: 'light-dark(var(--mantine-color-orange-7), var(--mantine-color-orange-4))',
-                  flex: '0 0 auto',
+                  overflow: 'hidden',
+                  border: '1px solid var(--line)',
+                  background: 'var(--surface)',
+                  borderRadius: 6,
                 }}
               >
-                <item.icon size={18} />
-              </Box>
-              <Box>
-                <Text fw={800} mb={4}>
-                  {item.title}
-                </Text>
-                <Text size="sm" c="dimmed" lh={1.7}>
-                  {item.text}
-                </Text>
-              </Box>
-            </Group>
-          </Box>
-        ))}
-      </Box>
-
-      <Box
-        mb={56}
-        style={{
-          borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-          borderBottom: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
-        }}
-      >
-        <Box py={22}>
-          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }} mb={18}>
-            Product identity
-          </Text>
-          <SimpleGrid cols={{ base: 1, md: 2 }} spacing={20}>
-            {identityBlocks.map((block, index) => (
-              <Box
-                key={block.eyebrow}
-                className="parallax-identity-item"
-                style={{
-                  padding: '0 12px 20px 0',
-                  borderRight: index % 2 === 0 ? '1px solid light-dark(var(--mantine-color-gray-2), #273138)' : 'none',
-                  borderBottom: index < 2 ? '1px solid light-dark(var(--mantine-color-gray-2), #273138)' : 'none',
-                }}
-              >
-                <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.14em' }} mb={6}>
-                  {block.eyebrow}
-                </Text>
-                <Title order={3} style={{ fontWeight: 800, marginBottom: 8 }}>
-                  {block.title}
-                </Title>
-                <Text size="sm" c="dimmed" lh={1.7}>
-                  {block.text}
-                </Text>
+                <Image src={shot.src} alt={shot.label} fallbackSrc="https://placehold.co/600x400/1b1f25/3e7cb1?text=Project" />
+                <Stack gap={6} p="md">
+                  <Text fw={700}>{shot.label}</Text>
+                  <Text size="sm" c="dimmed" lh={1.6}>
+                    {shot.note}
+                  </Text>
+                </Stack>
               </Box>
             ))}
           </SimpleGrid>
         </Box>
-      </Box>
-
-      <Box mb={24}>
-        <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }} mb={4}>
-          Interface evidence
-        </Text>
-        <Title order={2} style={{ fontWeight: 800 }}>
-          Screens that show the system
-        </Title>
-        <Text size="sm" c="dimmed" maw={760} lh={1.7}>
-          These screens exist to show the progression loop, not just to decorate the page.
-        </Text>
-      </Box>
-
-      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-        {gallery.map((shot, index) => (
-          <Box
-            key={shot.label}
-            style={{
-              overflow: 'hidden',
-              border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
-              background: 'light-dark(var(--mantine-color-white), #141a1e)',
-              borderRadius: 16,
-            }}
-          >
-            <Image src={shot.src} alt={shot.label} fallbackSrc="https://placehold.co/600x400/141a1e/f5a623?text=Project" />
-            <Stack gap={6} p="md">
-              <Group justify="space-between" align="flex-start" gap="md">
-                <Text fw={700}>{shot.label}</Text>
-                <Text size="xs" tt="uppercase" fw={700} c="dimmed" style={{ letterSpacing: '0.12em' }}>
-                  0{index + 1}
-                </Text>
-              </Group>
-              <Text size="sm" c="dimmed" lh={1.6}>
-                {shot.note}
-              </Text>
-            </Stack>
-          </Box>
-        ))}
-      </SimpleGrid>
+      ))}
     </Container>
   );
 }

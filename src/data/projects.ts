@@ -1,4 +1,4 @@
-import { fdLanding, absentee, aws, rps, vinyltracker, vintagefinds, snakegame, lunarlander, maze, jobMarket, customerBehavior, cartpole, bees, facialExpression, ppKing } from './imageAssets';
+import { fdDecksHome, absentee, aws, vinyltracker, snakegame, lunarlander, maze, jobMarket, customerBehavior, cartpole, bees, facialExpression, ppKing } from './imageAssets';
 
 export type ProjectCategory = 'webDev' | 'gameDev' | 'dataAnalytics' | 'machineLearning';
 
@@ -22,7 +22,6 @@ export interface FlagshipProject {
   techStack: string[];
   achievements: string[];
   cta: { label: string; href: string; variant: 'filled' | 'outline' | 'light' }[];
-  accentColor: string;
 }
 
 export const flagshipProjects: FlagshipProject[] = [
@@ -31,19 +30,18 @@ export const flagshipProjects: FlagshipProject[] = [
     title: 'Flashcard Dungeon',
     subtitle: 'Angular 17+ / TypeScript / Supabase',
     description:
-      'A full-stack language-learning app for European Portuguese, combining spaced repetition, RPG combat, offline storage, and optional cloud sync.',
-    imageUrl: fdLanding,
+      'A full-stack language-learning app that turns spaced repetition into a roguelite dungeon crawl, with character builds, four battle mechanics, and a curriculum mapped like a skill tree.',
+    imageUrl: fdDecksHome,
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
     achievements: [
-      'CEFR-mapped A1-B2 progression for European Portuguese',
+      'CEFR-mapped A1-B2 progression for European Portuguese, plus additional language and general-knowledge roadmaps unlockable through play',
+      'Roguelite run structure: character passives, meta-progression, and four distinct battle mechanics',
       'IndexedDB-first offline mode with optional Supabase/PostgreSQL sync',
-      'Native-speaker pronunciation guidance and RPG progression layered onto study workflows',
     ],
     cta: [
       { label: 'View Project', href: '/projects/flashcard-dungeon', variant: 'filled' },
       { label: 'Live Site', href: 'https://flashcarddungeon.com/', variant: 'outline' },
     ],
-    accentColor: 'teal',
   },
   {
     id: 'parallax-poker',
@@ -59,7 +57,6 @@ export const flagshipProjects: FlagshipProject[] = [
       '288,000-hand Monte Carlo balancing pipeline used to tune opponent difficulty',
     ],
     cta: [{ label: 'View Project', href: '/projects/parallax-poker', variant: 'filled' }],
-    accentColor: 'orange',
   },
 ];
 
@@ -79,8 +76,8 @@ export const projects: Project[] = [
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
     description:
-      'A full-stack language-learning app for European Portuguese with spaced repetition, RPG combat, offline storage, and optional cloud sync.',
-    imageUrl: fdLanding,
+      'A full-stack language-learning app that turns spaced repetition into a roguelite dungeon crawl, complete with character builds and a skill-tree curriculum.',
+    imageUrl: fdDecksHome,
     projectUrl: '/projects/flashcard-dungeon',
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
     category: 'webDev',
@@ -107,16 +104,6 @@ export const projects: Project[] = [
     category: 'webDev',
   },
   {
-    id: 'vintage-finds',
-    title: 'Vintage Finds',
-    description:
-      'An antique storefront built for a local business with an admin dashboard, image management, and real-time inventory updates.',
-    imageUrl: vintagefinds,
-    projectUrl: 'https://github.com/Tyler-Johnston/Vintage-Finds',
-    techStack: ['Next.js', 'TypeScript', 'Firebase', 'Mantine UI', 'Vercel'],
-    category: 'webDev',
-  },
-  {
     id: 'aws-widget-requests',
     title: 'AWS Widget Requests',
     description:
@@ -124,16 +111,6 @@ export const projects: Project[] = [
     imageUrl: aws,
     projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests',
     techStack: ['AWS', 'SQS', 'S3', 'DynamoDB', 'Python'],
-    category: 'webDev',
-  },
-  {
-    id: 'rock-paper-scissors',
-    title: 'Rock Paper Scissors',
-    description:
-      'An Angular Rock Paper Scissors game with animated results and local score tracking.',
-    imageUrl: rps,
-    projectUrl: 'https://github.com/Tyler-Johnston/RPS',
-    techStack: ['Angular', 'TypeScript', 'CSS'],
     category: 'webDev',
   },
   {

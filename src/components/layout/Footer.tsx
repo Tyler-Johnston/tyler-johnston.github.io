@@ -11,7 +11,7 @@ export function Footer() {
       px="lg"
       mt={80}
       style={{
-        borderTop: '1px solid light-dark(var(--mantine-color-gray-2), #273138)',
+        borderTop: '1px solid var(--line)',
       }}
     >
       <div style={{ maxWidth: 1160, margin: '0 auto' }}>
@@ -21,10 +21,10 @@ export function Footer() {
               Tyler Johnston
             </Text>
             <Text size="sm" c="dimmed">
-              Full-stack developer in Lisbon. {year}
+              Full-stack developer in Porto. {year}
             </Text>
             <Group gap="sm" wrap="wrap" mt={4}>
-              <Anchor href="/cv.pdf" target="_blank" c="orange" size="sm">
+              <Anchor href="/cv.pdf" target="_blank" c="accent" size="sm">
                 <Group gap={4}>
                   <IconDownload size={14} />
                   CV

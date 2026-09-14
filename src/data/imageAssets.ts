@@ -16,27 +16,33 @@ import ppOldWizard from '../../images/parallax_poker/ppOldWizard.webp';
 import ppBoyWizard from '../../images/parallax_poker/ppBoyWizard.webp';
 
 // Flashcard Dungeon screenshots
-import fdLanding from '../../images/flashcard_dungeon/ember_landing.webp';
-import fdEmberBattle from '../../images/flashcard_dungeon/ember_battle.webp';
-import fdCryptBattle from '../../images/flashcard_dungeon/crypt_battle.webp';
-import fdShop1 from '../../images/flashcard_dungeon/shop_1.webp';
-import fdShop2 from '../../images/flashcard_dungeon/shop_2.webp';
-import fdJournal from '../../images/flashcard_dungeon/journal.webp';
-import fdMonsterManualEmber from '../../images/flashcard_dungeon/ember_MM.webp';
-import fdMonsterManualCrypt from '../../images/flashcard_dungeon/crypt_MM.webp';
-import fdEmberRoadmap from '../../images/flashcard_dungeon/ember_roadmap.webp';
-import fdCryptRoadmap from '../../images/flashcard_dungeon/crypt_roadmap.webp';
-import fdStats1 from '../../images/flashcard_dungeon/stats_1.webp';
-import fdStats2 from '../../images/flashcard_dungeon/stats_2.webp';
-import fdEmberAchievements from '../../images/flashcard_dungeon/ember_achievements.webp';
-import fdCryptAchievements from '../../images/flashcard_dungeon/crpyt_achievements.webp';
+import fdShopHub from '../../images/flashcard_dungeon/shop_travel.webp';
+import fdDecksHome from '../../images/flashcard_dungeon/decks_home.webp';
+import fdRoadmap from '../../images/flashcard_dungeon/roadmap_core_blocks.webp';
+import fdRoadmapPersonal from '../../images/flashcard_dungeon/roadmap_personal.webp';
+import fdRoadmapCurated from '../../images/flashcard_dungeon/roadmap_curated.webp';
+import fdAvatarSelect from '../../images/flashcard_dungeon/avatar_select.webp';
+import fdBattleFlip from '../../images/flashcard_dungeon/battle_flip_reveal.webp';
+import fdBattleWordSort from '../../images/flashcard_dungeon/battle_word_sort.webp';
+import fdBattleMatching from '../../images/flashcard_dungeon/battle_matching_flags.webp';
+import fdBattleMultipleChoice from '../../images/flashcard_dungeon/battle_multiple_choice.webp';
+import fdBattleActiveRecall from '../../images/flashcard_dungeon/battle_active_recall.webp';
+import fdBattleAudioChoice from '../../images/flashcard_dungeon/battle_audio_choice.webp';
+import fdBattleAudioRecall from '../../images/flashcard_dungeon/battle_audio_recall.webp';
+import fdBestiary from '../../images/flashcard_dungeon/bestiary_undergrowth.webp';
+import fdBestiaryDetail from '../../images/flashcard_dungeon/bestiary_monster_detail.webp';
+import fdBestiaryDetail2 from '../../images/flashcard_dungeon/bestiary_monster_detail_2.webp';
+import fdIconPack from '../../images/flashcard_dungeon/deck_icon_pack.webp';
+import fdCardEditor from '../../images/flashcard_dungeon/deck_card_editor.webp';
+import fdDeckNotes from '../../images/flashcard_dungeon/deck_notes.webp';
+import fdCardAudioTts from '../../images/flashcard_dungeon/deck_audio_tts.webp';
+import fdProfile from '../../images/flashcard_dungeon/profile_streak.webp';
+import fdQuests from '../../images/flashcard_dungeon/quests_practice.webp';
 
 // Other projects
 import blockbuilder from '../../images/other_projects/blockbuilder.webp';
 import aws from '../../images/other_projects/aws.webp';
 import vinyltracker from '../../images/other_projects/vinyltracker.webp';
-import vintagefinds from '../../images/other_projects/vintagefinds.webp';
-import rps from '../../images/other_projects/rps.webp';
 import snakegame from '../../images/other_projects/snakegame.webp';
 import lunarlander from '../../images/other_projects/lunarlander.webp';
 import maze from '../../images/other_projects/maze.webp';
@@ -46,11 +52,6 @@ import customerBehavior from '../../images/other_projects/customer-behavior.webp
 import cartpole from '../../images/other_projects/cartpole1.webp';
 import bees from '../../images/other_projects/bees.webp';
 import facialExpression from '../../images/other_projects/facialexpression.webp';
-
-// Experience / misc
-import boundingbox from '../../images/boundingbox.webp';
-import bucketvector from '../../images/bucketvector.webp';
-const footprints = '';
 
 export {
   headshot,
@@ -64,25 +65,31 @@ export {
   ppCowboy,
   ppSteve,
   ppMalandro,
-  fdLanding,
-  fdEmberBattle,
-  fdCryptBattle,
-  fdShop1,
-  fdShop2,
-  fdJournal,
-  fdMonsterManualEmber,
-  fdMonsterManualCrypt,
-  fdEmberRoadmap,
-  fdCryptRoadmap,
-  fdStats1,
-  fdStats2,
-  fdEmberAchievements,
-  fdCryptAchievements,
+  fdShopHub,
+  fdDecksHome,
+  fdRoadmap,
+  fdRoadmapPersonal,
+  fdRoadmapCurated,
+  fdAvatarSelect,
+  fdBattleFlip,
+  fdBattleWordSort,
+  fdBattleMatching,
+  fdBattleMultipleChoice,
+  fdBattleActiveRecall,
+  fdBattleAudioChoice,
+  fdBattleAudioRecall,
+  fdBestiary,
+  fdBestiaryDetail,
+  fdBestiaryDetail2,
+  fdIconPack,
+  fdCardEditor,
+  fdDeckNotes,
+  fdCardAudioTts,
+  fdProfile,
+  fdQuests,
   blockbuilder,
   aws,
   vinyltracker,
-  vintagefinds,
-  rps,
   snakegame,
   lunarlander,
   maze,
@@ -92,7 +99,4 @@ export {
   cartpole,
   bees,
   facialExpression,
-  boundingbox,
-  bucketvector,
-  footprints,
 };

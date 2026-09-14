@@ -23,16 +23,6 @@ export interface SkillGroup {
   items: string[];
 }
 
-export const professionalSummary =
-  'Software developer based in Lisbon with 2 years of professional experience building production workflow applications using C#/.NET, JavaScript/TypeScript, REST APIs, and Oracle SQL. MSc Information Management candidate at Nova IMS specializing in Business Intelligence, with experience across front-end, back-end, database systems, QA, production support, data-driven applications, and technical project delivery.';
-
-export const profileFacts = [
-  { label: 'Location', value: 'Lisbon, Portugal' },
-  { label: 'Authorization', value: 'Portuguese student residency' },
-  { label: 'Languages', value: 'English (Native), Portuguese (B1)' },
-  { label: 'Focus', value: 'Production software + BI' },
-];
-
 export const education: EducationEntry[] = [
   {
     id: 'nova-ims',
@@ -72,6 +62,21 @@ export const skillGroups: SkillGroup[] = [
 ];
 
 export const roles: Role[] = [
+  {
+    id: 'vml',
+    title: 'Associate Back-End Engineer',
+    organization: 'VML Portugal',
+    period: 'Sep 2026 - Present',
+    location: 'Lisbon, Portugal',
+    description: [
+      'Joined VML Portugal, a global marketing and technology company, as an Associate Back-End Engineer building backend systems for enterprise clients.',
+    ],
+    highlights: [
+      'Backend engineering under the Programador de Informática technical category',
+      'Production systems and APIs for enterprise marketing and technology clients',
+    ],
+    techStack: [],
+  },
   {
     id: 'footprints',
     title: 'Full Stack Developer',

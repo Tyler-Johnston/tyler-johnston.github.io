@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import { Container, Title, Text, Stack, SimpleGrid, Tabs, Card } from '@mantine/core';
-import { motion } from 'framer-motion';
 import { categoryLabels, projects, ProjectCategory } from '../data/projects';
 import { ProjectCard } from '../components/ui/ProjectCard';
 
@@ -21,29 +20,20 @@ export function Projects() {
 
   return (
     <Container size="lg" py={60}>
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-      >
-        <Stack gap={4} mb={40}>
-          <Text size="xs" tt="uppercase" fw={700} c="orange" style={{ letterSpacing: '0.16em' }}>
-            Projects
-          </Text>
-          <Title order={1} style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 900 }}>
-            Projects by category
-          </Title>
-          <Text c="dimmed" size="md" maw={700} lh={1.75} mt={4}>
-            This page curates my portfolio by category and keeps my strongest work near the top.
-          </Text>
-        </Stack>
-      </motion.div>
+      <Stack gap={4} mb={40}>
+        <Title order={1} style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 700 }}>
+          Projects by category
+        </Title>
+        <Text c="dimmed" size="md" maw={700} lh={1.75} mt={4}>
+          This page curates my portfolio by category and keeps my strongest work near the top.
+        </Text>
+      </Stack>
 
       <Card
         mb="xl"
         style={{
-          border: '1px solid light-dark(var(--mantine-color-gray-3), #273138)',
-          background: 'light-dark(var(--mantine-color-white), #141a1e)',
+          border: '1px solid var(--line)',
+          background: 'var(--surface)',
         }}
       >
         <Tabs value={activeTab} onChange={(v) => setActiveTab((v as 'all' | ProjectCategory) ?? 'all')}>
@@ -62,15 +52,8 @@ export function Projects() {
       </Card>
 
       <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
-        {filtered.map((project, i) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: i * 0.03 }}
-          >
-            <ProjectCard project={project} />
-          </motion.div>
+        {filtered.map((project) => (
+          <ProjectCard key={project.id} project={project} />
         ))}
       </SimpleGrid>
     </Container>
