@@ -11,6 +11,7 @@ import {
   Anchor,
 } from '@mantine/core';
 import {
+  IconArrowLeft,
   IconBriefcase,
   IconDownload,
   IconBrandGithub,
@@ -264,6 +265,18 @@ export function About() {
           </Box>
         </Stack>
       </Box>
+
+      <Group justify="center" mt={48}>
+        <Button
+          component={Link}
+          to="/"
+          variant="outline"
+          color="accent"
+          leftSection={<IconArrowLeft size={16} />}
+        >
+          Back to Home
+        </Button>
+      </Group>
     </Container>
   );
 }

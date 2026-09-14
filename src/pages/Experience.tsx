@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   Box,
+  Button,
   Card,
   Container,
   Group,
@@ -11,8 +12,8 @@ import {
   ThemeIcon,
   Title,
 } from '@mantine/core';
-import { useLocation } from 'react-router-dom';
-import { IconBriefcase, IconCircleCheck } from '@tabler/icons-react';
+import { Link, useLocation } from 'react-router-dom';
+import { IconArrowRight, IconBriefcase, IconCircleCheck } from '@tabler/icons-react';
 import { roles } from '../data/experience';
 import { TechBadge } from '../components/ui/TechBadge';
 
@@ -129,6 +130,18 @@ export function Experience() {
           </Box>
         ))}
       </Stack>
+
+      <Group justify="center" mt={48}>
+        <Button
+          component={Link}
+          to="/about"
+          variant="outline"
+          color="accent"
+          rightSection={<IconArrowRight size={16} />}
+        >
+          See About Me
+        </Button>
+      </Group>
     </Container>
   );
 }

@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
-import { Container, Title, Stack, SimpleGrid, Tabs, Card } from '@mantine/core';
+import { Button, Card, Container, Group, SimpleGrid, Stack, Tabs, Title } from '@mantine/core';
+import { IconArrowRight } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 import { categoryLabels, projects, ProjectCategory } from '../data/projects';
 import { ProjectCard } from '../components/ui/ProjectCard';
 
@@ -53,6 +55,18 @@ export function Projects() {
           <ProjectCard key={project.id} project={project} />
         ))}
       </SimpleGrid>
+
+      <Group justify="center" mt={48}>
+        <Button
+          component={Link}
+          to="/experience"
+          variant="outline"
+          color="accent"
+          rightSection={<IconArrowRight size={16} />}
+        >
+          See Experience
+        </Button>
+      </Group>
     </Container>
   );
 }
