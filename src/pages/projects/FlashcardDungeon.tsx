@@ -194,7 +194,16 @@ export function FlashcardDungeon() {
     <Container size="lg" py={60}>
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={36} mb={40} style={{ alignItems: 'stretch' }}>
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-          <Button component={Link} to="/projects" variant="subtle" color="gray" leftSection={<IconArrowLeft size={16} />} size="sm" style={{ alignSelf: 'flex-start' }}>
+          <Button
+            className="fd-back-button"
+            component={Link}
+            to="/projects"
+            variant="subtle"
+            color="gray"
+            leftSection={<IconArrowLeft size={16} />}
+            size="sm"
+            style={{ alignSelf: 'flex-start' }}
+          >
             Back to projects
           </Button>
 
@@ -208,6 +217,22 @@ export function FlashcardDungeon() {
                   Flashcard Dungeon
                 </Title>
               </Stack>
+
+              <Box
+                className="fd-hero-image-mobile"
+                style={{
+                  overflow: 'hidden',
+                  borderRadius: 6,
+                  border: '1px solid var(--line)',
+                  background: 'var(--surface)',
+                }}
+              >
+                <Image
+                  src={fdDecksHome}
+                  alt="Flashcard Dungeon deck list with today's quests"
+                  fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Flashcard+Dungeon"
+                />
+              </Box>
 
               <Group gap="sm" wrap="wrap">
                 {techStack.map((tech) => (
@@ -239,6 +264,7 @@ export function FlashcardDungeon() {
         </div>
 
         <Box
+          className="fd-hero-image-desktop"
           style={{
             overflow: 'hidden',
             borderRadius: 6,
@@ -267,7 +293,7 @@ export function FlashcardDungeon() {
             </Text>
           </Stack>
 
-          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+          <SimpleGrid cols={{ base: 2, sm: 2, md: 3 }} spacing={{ base: 'sm', sm: 'lg' }}>
             {section.shots.map((shot) => (
               <Box
                 key={shot.label}

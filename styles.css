@@ -147,6 +147,14 @@ a {
   display: block;
 }
 
+.fd-hero-image-mobile {
+  display: none;
+}
+
+.fd-hero-image-desktop {
+  display: block;
+}
+
 .about-photo-mobile {
   display: none;
 }
@@ -214,6 +222,19 @@ a {
   }
 
   .landing-hero-image-desktop {
+    display: none !important;
+  }
+
+  .fd-hero-image-mobile {
+    display: block;
+    margin: 18px 0 4px;
+  }
+
+  .fd-hero-image-desktop {
+    display: none !important;
+  }
+
+  .fd-back-button {
     display: none !important;
   }
 
