@@ -194,19 +194,6 @@ export function FlashcardDungeon() {
     <Container size="lg" py={60}>
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={36} mb={40} style={{ alignItems: 'stretch' }}>
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-          <Button
-            className="fd-back-button"
-            component={Link}
-            to="/projects"
-            variant="subtle"
-            color="gray"
-            leftSection={<IconArrowLeft size={16} />}
-            size="sm"
-            style={{ alignSelf: 'flex-start', paddingInline: 0 }}
-          >
-            Back to projects
-          </Button>
-
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Stack gap="md">
               <Stack gap="xs">
@@ -315,6 +302,18 @@ export function FlashcardDungeon() {
           </SimpleGrid>
         </Box>
       ))}
+
+      <Group justify="center" mt={48}>
+        <Button
+          component={Link}
+          to="/projects"
+          variant="outline"
+          color="accent"
+          leftSection={<IconArrowLeft size={16} />}
+        >
+          Back to Projects
+        </Button>
+      </Group>
     </Container>
   );
 }

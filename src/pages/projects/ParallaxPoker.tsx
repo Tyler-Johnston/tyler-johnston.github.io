@@ -129,10 +129,6 @@ const techStack = ['C#', 'Godot 4', 'Python', 'Pandas', 'Monte Carlo'];
 export function ParallaxPoker() {
   return (
     <Container size="lg" py={60}>
-      <Button component={Link} to="/projects" variant="subtle" color="gray" leftSection={<IconArrowLeft size={16} />} mb="xl" size="sm" style={{ paddingInline: 0 }}>
-        Back to projects
-      </Button>
-
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={36} mb={40} style={{ alignItems: 'start' }}>
         <Stack gap="md">
           <Text size="sm" c="dimmed" style={{ fontFamily: 'var(--mantine-font-family-monospace)' }}>
@@ -332,6 +328,18 @@ export function ParallaxPoker() {
           </Box>
         ))}
       </SimpleGrid>
+
+      <Group justify="center" mt={48}>
+        <Button
+          component={Link}
+          to="/projects"
+          variant="outline"
+          color="accent"
+          leftSection={<IconArrowLeft size={16} />}
+        >
+          Back to Projects
+        </Button>
+      </Group>
     </Container>
   );
 }
