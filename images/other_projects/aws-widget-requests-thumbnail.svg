@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="820" viewBox="0 0 1600 820" role="img" aria-labelledby="title desc">
+  <title id="title">AWS Widget Requests</title>
+  <desc id="desc">Editorial architecture-diagram thumbnail showing the serverless widget-request pipeline: a client request is validated and published by an AWS Lambda function, queued in Amazon SQS, picked up by a Python consumer process, and persisted to S3 or DynamoDB.</desc>
+  <defs>
+    <pattern id="paperGrid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M34 0H0V34" fill="none" stroke="#2B2620" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+    <filter id="softShadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#1A1510" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="820" fill="#F5F2EC"/>
+  <rect width="1600" height="820" fill="url(#paperGrid)"/>
+  <rect x="0" y="0" width="30" height="820" fill="#EC7211"/>
+
+  <!-- Title block -->
+  <text x="94" y="140" fill="#2B2620" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="700" letter-spacing="-2">AWS Widget</text>
+  <text x="94" y="209" fill="#2B2620" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="700" letter-spacing="-2">Requests</text>
+  <path d="M97 239H460" stroke="#EC7211" stroke-width="5"/>
+  <text x="96" y="283" fill="#6B6155" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="0.7">SERVERLESS WIDGET-REQUEST PIPELINE</text>
+
+  <!-- Pipeline: five stages connected by arrows -->
+  <g font-family="Arial, sans-serif">
+    <!-- connecting arrows -->
+    <g stroke="#EC7211" stroke-width="4" fill="none">
+      <line x1="332" y1="495" x2="380" y2="495"/>
+      <path d="M380 495L364 486V504Z" fill="#EC7211" stroke="none"/>
+      <line x1="624" y1="495" x2="672" y2="495"/>
+      <path d="M672 495L656 486V504Z" fill="#EC7211" stroke="none"/>
+      <line x1="916" y1="495" x2="964" y2="495"/>
+      <path d="M964 495L948 486V504Z" fill="#EC7211" stroke="none"/>
+      <line x1="1208" y1="495" x2="1256" y2="495"/>
+      <path d="M1256 495L1240 486V504Z" fill="#EC7211" stroke="none"/>
+    </g>
+
+    <!-- stage cards -->
+    <g filter="url(#softShadow)">
+      <rect x="100" y="410" width="224" height="170" rx="14" fill="#FFFFFF" stroke="#EC7211" stroke-width="3"/>
+      <rect x="392" y="410" width="224" height="170" rx="14" fill="#FFFFFF" stroke="#EC7211" stroke-width="3"/>
+      <rect x="684" y="410" width="224" height="170" rx="14" fill="#FFFFFF" stroke="#EC7211" stroke-width="3"/>
+      <rect x="976" y="410" width="224" height="170" rx="14" fill="#FFFFFF" stroke="#EC7211" stroke-width="3"/>
+      <rect x="1268" y="410" width="224" height="170" rx="14" fill="#EC7211"/>
+    </g>
+
+    <!-- stage 1: request -->
+    <text x="122" y="460" fill="#EC7211" font-size="40" font-weight="800" font-family="Georgia, 'Times New Roman', serif">01</text>
+    <text x="122" y="500" fill="#2B2620" font-size="24" font-weight="700">REQUEST</text>
+    <text x="122" y="530" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">CREATE / UPDATE /</text>
+    <text x="122" y="550" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">DELETE PAYLOAD</text>
+
+    <!-- stage 2: lambda -->
+    <text x="414" y="460" fill="#EC7211" font-size="40" font-weight="800" font-family="Georgia, 'Times New Roman', serif">02</text>
+    <text x="414" y="500" fill="#2B2620" font-size="24" font-weight="700">AWS LAMBDA</text>
+    <text x="414" y="530" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">VALIDATE +</text>
+    <text x="414" y="550" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">PUBLISH</text>
+
+    <!-- stage 3: sqs -->
+    <text x="706" y="460" fill="#EC7211" font-size="40" font-weight="800" font-family="Georgia, 'Times New Roman', serif">03</text>
+    <text x="706" y="500" fill="#2B2620" font-size="24" font-weight="700">AMAZON SQS</text>
+    <text x="706" y="530" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">DURABLE</text>
+    <text x="706" y="550" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">MESSAGE QUEUE</text>
+
+    <!-- stage 4: consumer -->
+    <text x="998" y="460" fill="#EC7211" font-size="40" font-weight="800" font-family="Georgia, 'Times New Roman', serif">04</text>
+    <text x="998" y="500" fill="#2B2620" font-size="24" font-weight="700">CONSUMER</text>
+    <text x="998" y="530" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">POLL + APPLY</text>
+    <text x="998" y="550" fill="#6B6155" font-size="15" font-weight="700" letter-spacing="0.5">(PYTHON)</text>
+
+    <!-- stage 5: storage (focal point) -->
+    <text x="1290" y="460" fill="#FFFFFF" font-size="40" font-weight="800" font-family="Georgia, 'Times New Roman', serif">05</text>
+    <text x="1290" y="500" fill="#FFFFFF" font-size="24" font-weight="700">S3 / DYNAMODB</text>
+    <text x="1290" y="530" fill="#FBE2C8" font-size="15" font-weight="700" letter-spacing="0.5">WIDGET</text>
+    <text x="1290" y="550" fill="#FBE2C8" font-size="15" font-weight="700" letter-spacing="0.5">STORE</text>
+  </g>
+
+  <text x="800" y="650" fill="#6B6155" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="0.7" text-anchor="middle">EVENT-DRIVEN &#183; SERVERLESS &#183; PAY-PER-REQUEST</text>
+
+</svg>

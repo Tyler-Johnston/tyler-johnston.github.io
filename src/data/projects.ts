@@ -11,6 +11,7 @@ export interface Project {
   techStack: string[];
   category: ProjectCategory;
   featured?: boolean;
+  archived?: boolean;
 }
 
 export interface FlagshipProject {
@@ -76,7 +77,7 @@ export const projects: Project[] = [
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
     description:
-      'A full-stack, general-purpose study app that turns spaced repetition into a roguelite dungeon crawl, with unlockable characters, a monster bestiary, deck notes, and multiple game modes.',
+      'A full-stack, general-purpose study app that turns spaced repetition into a roguelite dungeon crawl.',
     imageUrl: fdDecksHome,
     projectUrl: '/projects/flashcard-dungeon',
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
@@ -142,6 +143,7 @@ export const projects: Project[] = [
     projectUrl: 'https://github.com/Tyler-Johnston/Maze-Game',
     techStack: ['C#', '.NET', 'MonoGame'],
     category: 'gameDev',
+    archived: true,
   },
   {
     id: 'utah-job-market',
@@ -172,6 +174,7 @@ export const projects: Project[] = [
     projectUrl: 'https://github.com/Tyler-Johnston/cs5600-cartpole-reinforcement-learning',
     techStack: ['Python', 'PyTorch', 'OpenAI Gym'],
     category: 'machineLearning',
+    archived: true,
   },
   {
     id: 'beehive-weight',
@@ -187,10 +190,10 @@ export const projects: Project[] = [
     id: 'facial-expression',
     title: 'Facial Expression Recognition',
     description:
-      'A CNN classifier for FER-2013 built with data augmentation and image preprocessing.',
+      'An SVM classifier trained on LBP and ORB features to recognize facial expressions from the CK+ dataset.',
     imageUrl: facialExpression,
     projectUrl: 'https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition',
-    techStack: ['Python', 'PyTorch', 'OpenCV'],
+    techStack: ['Python', 'scikit-learn', 'OpenCV'],
     category: 'machineLearning',
   },
 ];

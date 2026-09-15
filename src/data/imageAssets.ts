@@ -44,17 +44,17 @@ import fdQuests from '../../images/flashcard_dungeon/quests_practice.webp';
 
 // Other projects
 import blockbuilder from '../../images/other_projects/blockbuilder.webp';
-import aws from '../../images/other_projects/aws.webp';
+import aws from '../../images/other_projects/aws-widget-requests-thumbnail.svg';
 import vinyltracker from '../../images/other_projects/vinyltracker.webp';
 import snakegame from '../../images/other_projects/snakegame.webp';
 import lunarlander from '../../images/other_projects/lunarlander.webp';
 import maze from '../../images/other_projects/maze.webp';
-import absentee from '../../images/other_projects/absentee.webp';
-import jobMarket from '../../images/other_projects/job_market.webp';
-import customerBehavior from '../../images/other_projects/customer-behavior.webp';
+import absentee from '../../images/other_projects/absentee-analysis-thumbnail.svg';
+import jobMarket from '../../images/other_projects/utah-programmer-job-market-analysis-thumbnail.svg';
+import customerBehavior from '../../images/other_projects/customer-behavior-analysis-thumbnail.svg';
 import cartpole from '../../images/other_projects/cartpole1.webp';
-import bees from '../../images/other_projects/bees.webp';
-import facialExpression from '../../images/other_projects/facialexpression.webp';
+import bees from '../../images/other_projects/beehive-weight-prediction-thumbnail.svg';
+import facialExpression from '../../images/other_projects/facial-expression-recognition-thumbnail.svg';
 
 export {
   headshot,

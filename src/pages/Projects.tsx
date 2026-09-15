@@ -5,18 +5,29 @@ import { Link } from 'react-router-dom';
 import { categoryLabels, projects, ProjectCategory } from '../data/projects';
 import { ProjectCard } from '../components/ui/ProjectCard';
 
+type ProjectTab = 'all' | 'archive' | ProjectCategory;
+
 const tabValues: Array<'all' | ProjectCategory> = ['all', 'webDev', 'gameDev', 'dataAnalytics', 'machineLearning'];
+const archiveOrder = ['cartpole-rl', 'maze-game'];
 
 export function Projects() {
-  const [activeTab, setActiveTab] = useState<'all' | ProjectCategory>('all');
+  const [activeTab, setActiveTab] = useState<ProjectTab>('all');
 
   const orderedProjects = useMemo(
-    () => [...projects].sort((a, b) => Number(b.featured) - Number(a.featured)),
+    () => projects.filter((project) => !project.archived).sort((a, b) => Number(b.featured) - Number(a.featured)),
     [],
   );
 
-  const filtered =
-    activeTab === 'all'
+  const archivedProjects = useMemo(
+    () => projects
+      .filter((project) => project.archived)
+      .sort((a, b) => archiveOrder.indexOf(a.id) - archiveOrder.indexOf(b.id)),
+    [],
+  );
+
+  const filtered = activeTab === 'archive'
+    ? archivedProjects
+    : activeTab === 'all'
       ? orderedProjects
       : orderedProjects.filter((project) => project.category === activeTab);
 
@@ -35,15 +46,22 @@ export function Projects() {
           background: 'var(--surface)',
         }}
       >
-        <Tabs value={activeTab} onChange={(v) => setActiveTab((v as 'all' | ProjectCategory) ?? 'all')}>
+        <Tabs value={activeTab} onChange={(v) => setActiveTab((v as ProjectTab) ?? 'all')}>
           <div className="projects-tabs-shell">
-            <div className="projects-tabs-scroll">
-              <Tabs.List className="projects-tabs-list">
-                {tabValues.map((tab) => (
-                  <Tabs.Tab key={tab} value={tab} className="projects-tab">
-                    {tab === 'all' ? 'All' : categoryLabels[tab]}
-                  </Tabs.Tab>
-                ))}
+            <div className="projects-tabs-row">
+              <div className="projects-tabs-scroll">
+                <Tabs.List className="projects-tabs-list">
+                  {tabValues.map((tab) => (
+                    <Tabs.Tab key={tab} value={tab} className="projects-tab">
+                      {tab === 'all' ? 'All' : categoryLabels[tab]}
+                    </Tabs.Tab>
+                  ))}
+                </Tabs.List>
+              </div>
+              <Tabs.List className="projects-archive-tab-list">
+                <Tabs.Tab value="archive" className="projects-tab">
+                  Archive
+                </Tabs.Tab>
               </Tabs.List>
             </div>
           </div>
