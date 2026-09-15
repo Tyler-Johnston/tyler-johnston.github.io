@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Box, Group, Stack, Text, UnstyledButton } from '@mantine/core';
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { ZoomableProjectImage } from './ZoomableProjectImage';
+
+const SWIPE_THRESHOLD = 40;
 
 export interface CarouselItem {
   src: string;
@@ -35,14 +37,47 @@ export function ScreenshotCarousel({ items }: ScreenshotCarouselProps) {
   const [index, setIndex] = useState(0);
   const total = items.length;
   const current = items[index];
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const suppressClick = useRef(false);
 
   function goTo(next: number) {
     setIndex(((next % total) + total) % total);
   }
 
+  function handleTouchStart(e: React.TouchEvent) {
+    const touch = e.touches[0];
+    touchStart.current = { x: touch.clientX, y: touch.clientY };
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (!touchStart.current || total <= 1) return;
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - touchStart.current.x;
+    const dy = touch.clientY - touchStart.current.y;
+    touchStart.current = null;
+
+    if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+      suppressClick.current = true;
+      goTo(dx < 0 ? index + 1 : index - 1);
+    }
+  }
+
+  function handleClickCapture(e: React.MouseEvent) {
+    if (suppressClick.current) {
+      e.stopPropagation();
+      e.preventDefault();
+      suppressClick.current = false;
+    }
+  }
+
   return (
     <Stack gap={10}>
-      <Box style={{ position: 'relative', overflow: 'hidden', border: '1px solid var(--line)', borderRadius: 6, background: 'var(--surface)' }}>
+      <Box
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        onClickCapture={handleClickCapture}
+        style={{ position: 'relative', overflow: 'hidden', border: '1px solid var(--line)', borderRadius: 6, background: 'var(--surface)', touchAction: 'pan-y' }}
+      >
         <ZoomableProjectImage
           src={current.src}
           alt={current.alt}
