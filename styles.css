@@ -155,6 +155,74 @@ a {
   display: block;
 }
 
+.project-image-trigger {
+  position: relative;
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.project-image-trigger > img,
+.project-image-trigger .mantine-Image-root,
+.project-image-trigger .mantine-Image-image {
+  display: block;
+  width: 100%;
+}
+
+.project-image-trigger__hint {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid rgba(231, 228, 221, 0.38);
+  border-radius: 50%;
+  background: rgba(19, 22, 26, 0.82);
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.project-image-trigger:hover .project-image-trigger__hint,
+.project-image-trigger:focus-visible .project-image-trigger__hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-image-trigger:focus-visible {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: -2px;
+}
+
+/* A four-shot story should keep the same card scale as a three-shot row,
+   rather than stretching two tiles across the whole desktop container. */
+@media (min-width: 62em) {
+  .project-screenshot-grid--balanced {
+    max-width: 780px;
+    margin-inline: auto;
+  }
+
+  /* In a three-column grid, two final cards form a pair around the centre
+     line instead of leaving a blank third slot on the right. */
+  .project-screenshot-grid--center-last-pair > :nth-last-child(-n + 2) {
+    transform: translateX(50%);
+  }
+
+  .project-screenshot-grid--center-last-single > :last-child {
+    grid-column: 2;
+  }
+}
+
+@media (hover: none) {
+  .project-image-trigger__hint {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .about-photo-mobile {
   display: none;
 }

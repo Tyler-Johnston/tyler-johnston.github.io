@@ -26,6 +26,7 @@ import fdRoadmapCurated from '../../images/flashcard_dungeon/roadmap_curated.web
 import fdAvatarSelect from '../../images/flashcard_dungeon/avatar_select.webp';
 import fdBattleFlip from '../../images/flashcard_dungeon/battle_flip_reveal.webp';
 import fdBattleWordSort from '../../images/flashcard_dungeon/battle_word_sort.webp';
+import fdBattleSpellSprint from '../../images/flashcard_dungeon/battle_spell_sprint.png';
 import fdBattleMatching from '../../images/flashcard_dungeon/battle_matching_flags.webp';
 import fdBattleMultipleChoice from '../../images/flashcard_dungeon/battle_multiple_choice.webp';
 import fdBattleActiveRecall from '../../images/flashcard_dungeon/battle_active_recall.webp';
@@ -77,6 +78,7 @@ export {
   fdAvatarSelect,
   fdBattleFlip,
   fdBattleWordSort,
+  fdBattleSpellSprint,
   fdBattleMatching,
   fdBattleMultipleChoice,
   fdBattleActiveRecall,

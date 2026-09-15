@@ -7,7 +7,6 @@ import {
   Group,
   Button,
   Box,
-  Image,
 } from '@mantine/core';
 import { IconArrowLeft, IconBrain, IconChartBar, IconCpu } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -23,6 +22,8 @@ import {
   ppAkalite,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
+import { ProjectScreenshotGrid } from '../../components/ui/ProjectScreenshotGrid';
+import { ZoomableProjectImage } from '../../components/ui/ZoomableProjectImage';
 
 const proofPoints = [
   { value: '288k', label: 'hands simulated' },
@@ -158,11 +159,7 @@ export function ParallaxPoker() {
             background: 'var(--surface)',
           }}
         >
-          <Image
-            src={ppKing}
-            alt="Parallax Poker boss opponent"
-            fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Parallax+Poker"
-          />
+          <ZoomableProjectImage src={ppKing} alt="Parallax Poker boss opponent" fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Parallax+Poker" />
         </Box>
       </SimpleGrid>
 
@@ -293,7 +290,7 @@ export function ParallaxPoker() {
         </Text>
       </Box>
 
-      <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+      <ProjectScreenshotGrid itemCount={gallery.length} baseColumns={1} smallColumns={2} spacing="lg">
         {gallery.map((shot, index) => (
           <Box
             key={shot.label}
@@ -304,7 +301,7 @@ export function ParallaxPoker() {
               borderRadius: 6,
             }}
           >
-            <Image src={shot.src} alt={shot.label} fallbackSrc="https://placehold.co/600x400/1b1f25/3e7cb1?text=Project" />
+            <ZoomableProjectImage src={shot.src} alt={shot.label} fallbackSrc="https://placehold.co/600x400/1b1f25/3e7cb1?text=Project" />
             <Stack gap={6} p="md">
               <Group justify="space-between" align="flex-start" gap="md">
                 <Box>
@@ -327,7 +324,7 @@ export function ParallaxPoker() {
             </Stack>
           </Box>
         ))}
-      </SimpleGrid>
+      </ProjectScreenshotGrid>
 
       <Group justify="center" mt={48}>
         <Button

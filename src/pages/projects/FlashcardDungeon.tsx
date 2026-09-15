@@ -7,7 +7,6 @@ import {
   Group,
   Button,
   Box,
-  Image,
 } from '@mantine/core';
 import { IconArrowLeft, IconExternalLink } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
@@ -23,6 +22,7 @@ import {
   fdBattleActiveRecall,
   fdBattleMatching,
   fdBattleWordSort,
+  fdBattleSpellSprint,
   fdBattleAudioChoice,
   fdBattleAudioRecall,
   fdBestiary,
@@ -36,6 +36,8 @@ import {
   fdQuests,
 } from '../../data/imageAssets';
 import { TechBadge } from '../../components/ui/TechBadge';
+import { ProjectScreenshotGrid } from '../../components/ui/ProjectScreenshotGrid';
+import { ZoomableProjectImage } from '../../components/ui/ZoomableProjectImage';
 
 const techStack = ['Angular', 'TypeScript', 'IndexedDB', 'Supabase', 'PostgreSQL'];
 
@@ -129,6 +131,11 @@ const sections: ShowcaseSection[] = [
         note: 'Rebuild a sentence by tapping its words back into the right order.',
       },
       {
+        src: fdBattleSpellSprint,
+        label: 'Spell Sprint',
+        note: 'Race the clock by rebuilding a word from scrambled letter tiles.',
+      },
+      {
         src: fdBattleAudioChoice,
         label: 'Audio Choice',
         note: 'The prompt is spoken instead of printed. Listen, then pick the right answer from the options below.',
@@ -214,11 +221,7 @@ export function FlashcardDungeon() {
                   background: 'var(--surface)',
                 }}
               >
-                <Image
-                  src={fdDecksHome}
-                  alt="Flashcard Dungeon deck list with today's quests"
-                  fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Flashcard+Dungeon"
-                />
+                <ZoomableProjectImage src={fdDecksHome} alt="Flashcard Dungeon deck list with today's quests" fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Flashcard+Dungeon" />
               </Box>
 
               <Group gap="sm" wrap="wrap">
@@ -258,11 +261,7 @@ export function FlashcardDungeon() {
             background: 'var(--surface)',
           }}
         >
-          <Image
-            src={fdDecksHome}
-            alt="Flashcard Dungeon deck list with today's quests"
-            fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Flashcard+Dungeon"
-          />
+          <ZoomableProjectImage src={fdDecksHome} alt="Flashcard Dungeon deck list with today's quests" fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Flashcard+Dungeon" />
         </Box>
       </SimpleGrid>
 
@@ -279,7 +278,7 @@ export function FlashcardDungeon() {
             </Text>
           </Stack>
 
-          <SimpleGrid cols={{ base: 2, sm: 2, md: 3 }} spacing={{ base: 'sm', sm: 'lg' }}>
+          <ProjectScreenshotGrid itemCount={section.shots.length}>
             {section.shots.map((shot) => (
               <Box
                 key={shot.label}
@@ -290,7 +289,7 @@ export function FlashcardDungeon() {
                   borderRadius: 6,
                 }}
               >
-                <Image src={shot.src} alt={shot.label} fallbackSrc="https://placehold.co/600x400/1b1f25/3e7cb1?text=Project" />
+                <ZoomableProjectImage src={shot.src} alt={shot.label} fallbackSrc="https://placehold.co/600x400/1b1f25/3e7cb1?text=Project" />
                 <Stack gap={6} p="md">
                   <Text fw={700}>{shot.label}</Text>
                   <Text size="sm" c="dimmed" lh={1.6}>
@@ -299,7 +298,7 @@ export function FlashcardDungeon() {
                 </Stack>
               </Box>
             ))}
-          </SimpleGrid>
+          </ProjectScreenshotGrid>
         </Box>
       ))}
 
