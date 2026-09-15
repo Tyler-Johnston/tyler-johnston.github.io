@@ -61,7 +61,7 @@ export function Landing() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
+                  justifyContent: 'center',
                   height: '100%',
                   maxWidth: 720,
                 }}
@@ -107,9 +107,6 @@ export function Landing() {
                       </Box>
                     </Box>
                   </Box>
-                </Stack>
-
-                <Stack gap="lg">
                   <Text size="lg" c="dimmed" maw={720} lh={1.8}>
                     I’m Tyler Johnston, a full-stack developer based in Porto. I build client-facing
                     applications, backend services, data tools, and workflow systems using C#/.NET,

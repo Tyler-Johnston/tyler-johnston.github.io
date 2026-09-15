@@ -185,27 +185,35 @@ export function About() {
         <Stack gap={0}>
           <Box className="about-row" py={22} style={{ borderBottom: '1px solid var(--line)' }}>
             <Group className="about-row-inner" align="flex-start" gap={28} wrap="nowrap">
-              <Box
-                className="about-row-label"
-                style={{
-                  minWidth: 150,
-                  width: 150,
-                  height: 88,
-                  borderRadius: 6,
-                  background: '#ffffff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: 14,
-                  flex: '0 0 auto',
-                }}
+              <Anchor
+                href="https://www.novaims.unl.pt/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit NOVA IMS website"
+                style={{ display: 'block' }}
               >
-                <Image
-                  src={novaImsLogo}
-                  alt="Nova IMS logo"
-                  style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto' }}
-                />
-              </Box>
+                <Box
+                  className="about-row-label"
+                  style={{
+                    minWidth: 150,
+                    width: 150,
+                    height: 88,
+                    borderRadius: 6,
+                    background: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: 14,
+                    flex: '0 0 auto',
+                  }}
+                >
+                  <Image
+                    src={novaImsLogo}
+                    alt="Nova IMS logo"
+                    style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto' }}
+                  />
+                </Box>
+              </Anchor>
               <Stack className="about-row-content" gap={6}>
                 <Title order={3} style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 2vw, 1.35rem)' }}>
                   NOVA IMS
@@ -225,27 +233,35 @@ export function About() {
 
           <Box className="about-row" py={22}>
             <Group className="about-row-inner" align="flex-start" gap={28} wrap="nowrap">
-              <Box
-                className="about-row-label"
-                style={{
-                  minWidth: 150,
-                  width: 150,
-                  height: 88,
-                  borderRadius: 6,
-                  background: '#ffffff',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: 14,
-                  flex: '0 0 auto',
-                }}
+              <Anchor
+                href="https://www.usu.edu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit Utah State University website"
+                style={{ display: 'block' }}
               >
-                <Image
-                  src={usuLogo}
-                  alt="Utah State University logo"
-                  style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto' }}
-                />
-              </Box>
+                <Box
+                  className="about-row-label"
+                  style={{
+                    minWidth: 150,
+                    width: 150,
+                    height: 88,
+                    borderRadius: 6,
+                    background: '#ffffff',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: 14,
+                    flex: '0 0 auto',
+                  }}
+                >
+                  <Image
+                    src={usuLogo}
+                    alt="Utah State University logo"
+                    style={{ maxWidth: '100%', maxHeight: '100%', width: 'auto', height: 'auto' }}
+                  />
+                </Box>
+              </Anchor>
               <Stack className="about-row-content" gap={6}>
                 <Title order={3} style={{ fontWeight: 700, fontSize: 'clamp(1.15rem, 2vw, 1.35rem)' }}>
                   Utah State University

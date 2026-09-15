@@ -204,7 +204,7 @@ a {
   }
 
   .landing-hero-title {
-    font-size: clamp(2.1rem, 12vw, 3.25rem) !important;
+    font-size: clamp(2rem, 8vw, 2.75rem) !important;
     line-height: 1.04 !important;
     letter-spacing: -0.03em !important;
   }
@@ -216,7 +216,8 @@ a {
 
   .landing-hero-image-mobile {
     display: block;
-    margin: 18px 0 12px;
+    max-width: 300px;
+    margin: 18px auto 12px;
   }
 
   .landing-hero-image-desktop {
@@ -326,7 +327,7 @@ a {
   }
 
   .landing-hero-title {
-    font-size: clamp(1.95rem, 13vw, 2.8rem) !important;
+    font-size: clamp(1.8rem, 10vw, 2.35rem) !important;
   }
 
   .landing-hero-image-desktop {

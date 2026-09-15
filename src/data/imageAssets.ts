@@ -1,7 +1,7 @@
 // Vite-processed image assets — imported as bundled URLs
 
 // Site
-import headshot from '../../images/headshot_portugal.webp';
+import headshot from '../../images/tyler-johnston-headshot.png';
 import grad from '../../images/grad.jpeg';
 import usuLogo from '../../images/usu_logo.webp';
 import novaImsLogo from '../../images/nova_ims_logo.webp';
