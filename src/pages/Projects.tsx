@@ -8,13 +8,33 @@ import { ProjectCard } from '../components/ui/ProjectCard';
 type ProjectTab = 'all' | 'archive' | ProjectCategory;
 
 const tabValues: Array<'all' | ProjectCategory> = ['all', 'webDev', 'gameDev', 'dataAnalytics', 'machineLearning'];
-const archiveOrder = ['cartpole-rl', 'maze-game', 'lunar-lander', 'customer-behavior'];
+const archiveOrder = ['cartpole-rl', 'lunar-lander', 'customer-behavior', 'maze-game'];
+
+// Manual strength ranking (proudest work first within each category); featured projects
+// are pinned ahead of this via the featured sort key below.
+const projectOrder = [
+  'parallax-poker',
+  'flashcard-dungeon',
+  'vinyl-tracker',
+  'aws-widget-requests',
+  'multiplayer-snake',
+  'absentee-analysis',
+  'utah-job-market',
+  'beehive-weight',
+  'facial-expression',
+];
 
 export function Projects() {
   const [activeTab, setActiveTab] = useState<ProjectTab>('all');
 
   const orderedProjects = useMemo(
-    () => projects.filter((project) => !project.archived).sort((a, b) => Number(b.featured) - Number(a.featured)),
+    () =>
+      projects
+        .filter((project) => !project.archived)
+        .sort((a, b) => {
+          const featuredDiff = Number(b.featured) - Number(a.featured);
+          return featuredDiff !== 0 ? featuredDiff : projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id);
+        }),
     [],
   );
 
