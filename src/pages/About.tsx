@@ -70,14 +70,14 @@ export function About() {
           </Text>
 
           <Text size="md" lh={1.85} c="dimmed">
-            I’m an MSc Information Management candidate at NOVA IMS specializing in Business
-            Intelligence. My background spans production web development, research, teaching,
-            and applied data work.
+            Alongside this role, I’m pursuing an MSc in Information Management at NOVA IMS,
+            specializing in Business Intelligence. My background spans production web development,
+            research, teaching, and applied data work.
           </Text>
 
           <Text size="md" lh={1.85} c="dimmed">
-            At Footprints, I worked on aerospace and steel-manufacturing systems across front
-            end, back end, APIs, databases, and QA. Earlier roles expanded that foundation into
+            Previously, at Footprints, I worked on aerospace and steel-manufacturing systems across
+            the front end, back end, APIs, databases, and QA. Earlier roles added experience in
             computer vision, C++, and workflow tooling.
           </Text>
           <Group gap="sm" wrap="wrap" mt={4}>
