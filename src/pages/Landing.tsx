@@ -10,7 +10,7 @@ import {
   Image,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
-import { IconArrowRight } from '@tabler/icons-react';
+import { IconArrowRight, IconMail } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { flagshipProjects } from '../data/projects';
 import { FlagshipCard } from '../components/ui/FlagshipCard';
@@ -116,12 +116,12 @@ export function Landing() {
                   <Group gap="sm" wrap="wrap">
                     <Button
                       component={Link}
-                      to="/projects"
+                      to="/experience"
                       size="md"
                       color="accent"
                       rightSection={<IconArrowRight size={16} />}
                     >
-                      See All Projects
+                      See Experience
                     </Button>
                     <Button
                       component="a"
@@ -132,6 +132,16 @@ export function Landing() {
                       color="accent"
                     >
                       Download CV
+                    </Button>
+                    <Button
+                      component="a"
+                      href="mailto:johnstontyler@protonmail.com"
+                      size="md"
+                      variant="outline"
+                      color="accent"
+                      leftSection={<IconMail size={16} />}
+                    >
+                      Email me
                     </Button>
                   </Group>
                 </Stack>

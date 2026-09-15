@@ -138,9 +138,6 @@ export function About() {
         <Title order={2} style={{ fontWeight: 700 }}>
           Stack and toolset
         </Title>
-        <Text size="sm" c="dimmed" maw={920} lh={1.7}>
-          I use these tools across production development, data work, testing, and delivery.
-        </Text>
       </Stack>
 
       <Box
@@ -170,10 +167,6 @@ export function About() {
         <Title order={2} style={{ fontWeight: 700 }}>
           Academic background
         </Title>
-        <Text size="sm" c="dimmed" maw={920} lh={1.7}>
-          My degrees connect software development, business intelligence, and technical
-          problem-solving.
-        </Text>
       </Stack>
 
       <Box
