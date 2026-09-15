@@ -38,9 +38,10 @@ export const flagshipProjects: FlagshipProject[] = [
     imagePosition: 'top',
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase', 'PostgreSQL'],
     achievements: [
-      'Row-Level-Security-scoped multi-user data model, with purchase/economy writes routed through service-role Edge Functions and SECURITY DEFINER RPCs after finding and patching a real self-grant exploit in production',
-      'Cross-device realtime sync via Supabase Postgres Changes on top of an offline-first IndexedDB core, with a non-destructive guest-to-account data merge on login',
-      '165-spec Vitest suite plus pgTAP tests for server-side SQL, run through a two-job CI pipeline, deployed behind a hardened CSP/security-header config',
+      'Row-level security scoping every table by user, with purchase writes routed through server-side functions only',
+      'Real-time sync across every device, layered on an offline-first IndexedDB core',
+      'Non-destructive guest-to-account data merge on login',
+      'Full test suite spanning app and database logic, run in CI behind hardened security headers',
     ],
     cta: [
       { label: 'View Project', href: '/projects/flashcard-dungeon', variant: 'filled' },
@@ -80,7 +81,7 @@ export const projects: Project[] = [
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
     description:
-      'A full-stack, general-purpose study app that turns spaced repetition into a game.',
+      'A full-stack study app pairing spaced repetition with unlockable characters, a monster bestiary, deck notes, and multiple study modes.',
     imageUrl: fdDecksHome,
     imagePosition: 'top',
     projectUrl: '/projects/flashcard-dungeon',
