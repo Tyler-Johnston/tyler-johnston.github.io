@@ -172,6 +172,21 @@ a {
   display: block;
 }
 
+.project-tech-line-mobile {
+  display: none;
+}
+
+.project-tech-line-desktop {
+  display: block;
+}
+
+.fd-chapter-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
 .project-image-trigger {
   position: relative;
   display: block;
@@ -316,6 +331,24 @@ a {
 
   .fd-hero-image-desktop {
     display: none !important;
+  }
+
+  .project-tech-line-mobile {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .project-tech-line-desktop {
+    display: none !important;
+  }
+
+  .fd-chapter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .fd-chapter-media {
+    order: 1;
   }
 
   .about-photo-mobile {

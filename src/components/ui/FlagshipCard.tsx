@@ -48,7 +48,12 @@ export function FlagshipCard({ project, reverse = false }: FlagshipCardProps) {
           <Image
             src={project.imageUrl}
             alt={project.title}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: project.imagePosition ?? 'center',
+            }}
             fallbackSrc="https://placehold.co/600x400/1b1f25/3e7cb1?text=Project"
           />
         </Box>

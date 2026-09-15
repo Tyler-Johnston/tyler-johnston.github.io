@@ -8,7 +8,7 @@ import { ProjectCard } from '../components/ui/ProjectCard';
 type ProjectTab = 'all' | 'archive' | ProjectCategory;
 
 const tabValues: Array<'all' | ProjectCategory> = ['all', 'webDev', 'gameDev', 'dataAnalytics', 'machineLearning'];
-const archiveOrder = ['cartpole-rl', 'maze-game'];
+const archiveOrder = ['cartpole-rl', 'maze-game', 'lunar-lander', 'customer-behavior'];
 
 export function Projects() {
   const [activeTab, setActiveTab] = useState<ProjectTab>('all');

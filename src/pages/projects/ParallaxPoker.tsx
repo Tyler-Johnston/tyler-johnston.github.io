@@ -21,7 +21,6 @@ import {
   ppOldWizard,
   ppAkalite,
 } from '../../data/imageAssets';
-import { TechBadge } from '../../components/ui/TechBadge';
 import { ProjectScreenshotGrid } from '../../components/ui/ProjectScreenshotGrid';
 import { ZoomableProjectImage } from '../../components/ui/ZoomableProjectImage';
 
@@ -132,22 +131,33 @@ export function ParallaxPoker() {
     <Container size="lg" py={60}>
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={36} mb={40} style={{ alignItems: 'start' }}>
         <Stack gap="md">
-          <Text size="sm" c="dimmed" style={{ fontFamily: 'var(--mantine-font-family-monospace)' }}>
-            C# / Godot 4
+          <Text
+            size="sm"
+            c="dimmed"
+            className="project-tech-line-desktop"
+            style={{ fontFamily: 'var(--mantine-font-family-monospace)', letterSpacing: '0.04em' }}
+          >
+            {techStack.join(' · ').toUpperCase()}
           </Text>
+
           <Title order={1} style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', fontWeight: 700, lineHeight: 1.06 }}>
             Parallax Poker
           </Title>
-          <Text size="lg" c="dimmed" maw={720} lh={1.75}>
-            A character-driven poker roguelite inspired by Balatro and Poker Night at the Inventory.
-            I built it to be readable, fair, and replayable without hiding the math.
+
+          <Text
+            size="sm"
+            c="dimmed"
+            className="project-tech-line-mobile"
+            style={{ fontFamily: 'var(--mantine-font-family-monospace)', letterSpacing: '0.04em' }}
+          >
+            {techStack.join(' · ').toUpperCase()}
           </Text>
 
-          <Group gap="sm" wrap="wrap">
-            {techStack.map((tech) => (
-              <TechBadge key={tech} label={tech} size="lg" />
-            ))}
-          </Group>
+          <Text size="lg" c="dimmed" maw={720} lh={1.75}>
+            A character-driven poker roguelite inspired by Balatro and Poker Night at the Inventory.
+            I built it to be readable, fair, and replayable without hiding the math. It's still in
+            active development, with a Steam release planned down the line.
+          </Text>
         </Stack>
 
         <Box

@@ -38,6 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             height={180}
             alt={project.title}
             fallbackSrc="https://placehold.co/400x180/1b1f25/3e7cb1?text=Project"
+            style={{ objectPosition: project.imagePosition ?? 'center' }}
           />
           {project.featured && (
             <Badge

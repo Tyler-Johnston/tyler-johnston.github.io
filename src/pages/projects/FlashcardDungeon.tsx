@@ -8,7 +8,7 @@ import {
   Button,
   Box,
 } from '@mantine/core';
-import { IconArrowLeft, IconExternalLink } from '@tabler/icons-react';
+import { IconArrowLeft, IconExternalLink, IconShieldCheck, IconRefresh, IconFlask, IconDatabase } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
   fdDecksHome,
@@ -35,163 +35,97 @@ import {
   fdProfile,
   fdQuests,
 } from '../../data/imageAssets';
-import { TechBadge } from '../../components/ui/TechBadge';
-import { ProjectScreenshotGrid } from '../../components/ui/ProjectScreenshotGrid';
 import { ZoomableProjectImage } from '../../components/ui/ZoomableProjectImage';
+import { ScreenshotCarousel, CarouselItem } from '../../components/ui/ScreenshotCarousel';
 
 const techStack = ['Angular', 'TypeScript', 'IndexedDB', 'Supabase', 'PostgreSQL'];
 
-interface Shot {
-  src: string;
-  label: string;
-  note: string;
-}
+const highlights = [
+  {
+    icon: IconShieldCheck,
+    title: "Every user's data, isolated by design",
+    text: 'Decks, cards, and progress are scoped per user with row-level security, and sensitive writes like purchases run through server-side Edge Functions and Postgres RPCs instead of trusting the client.',
+  },
+  {
+    icon: IconDatabase,
+    title: 'Works offline, no exceptions',
+    text: 'IndexedDB is the local source of truth on every device, so studying never depends on having a connection.',
+  },
+  {
+    icon: IconRefresh,
+    title: 'Realtime sync across every device',
+    text: 'Supabase Postgres Changes push deck and progress updates to every open device within seconds, with a fallback sync path if the connection ever drops.',
+  },
+  {
+    icon: IconFlask,
+    title: 'Tested across the whole stack',
+    text: 'Vitest covers the Angular client, and pgTAP covers server-side Postgres logic directly, so test coverage doesn\'t stop at the edge of the database.',
+  },
+];
 
-interface ShowcaseSection {
+interface Chapter {
+  number: string;
   title: string;
-  text: string;
-  shots: Shot[];
+  description: string;
+  items: CarouselItem[];
 }
 
-const sections: ShowcaseSection[] = [
+const chapters: Chapter[] = [
   {
-    title: 'Creating your own decks and cards',
-    text: 'Every deck starts as raw content: cards written and tagged by hand, with tools to speed up the parts that would otherwise be tedious.',
-    shots: [
-      {
-        src: fdCardEditor,
-        label: 'Cards',
-        note: 'Every card can be searched, tagged, and edited inline, front and back, without leaving the deck.',
-      },
-      {
-        src: fdCardAudioTts,
-        label: 'Audio generation',
-        note: 'Any deck can be sent through Google TTS to generate spoken audio for its cards, in the language and voice side you choose.',
-      },
-      {
-        src: fdIconPack,
-        label: 'Icon packs',
-        note: 'Cards can be given visuals from a built-in icon library instead of hunting down or drawing your own art for every single one.',
-      },
-      {
-        src: fdDeckNotes,
-        label: 'Notes',
-        note: 'Each deck can carry its own reference notes, like full conjugation tables and grammar explanations, alongside the cards themselves.',
-      },
+    number: '01',
+    title: 'Create your own decks and cards',
+    description: 'Create your own decks, populate them with cards using the card editor, generate Google TTS audio in multiple languages, add icon packs for visuals, and keep personal notes right in the app.',
+    items: [
+      { src: fdCardEditor, alt: 'Deck card editor', label: 'Card editor', note: 'Every card can be searched, tagged, and edited inline, front and back, without leaving the deck.' },
+      { src: fdCardAudioTts, alt: 'TTS audio generation', label: 'Audio generation', note: 'Any deck can be sent through Google TTS to generate spoken audio in the language and voice you choose.' },
+      { src: fdIconPack, alt: 'Icon pack picker', label: 'Icon packs', note: 'Cards can be given visuals from a built-in icon library instead of hunting down your own art.' },
+      { src: fdDeckNotes, alt: 'Deck reference notes', label: 'Deck notes', note: 'Each deck can carry its own reference notes, like conjugation tables and grammar explanations.' },
     ],
   },
   {
-    title: 'Personal and curated roadmaps',
-    text: 'Roadmaps are not fixed to what ships with the app. Build a personal one from scratch, or pull from a curated catalog spanning language starter packs and general-knowledge tracks.',
-    shots: [
-      {
-        src: fdRoadmap,
-        label: 'Roadmap',
-        note: 'Curriculum content is mapped as a skill tree, with a boss "Section Review" at the end of every zone.',
-      },
-      {
-        src: fdRoadmapPersonal,
-        label: 'Personal',
-        note: 'Custom roadmaps you build yourself sit alongside a one-tap option to create a new one from scratch.',
-      },
-      {
-        src: fdRoadmapCurated,
-        label: 'Curated',
-        note: 'The built-in catalog spans general-knowledge tracks and language starter packs, from Mexican Spanish to German.',
-      },
+    number: '02',
+    title: 'Follow custom or curated roadmaps',
+    description: 'Follow a curated roadmap or build your own from scratch, laid out as a skill tree, with a growing catalog of curated language and knowledge tracks to pull from.',
+    items: [
+      { src: fdRoadmap, alt: 'Skill-tree roadmap', label: 'Skill-tree layout', note: 'Curriculum content is mapped as a skill tree, with a boss "Section Review" at the end of every zone.' },
+      { src: fdRoadmapPersonal, alt: 'Personal roadmap', label: 'Personal roadmaps', note: 'Custom roadmaps you build yourself sit alongside a one-tap option to create a new one from scratch.' },
+      { src: fdRoadmapCurated, alt: 'Curated roadmap', label: 'Curated tracks', note: 'The built-in catalog spans general-knowledge and language starter packs, from Spanish to German.' },
     ],
   },
   {
-    title: 'Game modes and study methods',
-    text: 'Encounters do not all play the same way. The engine rotates through eight review mechanics: Standard flip-and-grade, Multiple Choice, typed Active Recall, Matching Pairs, word-by-word Word Sort, letter-by-letter Spell Sprint, and text-to-speech Audio Choice and Audio Recall.',
-    shots: [
-      {
-        src: fdBattleFlip,
-        label: 'Standard',
-        note: 'The baseline mechanic: reveal the card, then grade your own recall, the same way Anki does.',
-      },
-      {
-        src: fdBattleMultipleChoice,
-        label: 'Multiple Choice',
-        note: 'Pick the right answer from four options. The distractors are chosen deliberately, not pulled at random.',
-      },
-      {
-        src: fdBattleActiveRecall,
-        label: 'Active Recall',
-        note: 'No options to lean on: type the answer outright before it counts as correct.',
-      },
-      {
-        src: fdBattleMatching,
-        label: 'Matching Pairs',
-        note: 'Match every prompt on the board to its answer before the round runs out. The same mechanic works whether the deck is testing verb conjugations or world flags.',
-      },
-      {
-        src: fdBattleWordSort,
-        label: 'Word Sort',
-        note: 'Rebuild a sentence by tapping its words back into the right order.',
-      },
-      {
-        src: fdBattleSpellSprint,
-        label: 'Spell Sprint',
-        note: 'Race the clock by rebuilding a word from scrambled letter tiles.',
-      },
-      {
-        src: fdBattleAudioChoice,
-        label: 'Audio Choice',
-        note: 'The prompt is spoken instead of printed. Listen, then pick the right answer from the options below.',
-      },
-      {
-        src: fdBattleAudioRecall,
-        label: 'Audio Recall',
-        note: 'Same spoken prompt, no options this time: type what you heard from memory.',
-      },
+    number: '03',
+    title: 'Battle through different study modes',
+    description: 'Study through a mix of modes that test recall differently, from a quick flip-and-grade review to typed recall, matching, word reconstruction, and audio-based challenges.',
+    items: [
+      { src: fdBattleFlip, alt: 'Standard flip battle mode', label: 'Standard', note: 'The baseline mechanic: reveal the card, then grade your own recall, the same way Anki does.' },
+      { src: fdBattleMultipleChoice, alt: 'Multiple choice battle mode', label: 'Multiple Choice', note: 'Pick the right answer from four options. The distractors are chosen deliberately, not pulled at random.' },
+      { src: fdBattleActiveRecall, alt: 'Active recall battle mode', label: 'Active Recall', note: 'No options to lean on: type the answer outright before it counts as correct.' },
+      { src: fdBattleMatching, alt: 'Matching pairs battle mode', label: 'Matching Pairs', note: 'Match every prompt on the board to its answer before the round runs out.' },
+      { src: fdBattleWordSort, alt: 'Word sort battle mode', label: 'Word Sort', note: 'Rebuild a sentence by tapping its words back into the right order.' },
+      { src: fdBattleSpellSprint, alt: 'Spell sprint battle mode', label: 'Spell Sprint', note: 'Race the clock by rebuilding a word from scrambled letter tiles.' },
+      { src: fdBattleAudioChoice, alt: 'Audio choice battle mode', label: 'Audio Choice', note: 'The prompt is spoken instead of printed. Listen, then pick the right answer from the options below.' },
+      { src: fdBattleAudioRecall, alt: 'Audio recall battle mode', label: 'Audio Recall', note: 'Same spoken prompt, no options this time: type what you heard from memory.' },
     ],
   },
   {
-    title: 'Dungeons and the bestiary',
-    text: 'Each zone is a real place with its own cast. The Undergrowth, the Labyrinth, the Bastion, and the Drain each carry a tiered set of monsters and a boss, tracked in a bestiary as you clear them.',
-    shots: [
-      {
-        src: fdBestiary,
-        label: 'Bestiary',
-        note: "The Undergrowth's seven-monster roster, tiered from the common Spore up to the boss Rootwretch.",
-      },
-      {
-        src: fdBestiaryDetail,
-        label: 'Monster record: Sludge',
-        note: 'Every monster keeps its own record: a line of lore, a battle profile with HP and attack, and a battle history of wins and losses against it.',
-      },
-      {
-        src: fdBestiaryDetail2,
-        label: 'Monster record: Royal Guard',
-        note: "Records also log rare shiny encounters and a \"Defeated By\" roster of which characters have checked it off, turning the bestiary into a completionist tracker.",
-      },
+    number: '04',
+    title: 'Fill out your monster bestiary',
+    description: 'Study cards and defeat enemies to fill out your bestiary across all 4 dungeons, with a full encounter history and codex entry for every monster.',
+    items: [
+      { src: fdBestiary, alt: 'Bestiary zone', label: 'Bestiary zones', note: 'The Undergrowth\'s tiered monster roster, from the common Spore up to the boss Rootwretch.' },
+      { src: fdBestiaryDetail, alt: 'Monster record detail', label: 'Encounter history', note: 'Every monster keeps its own record: a line of lore, a battle profile, and a history of wins and losses.' },
+      { src: fdBestiaryDetail2, alt: 'Monster codex detail', label: 'Monster codex', note: 'Records also log rare shiny encounters and a "Defeated By" roster of which characters have checked it off.' },
     ],
   },
   {
-    title: 'Progress as you study',
-    text: 'New characters unlock as you play, each carrying its own passive. The shop spends earned gold to unlock dungeon regions, curated roadmaps, and icon packs. A quest log works like an achievement list, and the profile page keeps a running record of personal stats.',
-    shots: [
-      {
-        src: fdAvatarSelect,
-        label: 'Unlock characters',
-        note: 'Every unlockable character carries a passive that changes the run, from bonus gold to bonus damage.',
-      },
-      {
-        src: fdShopHub,
-        label: 'Shop',
-        note: 'Gold earned in runs buys travel between dungeon regions and unlocks the wider roadmap catalog, languages and general knowledge alike.',
-      },
-      {
-        src: fdQuests,
-        label: 'Quests',
-        note: 'Achievements span combat, study, practice, and roadmap progress.',
-      },
-      {
-        src: fdProfile,
-        label: 'Profile',
-        note: 'Streaks, levels, recall rate, and a 30-day review history keep the study side of the loop visible.',
-      },
+    number: '05',
+    title: 'Level up as you study',
+    description: 'Gain XP, earn gold to spend in the shop, unlock new characters, track your stats in your profile, and chase daily quests as you study.',
+    items: [
+      { src: fdProfile, alt: 'Player profile and streaks', label: 'Streaks & profile', note: 'Streaks, levels, recall rate, and a 30-day review history keep the study side of the loop visible.' },
+      { src: fdAvatarSelect, alt: 'Unlockable character select', label: 'Unlockable characters', note: 'Every unlockable character carries a passive that changes the run, from bonus gold to bonus damage.' },
+      { src: fdShopHub, alt: 'In-game shop', label: 'Shop', note: 'Gold earned in runs buys travel between dungeon regions and unlocks the wider roadmap catalog.' },
+      { src: fdQuests, alt: 'Practice quests', label: 'Quests', note: 'Achievements span combat, study, practice, and roadmap progress.' },
     ],
   },
 ];
@@ -203,14 +137,27 @@ export function FlashcardDungeon() {
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <Stack gap="md">
-              <Stack gap="xs">
-                <Text size="sm" c="dimmed" style={{ fontFamily: 'var(--mantine-font-family-monospace)' }}>
-                  Angular / TypeScript / Supabase
-                </Text>
-                <Title order={1} style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', fontWeight: 700, lineHeight: 1.06 }}>
-                  Flashcard Dungeon
-                </Title>
-              </Stack>
+              <Text
+                size="sm"
+                c="dimmed"
+                className="project-tech-line-desktop"
+                style={{ fontFamily: 'var(--mantine-font-family-monospace)', letterSpacing: '0.04em' }}
+              >
+                {techStack.join(' · ').toUpperCase()}
+              </Text>
+
+              <Title order={1} style={{ fontSize: 'clamp(2.2rem, 5vw, 3.4rem)', fontWeight: 700, lineHeight: 1.06 }}>
+                Flashcard Dungeon
+              </Title>
+
+              <Text
+                size="sm"
+                c="dimmed"
+                className="project-tech-line-mobile"
+                style={{ fontFamily: 'var(--mantine-font-family-monospace)', letterSpacing: '0.04em' }}
+              >
+                {techStack.join(' · ').toUpperCase()}
+              </Text>
 
               <Box
                 className="fd-hero-image-mobile"
@@ -224,15 +171,9 @@ export function FlashcardDungeon() {
                 <ZoomableProjectImage src={fdDecksHome} alt="Flashcard Dungeon deck list with today's quests" fallbackSrc="https://placehold.co/1200x780/1b1f25/3e7cb1?text=Flashcard+Dungeon" />
               </Box>
 
-              <Group gap="sm" wrap="wrap">
-                {techStack.map((tech) => (
-                  <TechBadge key={tech} label={tech} size="lg" />
-                ))}
-              </Group>
-
               <Text size="lg" c="dimmed" maw={720} lh={1.75}>
-                A full-stack, general-purpose study app that turns spaced repetition into a roguelite
-                dungeon crawl.
+                A full-stack, general-purpose study app that pairs spaced repetition with unlockable
+                characters, a monster bestiary, deck notes, and multiple study modes.
               </Text>
 
               <Group gap="sm" wrap="wrap">
@@ -265,40 +206,84 @@ export function FlashcardDungeon() {
         </Box>
       </SimpleGrid>
 
-      <Box mb={56} style={{ borderTop: '1px solid var(--line)' }} />
+      <Box style={{ borderTop: '1px solid var(--line)' }} pt={56} mb={64}>
+        <Stack gap={4} mb={24}>
+          <Title order={2} style={{ fontWeight: 700 }}>
+            Not just another flashcard app
+          </Title>
+          <Text size="sm" c="dimmed" maw={680} lh={1.7}>
+            Each study session earns XP, unlocks new characters, advances your bestiary, and builds
+            up gold to spend in the shop. What makes it worth trusting is everything underneath:
+            private by default, works offline, stays in sync, and genuinely tested.
+          </Text>
+        </Stack>
 
-      {sections.map((section, index) => (
-        <Box key={section.title} mb={index < sections.length - 1 ? 64 : 0}>
-          <Stack gap={4} mb={24}>
-            <Title order={2} style={{ fontWeight: 700 }}>
-              {section.title}
-            </Title>
-            <Text size="sm" c="dimmed" maw={780} lh={1.7}>
-              {section.text}
-            </Text>
-          </Stack>
-
-          <ProjectScreenshotGrid itemCount={section.shots.length}>
-            {section.shots.map((shot) => (
+        <SimpleGrid cols={2} spacing="lg">
+          {highlights.map((item) => (
+            <Box
+              key={item.title}
+              style={{
+                background: 'var(--surface-raised)',
+                border: '1px solid var(--line)',
+                borderRadius: 6,
+                padding: 22,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 14,
+              }}
+            >
               <Box
-                key={shot.label}
                 style={{
-                  overflow: 'hidden',
-                  border: '1px solid var(--line)',
-                  background: 'var(--surface)',
+                  width: 38,
+                  height: 38,
                   borderRadius: 6,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--line)',
+                  color: 'var(--accent)',
+                  flex: '0 0 auto',
                 }}
               >
-                <ZoomableProjectImage src={shot.src} alt={shot.label} fallbackSrc="https://placehold.co/600x400/1b1f25/3e7cb1?text=Project" />
-                <Stack gap={6} p="md">
-                  <Text fw={700}>{shot.label}</Text>
-                  <Text size="sm" c="dimmed" lh={1.6}>
-                    {shot.note}
-                  </Text>
-                </Stack>
+                <item.icon size={18} />
               </Box>
-            ))}
-          </ProjectScreenshotGrid>
+              <Text fw={700} size="sm">
+                {item.title}
+              </Text>
+              <Text size="sm" c="dimmed" lh={1.6}>
+                {item.text}
+              </Text>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
+
+      {chapters.map((chapter, index) => (
+        <Box
+          key={chapter.number}
+          style={{ borderTop: '1px solid var(--line)' }}
+          pt={48}
+          mb={index < chapters.length - 1 ? 48 : 0}
+        >
+          <div className="fd-chapter-grid">
+            <div className="fd-chapter-media">
+              <ScreenshotCarousel items={chapter.items} />
+            </div>
+            <Stack gap={16}>
+              <Group align="baseline" gap={12} wrap="nowrap">
+                <Text size="md" c="accent" style={{ fontFamily: 'var(--mantine-font-family-monospace)', flexShrink: 0 }}>
+                  {chapter.number}
+                </Text>
+                <Title order={3} style={{ fontWeight: 700, fontSize: '1.6rem', flex: 1, minWidth: 0 }}>
+                  {chapter.title}
+                </Title>
+              </Group>
+              <Text size="md" c="dimmed" lh={1.65} maw={520}>
+                {chapter.description}
+              </Text>
+            </Stack>
+          </div>
         </Box>
       ))}
 

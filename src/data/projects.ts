@@ -7,6 +7,7 @@ export interface Project {
   title: string;
   description: string;
   imageUrl?: string;
+  imagePosition?: string;
   projectUrl?: string;
   techStack: string[];
   category: ProjectCategory;
@@ -20,6 +21,7 @@ export interface FlagshipProject {
   subtitle: string;
   description: string;
   imageUrl: string;
+  imagePosition?: string;
   techStack: string[];
   achievements: string[];
   cta: { label: string; href: string; variant: 'filled' | 'outline' | 'light' }[];
@@ -31,13 +33,14 @@ export const flagshipProjects: FlagshipProject[] = [
     title: 'Flashcard Dungeon',
     subtitle: 'Angular 17+ / TypeScript / Supabase',
     description:
-      'A full-stack, general-purpose study app that turns spaced repetition into a roguelite dungeon crawl, with unlockable characters, a monster bestiary, deck notes, and multiple game modes.',
+      'A full-stack, general-purpose study app that pairs spaced repetition with unlockable characters, a monster bestiary, deck notes, and multiple study modes.',
     imageUrl: fdDecksHome,
-    techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
+    imagePosition: 'top',
+    techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase', 'PostgreSQL'],
     achievements: [
-      'Custom and curated learning paths, plus deck-level notes for keeping reference material alongside cards',
-      'Roguelite runs with unlockable characters, a monster bestiary, meta-progression, and eight study game modes',
-      'IndexedDB-first offline mode with optional Supabase/PostgreSQL sync',
+      'Row-Level-Security-scoped multi-user data model, with purchase/economy writes routed through service-role Edge Functions and SECURITY DEFINER RPCs after finding and patching a real self-grant exploit in production',
+      'Cross-device realtime sync via Supabase Postgres Changes on top of an offline-first IndexedDB core, with a non-destructive guest-to-account data merge on login',
+      '165-spec Vitest suite plus pgTAP tests for server-side SQL, run through a two-job CI pipeline, deployed behind a hardened CSP/security-header config',
     ],
     cta: [
       { label: 'View Project', href: '/projects/flashcard-dungeon', variant: 'filled' },
@@ -77,8 +80,9 @@ export const projects: Project[] = [
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
     description:
-      'A full-stack, general-purpose study app that turns spaced repetition into a roguelite dungeon crawl.',
+      'A full-stack, general-purpose study app that turns spaced repetition into a game.',
     imageUrl: fdDecksHome,
+    imagePosition: 'top',
     projectUrl: '/projects/flashcard-dungeon',
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase'],
     category: 'webDev',
@@ -100,6 +104,7 @@ export const projects: Project[] = [
     description:
       'A full-stack vinyl record collection manager with Discogs API integration, grading, play logging, and analytics.',
     imageUrl: vinyltracker,
+    imagePosition: 'top',
     projectUrl: 'https://github.com/Tyler-Johnston/Vinyl-Tracker',
     techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'SQLite'],
     category: 'webDev',
@@ -110,7 +115,7 @@ export const projects: Project[] = [
     description:
       'Producer and consumer apps handling widget generation, SQS messaging, and persistence to S3 and DynamoDB.',
     imageUrl: aws,
-    projectUrl: 'https://github.com/Tyler-Johnston/cs5260-AWS-Widget-Requests',
+    projectUrl: 'https://github.com/Tyler-Johnston/AWS-Widget-Requests',
     techStack: ['AWS', 'SQS', 'S3', 'DynamoDB', 'Python'],
     category: 'webDev',
   },
@@ -133,6 +138,7 @@ export const projects: Project[] = [
     projectUrl: 'https://github.com/Tyler-Johnston/Lunar-Lander',
     techStack: ['C#', '.NET', 'MonoGame'],
     category: 'gameDev',
+    archived: true,
   },
   {
     id: 'maze-game',
@@ -164,6 +170,7 @@ export const projects: Project[] = [
     projectUrl: 'https://github.com/Tyler-Johnston/Customer-Behavior-Analysis',
     techStack: ['Python', 'pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn'],
     category: 'dataAnalytics',
+    archived: true,
   },
   {
     id: 'cartpole-rl',
@@ -182,7 +189,7 @@ export const projects: Project[] = [
     description:
       'A time-series regression model predicting beehive weight from environmental sensor data.',
     imageUrl: bees,
-    projectUrl: 'https://github.com/Tyler-Johnston/cs5600-Beehive-Weight-Prediction',
+    projectUrl: 'https://github.com/Tyler-Johnston/Beehive-Weight-Prediction',
     techStack: ['Python', 'TensorFlow', 'Pandas'],
     category: 'machineLearning',
   },
@@ -192,7 +199,7 @@ export const projects: Project[] = [
     description:
       'An SVM classifier trained on LBP and ORB features to recognize facial expressions from the CK+ dataset.',
     imageUrl: facialExpression,
-    projectUrl: 'https://github.com/Tyler-Johnston/cs5680-facial-expression-recognition',
+    projectUrl: 'https://github.com/Tyler-Johnston/Facial-Expression-Recognition',
     techStack: ['Python', 'scikit-learn', 'OpenCV'],
     category: 'machineLearning',
   },
