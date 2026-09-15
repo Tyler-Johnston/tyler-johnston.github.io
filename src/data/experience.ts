@@ -57,7 +57,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     title: 'Data & BI',
-    items: ['Power BI', 'Microsoft Fabric', 'Data Pipelines', 'Geospatial Analysis', 'Pandas', 'Plotly'],
+    items: ['Power BI', 'Microsoft Fabric', 'Data Pipelines', 'Geospatial Analysis', 'Pandas'],
   },
 ];
 

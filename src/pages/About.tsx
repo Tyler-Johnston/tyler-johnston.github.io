@@ -24,7 +24,7 @@ import { TechBadge } from '../components/ui/TechBadge';
 
 const programming = ['C#', 'TypeScript', 'JavaScript', 'Python', 'SQL'];
 const frameworks = ['.NET', 'REST APIs', 'React.js', 'Angular 17+', 'Docker'];
-const dataAndBI = ['Pandas', 'Plotly', 'Power BI', 'Microsoft Fabric', 'Supabase'];
+const dataAndBI = ['Pandas', 'Power BI', 'Microsoft Fabric', 'Supabase'];
 const devOpsAndQA = ['Git', 'Agile/Scrum', 'CI/CD', 'Unit Testing', 'QA workflows'];
 
 const skillGroups = [
@@ -65,20 +65,20 @@ export function About() {
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing={56} mb={72} style={{ alignItems: 'start' }}>
         <Stack gap="lg">
           <Text size="md" lh={1.85} c="dimmed">
+            I’m a developer from Nashville, now based in Portugal, interested in building thoughtful
+            software at the intersection of technology, data, and everyday learning.
+          </Text>
+
+          <Text size="md" lh={1.85} c="dimmed">
             I’m currently an Associate Backend Engineer at VML Portugal, contributing to production
-            software and data-driven workflows.
+            software and data-driven workflows. Alongside my role, I’m pursuing an MSc in Information
+            Management at NOVA IMS, specializing in Business Intelligence.
           </Text>
 
           <Text size="md" lh={1.85} c="dimmed">
-            Alongside this role, I’m pursuing an MSc in Information Management at NOVA IMS,
-            specializing in Business Intelligence. My background spans production web development,
-            research, teaching, and applied data work.
-          </Text>
-
-          <Text size="md" lh={1.85} c="dimmed">
-            Previously, at Footprints, I worked on aerospace and steel-manufacturing systems across
-            the front end, back end, APIs, databases, and QA. Earlier roles added experience in
-            computer vision, C++, and workflow tooling.
+            My path has taken me through web development, research, teaching, and applied data work.
+            I enjoy taking software from an early idea through implementation, testing, and the details
+            that make it dependable in production.
           </Text>
           <Group gap="sm" wrap="wrap" mt={4}>
             <Button
