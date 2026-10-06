@@ -66,8 +66,8 @@ const highlights = [
 const researchHighlights = [
   {
     icon: IconSchool,
-    title: 'A frozen, versioned study protocol',
-    text: 'The app doubles as the research platform for my NOVA IMS MSc thesis, prepared for a pilot study with a versioned protocol that is frozen before data collection begins.',
+    title: 'A versioned study protocol',
+    text: 'The app doubles as the research platform for my NOVA IMS MSc thesis, prepared for a pilot study with a versioned study protocol.',
   },
   {
     icon: IconArrowsShuffle,
