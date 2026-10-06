@@ -8,7 +8,7 @@ import {
   Button,
   Box,
 } from '@mantine/core';
-import { IconArrowLeft, IconExternalLink, IconShieldCheck, IconRefresh, IconFlask, IconDatabase } from '@tabler/icons-react';
+import { IconArrowLeft, IconExternalLink, IconShieldCheck, IconRefresh, IconFlask, IconDatabase, IconSchool, IconArrowsShuffle, IconLock } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import {
   fdDecksHome,
@@ -62,6 +62,70 @@ const highlights = [
     text: 'Vitest covers the Angular client, and pgTAP covers server-side Postgres logic directly, so test coverage doesn\'t stop at the edge of the database.',
   },
 ];
+
+const researchHighlights = [
+  {
+    icon: IconSchool,
+    title: 'A frozen, versioned study protocol',
+    text: 'The app doubles as the research platform for my NOVA IMS MSc thesis, prepared for a pilot study with a versioned protocol that is frozen before data collection begins.',
+  },
+  {
+    icon: IconArrowsShuffle,
+    title: 'Randomized supplementary retrieval',
+    text: 'Previously reviewed cards that are not yet due are sampled at random without replacement, so extra retrieval practice can be studied without disturbing the regular schedule.',
+  },
+  {
+    icon: IconDatabase,
+    title: 'An append-only research ledger',
+    text: 'Every study event is written to an append-only IndexedDB ledger and synced idempotently to Supabase Postgres, so retries and reconnects never duplicate or rewrite the record.',
+  },
+  {
+    icon: IconLock,
+    title: 'Scheduling the research cannot touch',
+    text: 'FSRS-6 updates only run against single-use review authorizations, and supplementary retrieval is logged without ever rescheduling a card.',
+  },
+];
+
+type Highlight = (typeof highlights)[number];
+
+function HighlightCard({ item }: { item: Highlight }) {
+  return (
+    <Box
+      style={{
+        background: 'var(--surface-raised)',
+        border: '1px solid var(--line)',
+        borderRadius: 6,
+        padding: 22,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 14,
+      }}
+    >
+      <Box
+        style={{
+          width: 38,
+          height: 38,
+          borderRadius: 6,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'var(--surface)',
+          border: '1px solid var(--line)',
+          color: 'var(--accent)',
+          flex: '0 0 auto',
+        }}
+      >
+        <item.icon size={18} />
+      </Box>
+      <Text fw={700} size="sm">
+        {item.title}
+      </Text>
+      <Text size="sm" c="dimmed" lh={1.6}>
+        {item.text}
+      </Text>
+    </Box>
+  );
+}
 
 interface Chapter {
   number: string;
@@ -172,8 +236,9 @@ export function FlashcardDungeon() {
               </Box>
 
               <Text size="lg" c="dimmed" maw={720} lh={1.75}>
-                A full-stack, general-purpose study app that pairs spaced repetition with unlockable
-                characters, a monster bestiary, deck notes, and multiple study modes.
+                A full-stack, general-purpose study app that pairs FSRS-6 spaced repetition with
+                unlockable characters, a monster bestiary, deck notes, and multiple study modes. It
+                also serves as the research platform for my NOVA IMS MSc thesis.
               </Text>
 
               <Group gap="sm" wrap="wrap">
@@ -220,41 +285,26 @@ export function FlashcardDungeon() {
 
         <SimpleGrid cols={2} spacing="lg">
           {highlights.map((item) => (
-            <Box
-              key={item.title}
-              style={{
-                background: 'var(--surface-raised)',
-                border: '1px solid var(--line)',
-                borderRadius: 6,
-                padding: 22,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 14,
-              }}
-            >
-              <Box
-                style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: 6,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'var(--surface)',
-                  border: '1px solid var(--line)',
-                  color: 'var(--accent)',
-                  flex: '0 0 auto',
-                }}
-              >
-                <item.icon size={18} />
-              </Box>
-              <Text fw={700} size="sm">
-                {item.title}
-              </Text>
-              <Text size="sm" c="dimmed" lh={1.6}>
-                {item.text}
-              </Text>
-            </Box>
+            <HighlightCard key={item.title} item={item} />
+          ))}
+        </SimpleGrid>
+      </Box>
+
+      <Box style={{ borderTop: '1px solid var(--line)' }} pt={56} mb={64}>
+        <Stack gap={4} mb={24}>
+          <Title order={2} style={{ fontWeight: 700 }}>
+            Built as a research platform
+          </Title>
+          <Text size="sm" c="dimmed" maw={680} lh={1.7}>
+            Flashcard Dungeon is also the platform for my MSc thesis at NOVA IMS. The same app people
+            study with is set up to run a controlled pilot study, without the research changing how
+            their cards are scheduled.
+          </Text>
+        </Stack>
+
+        <SimpleGrid cols={2} spacing="lg">
+          {researchHighlights.map((item) => (
+            <HighlightCard key={item.title} item={item} />
           ))}
         </SimpleGrid>
       </Box>

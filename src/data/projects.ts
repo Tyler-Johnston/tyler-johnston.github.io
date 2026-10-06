@@ -33,7 +33,7 @@ export const flagshipProjects: FlagshipProject[] = [
     title: 'Flashcard Dungeon',
     subtitle: 'Angular 17+ / TypeScript / Supabase',
     description:
-      'A full-stack, general-purpose study app that pairs spaced repetition with unlockable characters, a monster bestiary, deck notes, and multiple study modes.',
+      'A full-stack, general-purpose study app that pairs FSRS-6 spaced repetition with unlockable characters, a monster bestiary, deck notes, and multiple study modes.',
     imageUrl: fdDecksHome,
     imagePosition: 'top',
     techStack: ['Angular', 'TypeScript', 'IndexedDB', 'Supabase', 'PostgreSQL'],
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     id: 'flashcard-dungeon',
     title: 'Flashcard Dungeon',
     description:
-      'A full-stack study app pairing spaced repetition with unlockable characters, a monster bestiary, deck notes, and multiple study modes.',
+      'A full-stack study app pairing FSRS-6 spaced repetition with unlockable characters, a monster bestiary, deck notes, and multiple study modes.',
     imageUrl: fdDecksHome,
     imagePosition: 'top',
     projectUrl: '/projects/flashcard-dungeon',
