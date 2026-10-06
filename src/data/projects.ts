@@ -40,7 +40,7 @@ export const flagshipProjects: FlagshipProject[] = [
     achievements: [
       'Row-level security scoping every table by user, with purchase writes routed through server-side functions only',
       'Real-time sync across every device, layered on an offline-first IndexedDB core',
-      'Non-destructive guest-to-account data merge on login',
+      'FSRS-6 scheduling with a randomized retrieval study built in for my NOVA IMS MSc thesis',
       'Full test suite spanning app and database logic, run in CI behind hardened security headers',
     ],
     cta: [
