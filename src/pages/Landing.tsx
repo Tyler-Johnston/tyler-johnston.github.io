@@ -17,7 +17,7 @@ import { FlagshipCard } from '../components/ui/FlagshipCard';
 import { headshot } from '../data/imageAssets';
 
 const quickFacts = [
-  { label: 'Currently', value: 'VML Portugal' },
+  { label: 'Currently', value: 'WPP Enterprise Solutions' },
   { label: 'Based in', value: 'Porto, Portugal' },
   { label: 'Language', value: 'Portuguese B1' },
   { label: 'Study', value: 'NOVA IMS MSc' },

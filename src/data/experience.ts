@@ -63,19 +63,20 @@ export const skillGroups: SkillGroup[] = [
 
 export const roles: Role[] = [
   {
-    id: 'vml',
+    id: 'wpp',
     title: 'Associate Back-End Engineer',
-    organization: 'VML Portugal',
+    organization: 'WPP Enterprise Solutions',
     period: 'Sep 2026 - Present',
     location: 'Porto, Portugal',
     description: [
-      'Joined VML Portugal, a global marketing and technology company, as an Associate Back-End Engineer building backend systems for enterprise clients.',
+      'Working with AWS during initial onboarding, with planned back-end development in TypeScript and AI systems work for the e-commerce sector.',
     ],
     highlights: [
-      'Backend engineering under the Programador de Informática technical category',
-      'Production systems and APIs for enterprise marketing and technology clients',
+      'Working with AWS during initial onboarding',
+      'Planned back-end development in TypeScript',
+      'AI systems work for the e-commerce sector',
     ],
-    techStack: [],
+    techStack: ['AWS', 'TypeScript'],
   },
   {
     id: 'footprints',

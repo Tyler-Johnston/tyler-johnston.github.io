@@ -70,9 +70,10 @@ export function About() {
           </Text>
 
           <Text size="md" lh={1.85} c="dimmed">
-            I’m currently an Associate Backend Engineer at VML Portugal, contributing to production
-            software and data-driven workflows. Alongside my role, I’m pursuing an MSc in Information
-            Management at NOVA IMS, specializing in Business Intelligence.
+            I’m currently an Associate Back-end Engineer at WPP Enterprise Solutions, working with AWS
+            and preparing for TypeScript and AI systems work in the e-commerce sector. Alongside my
+            role, I’m pursuing an MSc in Information Management at NOVA IMS, specializing in Business
+            Intelligence.
           </Text>
 
           <Text size="md" lh={1.85} c="dimmed">
